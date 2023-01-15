@@ -4,11 +4,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from "react"
 import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
-// import NET from "vanta/dist/vanta.net.min";
-// import * as THREE from "three";
+import NET from "vanta/dist/vanta.net.min";
+import * as THREE from "three";
 import Btn from '../styles/customBtn.module.css'
-// import Input from '@material-tailwind/react/Input'
-// import Textarea from "@material-tailwind/react/Textarea";
 
 interface FormData {
     name: { value: string }
@@ -18,7 +16,27 @@ interface FormData {
 
 function Contact() {
 
-    const [status, setStatus] = useState("Submit")
+    const [vantaEffect, setVantaEffect] = useState<any>(0)
+    const [status, setStatus] = useState<string>("Submit")
+
+    console.log("🚀 ~ file: Contact.tsx:18 ~ vantaEffect", typeof vantaEffect)
+    const vantaRef = useRef(null);
+    useEffect(() => {
+        if (!vantaEffect) {
+            setVantaEffect(
+                NET({
+                    el: vantaRef.current,
+                    THREE,
+                    color: 0x777777,
+                    backgroundColor: 0x111827,
+                })
+            );
+        }
+        return () => {
+            if (vantaEffect) vantaEffect.destroy();
+        }
+    }, [vantaEffect]);
+
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -29,7 +47,7 @@ function Contact() {
             email: email.value,
             message: message.value,
         }
-        const response = await fetch("/api/contact", {
+        await fetch("/api/mail", {
             method: "POST",
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -37,32 +55,19 @@ function Contact() {
             },
             body: JSON.stringify(details),
         })
-        setStatus("Submit")
-        let result = await response.json()
-        alert(result.status)
-    };
-
-    // const [vantaEffect, setVantaEffect] = useState<any>(0);
-    // const vantaRef = useRef(null);
-    // useEffect(() => {
-    //     if (!vantaEffect) {
-    //         setVantaEffect(
-    //             NET({
-    //                 el: vantaRef.current,
-    //                 THREE,
-    //                 color: 0x777777,
-    //                 backgroundColor: 0x111827,
-    //             })
-    //         );
-    //     }
-    //     return () => {
-    //         if (vantaEffect) vantaEffect.destroy();
-    //     };
-
-    // }, [vantaEffect]);
+            .then(res => res.json())
+            .then(data => {
+                alert(data.status)
+                setStatus("Submit")
+            })
+            .catch(err => {
+                alert(err)
+                setStatus("Error")
+            })
+    }
 
     return (
-        <section id="contact" /* ref={vantaRef} */ className=" lg:py-1 py-24 lg:h-screen bg-gray-900 antialiased">
+        <section id="contact" ref={vantaRef} className=" lg:py-1 py-24 lg:h-screen bg-gray-900 antialiased">
             <div className="flex w-full min-h-screen justify-center items-center">
                 <div className="flex flex-col md:flex-row md:space-x-6  space-y-6 md:space-y-0 backdrop-filter backdrop-blur border-2 border-opacity-30 border-gray-400 w-full max-w-4xl p-8 sm:p-12 rounded-xl shadow-lg text-white">
                     <div className="flex flex-col justify-between">

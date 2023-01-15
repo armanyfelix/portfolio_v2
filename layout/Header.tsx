@@ -27,7 +27,7 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
 
   return (
     <>
-      <header id="top" className="flex justify-between items-center  shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-90 bg-amber-800 px-6 py-2">
+      <header id="top" className="fixed top-0 right-0 left-0 flex justify-between z-40 items-center shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-90 bg-black-800 px-6 py-1">
         <div>
           <Link href="/" legacyBehavior>
             <svg width="62" height="20" viewBox="0 0 62 20" fill="none" xmlns="http://www.w3.org/2000/svg">

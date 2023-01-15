@@ -4,7 +4,7 @@ import Header from "./Header";
 function Layout({ children, mohaveFont }: { children: React.ReactNode, mohaveFont: string }) {
   return (
     <>
-      <div className="mb-11">
+      <div className="">
         <Header mohaveFont={mohaveFont} />
       </div>
       <main>

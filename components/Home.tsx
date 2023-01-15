@@ -4,13 +4,13 @@ import Arrow from '../styles/arrow.module.css'
 
 
 interface HomeProps {
-
+  vantaRef: any;
 }
 
-const Home: FC<HomeProps> = () => {
+const Home: FC<HomeProps> = ({ vantaRef }) => {
   return (
-    <section id="main" className="w-full h-screen m-0 p-0 text-white">
-      <div className="text-center mx-auto pt-56">
+    <section id="main" ref={vantaRef} className="w-full h-screen m-0 p-0 text-white">
+      <div className="text-center mx-auto pt-64">
         <h3 className=" md:text-4xl font-simplex text-3xl pb-3 text-white">
           Hi, I{"'"}m Armany
         </h3>
