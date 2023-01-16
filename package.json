@@ -6,8 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "types": "tsc --pretty --noEmit",
     "lint": "next lint",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
+    "test-all": "pnpm format && pnpm clint && pnpm types && pnpm build",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -31,10 +33,13 @@
     "@types/p5": "^1.4.3",
     "@types/three": "^0.148.0",
     "autoprefixer": "^10.4.13",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
     "lint-staged": "^13.1.0",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.3",
     "tailwindcss": "^3.2.4"
   }
 }

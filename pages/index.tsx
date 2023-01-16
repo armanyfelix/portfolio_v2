@@ -1,29 +1,28 @@
-import Head from 'next/head'
-import { useEffect, useRef, useState } from 'react'
-import HALO from "vanta/dist/vanta.halo.min"
-import * as THREE from "three"
-import Contact from '../components/Contact'
-import Home from '../components/Home'
-
+import Head from 'next/head';
+import { useEffect, useRef, useState } from 'react';
+import halo from 'vanta/dist/vanta.halo.min';
+import * as THREE from 'three';
+import Contact from '../components/Contact';
+import Home from '../components/Home';
 function Page() {
-
   const [vantaEffect, setVantaEffect] = useState<any>(0);
   const vantaRef = useRef(null);
 
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(
-        HALO({
+        halo({
           el: vantaRef.current,
           THREE,
+
           mouseControls: true,
           touchControls: true,
           gyroControls: true,
-          minHeight: 200.00,
-          minWidth: 200.00,
-          scale: 3.00,
-          scaleMobile: 1.00,
-          color: 0xb5be91
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 3.0,
+          scaleMobile: 1.0,
+          color: 0xb5be91,
         })
       );
     }
@@ -40,7 +39,7 @@ function Page() {
       <Home vantaRef={vantaRef} />
       <Contact />
     </div>
-  )
+  );
 }
 
 // Multiple layouts example
@@ -53,4 +52,4 @@ function Page() {
 //   )
 // }
 
-export default Page
+export default Page;

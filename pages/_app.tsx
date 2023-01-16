@@ -1,9 +1,9 @@
-import '../styles/globals.css'
-import localFont from '@next/font/local'
+import '../styles/globals.css';
+import localFont from '@next/font/local';
 // import type { ReactElement, ReactNode } from 'react'
 // import type { NextPage } from 'next'
-import type { AppProps } from 'next/app'
-import Layout from '../layout'
+import type { AppProps } from 'next/app';
+import Layout from '../layout';
 
 // Multiple layouts types example
 // export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -26,7 +26,7 @@ const mohaveFont = localFont({
     },
   ],
   variable: '--font-mohave',
-})
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   // Use the layout defined at the page level, if available
@@ -34,9 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <Layout mohaveFont={`${mohaveFont.variable} font-mohave`}>
-    <main className={`${mohaveFont.variable} font-mohave`}>
-      <Component {...pageProps} />
-    </main>
+      <main className={`${mohaveFont.variable} font-mohave`}>
+        <Component {...pageProps} />
+      </main>
     </Layout>
-  )
+  );
 }

@@ -1,16 +1,22 @@
 module.exports = {
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   extends: [
-    "next/core-web-vitals",
+    'next/core-web-vitals',
     'plugin:@next/next/recommended',
-    "prettier",
+    'google',
+    'prettier',
   ],
   settings: {
     react: {
-      version: "detect",
+      version: 'detect',
     },
   },
-  // plugins: ["@typescript-eslint", "next"],
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': 'error',
+    'valid-jsdoc': 'off',
+    'require-jsdoc': 'off',
+  },
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -18,6 +24,6 @@ module.exports = {
     // Allows for the parsing of modern ECMAScript features
     ecmaVersion: 2022,
     // Allows for the use of imports
-    sourceType: "module",
+    sourceType: 'module',
   },
-}
+};
