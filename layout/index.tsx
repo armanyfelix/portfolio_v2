@@ -1,13 +1,7 @@
-import Footer from './Footer';
-import Header from './Header';
+import Footer from './Footer'
+import Header from './Header'
 
-function Layout({
-  children,
-  mohaveFont,
-}: {
-  children: React.ReactNode;
-  mohaveFont: string;
-}) {
+function Layout({ children, mohaveFont }: { children: React.ReactNode; mohaveFont: string }) {
   return (
     <>
       <div className="">
@@ -16,7 +10,7 @@ function Layout({
       <main>{children}</main>
       <Footer />
     </>
-  );
+  )
 }
 
-export default Layout;
+export default Layout

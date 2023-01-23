@@ -1,11 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: [
-    'next/core-web-vitals',
-    'plugin:@next/next/recommended',
-    'google',
-    'prettier',
-  ],
+  extends: ['next/core-web-vitals', 'plugin:@next/next/recommended', 'google', 'prettier'],
   settings: {
     react: {
       version: 'detect',
@@ -26,4 +21,4 @@ module.exports = {
     // Allows for the use of imports
     sourceType: 'module',
   },
-};
+}
