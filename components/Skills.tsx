@@ -11,7 +11,7 @@ function Skills() {
           <ul className="list-none space-y-5 p-5">
             <li className="flex items-center">
               <Image src="/icons/javascript.svg" width="38" height="38" alt="javaScript" />
-              <span className="mx-2">JavaScript (ES6+)</span>000
+              <span className="mx-2">JavaScript (ES6+)</span>
             </li>
             <li className="flex items-center">
               <Image src="/icons/html5.svg" width="38" height="38" alt="html5" />

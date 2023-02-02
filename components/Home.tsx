@@ -1,11 +1,9 @@
 import Link from 'next/link'
 import { FC } from 'react'
 import React from 'react'
-// import p5 from 'p5'
 import Arrow from '../styles/arrow.module.css'
 import { useEffect, useRef, useState } from 'react'
-import halo from 'vanta/dist/vanta.halo.min'
-// import topology from 'vanta/dist/vanta.topology.min'
+import waves from 'vanta/dist/vanta.waves.min'
 import * as THREE from 'three'
 
 /**
@@ -20,37 +18,23 @@ const Home: FC<HomeProps> = () => {
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(
-        halo({
+        waves({
           el: vantaRef.current,
           THREE,
           mouseControls: true,
           touchControls: true,
           gyroControls: false,
-          minHeight: 1000.0,
-          minWidth: 1000.0,
-          baseColor: 0x1a1c25,
-          backgroundColor: 0x90909,
-          amplitudeFactor: 0,
-          xOffset: 0,
-          yOffset: 0,
-          size: 1.6,
+          minHeight: 200.0,
+          minWidth: 200.0,
+          scale: 1.0,
+          scaleMobile: 1.0,
+          color: 0x1a1c25,
+          shininess: 39.0,
+          waveHeight: 19.5,
+          waveSpeed: 1.1,
+          zoom: 1.1,
         })
       )
-      // setVantaEffect(
-      // topology({
-      //   el: vantaRef.current,
-      //   p5,
-      //   mouseControls: true,
-      //   touchControls: true,
-      //   gyroControls: false,
-      //   minHeight: 200.00,
-      //   minWidth: 200.00,
-      //   scale: 1.00,
-      //   scaleMobile: 1.00,
-      //   color: 0x4e6396,
-      //   backgroundColor: 0x20202
-      // })
-      // )
     }
     return () => {
       if (vantaEffect) vantaEffect.destroy()
@@ -58,13 +42,11 @@ const Home: FC<HomeProps> = () => {
   }, [vantaEffect])
   return (
     <section id="main" ref={vantaRef} className="w-full h-screen m-0 p-0 text-white">
-      <div className="text-center mx-auto pt-96">
-        <h3 className=" md:text-4xl font-simplex text-3xl pb-3 text-white">Hi, I{"'"}m Armany</h3>
-        <h1 className="items-middle font-simplex font-bold text-4xl mt-3 md:text-6xl">
-          A Full Stack Developer
-        </h1>
+      <div className="text-center mx-auto flex flex-col align-middle justify-center h-full">
+        <h3 className=" md:text-4xl text-3xl pb-3 text-white">Hi, I{"'"}m Armany</h3>
+        <h1 className="items-middle font-bold text-4xl mt-3 md:text-6xl">A Full Stack Developer</h1>
       </div>
-      <Link href="#proyects" className="absolute border-none bottom-10 mx-auto w-full text-center">
+      <Link href="#about" className="absolute border-none bottom-10 mx-auto w-full text-center">
         <p className="pb-4">Check my work</p>
         <div className={Arrow.arrow} />
       </Link>
