@@ -33,7 +33,7 @@ const Home: FC<HomeProps> = () => {
           amplitudeFactor: 0,
           xOffset: 0,
           yOffset: 0,
-          size: 1.60
+          size: 1.6,
         })
       )
       // setVantaEffect(
@@ -60,7 +60,9 @@ const Home: FC<HomeProps> = () => {
     <section id="main" ref={vantaRef} className="w-full h-screen m-0 p-0 text-white">
       <div className="text-center mx-auto pt-96">
         <h3 className=" md:text-4xl font-simplex text-3xl pb-3 text-white">Hi, I{"'"}m Armany</h3>
-        <h1 className="items-middle font-simplex font-bold text-4xl mt-3 md:text-6xl">A Full Stack Developer</h1>
+        <h1 className="items-middle font-simplex font-bold text-4xl mt-3 md:text-6xl">
+          A Full Stack Developer
+        </h1>
       </div>
       <Link href="#proyects" className="absolute border-none bottom-10 mx-auto w-full text-center">
         <p className="pb-4">Check my work</p>

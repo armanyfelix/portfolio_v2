@@ -70,7 +70,10 @@ function Contact() {
           <div className="flex flex-col justify-between">
             <div>
               <h1 className="font-bold font-simplex text-5xl tracking-wide">Contact</h1>
-              <p className="pt-2 text-indigo-400 text-sm">If you are interested in working with me, please leave me a message, I will answer you as soon as possible.</p>
+              <p className="pt-2 text-indigo-400 text-sm">
+                If you are interested in working with me, please leave me a message, I will answer you as soon
+                as possible.
+              </p>
             </div>
             <div className="flex flex-col mt-8 md:mt-0 space-y-4">
               <div className="inline-flex space-x-2">

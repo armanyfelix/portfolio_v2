@@ -1,4 +1,4 @@
-import dynamic from 'next/dynamic'
+// import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import Contact from '../components/Contact'
 // const Home = dynamic(
@@ -10,9 +10,6 @@ import About from '../components/About'
 import Skills from '../components/Skills'
 import Proyects from '../components/Proyects'
 function Page() {
-
-
-
   return (
     <div>
       <Head>

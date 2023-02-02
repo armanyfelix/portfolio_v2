@@ -1,50 +1,63 @@
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 import resumen from '../styles/customBtn.module.css'
-import me from '../public/img/me.jpg'
-
-
+// import me from '../public/img/me.jpg'
 
 function About() {
-    return (
-        <section id="about" className="w-full lg:px-52 min-h-screen lg:p-14 md:p-10 p-8 bg-gray-900 ">
-            <div className="justify-between items-center xl:mx-20 text-center flex sm:m-2 md:m-3 lg:m-4 xl:m-5 ">
-                <h1 className="text-white lg:text-5xl md:text-5xl sm:text-3xl text-3xl items-center font-simplex font-bold">About Me</h1>
-                <Link href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true">
-                    <button className={resumen.btn}>
-                        <span className="font-mono">Resumen</span>
-                    </button>
-                </Link>
-            </div>
-            <div className="flex justify-between items-center  mt-20">
-                <div className=" flex justify-center mb-20">
-                    {/* <Image src={me} width="320" height="320" alt="me"
+  return (
+    <section id="about" className="w-full lg:px-52 min-h-screen lg:p-14 md:p-10 p-8 bg-gray-900 ">
+      <div className="justify-between items-center xl:mx-20 text-center flex sm:m-2 md:m-3 lg:m-4 xl:m-5 ">
+        <h1 className="text-white lg:text-5xl md:text-5xl sm:text-3xl text-3xl items-center font-simplex font-bold">
+          About Me
+        </h1>
+        <Link href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true">
+          <button className={resumen.btn}>
+            <span className="font-mono">Resumen</span>
+          </button>
+        </Link>
+      </div>
+      <div className="flex justify-between items-center  mt-20">
+        <div className=" flex justify-center mb-20">
+          {/* <Image src={me} width="320" height="320" alt="me"
                         className=" shadow-2xl " /> */}
-                        Photo
-                </div>
-                <div className="w-1/2">
-                    <span className="text-4xl text-indigo-300 font-bold">Hi, i'm Armany</span>
-                    <p className="text-justify lg:text-lg md:text-base text-sm text-white">
-                        I started in programming when I was 15 years old with c++ in high school and I continue my studies in the career of TIC's engineering, the career don't was what I expected, so I decided to switch to Mechatronics engineering because I also had interests to learn about hardware. I never stop learning about software development by my own, building my own projects, reading and watching tutorials. After trying different technologies like java, python, in the end, what I have enjoyed the most is making thing for the internet with javascript, html and css.
-                    </p>
-                    <br />
-                    <p className="text-justify lg:text-lg md:text-base text-sm text-white">
-                        I have been working as a freelancer for more than 2 years, I make websites for businesses and other freelancers. I try to find the best and most profitable solution for clients with scalable, easy to maintain, responsive and modern software.
-                    </p>
-                    <br />
-                    <p className="text-justify lg:text-lg md:text-base text-sm text-white">
-                        Now I am applying for my first job in a company as a full stack developer, I like to work with react or nextjs for the frontend and nodejs in the backend although I am always willing to use other frameworks and programming languages.
-                    </p>
-                    <br />
-                    <p className="text-justify lg:text-lg md:text-base text-sm text-white">
-                        I really enjoy web development and build useful things to make the internet better and better.
-                    </p>
-
-                </div>
-
-            </div>
-        </section>
-    )
+          Photo
+        </div>
+        <div className="w-1/2">
+          <span className="text-4xl text-indigo-300 font-bold">Hi, i{"'"}m Arm</span>
+          <p className="text-justify lg:text-lg md:text-base text-sm text-white">
+            Hi there! I{"'"}m Armany, a full stack web developer with over three years of experience and a
+            decade of education in programming. I specialize in using JavaScript, HTML, CSS, and various
+            frameworks such as React, Next.js, TailwindCSS, and Bootstrap to create dynamic and visually
+            appealing web applications.
+          </p>
+          <br />
+          <p className="text-justify lg:text-lg md:text-base text-sm text-white">
+            With a strong background in both front-end and back-end development, I am experienced in working
+            with Node.js, Express, Nest.js, MongoDB, MySQL, Postgres, and GraphQL to create robust and scalable
+            solutions. Additionally, I have a deep understanding of cloud-based technologies such as AWS, and I
+            am well-versed in managing servers and containers with tools such as cPanel, Nginx, VPS servers,
+            and Docker.
+          </p>
+          <br />
+          <p className="text-justify lg:text-lg md:text-base text-sm text-white">
+            I am a driven individual who is constantly seeking new challenges and opportunities to expand my
+            skillset and knowledge. My passion for technology and my commitment to delivering high-quality
+            solutions are what drive me to excel in this field.
+          </p>
+          <br />
+          <p className="text-justify lg:text-lg md:text-base text-sm text-white">
+            Whether you{"'"}re looking for a dynamic and creative web developer to bring your ideas to life, or a
+            dependable and knowledgeable team member to help you tackle complex projects, I am confident that
+            I have the skills and experience to deliver results.
+          </p>
+          <br />
+          <p className="text-justify lg:text-lg md:text-base text-sm text-white">
+            Thank you for visiting my portfolio website. I look forward to the opportunity to work
+          </p>
+        </div>
+      </div>
+    </section>
+  )
 }
 
-export default About;
+export default About
