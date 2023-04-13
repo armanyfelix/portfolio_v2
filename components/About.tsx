@@ -5,7 +5,7 @@ import resumen from '../styles/customBtn.module.css'
 
 function About() {
   return (
-    <section id="about" className="w-full lg:px-52 min-h-screen lg:p-14 md:p-10 p-8 bg-gray-900 ">
+    <section id="about" className="w-full lg:px-52 min-h-screen lg:p-14 md:p-10 p-">
       <div className="justify-between items-center xl:mx-20 text-center flex sm:m-2 md:m-3 lg:m-4 xl:m-5 ">
         <h1 className="text-white text-8xl items-center">About Me</h1>
         <Link href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true">

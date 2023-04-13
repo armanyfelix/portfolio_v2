@@ -3,20 +3,26 @@ import Contact from '../components/Contact'
 import Home from '../components/Home'
 import About from '../components/About'
 import Skills from '../components/Skills'
-// import Proyects from '../components/Proyects'
+import Proyects from '../components/Proyects'
+
+
 
 function Page() {
+
   return (
-    <div>
+    <>
       <Head>
-        <title>Armany Felix | Home</title>
+        <title>Armany Felix | Portfolio</title>
       </Head>
-      <Home />
-      {/* <Proyects /> */}
-      <About />
-      <Skills />
-      <Contact />
-    </div>
+      <div>{' '}</div>
+      <main>
+        <Home />
+        <Proyects />
+        <About />
+        <Skills />
+        <Contact />
+      </main>
+    </>
   )
 }
 

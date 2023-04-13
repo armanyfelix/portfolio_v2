@@ -4,10 +4,16 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 function Header({ mohaveFont }: { mohaveFont: string }) {
+  const [topClasses, setTopClasses] = useState<string>('');
   useEffect(() => {
     let prevScrollpos = window.pageYOffset
-    window.onscroll = function () {
+    window.onscroll = function () { 
       const currentScrollPos = window.pageYOffset
+      if (currentScrollPos === 0) {
+        setTopClasses('ease-in transform duration-300');
+      } else {
+        setTopClasses('shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black');
+      }
       if (prevScrollpos > currentScrollPos) {
         const position = (document.getElementById('top') as HTMLElement) || null
         position.style.top = '0'
@@ -26,9 +32,9 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
     <>
       <header
         id="top"
-        className="fixed top-0 right-0 left-0 flex justify-between z-40 items-center shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-90 bg-black-800 px-6 py-1"
+        className={`fixed top-0 right-0 left-0 flex justify-between z-40 items-center px-6 py-3 lg:px-56 ${topClasses}`}
       >
-        <div>
+        <div className="py-3">
           <Link href="/" legacyBehavior>
             <svg width="62" height="20" viewBox="0 0 62 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 0L1 19H12.5" stroke="black" strokeWidth="2" />
@@ -45,21 +51,21 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
             <Link
               onClick={() => setOpen(false)}
               href="#proyects"
-              className="text-center font-mono text-white no-underline text-xl items-center hover:text-blue-400"
+              className="text-center text-white no-underline text-2xl items-center hover:text-blue-400 easy-in-out duration-500"
             >
               <span className={`${mohaveFont}`}>Proyects</span>
             </Link>
             <Link
               onClick={() => setOpen(false)}
               href="#about"
-              className=" text-center font-mono text-white no-underline text-xl items-center hover:text-indigo-400"
+              className="text-center text-white no-underline text-2xl items-center hover:text-indigo-400 easy-in-out duration-500"
             >
               <span className={`${mohaveFont}`}>About</span>
             </Link>
             <Link
               onClick={() => setOpen(false)}
               href="#contact"
-              className="text-center font-mono text-white no-underline text-xl items-center hover:text-purple-400"
+              className="text-center text-white no-underline text-2xl items-center hover:text-purple-400 easy-in-out duration-500"
             >
               <span className={`${mohaveFont}`}>Contact</span>
             </Link>
@@ -67,7 +73,7 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
           <button
             id="menuBtn"
             aria-label="menu"
-            className={`p-0 hamburger block focus:outline-none ${open ? 'open' : ''}`}
+            className={`p-0 hamburger sm:hidden block focus:outline-none ${open ? 'open' : ''}`}
             onClick={() => setOpen(!open)}
           >
             <span className="hamburger__top-bun" />

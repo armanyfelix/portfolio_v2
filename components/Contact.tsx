@@ -2,10 +2,10 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
-import net from 'vanta/dist/vanta.net.min'
-import * as THREE from 'three'
+// import net from 'vanta/dist/vanta.net.min'
+// import * as THREE from 'three'
 import Btn from '../styles/customBtn.module.css'
 
 interface FormData {
@@ -15,25 +15,26 @@ interface FormData {
 }
 
 function Contact() {
-  const [vantaEffect, setVantaEffect] = useState<any>(0)
+  // const [vantaEffect, setVantaEffect] = useState<any>(0)
   const [status, setStatus] = useState<string>('Submit')
 
-  const vantaRef = useRef(null)
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        net({
-          el: vantaRef.current,
-          THREE,
-          color: 0x777777,
-          backgroundColor: 0x111827,
-        })
-      )
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy()
-    }
-  }, [vantaEffect])
+  // const vantaRef = useRef(null)
+  // useEffect(() => {
+  //   if (!vantaEffect) {
+  //     setVantaEffect(
+  //       net({
+  //         el: vantaRef.current,
+  //         THREE,
+  //         color: 0x777777,
+  //         backgroundColor: 'rgba(255, 255, 255, .4)',
+  //         // opacity: 0,
+  //       })
+  //     )
+  //   }
+  //   return () => {
+  //     if (vantaEffect) vantaEffect.destroy()
+  //   }
+  // }, [vantaEffect])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -64,14 +65,16 @@ function Contact() {
   }
 
   return (
-    <section id="contact" ref={vantaRef} className=" lg:py-1 py-24 lg:h-screen bg-gray-900 antialiased">
+    <section className=" lg:py-1 py-24 lg:h-screen antialiased">
       <div className="flex w-full min-h-screen justify-center items-center">
-        <div className="flex flex-col md:flex-row md:space-x-6  space-y-6 md:space-y-0 backdrop-filter backdrop-blur border-2 border-opacity-30 border-gray-400 w-full max-w-4xl p-8 sm:p-12 rounded-xl shadow-lg text-white">
+        <div className="flex flex-col md:flex-row md:space-x-6 justify-between  space-y-6 md:space-y-0 backdrop-filter backdrop-blur border-2 border-opacity-30 border-gray-400 w-full max-w-4xl p-8 sm:p-12 rounded-xl shadow-lg text-white">
           <div className="flex flex-col justify-between">
             <div>
               <h1 className="font-bold font-simplex text-5xl tracking-wide">Contact</h1>
-              <p className="pt-2 text-indigo-400 text-sm">
-                If you are interested in working with me, please leave me a message, I will answer you as soon
+              <p className="pt-2 pb-9 text-indigo-400 text-sm">
+                If you are interested in working with me, please leave me a message.
+                <br />
+                I will answer you as soon
                 as possible.
               </p>
             </div>
@@ -109,12 +112,9 @@ function Contact() {
                     <input
                       id="name"
                       type="text"
-                      // color="cyan"
-                      // size="regular"
-                      // outline={true}
+                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner "
                       placeholder="Name"
                       required
-                      style={{ color: 'white' }}
                     />
                   </label>
                 </div>
@@ -123,12 +123,9 @@ function Contact() {
                     <input
                       id="email"
                       type="email"
-                      // color="indigo"
-                      // size="regular"
-                      // outline={true}
+                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner "
                       placeholder="Email"
                       required
-                      style={{ color: 'white' }}
                     />
                   </label>
                 </div>
@@ -136,13 +133,9 @@ function Contact() {
                   <label htmlFor="message">
                     <textarea
                       id="message"
-                      // type="textarea"
-                      // color="purple"
-                      // size="regular"
-                      // outline={true}
+                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner "
                       placeholder="Message"
                       required
-                      style={{ color: 'white' }}
                     />
                   </label>
                 </div>

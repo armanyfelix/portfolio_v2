@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 function Skills() {
   return (
-    <section className="  md:p-20 lg:pt-44 p-4 bg-gray-900 lg:min-h-screen  justify-center items-center">
+    <section className="md:p-20 lg:pt-44 p-4 lg:min-h-screen  justify-center items-center">
       <div className=" mt-8 lg:mx-52 md:mx-28 ">
         <h1 className="text-3xl font-bold pb-10 text-center text-indigo-300">
           Technologies I{"'"}m working with:
