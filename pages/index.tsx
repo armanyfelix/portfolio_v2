@@ -5,16 +5,13 @@ import About from '../components/About'
 import Skills from '../components/Skills'
 import Proyects from '../components/Proyects'
 
-
-
 function Page() {
-
   return (
     <>
       <Head>
         <title>Armany Felix | Portfolio</title>
       </Head>
-      <div>{' '}</div>
+      <div> </div>
       <main>
         <Home />
         <Proyects />

@@ -7,7 +7,6 @@ import Arrow from '../styles/arrow.module.css'
 function Footer() {
   return (
     <footer className="justify-between flex p-2 md:p-4 lg:px-14 lg:pt-24 shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black">
-
       <div className=" w-1/3 text-right font-bold align-bottom items-end justify-items-end ">
         <div className="text-indigo-100 text-sm flex">
           <p className="px-1">Armany Felix.</p>
@@ -17,7 +16,10 @@ function Footer() {
           {'All rights reserved'}
         </div>
       </div>
-      <Link href="/" className="w-1/3 scale-75 md:scale-100 flex flex-col justify-items-start  font-mono text-center ">
+      <Link
+        href="/"
+        className="w-1/3 scale-75 md:scale-100 flex flex-col justify-items-start  font-mono text-center "
+      >
         <div className="rotate-180">
           <div className={Arrow.arrow} />
         </div>

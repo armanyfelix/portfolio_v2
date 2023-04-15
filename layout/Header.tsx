@@ -4,15 +4,15 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 function Header({ mohaveFont }: { mohaveFont: string }) {
-  const [topClasses, setTopClasses] = useState<string>('');
+  const [topClasses, setTopClasses] = useState<string>('')
   useEffect(() => {
     let prevScrollpos = window.pageYOffset
-    window.onscroll = function () { 
+    window.onscroll = function () {
       const currentScrollPos = window.pageYOffset
       if (currentScrollPos === 0) {
-        setTopClasses('ease-in transform duration-300');
+        setTopClasses('ease-in transform duration-300')
       } else {
-        setTopClasses('shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black');
+        setTopClasses('shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black')
       }
       if (prevScrollpos > currentScrollPos) {
         const position = (document.getElementById('top') as HTMLElement) || null

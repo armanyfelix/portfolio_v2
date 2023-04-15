@@ -20,11 +20,12 @@ interface Props {
 const data = [
   {
     title: 'Civity',
-    description: 'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
+    description:
+      'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
     stack: [],
     images: [],
-  }
-];
+  },
+]
 
 function Proyects() {
   return (
@@ -33,19 +34,25 @@ function Proyects() {
         <h1 className="lg:w-3/5 text-white lg:text-7xl md:text-5xl sm:text-3xl text-3xl items-center font-bold font-mohave">
           Proyects
         </h1>
-        <Link href="https://www.github.com/armanyfelix" target="_blank" className={Btn.btn} style={{ scale: '150%' }}>
+        <Link
+          href="https://www.github.com/armanyfelix"
+          target="_blank"
+          className={Btn.btn}
+          style={{ scale: '150%' }}
+        >
           <span className="font-mono px-5 pb-1.5 text-2xl">Github</span>
         </Link>
       </div>
       {data.map((p) => (
-        <div key={p.title} className="mt-16 mx-24 p-10 md:flex min-h-[80vh] justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20">
+        <div
+          key={p.title}
+          className="mt-16 mx-24 p-10 md:flex min-h-[80vh] justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20"
+        >
           <div className="md:w-1/2 p-5">
             <Link href="https://www.civity.mx" target="_blank" className="text-6xl">
               {p.title}
             </Link>
-            <p className="text-justify mt-4">
-              {p.description}
-            </p>
+            <p className="text-justify mt-4">{p.description}</p>
           </div>
           <div className="md:w-1/2 p-5 grid-cols-2 grid text-center space-x-3">
             <img src="./img/proyects/admin.civity.home.jpeg" width={400} height={400} />

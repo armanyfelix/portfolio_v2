@@ -73,9 +73,7 @@ function Contact() {
               <h1 className="font-bold font-simplex text-5xl tracking-wide">Contact</h1>
               <p className="pt-2 pb-9 text-indigo-400 text-sm">
                 If you are interested in working with me, please leave me a message.
-                <br />
-                I will answer you as soon
-                as possible.
+                <br />I will answer you as soon as possible.
               </p>
             </div>
             <div className="flex flex-col mt-8 md:mt-0 space-y-4">
