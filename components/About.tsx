@@ -1,7 +1,7 @@
-// import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import resumen from '../styles/customBtn.module.css'
-// import me from '../public/img/me.jpg'
+import me from '../public/images/about/IMG_20230411_155408801.jpg'
 
 function About() {
   return (
@@ -10,17 +10,15 @@ function About() {
         <h1 className="text-white lg:text-8xl md:text-5xl sm:text-3xl text-3xl items-center">About Me</h1>
         <Link href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true">
           <button className={resumen.btn}>
-            <span className="font-mono px-5 pb-1.5 text-base sm:text-2xl md:text-4xl">Resumen</span>
+            <span className="font-mono px-5 pb-1.5 text-base sm:text-2xl md:text-4xl">CV</span>
           </button>
         </Link>
       </div>
-      <div className="md:flex flex-wrap justify-between items-center mt-20">
-        <div className="md:w-1/2 flex justify-center mb-20">
-          {/* <Image src={me} width="320" height="320" alt="me"
-                        className=" shadow-2xl " /> */}
-          Photo
+      <div className="md:flex flex-wrap justify-evenlyitems-center mt-20">
+        <div className="md:w-1/2 flex justify-center">
+          <Image src={me} width="320" height="320" alt="me" className=" shadow-2xl " />
         </div>
-        <div className="md:w-1/2 px-6 mx-auto">
+        <div className="md:w-1/2 pr-16 mx-auto">
           <p className="text-justify lg:text-lg md:text-base text-white">
             Hi there! I{"'"}m Armany, a full stack web developer with over three years of experience and a
             decade of education in programming. I specialize in using JavaScript, HTML, CSS, Typescript and

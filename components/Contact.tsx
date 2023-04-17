@@ -4,9 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useState } from 'react'
 import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
-// import net from 'vanta/dist/vanta.net.min'
-// import * as THREE from 'three'
-import Btn from '../styles/customBtn.module.css'
 
 interface FormData {
   name: { value: string }
@@ -15,26 +12,7 @@ interface FormData {
 }
 
 function Contact() {
-  // const [vantaEffect, setVantaEffect] = useState<any>(0)
   const [status, setStatus] = useState<string>('Submit')
-
-  // const vantaRef = useRef(null)
-  // useEffect(() => {
-  //   if (!vantaEffect) {
-  //     setVantaEffect(
-  //       net({
-  //         el: vantaRef.current,
-  //         THREE,
-  //         color: 0x777777,
-  //         backgroundColor: 'rgba(255, 255, 255, .4)',
-  //         // opacity: 0,
-  //       })
-  //     )
-  //   }
-  //   return () => {
-  //     if (vantaEffect) vantaEffect.destroy()
-  //   }
-  // }, [vantaEffect])
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -94,7 +72,7 @@ function Contact() {
               <Link href="https://www.linkedin.com/in/armany-felix">
                 <Image src="/icons/linkedin.svg" width="40" height="40" alt="logo-linkedIn" />
               </Link>
-              <Link href="https://github.com/armanyfelix/">
+              <Link href="https://github.com/armanyfelix/"> 
                 <Image src="/icons/github.svg" width="40" height="40" alt="logo-github" />
               </Link>
               <Link href="https://www.instagram.com/armanyf/">
@@ -103,25 +81,25 @@ function Contact() {
             </div>
           </div>
           <div>
-            <div className=" backdrop-filter backdrop-blur bg-white bg-opacity-10 box-border backdrop-contrast-150 border-opacity-30 border-2 rounded-xl shadow-lg p-8  md:w-80">
+            <div className=" backdrop-filter backdrop-blur bg-white bg-opacity-10 box-border backdrop-contrast-150 border-opacity-30 border-2 rounded-xl shadow-lg p-8 md:w-80">
               <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                 <div className="form-group">
                   <label htmlFor="name">
                     <input
                       id="name"
                       type="text"
-                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner "
+                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner w-full"
                       placeholder="Name"
-                      required
+                      required 
                     />
                   </label>
                 </div>
-                <div className="form-group">
+                <div className="">
                   <label htmlFor="email">
                     <input
                       id="email"
                       type="email"
-                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner "
+                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner w-full"
                       placeholder="Email"
                       required
                     />
@@ -131,14 +109,14 @@ function Contact() {
                   <label htmlFor="message">
                     <textarea
                       id="message"
-                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner "
+                      className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner mr-5 w-full"
                       placeholder="Message"
                       required
                     />
                   </label>
                 </div>
                 <div className="text-right justify-end">
-                  <button type="submit" className={Btn.btn}>
+                  <button type="submit" className="py-2 px-6 hover:ring-2 hover:bg-transparent bg-gradient-to-b from-blue-500 to-purple-700 rounded-xl">
                     <span className="font-mono f">{status}</span>
                   </button>
                 </div>

@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Btn from '../styles/customBtn.module.css'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline'
+import { useState } from 'react'
 // import marquee from '../styles/marquee.module.css'
 // import github from '../public/icons/github.svg'
 // import ProyectsData from './proyectsData.module.js'
@@ -31,9 +33,21 @@ const data = [
     ],
   },
   {
-    title: 'Civity',
+    title: 'Pruebas',
     description:
-      'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
+      'me remito is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
+    stack: [],
+    images: [
+      '/img/proyects/admin.civity.home.jpeg',
+      '/img/proyects/admin.civity.home.jpeg',
+      '/img/proyects/admin.civity.home.jpeg',
+      '/img/proyects/admin.civity.home.jpeg',
+    ],
+  },
+  {
+    title: 'fdsvsdvcs',
+    description:
+      'me remito is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
     stack: [],
     images: [
       '/img/proyects/admin.civity.home.jpeg',
@@ -45,6 +59,8 @@ const data = [
 ]
 
 function Proyects() {
+  const [current, setCurrent] = useState(0);
+
   return (
     <section id="proyects" className=" w-full min-h-screen p-8 md:pt-24 mt-40">
       <div className="flex justify-between items-center lg:px-52 sm:m-2 md:m-3 lg:m-4 xl:m-5">
@@ -57,12 +73,19 @@ function Proyects() {
           </span>
         </Link>
       </div>
-
-      <div className="flex overflow-x-auto pb-10 px-1">
-        {data.map((p) => (
+      <div className="flex px-1 items-center">
+        <button
+          type="button"
+          onClick={() => setCurrent(current === 0 ? data.length - 1 : current - 1)}
+          className="hover:bg-opacity-10 hover:bg-white mt-16 md:mr-10 rounded-2xl ease-in-out duration-500 scale-50 lg:scale-100"
+        >
+          <ChevronLeftIcon className="w-28 h-28 text-white mr-2" />
+        </button>
+        {data.map((p, i) => (
+          <>
           <div
-            key={p.title}
-            className="mt-16 mr-16 md:mr-20 p-10 lg:flex min-h-[80vh] md:max-h-[80vh] min-w-full justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20"
+            key={i}
+              className={`${current === i ? ' lg:flex' : ' ease-in-out translate-x-12 transition-transform delay-300 hidden'}   mt-16 p-10 min-h-[80vh] md:max-h-[80vh] min-w-[90vh] justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20`}
           >
             <div className="lg:w-2/5 md:p-5">
               <Link href="https://www.civity.mx" target="_blank" className="text-6xl">
@@ -72,11 +95,22 @@ function Proyects() {
             </div>
             <div className="md:w-3/5 md:grid md:grid-cols-2 mx-auto gap-5 mt-8 flex overflow-x-auto 5">
               {p.images.map((url, i) => (
-                <Image src={url} key={i} alt="" width={500} height={500} />
+                <Image src={url} key={i} alt="" width={500} height={500} className="rounded-lg" />
               ))}
             </div>
           </div>
+          <div>
+              <div className={`${current === i ? 'bg-red-500' : 'bg-purple-500'} rounded-full flex items-center justify-center`} />
+          </div>
+          </>
         ))}
+        <button
+          type="button"
+          onClick={() => setCurrent(current === data.length - 1 ? 0 : current + 1 )}
+          className="hover:bg-opacity-10 hover:bg-white mt-16 md:ml-10 rounded-2xl ease-in-out duration-500 scale-50 lg:scale-100"
+        >
+          <ChevronRightIcon className="w-28 h-28 text-white " />
+        </button>
       </div>
 
       {/* <div className="mt-12 grid xl:grid-cols-3 xl:mx-20 sm:grid-cols-2 grid-cols-1 items-center justify-center">
