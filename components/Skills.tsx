@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/image';
 
 function Skills() {
   return (
@@ -66,7 +66,7 @@ function Skills() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Skills
+export default Skills;

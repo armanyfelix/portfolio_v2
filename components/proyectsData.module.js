@@ -34,6 +34,6 @@ const ProyectsData = [
     image: '/img/crm.png',
     tecs: ' I going to do it with nextjs, firebase and recoil very soon',
   },
-]
+];
 
-module.exports = ProyectsData
+module.exports = ProyectsData;

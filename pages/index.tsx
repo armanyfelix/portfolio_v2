@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Contact from '../components/Contact'
-import Home from '../components/Home'
-import About from '../components/About'
-import Skills from '../components/Skills'
-import Proyects from '../components/Proyects'
+import Head from 'next/head';
+import Contact from '../components/Contact';
+import Home from '../components/Home';
+import About from '../components/About';
+import Skills from '../components/Skills';
+import Proyects from '../components/Proyects';
 
 function Page() {
   return (
@@ -20,7 +20,7 @@ function Page() {
         <Contact />
       </main>
     </>
-  )
+  );
 }
 
 // Multiple layouts example
@@ -32,4 +32,4 @@ function Page() {
 //   )
 // }
 
-export default Page
+export default Page;

@@ -21,4 +21,4 @@ module.exports = {
     // Allows for the use of imports
     sourceType: 'module',
   },
-}
+};

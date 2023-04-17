@@ -1,32 +1,34 @@
-'use client'
+'use client';
 
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 function Header({ mohaveFont }: { mohaveFont: string }) {
-  const [topClasses, setTopClasses] = useState<string>('')
+  const [topClasses, setTopClasses] = useState<string>('');
   useEffect(() => {
-    let prevScrollpos = window.pageYOffset
+    let prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
-      const currentScrollPos = window.pageYOffset
+      const currentScrollPos = window.pageYOffset;
       if (currentScrollPos === 0) {
-        setTopClasses('ease-in transform duration-300')
+        setTopClasses('ease-in transform duration-300');
       } else {
-        setTopClasses('shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black')
+        setTopClasses(
+          'shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black'
+        );
       }
       if (prevScrollpos > currentScrollPos) {
-        const position = (document.getElementById('top') as HTMLElement) || null
-        position.style.top = '0'
-        const transition = (document.getElementById('top') as HTMLElement) || null
-        transition.style.transition = 'top 0.6s'
+        const position = (document.getElementById('top') as HTMLElement) || null;
+        position.style.top = '0';
+        const transition = (document.getElementById('top') as HTMLElement) || null;
+        transition.style.transition = 'top 0.6s';
       } else {
-        const position = (document.getElementById('top') as HTMLElement) || null
-        position.style.top = '-70px'
+        const position = (document.getElementById('top') as HTMLElement) || null;
+        position.style.top = '-70px';
       }
-      prevScrollpos = currentScrollPos
-    }
-  }, [])
-  const [open, setOpen] = useState<boolean>(false)
+      prevScrollpos = currentScrollPos;
+    };
+  }, []);
+  const [open, setOpen] = useState<boolean>(false);
 
   return (
     <>
@@ -161,7 +163,7 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
         }
       `}</style>
     </>
-  )
+  );
 }
 
 // const ThemeIcon = () => {
@@ -182,4 +184,4 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
 //   );
 // };
 
-export default Header
+export default Header;

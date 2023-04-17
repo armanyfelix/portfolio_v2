@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import resumen from '../styles/customBtn.module.css'
-import me from '../public/images/about/IMG_20230411_155408801.jpg'
+import Image from 'next/image';
+import Link from 'next/link';
+import resumen from '../styles/customBtn.module.css';
+import me from '../public/images/about/IMG_20230411_155408801.jpg';
 
 function About() {
   return (
@@ -48,7 +48,7 @@ function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default About
+export default About;

@@ -1,10 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-require('dotenv').config()
-const nodemailer = require('nodemailer')
+import type { NextApiRequest, NextApiResponse } from 'next';
+require('dotenv').config();
+const nodemailer = require('nodemailer');
 
 type Data = {
-  status: string
-}
+  status: string;
+};
 
 /**
  * @param req
@@ -32,8 +32,8 @@ export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) 
     const mail = {
       from: email,
       to: process.env.EMAIL,
-      text: 'Portfolio Message',
-      subject: `Message from ${name}`,
+      text: ` `,
+      subject: `${name} contact you through your portfolio`,
       html: `
         <p>Name: ${name}</p>
         <p>Email: ${email}</p>
@@ -49,13 +49,13 @@ export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) 
         res.json({
           status: 'Message sent',
         });
-      };
+      }
     });
 
     const mailReply = {
       from: process.env.EMAIL_BOT,
       to: email,
-      subject: `Thanks for the message, ${name}!`,
+      subject: `Hi ${name}, thanks for check my portfolio!`,
       text: 'Hello, I am Armany[bot]! You sent a message through the Contact form of my portfolio, thanks! Your message has been received, and you should get a reply soon.',
       html: '<div><h3>Hello, I am Armany[bot]!</h3><p>You sent a message through the Contact form on my <a href="https://armany.herokuapp.com/">portfolio</a>, thanks! Your message has been received, and you should get a reply ASAP. Meanwhile, check out my <a href="https://www.linkedin.com/in/luis-armany-felix-vega-9b60241b8/">Linkedin</a> and <a href="https://github.com/armanyfelix">Github!</a></p><h3>¡Peace!</h3></div>',
     };
@@ -71,4 +71,4 @@ export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) 
     res.status(400).json({ status: 'ERROR' });
   }
   return res.status(200).json({ status: 'OK' });
-};
+}

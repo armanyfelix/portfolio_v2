@@ -1,9 +1,9 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import { FC } from 'react'
-import React from 'react'
-import Arrow from '../styles/arrow.module.css'
+import Link from 'next/link';
+import { FC } from 'react';
+import React from 'react';
+import Arrow from '../styles/arrow.module.css';
 
 /**
  * @interface HomeProps
@@ -22,7 +22,7 @@ const Home: FC<HomeProps> = () => {
         <div className={Arrow.arrow} />
       </Link>
     </section>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -1,12 +1,12 @@
-import Footer from './Footer'
-import Header from './Header'
-import { useEffect, useRef, useState } from 'react'
-import waves from 'vanta/dist/vanta.waves.min'
-import * as THREE from 'three'
+import Footer from './Footer';
+import Header from './Header';
+import { useEffect, useRef, useState } from 'react';
+import waves from 'vanta/dist/vanta.waves.min';
+import * as THREE from 'three';
 
 function Layout({ children, mohaveFont }: { children: React.ReactNode; mohaveFont: string }) {
-  const [vantaEffect, setVantaEffect] = useState<any>(0)
-  const vantaRef = useRef(null)
+  const [vantaEffect, setVantaEffect] = useState<any>(0);
+  const vantaRef = useRef(null);
   useEffect(() => {
     if (!vantaEffect) {
       setVantaEffect(
@@ -26,12 +26,12 @@ function Layout({ children, mohaveFont }: { children: React.ReactNode; mohaveFon
           waveSpeed: 0.9,
           zoom: 1.1,
         })
-      )
+      );
     }
     return () => {
-      if (vantaEffect) vantaEffect.destroy()
-    }
-  }, [vantaEffect])
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
   return (
     <>
       <div id="main" ref={vantaRef} className="fixed top-0 right-0 left-0 bottom-0">
@@ -43,7 +43,7 @@ function Layout({ children, mohaveFont }: { children: React.ReactNode; mohaveFon
       <main className="relative">{children}</main>
       <Footer />
     </>
-  )
+  );
 }
 
-export default Layout
+export default Layout;

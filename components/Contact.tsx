@@ -1,28 +1,28 @@
-'use client'
+'use client';
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useState } from 'react'
-import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline';
 
 interface FormData {
-  name: { value: string }
-  email: { value: string }
-  message: { value: string }
+  name: { value: string };
+  email: { value: string };
+  message: { value: string };
 }
 
 function Contact() {
-  const [status, setStatus] = useState<string>('Submit')
+  const [status, setStatus] = useState<string>('Submit');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setStatus('Sending...')
-    const { name, email, message } = e.target as typeof e.target & FormData
+    e.preventDefault();
+    setStatus('Sending...');
+    const { name, email, message } = e.target as typeof e.target & FormData;
     const details = {
       name: name.value,
       email: email.value,
       message: message.value,
-    }
+    };
     await fetch('/api/email', {
       method: 'POST',
       headers: {
@@ -33,14 +33,14 @@ function Contact() {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.status)
-        setStatus('Submit')
+        alert(data.status);
+        setStatus('Submit');
       })
       .catch((err) => {
-        alert(err)
-        setStatus('Error')
-      })
-  }
+        alert(err);
+        setStatus('Error');
+      });
+  };
 
   return (
     <section className=" lg:py-1 py-24 lg:h-screen antialiased">
@@ -72,7 +72,7 @@ function Contact() {
               <Link href="https://www.linkedin.com/in/armany-felix">
                 <Image src="/icons/linkedin.svg" width="40" height="40" alt="logo-linkedIn" />
               </Link>
-              <Link href="https://github.com/armanyfelix/"> 
+              <Link href="https://github.com/armanyfelix/">
                 <Image src="/icons/github.svg" width="40" height="40" alt="logo-github" />
               </Link>
               <Link href="https://www.instagram.com/armanyf/">
@@ -90,7 +90,7 @@ function Contact() {
                       type="text"
                       className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner w-full"
                       placeholder="Name"
-                      required 
+                      required
                     />
                   </label>
                 </div>
@@ -116,7 +116,10 @@ function Contact() {
                   </label>
                 </div>
                 <div className="text-right justify-end">
-                  <button type="submit" className="py-2 px-6 hover:ring-2 hover:bg-transparent bg-gradient-to-b from-blue-500 to-purple-700 rounded-xl">
+                  <button
+                    type="submit"
+                    className="py-2 px-6 hover:ring-2 hover:bg-transparent bg-gradient-to-b from-blue-500 to-purple-700 rounded-xl"
+                  >
                     <span className="font-mono f">{status}</span>
                   </button>
                 </div>
@@ -126,7 +129,7 @@ function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Contact
+export default Contact;
