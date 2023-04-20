@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import resumen from '../styles/customBtn.module.css';
-import me from '../public/images/about/IMG_20230411_155408801.jpg';
+import me from '../public/images/about/My.png';
 
 function About() {
   return (
@@ -16,7 +16,7 @@ function About() {
       </div>
       <div className="md:flex flex-wrap justify-evenlyitems-center mt-20">
         <div className="md:w-1/2 flex justify-center">
-          <Image src={me} width="320" height="320" alt="me" className=" shadow-2xl " />
+          <Image src={me} width="320" height="320" alt="me" />
         </div>
         <div className="md:w-1/2 pr-16 mx-auto">
           <p className="text-justify lg:text-lg md:text-base text-white">

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo '🏗️👷 Styling, testing and building your project before committing'
+echo '💅🏗️👷 Styling, testing and building your project before committing'
 
 # Check Prettier standards
 pnpm format ||
@@ -41,3 +41,4 @@ pnpm build ||
 # If everything passes... Now we can commit
 echo '✅✅✅✅ You win this time... I am committing this now. ✅✅✅✅'
 
+git add .
