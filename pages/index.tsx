@@ -7,19 +7,18 @@ import Proyects from '../components/Proyects';
 
 function Page() {
   return (
-    <>
+    <div>
       <Head>
         <title>Armany Felix | Portfolio</title>
       </Head>
-      <div> </div>
-      <main>
+      <div className="w-full">
         <Home />
         <Proyects />
         <About />
         <Skills />
         <Contact />
-      </main>
-    </>
+      </div>
+    </div>
   );
 }
 

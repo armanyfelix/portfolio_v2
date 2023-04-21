@@ -33,16 +33,14 @@ function Layout({ children, mohaveFont }: { children: React.ReactNode; mohaveFon
     };
   }, [vantaEffect]);
   return (
-    <>
+    <div>
       <div id="main" ref={vantaRef} className="fixed top-0 right-0 left-0 bottom-0">
         {' '}
       </div>
-      <div className="">
-        <Header mohaveFont={mohaveFont} />
-      </div>
+      <Header mohaveFont={mohaveFont} />
       <main className="relative">{children}</main>
       <Footer />
-    </>
+    </div>
   );
 }
 

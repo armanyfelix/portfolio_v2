@@ -89,7 +89,7 @@ function Proyects() {
                 current === i
                   ? ' lg:flex'
                   : ' ease-in-out translate-x-12 transition-transform delay-300 hidden'
-              }   mt-16 p-10 min-h-[80vh] md:max-h-[80vh] min-w-[90vh] justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20`}
+              }   mt-16 p-10 min-h-[80vh] md:max-h-[80vh] justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20`}
             >
               <div className="lg:w-2/5 md:p-5">
                 <Link href="https://www.civity.mx" target="_blank" className="text-6xl">
