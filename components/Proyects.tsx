@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Btn from '../styles/customBtn.module.css';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
+// import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 // import marquee from '../styles/marquee.module.css'
 // import github from '../public/icons/github.svg'
@@ -58,8 +58,12 @@ const data = [
   },
 ];
 
+// const handleProyectScroll = (e: any) => {
+//   console.log(e.currentTarget);
+// }
+
 function Proyects() {
-  const [current, setCurrent] = useState(0);
+  const [current] = useState(0);
 
   return (
     <section id="proyects" className=" w-full min-h-screen p-8 md:pt-24 mt-40">
@@ -68,34 +72,31 @@ function Proyects() {
           Proyects
         </h1>
         <Link href="https://www.github.com/armanyfelix" target="_blank" className={Btn.btn}>
-          <span className="font-mono pl-3 pr-2.5 pb-2 text-2xl md:text-4xl">
-            <Image src="/icons/githubF.svg" width="50" height="50" alt="github" className="pt-2" />
-          </span>
+          <span className="font-mono px-6  text-2xl md:text-4xl">See all</span>
         </Link>
       </div>
-      <div className="flex px-1 items-center">
-        <button
+      <div className=" ">
+        {/* <button
           type="button"
           onClick={() => setCurrent(current === 0 ? data.length - 1 : current - 1)}
-          className="hover:bg-opacity-10 hover:bg-white mt-16 md:mr-10 rounded-2xl ease-in-out duration-500 scale-50 lg:scale-100"
+          className="hover:bg-opacity-10 hover:bg-white mt-16 pl-0 md:mr-10 rounded-2xl scale-50 lg:scale-100"
         >
           <ChevronLeftIcon className="w-28 h-28 text-white mr-2" />
-        </button>
+        </button> */}
         {data.map((p, i) => (
           <>
             <div
               key={i}
+              // onScroll={(e) => handleProyectScroll(e)}
               className={`${
-                current === i
-                  ? ' lg:flex'
-                  : ' ease-in-out translate-x-12 transition-transform delay-300 hidden'
-              }   mt-16 p-10 min-h-[80vh] md:max-h-[80vh] justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20`}
+                current === i ? 'lg:flex' : 'hidden'
+              }   mt-16 p-6 md:p-10 md:min-h-[80vh] md:max-h-[80vh] justify-between rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20`}
             >
               <div className="lg:w-2/5 md:p-5">
                 <Link href="https://www.civity.mx" target="_blank" className="text-6xl">
                   {p.title}
                 </Link>
-                <p className="text-justify mt-4">{p.description}</p>
+                <p className="text-justify mt-6">{p.description}</p>
               </div>
               <div className="md:w-3/5 md:grid md:grid-cols-2 mx-auto gap-5 mt-8 flex overflow-x-auto 5">
                 {p.images.map((url, i) => (
@@ -112,13 +113,13 @@ function Proyects() {
             </div>
           </>
         ))}
-        <button
+        {/* <button
           type="button"
           onClick={() => setCurrent(current === data.length - 1 ? 0 : current + 1)}
-          className="hover:bg-opacity-10 hover:bg-white mt-16 md:ml-10 rounded-2xl ease-in-out duration-500 scale-50 lg:scale-100"
+          className="hover:bg-opacity-10 hover:bg-white mt-16 md:ml-10 rounded-2xl scale-50 lg:scale-100"
         >
-          <ChevronRightIcon className="w-28 h-28 text-white " />
-        </button>
+          <ChevronRightIcon className="w-28 h-28 text-white" />
+        </button> */}
       </div>
 
       {/* <div className="mt-12 grid xl:grid-cols-3 xl:mx-20 sm:grid-cols-2 grid-cols-1 items-center justify-center">

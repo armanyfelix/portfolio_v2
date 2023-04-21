@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-function Header({ mohaveFont }: { mohaveFont: string }) {
+function Header() {
   const [topClasses, setTopClasses] = useState<string>('');
   useEffect(() => {
     let prevScrollpos = window.pageYOffset;
@@ -55,21 +55,21 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
               href="#proyects"
               className="text-center text-white no-underline text-2xl items-center hover:text-blue-400 easy-in-out duration-500"
             >
-              <span className={`${mohaveFont}`}>Proyects</span>
+              <span>Proyects</span>
             </Link>
             <Link
               onClick={() => setOpen(false)}
               href="#about"
               className="text-center text-white no-underline text-2xl items-center hover:text-indigo-400 easy-in-out duration-500"
             >
-              <span className={`${mohaveFont}`}>About</span>
+              <span>About</span>
             </Link>
             <Link
               onClick={() => setOpen(false)}
               href="#contact"
               className="text-center text-white no-underline text-2xl items-center hover:text-purple-400 easy-in-out duration-500"
             >
-              <span className={`${mohaveFont}`}>Contact</span>
+              <span>Contact</span>
             </Link>
           </nav>
           <button
@@ -104,21 +104,21 @@ function Header({ mohaveFont }: { mohaveFont: string }) {
             href="#proyects"
             className="text-center font-mono text-white no-underline items-center hover:text-blue-400"
           >
-            <span className={`${mohaveFont} text-5xl`}>Proyects</span>
+            <span className="text-5xl">Proyects</span>
           </Link>
           <Link
             onClick={() => setOpen(false)}
             href="#about"
             className=" text-center font-mono text-white no-underline text-xl items-center hover:text-indigo-400"
           >
-            <span className={`${mohaveFont} text-5xl`}>About</span>
+            <span className="text-5xl">About</span>
           </Link>
           <Link
             onClick={() => setOpen(false)}
             href="#contact"
             className="text-center font-mono text-white no-underline text-xl items-center hover:text-purple-400"
           >
-            <span className={`${mohaveFont} text-5xl`}>Contact</span>
+            <span className="text-5xl">Contact</span>
           </Link>
         </nav>
       </section>

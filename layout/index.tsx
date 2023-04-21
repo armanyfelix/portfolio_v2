@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import waves from 'vanta/dist/vanta.waves.min';
 import * as THREE from 'three';
 
-function Layout({ children, mohaveFont }: { children: React.ReactNode; mohaveFont: string }) {
+function Layout({ children }: { children: React.ReactNode }) {
   const [vantaEffect, setVantaEffect] = useState<any>(0);
   const vantaRef = useRef(null);
   useEffect(() => {
@@ -37,7 +37,7 @@ function Layout({ children, mohaveFont }: { children: React.ReactNode; mohaveFon
       <div id="main" ref={vantaRef} className="fixed top-0 right-0 left-0 bottom-0">
         {' '}
       </div>
-      <Header mohaveFont={mohaveFont} />
+      <Header />
       <main className="relative">{children}</main>
       <Footer />
     </div>

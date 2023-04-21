@@ -5,7 +5,7 @@ import me from '../public/images/about/ME.png';
 
 function About() {
   return (
-    <section id="about" className="w-full min-h-screen lg:p-14 md:p-10 mt-40">
+    <section id="about" className="w-full min-h-screen mt-40">
       <div className="flex justify-between items-center px-10 lg:px-52 sm:m-2 md:m-3 lg:m-4 xl:m-5">
         <h1 className="text-white lg:text-8xl md:text-5xl sm:text-3xl text-3xl items-center">About Me</h1>
         <Link href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true">
@@ -14,13 +14,16 @@ function About() {
           </button>
         </Link>
       </div>
-      <div className="md:flex flex-wrap justify-evenly items-center mt-10 px-20">
-        <div className="md:w-1/2 mx-auto px-20">
-          <p className="text-justify lg:text-lg md:text-base text-white">
-            Hi there! I{"'"}m Armany, a full stack web developer with over three years of experience and a
-            decade of education in programming. I specialize in using JavaScript, HTML, CSS, Typescript and
-            various frameworks such as React, Next.js, TailwindCSS, and Bootstrap to create dynamic and
-            visually appealing web applications.
+      <div className="md:flex flex-wrap justify-center text-center items-center mt-10 lg:px-20 bg-white shadow-2xl bg-opacity-5 backdrop-blur-sm">
+        <div className="md:w-1/2 h-2/3 flex justify-center">
+          <Image src={me} width="420" height="420" alt="me" className="" />
+        </div>
+        <div className="md:w-1/2 mx-auto p-6 lg:px-20">
+          <p className="text-justify lg:text-lg text-base text-white">
+            Hi there! I{"'"}m Armany, a have over three years of experience and a decade of education in
+            programming. I specialize in using JavaScript, HTML, CSS, Typescript and various frameworks such
+            as React, Next.js, TailwindCSS, and Bootstrap to create dynamic and visually appealing web
+            applications.
           </p>
           {/* <p className="text-justify lg:text-lg md:text-base text-white">
             With a strong background in both front-end and back-end development, I am experienced in working
@@ -42,15 +45,6 @@ function About() {
           <p className="text-justify lg:text-lg md:text-base text-white">
             Thank you for visiting my portfolio website, I hope one day we can work together.
           </p>
-        </div>
-        <div className="md:w-1/2 h-2/3 flex justify-center">
-          <Image
-            src={me}
-            width="420"
-            height="420"
-            alt="me"
-            className="bg-white shadow-2xl rounded-3xl bg-opacity-5 backdrop-blur-sm"
-          />
         </div>
       </div>
     </section>
