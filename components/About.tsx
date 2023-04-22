@@ -14,7 +14,7 @@ function About() {
           </button>
         </Link>
       </div>
-      <div className="md:flex flex-wrap justify-center text-center items-center mt-10 lg:px-20 bg-white shadow-2xl bg-opacity-5 backdrop-blur-sm">
+      <div className="md:flex flex-wrap justify-center text-center items-center mt-28 lg:px-20 bg-white shadow-2xl bg-opacity-5 backdrop-blur-sm">
         <div className="md:w-1/2 h-2/3 flex justify-center">
           <Image src={me} width="420" height="420" alt="me" className="" />
         </div>

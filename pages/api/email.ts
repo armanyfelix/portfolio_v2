@@ -4,6 +4,8 @@ const nodemailer = require('nodemailer');
 
 type Data = {
   status: string;
+  error: string;
+  message: string;
 };
 
 /**
@@ -40,14 +42,19 @@ export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) 
         <p>Message: ${message}</p>
       `,
     };
-    transporter.sendMail(mail, (error: Boolean) => {
-      if (error) {
-        res.json({
+    transporter.sendMail(mail, (err: any) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({
+          error: 'error' + JSON.stringify(err),
           status: 'ERROR',
+          message: 'There was an error, the email could not be sent',
         });
       } else {
-        res.json({
-          status: 'Message sent',
+        res.status(200).json({
+          message: 'Mail sent successfully',
+          status: 'OK',
+          error: '',
         });
       }
     });
@@ -68,7 +75,15 @@ export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) 
       }
     });
   } else {
-    res.status(400).json({ status: 'ERROR' });
+    res.status(400).json({
+      status: 'ERROR',
+      error: '',
+      message: '',
+    });
   }
-  return res.status(200).json({ status: 'OK' });
+  return res.status(200).json({
+    status: 'OK',
+    error: '',
+    message: '',
+  });
 }

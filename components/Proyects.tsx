@@ -4,20 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Btn from '../styles/customBtn.module.css';
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import { useState, FC } from 'react';
 // import marquee from '../styles/marquee.module.css'
 // import github from '../public/icons/github.svg'
 // import ProyectsData from './proyectsData.module.js'
 // import link from '../public/icons/link.svg'
 
-// interface Props {
-//   source: string
-//   url: string
-//   image: string
-//   name: string
-//   description: string
-//   tecs: string
-// }
+interface ProyectsProps {}
 
 const data = [
   {
@@ -62,7 +55,7 @@ const data = [
 //   console.log(e.currentTarget);
 // }
 
-function Proyects() {
+const Proyects: FC<ProyectsProps> = () => {
   const [current] = useState(0);
 
   return (
@@ -137,7 +130,7 @@ function Proyects() {
       </div> */}
     </section>
   );
-}
+};
 
 // function ProyectCard({ source, url, image, name, description, tecs }: Props) {
 //   return (
