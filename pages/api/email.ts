@@ -13,9 +13,10 @@ type Data = {
  * @param res
  * @returns
  */
-export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) {
+export default async function mailer(req: NextApiRequest, res: NextApiResponse<Data>) {
   const { name, email, message } = req.body;
   if (req.method === 'POST') {
+    // await new Promise((resolve, reject) => {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
@@ -23,6 +24,7 @@ export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) 
         pass: process.env.PASS,
       },
     });
+    // });
     // JUST NECESSARY FOR TEST THE EMAIL CONNECTION
     // transporter.verify((error: Boolean) => {
     //     if (error) {
@@ -42,21 +44,25 @@ export default function mailer(req: NextApiRequest, res: NextApiResponse<Data>) 
         <p>Message: ${message}</p>
       `,
     };
-    transporter.sendMail(mail, (err: any) => {
-      if (err) {
-        console.log(err);
-        res.status(500).json({
-          error: 'error' + JSON.stringify(err),
-          status: 'ERROR',
-          message: 'There was an error, the email could not be sent',
-        });
-      } else {
-        res.status(200).json({
-          message: 'Mail sent successfully',
-          status: 'OK',
-          error: '',
-        });
-      }
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(mail, (err: any, info: any) => {
+        if (err) {
+          console.error(err);
+          reject(err);
+          // res.status(500).json({
+          //   error: 'error' + JSON.stringify(err),
+          //   status: 'ERROR',
+          //   message: 'There was an error, the email could not be sent',
+          // });
+        } else {
+          resolve(info);
+          // res.status(200).json({
+          //   message: 'Mail sent successfully',
+          //   status: 'OK',
+          //   error: '',
+          // });
+        }
+      });
     });
 
     const mailReply = {
