@@ -45,7 +45,7 @@ export default async function mailer(req: NextApiRequest, res: NextApiResponse<D
       `,
     };
     await new Promise((resolve, reject) => {
-      transporter.sendMail(mail, (err: any, info: any) => {
+      transporter.sendMail(mail, (err: string, info: string) => {
         if (err) {
           console.error(err);
           reject(err);
@@ -73,19 +73,23 @@ export default async function mailer(req: NextApiRequest, res: NextApiResponse<D
       html: '<div><h3>Hello, I am Armany[bot]!</h3><p>You sent a message through the Contact form on my <a href="https://armany.herokuapp.com/">portfolio</a>, thanks! Your message has been received, and you should get a reply ASAP. Meanwhile, check out my <a href="https://www.linkedin.com/in/luis-armany-felix-vega-9b60241b8/">Linkedin</a> and <a href="https://github.com/armanyfelix">Github!</a></p><h3>¡Peace!</h3></div>',
     };
 
-    transporter.sendMail(mailReply, (err: string, info: string) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(info);
-      }
+    await new Promise((resolve, reject) => {
+      transporter.sendMail(mailReply, (err: string, info: string) => {
+        if (err) {
+          console.log(err);
+          reject(err);
+        } else {
+          console.log(info);
+          resolve(info);
+        }
+      });
     });
-  } else {
-    res.status(400).json({
-      status: 'ERROR',
-      error: '',
-      message: '',
-    });
+    // } else {
+    //   res.status(400).json({
+    //     status: 'ERROR',
+    //     error: '',
+    //     message: '',
+    //   });
   }
   return res.status(200).json({
     status: 'OK',
