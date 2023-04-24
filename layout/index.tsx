@@ -1,10 +1,16 @@
+'use client';
+
+import { FC, useEffect, useRef, useState, ReactNode } from 'react';
 import Footer from './Footer';
 import Header from './Header';
-import { useEffect, useRef, useState } from 'react';
 import waves from 'vanta/dist/vanta.waves.min';
 import * as THREE from 'three';
 
-function Layout({ children }: { children: React.ReactNode }) {
+interface Props {
+  children: ReactNode;
+}
+
+const Layout: FC<Props> = ({ children }) => {
   const [vantaEffect, setVantaEffect] = useState<any>(0);
   const vantaRef = useRef(null);
   useEffect(() => {
@@ -15,15 +21,15 @@ function Layout({ children }: { children: React.ReactNode }) {
           THREE,
           mouseControls: true,
           touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
+          gyroControls: true,
+          minHeight: 100.0,
+          minWidth: 100.0,
           scale: 1.0,
-          scaleMobile: 1.0,
-          color: 0x1a1c25,
+          scaleMobile: 0.5,
+          color: 0x25252c,
           shininess: 39.0,
-          waveHeight: 19.5,
-          waveSpeed: 0.9,
+          waveHeight: 19.0,
+          waveSpeed: 0.7,
           zoom: 1.1,
         })
       );
@@ -42,6 +48,6 @@ function Layout({ children }: { children: React.ReactNode }) {
       <Footer />
     </div>
   );
-}
+};
 
 export default Layout;

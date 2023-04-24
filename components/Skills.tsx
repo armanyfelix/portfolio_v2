@@ -1,6 +1,11 @@
+'use client';
+
+import { FC } from 'react';
 import Image from 'next/image';
 
-function Skills() {
+interface Props {}
+
+const Skills: FC<Props> = () => {
   return (
     <section className="md:p-20 lg:pt-44 p-4 lg:min-h-screen  justify-center items-center">
       <div className=" mt-8 lg:mx-52 md:mx-28 ">
@@ -67,6 +72,6 @@ function Skills() {
       </div>
     </section>
   );
-}
+};
 
 export default Skills;

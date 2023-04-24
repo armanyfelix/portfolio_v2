@@ -1,9 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import Link from 'next/link';
 
-function Header() {
+interface Props {}
+
+const Header: FC<Props> = () => {
   const [topClasses, setTopClasses] = useState<string>('');
   useEffect(() => {
     let prevScrollpos = window.pageYOffset;
@@ -164,7 +166,7 @@ function Header() {
       `}</style>
     </>
   );
-}
+};
 
 // const ThemeIcon = () => {
 //   const { theme, setTheme } = useTheme();

@@ -1,9 +1,11 @@
 'use client';
 
+import { FC, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
 import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline';
+
+interface Props {}
 
 interface FormData {
   name: { value: string };
@@ -11,7 +13,7 @@ interface FormData {
   message: { value: string };
 }
 
-function Contact() {
+const Contact: FC<Props> = () => {
   const [status, setStatus] = useState<string>('Submit');
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,7 +45,7 @@ function Contact() {
   };
 
   return (
-    <section className=" lg:py-1 py-24 lg:h-screen antialiased">
+    <section id="#contact" className=" lg:py-1 py-24 lg:h-screen antialiased">
       <div className="flex w-full min-h-screen justify-center items-center">
         <div className="flex flex-col md:flex-row md:space-x-6 justify-between  space-y-6 md:space-y-0 backdrop-filter backdrop-blur border-2 border-opacity-30 border-gray-400 w-full max-w-4xl p-8 sm:p-12 rounded-xl shadow-lg text-white">
           <div className="flex flex-col justify-between">
@@ -130,6 +132,6 @@ function Contact() {
       </div>
     </section>
   );
-}
+};
 
 export default Contact;

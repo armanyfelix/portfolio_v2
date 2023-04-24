@@ -6,11 +6,11 @@ import React from 'react';
 import Arrow from '../styles/arrow.module.css';
 
 /**
- * @interface HomeProps
+ * @interface Props
  */
-interface HomeProps {}
+interface Props {}
 
-const Home: FC<HomeProps> = () => {
+const Home: FC<Props> = () => {
   return (
     <section className=" h-screen text-white">
       <div className="text-center mx-auto flex flex-col align-middle justify-center h-full">

@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import Head from 'next/head';
 import Contact from '../components/Contact';
 import Home from '../components/Home';
@@ -5,7 +6,9 @@ import About from '../components/About';
 import Skills from '../components/Skills';
 import Proyects from '../components/Proyects';
 
-function Page() {
+interface Props {}
+
+const Page: FC<Props> = () => {
   return (
     <div>
       <Head>
@@ -20,7 +23,7 @@ function Page() {
       </div>
     </div>
   );
-}
+};
 
 // Multiple layouts example
 // Page.getLayout = function getLayout(page: ReactElement) {

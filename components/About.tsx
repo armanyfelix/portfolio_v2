@@ -1,9 +1,12 @@
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import resumen from '../styles/customBtn.module.css';
 import me from '../public/images/about/ME.png';
 
-function About() {
+interface Props {}
+
+const About: FC<Props> = () => {
   return (
     <section id="about" className="w-full min-h-screen mt-40">
       <div className="flex justify-between items-center px-10 lg:px-52 sm:m-2 md:m-3 lg:m-4 xl:m-5">
@@ -20,10 +23,9 @@ function About() {
         </div>
         <div className="md:w-1/2 mx-auto p-6 lg:px-20">
           <p className="text-justify lg:text-lg text-base text-white">
-            Hi there! I{"'"}m Armany, a have over three years of experience and a decade of education in
-            programming. I specialize in using JavaScript, HTML, CSS, Typescript and various frameworks such
-            as React, Next.js, TailwindCSS, and Bootstrap to create dynamic and visually appealing web
-            applications.
+            Hi there! I{"'"}m Armany, a have over three years of experience, I specialize in using JavaScript,
+            HTML, CSS, Typescript and various frameworks such as React, Next.js, TailwindCSS, and Bootstrap to
+            create dynamic and visually appealing web applications.
           </p>
           {/* <p className="text-justify lg:text-lg md:text-base text-white">
             With a strong background in both front-end and back-end development, I am experienced in working
@@ -49,6 +51,6 @@ function About() {
       </div>
     </section>
   );
-}
+};
 
 export default About;
