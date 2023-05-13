@@ -16,7 +16,8 @@ model Proyect {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   name        String   @unique
-  description String
+  description String @db.VarChar(255)
   url         String
   sourceUrl   String
+  @@index([id])
 }

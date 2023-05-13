@@ -10,7 +10,7 @@ interface Props {}
 const Footer: FC<Props> = () => {
   return (
     <footer className="min-h-[40vh] justify-between flex shadow-xl p-28 backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black">
-      <div className=" w-1/3 text-right font-bold flex items-end ">
+      <div className=" w-1/3 text-right font-bold flex items-end">
         <div className="text-indigo-100 text-xs md:text-sm flex flex-wrap">
           <p className="px-1">Armany Felix.</p>
           {'©'}
