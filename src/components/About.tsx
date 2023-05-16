@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import resumen from '../styles/customBtn.module.css';
-import me from '../public/images/about/ME.png';
+import me from '../../public/images/about/ME.png';
 
 interface Props {}
 

@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Head from 'next/head';
 import Contact from '../components/Contact';
 import Home from '../components/Home';
 import About from '../components/About';
@@ -10,18 +9,12 @@ interface Props {}
 
 const Page: FC<Props> = () => {
   return (
-    <div>
-      <Head>
-        <title>Armany Felix | Portfolio</title>
-      </Head>
-
-      <div className="w-full">
-        <Home />
-        <Proyects />
-        <About />
-        <Skills />
-        <Contact />
-      </div>
+    <div className="w-full">
+      <Home />
+      <Proyects />
+      <About />
+      <Skills />
+      <Contact />
     </div>
   );
 };

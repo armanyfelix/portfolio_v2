@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Btn from '../styles/customBtn.module.css';
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
-import { useState, FC } from 'react';
+import { useState, FC, Fragment } from 'react';
 // import marquee from '../styles/marquee.module.css'
 // import github from '../public/icons/github.svg'
 // import ProyectsData from './proyectsData.module.js'
@@ -19,10 +19,10 @@ const data = [
       'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
     stack: [],
     images: [
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
     ],
   },
   {
@@ -31,10 +31,10 @@ const data = [
       'me remito is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
     stack: [],
     images: [
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
     ],
   },
   {
@@ -43,10 +43,10 @@ const data = [
       'me remito is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
     stack: [],
     images: [
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
-      '/img/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
+      '/images/proyects/admin.civity.home.jpeg',
     ],
   },
 ];
@@ -77,7 +77,7 @@ const Proyects: FC<ProyectsProps> = () => {
           <ChevronLeftIcon className="w-28 h-28 text-white mr-2" />
         </button> */}
         {data.map((p, i) => (
-          <>
+          <Fragment key={i}>
             <div
               key={i}
               // onScroll={(e) => handleProyectScroll(e)}
@@ -104,7 +104,7 @@ const Proyects: FC<ProyectsProps> = () => {
                 } rounded-full flex items-center justify-center`}
               />
             </div>
-          </>
+          </Fragment>
         ))}
         {/* <button
           type="button"

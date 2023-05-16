@@ -88,7 +88,7 @@ const Header: FC<Props> = () => {
 
       {/* MENU */}
       <section
-        className={`${open ? 'right-0 w-full md:w-[50%] lg:w-[30%]' : 'translate-x-96 right-0'}
+        className={`${open ? 'right-0 w-full md:w-[50%] lg:w-[30%]' : 'translate-x-96 -right-96'}
           transition duration-700 easy-in-out fixed top-0 text-white z-50 h-screen bg-black/30 backdrop-blur-md b`}
       >
         <button
@@ -100,7 +100,7 @@ const Header: FC<Props> = () => {
           <span className="hamburger__top-bun" />
           <span className="hamburger__bottom-bun" />
         </button>
-        <nav className={` font-bold text-white flex flex-col space-y-5 mt-20 items-center`}>
+        <nav className={`font-bold text-white flex flex-col space-y-5 mt-20 items-center`}>
           <Link
             onClick={() => setOpen(false)}
             href="#proyects"
