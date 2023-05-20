@@ -6,15 +6,15 @@ import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import waves from 'vanta/dist/vanta.waves.min';
 import * as THREE from 'three';
-// import { Metadata } from 'next';
+import { Metadata } from 'next';
 // import localFont from '@next/font/local';
 // import type { ReactElement, ReactNode } from 'react'
 // import type { NextPage } from 'next'
 
-// export const metadata: Metadata = {
-//   title: 'Armany Felix | Portfolio',
-//   description: 'Welcome to Next.js',
-// };
+export const metadata: Metadata = {
+  title: 'Armany Felix | Portfolio',
+  description: 'Welcome to Next.js',
+};
 
 interface Props {
   children: ReactNode;
