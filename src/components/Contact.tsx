@@ -1,48 +1,14 @@
-'use client';
-
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline';
 
-interface Props {}
-
-interface FormData {
-  name: { value: string };
-  email: { value: string };
-  message: { value: string };
+interface Props {
+  sendEmail: (data: FormData) => Promise<void>;
 }
 
-const Contact: FC<Props> = () => {
-  const [status, setStatus] = useState<string>('Submit');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus('Sending...');
-    const { name, email, message } = e.target as typeof e.target & FormData;
-    const details = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    };
-    await fetch('/api/email', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json, text/plain, */*',
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-      body: JSON.stringify(details),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        alert(data.status);
-        setStatus('Submit');
-      })
-      .catch((err) => {
-        alert(err);
-        setStatus('Error');
-      });
-  };
+const Contact: FC<Props> = ({ sendEmail }) => {
+  // const [status, setStatus] = useState<string>('Submit');
 
   return (
     <section id="#contact" className=" lg:py-1 py-24 lg:h-screen antialiased">
@@ -84,11 +50,11 @@ const Contact: FC<Props> = () => {
           </div>
           <div>
             <div className=" backdrop-filter backdrop-blur bg-white bg-opacity-10 box-border backdrop-contrast-150 border-opacity-30 border-2 rounded-xl shadow-lg p-8 md:w-80">
-              <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+              <form action={sendEmail} className="flex flex-col space-y-4">
                 <div className="form-group">
                   <label htmlFor="name">
                     <input
-                      id="name"
+                      name="name"
                       type="text"
                       className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner w-full"
                       placeholder="Name"
@@ -99,7 +65,7 @@ const Contact: FC<Props> = () => {
                 <div className="">
                   <label htmlFor="email">
                     <input
-                      id="email"
+                      name="email"
                       type="email"
                       className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner w-full"
                       placeholder="Email"
@@ -110,7 +76,7 @@ const Contact: FC<Props> = () => {
                 <div className="form-group">
                   <label htmlFor="message">
                     <textarea
-                      id="message"
+                      name="message"
                       className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 bg-gray-900 font-semibold focus:shadow-inner mr-5 w-full"
                       placeholder="Message"
                       required
@@ -122,7 +88,7 @@ const Contact: FC<Props> = () => {
                     type="submit"
                     className="py-2 px-6 hover:ring-2 hover:bg-transparent bg-gradient-to-b from-blue-500 to-purple-700 rounded-xl"
                   >
-                    <span className="font-mono f">{status}</span>
+                    <span className="font-mono f">Send</span>
                   </button>
                 </div>
               </form>
