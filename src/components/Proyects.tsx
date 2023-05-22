@@ -14,7 +14,7 @@ interface ProyectsProps {}
 
 const data = [
   {
-    title: 'Civity',
+    title: 'Civity CMS',
     description:
       'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
     stack: [],
@@ -26,9 +26,9 @@ const data = [
     ],
   },
   {
-    title: 'Pruebas',
+    title: 'Civity App',
     description:
-      'me remito is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
+      "The Civity app is designed for residents of condominiums managed by Civity CMS. With rhis app, you can pay your bills, reserve common areas, vote on condo decisions, report incidents, and stay on top of what's happening in your community. It is the easiest way to manage your property and access all the services of your condominium.",
     stack: [],
     images: [
       '/images/proyects/admin.civity.home.jpeg',
@@ -37,17 +37,23 @@ const data = [
       '/images/proyects/admin.civity.home.jpeg',
     ],
   },
+  // {
+  //   name: 'Website and Store',
+  //   url: 'https://omar-villatoro.netlify.app/',
+  //   source: 'https://github.com/armanyfelix/villatoro',
+  //   description:
+  //     "This is a website for a artists with a e-commerce to sell they painting, also has a gallery and information about his work's. Maked with MERN stack from scratch.",
+  //   images: [],
+  //   tecs: ['React', 'Redux', 'MongoDB', 'Express', 'Stripe', 'Taiwindcss'],
+  // },
   {
-    title: 'fdsvsdvcs',
+    name: "Car's bodyshop",
+    url: 'https://felixgarages.netlify.app/',
+    source: 'https://github.com/armanyfelix/felixgarage',
     description:
-      'me remito is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
-    stack: [],
-    images: [
-      '/images/proyects/admin.civity.home.jpeg',
-      '/images/proyects/admin.civity.home.jpeg',
-      '/images/proyects/admin.civity.home.jpeg',
-      '/images/proyects/admin.civity.home.jpeg',
-    ],
+      "This is a landing page for a car's bodyshop that has a gallery with they work and different contact methods.",
+    images: [],
+    stack: ['React', 'Tailwindcss', 'Express', 'Messenger-chat', 'Google-Maps-api'],
   },
 ];
 
@@ -92,7 +98,7 @@ const Proyects: FC<ProyectsProps> = () => {
                 <p className="text-justify mt-6">{p.description}</p>
               </div>
               <div className="md:w-3/5 md:grid md:grid-cols-2 mx-auto gap-5 mt-8 flex overflow-x-auto 5">
-                {p.images.map((url, i) => (
+                {p.images?.map((url, i) => (
                   <Image src={url} key={i} alt="" width={500} height={500} className="rounded-lg" />
                 ))}
               </div>

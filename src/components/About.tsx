@@ -19,13 +19,17 @@ const About: FC<Props> = () => {
       </div>
       <div className="md:flex flex-wrap justify-center text-center items-center mt-28 lg:px-20 bg-white shadow-2xl bg-opacity-5 backdrop-blur-sm">
         <div className="md:w-1/2 h-2/3 flex justify-center">
-          <Image src={me} width="420" height="420" alt="me" className="" />
+          <Image src={me} width="420" height="420" alt="me" />
         </div>
         <div className="md:w-1/2 mx-auto p-6 lg:px-20">
           <p className="text-justify lg:text-lg text-base text-white">
-            Hi there! I{"'"}m Armany, a have over three years of experience, I specialize in using JavaScript,
-            HTML, CSS, Typescript and various frameworks such as React, Next.js, TailwindCSS, and Bootstrap to
-            create dynamic and visually appealing web applications.
+            Hi there! I{'’'}m a software developer with a passion for creating innovative solutions that make
+            people{'’'}s lives easier. Since I was 15 years old I{"'"}ve been creating basic HTML websites,
+            android apps and just play around with tech, when I{'’'}m not coding away at my computer, you can
+            find me exploring new technologies, tinkering with gadgets, or playing video games. I love a good
+            challenge and am always looking for ways to improve my skills and push the boundaries of what{'’'}
+            s possible. So if you{'’'}re looking for a developer who{'’'}s equal parts creative and technical,
+            look no further - I{'’'}m your person!
           </p>
           {/* <p className="text-justify lg:text-lg md:text-base text-white">
             With a strong background in both front-end and back-end development, I am experienced in working
@@ -34,7 +38,7 @@ const About: FC<Props> = () => {
             I am well-versed in managing servers and containers with tools such as cPanel, Nginx, VPS servers,
             and Docker.
           </p> */}
-          <p className="text-justify lg:text-lg md:text-base text-white">
+          {/* <p className="text-justify lg:text-lg md:text-base text-white">
             I am a driven individual who is constantly seeking new challenges and opportunities to expand my
             skillset and knowledge. My passion for technology and my commitment to delivering high-quality
             solutions are what drive me to excel in this field.
@@ -46,7 +50,7 @@ const About: FC<Props> = () => {
           </p>
           <p className="text-justify lg:text-lg md:text-base text-white">
             Thank you for visiting my portfolio website, I hope one day we can work together.
-          </p>
+          </p> */}
         </div>
       </div>
     </section>
