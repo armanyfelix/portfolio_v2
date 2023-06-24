@@ -24,7 +24,7 @@ export default function Background() {
           scaleMobile: 0.5,
           color: 0x25252c,
           shininess: 39.0,
-          waveHeight: 19.0,
+          waveHeight: 19.0, 
           waveSpeed: 0.7,
           zoom: 1.1,
         })

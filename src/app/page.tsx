@@ -45,7 +45,7 @@ const Page: FC<Props> = () => {
     await new Promise((resolve, reject) => {
       transporter.sendMail(mail, (err, info) => {
         if (err) {
-          console.error(err);
+          // console.error(err);
           reject(err);
           // res.status(500).json({
           //   error: 'error' + JSON.stringify(err),

@@ -1,5 +1,3 @@
-// const { fontFamily } = require("tailwindcss/defaultTheme")
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -10,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        mohave: ['var(--font-mohave)' /*..fontFamily.sans */],
+        mohave: ['var(--font-mohave)'],
+        ysabeau: ['var(--font-ysabeau)'],
       },
     },
   },

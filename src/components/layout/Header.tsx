@@ -40,12 +40,7 @@ const Header: FC<Props> = () => {
       >
         <div className="py-3">
           <Link href="/" legacyBehavior>
-            <svg width="62" height="20" viewBox="0 0 62 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 0L1 19H12.5" stroke="black" strokeWidth="2" />
-              <path d="M11.5 19.5L20 1H21L30.5 19.5M30.5 0V20" stroke="black" strokeWidth="2" />
-              <path d="M41.5 0.5L50.5 18.5H51.5L60.5 0.5" stroke="black" strokeWidth="2" />
-              <path d="M30.5 1H42.5" stroke="black" strokeWidth="2" />
-            </svg>
+            <h1 className="text-2xl font-thin text-white cursor-pointer">Luis Armany</h1>
           </Link>
         </div>
         <div id="site-menu" className="flex flex-col z-50 sm:flex-row justify-between items-center">
