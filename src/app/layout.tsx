@@ -1,18 +1,16 @@
 import '../styles/globals.css';
 import { FC, ReactNode } from 'react';
-import { Ysabeau } from 'next/font/google'
+import { Ysabeau } from 'next/font/google';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import { Metadata } from 'next';
 import Background from '../components/layout/Background';
-// import localFont from '@next/font/local';
-// import type { ReactElement, ReactNode } from 'react'
-// import type { NextPage } from 'next'
 
+/* eslint new-cap: ["error", { "capIsNew": false }] */
 const ysabeau = Ysabeau({
   subsets: ['latin'],
   display: 'swap',
-})
+});
 
 export const metadata: Metadata = {
   title: 'Armany Felix | Portfolio',
@@ -37,7 +35,7 @@ interface Props {
 //     {
 //       path: '/public/fonts/Mohave/Mohave-VariableFont_wght.ttf',
 //       style: 'normal',
-//     }, 
+//     },
 //     {
 //       path: '/public/fonts/Mohave/Mohave-Italic-VariableFont_wght.ttf',
 //       style: 'italic',

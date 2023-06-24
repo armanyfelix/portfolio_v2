@@ -11,7 +11,7 @@ import React from 'react';
 interface Props {}
 
 const Home: FC<Props> = () => {
-  return (    
+  return (
     <section className=" h-screen w-full text-white">
       <div className="text-center mx-auto flex flex-col align-middle justify-center h-full">
         <h3 className=" md:text-4xl text-3xl pb-3 text-white">Hi, I{"'"}m Armany</h3>
