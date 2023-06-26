@@ -1,10 +1,10 @@
+import * as nodemailer from 'nodemailer';
 import { FC } from 'react';
+import About from '../components/About';
 import Contact from '../components/Contact';
 import Home from '../components/Home';
-import About from '../components/About';
-import Skills from '../components/Skills';
 import Proyects from '../components/Proyects';
-import * as nodemailer from 'nodemailer';
+import Skills from '../components/Skills';
 
 interface Props {}
 

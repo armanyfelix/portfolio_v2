@@ -1,26 +1,26 @@
 'use client';
 
-import { FC } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
+import { FC } from 'react';
 import Arrow from '../../styles/arrow.module.css';
 
 interface Props {}
 
 const Footer: FC<Props> = () => {
   return (
-    <footer className="shadow-xl p-5 backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20 bg-black">
-      <div className="flex text-center justify-center pt-3 md:pt-8">
-        <Link href="/" className="scale-50 md:scale-100 flex flex-col items-center font-mono text-center">
+    <footer className="bg-black bg-opacity-20 p-5 shadow-xl backdrop-blur backdrop-brightness-90 backdrop-filter">
+      <div className="flex justify-center pt-3 text-center md:pt-8">
+        <Link href="/" className="flex scale-50 flex-col items-center text-center font-mono md:scale-100">
           <div className="rotate-180">
             <div className={Arrow.arrow} />
           </div>
-          <span className="pt-4 w-32">Go to top</span>
+          <span className="w-32 pt-4">Go to top</span>
         </Link>
       </div>
       <div className="flex items-center justify-between pt-10">
         <div className="flex items-end text-right font-bold">
-          <div className="text-indigo-100 text-xs md:text-sm flex flex-wrap">
+          <div className="flex flex-wrap text-xs text-indigo-100 md:text-sm">
             <p>Armany Felix.</p>
             {'©'}
             {new Date().getFullYear()}

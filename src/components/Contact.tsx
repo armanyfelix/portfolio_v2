@@ -1,9 +1,9 @@
 'use client';
 
-import { FC } from 'react';
+import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { AtSymbolIcon, MapPinIcon, PhoneIcon } from '@heroicons/react/24/outline';
+import { FC } from 'react';
 
 interface Props {
   sendEmail: (data: FormData) => Promise<void>;
@@ -13,32 +13,32 @@ const Contact: FC<Props> = ({ sendEmail }) => {
   // const [status, setStatus] = useState<string>('Submit');
 
   return (
-    <section id="#contact" className=" lg:py-1 py-24 lg:h-screen antialiased">
-      <div className="flex w-full min-h-screen justify-center items-center">
-        <div className="flex flex-col md:flex-row md:space-x-6 justify-between  space-y-6 md:space-y-0 backdrop-filter backdrop-blur border-2 border-opacity-30 w-full max-w-4xl p-8 sm:p-12 rounded-xl shadow-lg">
+    <section id="#contact" className=" py-24 antialiased lg:h-screen lg:py-1">
+      <div className="flex min-h-screen w-full items-center justify-center">
+        <div className="flex w-full max-w-4xl flex-col justify-between  space-y-6 rounded-xl border-2 border-opacity-30 p-8 shadow-lg backdrop-blur backdrop-filter sm:p-12 md:flex-row md:space-x-6 md:space-y-0">
           <div className="flex flex-col justify-between">
             <div>
-              <h1 className="font-bold font-simplex text-5xl tracking-wide">Contact</h1>
-              <p className="pt-2 pb-9 text-sm">
+              <h1 className="font-simplex text-5xl font-bold tracking-wide">Contact</h1>
+              <p className="pb-9 pt-2 text-sm">
                 If you are interested in working with me, please leave me a message.
                 <br />I will answer you as soon as possible.
               </p>
             </div>
-            <div className="flex flex-col mt-8 md:mt-0 space-y-4">
+            <div className="mt-8 flex flex-col space-y-4 md:mt-0">
               <div className="inline-flex space-x-2">
-                <PhoneIcon className="w-6 h-6" />
+                <PhoneIcon className="h-6 w-6" />
                 <span>+(52) 664 212 2325</span>
               </div>
               <div className="inline-flex items-center space-x-2">
-                <AtSymbolIcon className="w-6 h-6" />
+                <AtSymbolIcon className="h-6 w-6" />
                 <span>luis.armany.felix@gmail.com</span>
               </div>
               <div className="inline-flex items-center space-x-2">
-                <MapPinIcon className="w-6 h-6" />
+                <MapPinIcon className="h-6 w-6" />
                 <span>Lomas Terrabella 22203, Tijuana B.C. Mexico</span>
               </div>
             </div>
-            <div className="flex mt-6 space-x-4">
+            <div className="mt-6 flex space-x-4">
               <Link href="https://www.linkedin.com/in/armany-felix">
                 <Image src="/icons/linkedin.svg" width="40" height="40" alt="logo-linkedIn" />
               </Link>
@@ -51,27 +51,27 @@ const Contact: FC<Props> = ({ sendEmail }) => {
             </div>
           </div>
           <div>
-            <div className="backdrop-filter backdrop-blur bg-opacity-10 box-border backdrop-contrast-150 border-opacity-30 border-2 rounded-xl shadow-lg p-8 md:w-80">
+            <div className="box-border rounded-xl border-2 border-opacity-30 bg-opacity-10 p-8 shadow-lg backdrop-blur backdrop-contrast-150 backdrop-filter md:w-80">
               <form action={sendEmail} className="flex flex-col space-y-4">
                 <input
                   type="text"
                   name="name"
-                  className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 font-semibold focus:shadow-inner w-full"
+                  className="w-full rounded-lg bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
                   placeholder="Name"
                   required
                 />
                 <input
                   type="email"
                   name="email"
-                  className="py-2 px-4 rounded-lg shadow-xl bg-opacity-50 font-semibold focus:shadow-inner w-full"
+                  className="w-full rounded-lg bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
                   placeholder="Email"
                   required
                 />
                 <textarea name="message" className="textarea" placeholder="Message" required />
-                <div className="text-right justify-end">
+                <div className="justify-end text-right">
                   <button
                     type="submit"
-                    className="py-2 px-6 hover:ring-2 hover:bg-transparent bg-gradient-to-b from-blue-500 to-purple-700 rounded-xl"
+                    className="rounded-xl bg-gradient-to-b from-blue-500 to-purple-700 px-6 py-2 hover:bg-transparent hover:ring-2"
                   >
                     <span>Send</span>
                   </button>

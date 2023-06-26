@@ -4,5 +4,10 @@
   "printWidth": 110,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "semi": true
+  "semi": true,
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "pluginSearchDirs": false
 }

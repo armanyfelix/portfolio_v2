@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import Btn from '../styles/customBtn.module.css';
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { FC } from 'react';
@@ -57,11 +57,11 @@ const data = [
 
 const Proyects: FC<ProyectsProps> = () => {
   return (
-    <section id="proyects" className="min-h-screen md:pt-24 mt-40">
-      <div className="flex justify-between items-center lg:px-52 sm:m-2 md:m-3 lg:m-4 xl:m-5">
-        <h1 className="lg:w-3/5 lg:text-8xl md:text-5xl sm:text-3xl text-3xl items-center">Proyects</h1>
+    <section id="proyects" className="mt-40 min-h-screen md:pt-24">
+      <div className="flex items-center justify-between sm:m-2 md:m-3 lg:m-4 lg:px-52 xl:m-5">
+        <h1 className="items-center text-3xl sm:text-3xl md:text-5xl lg:w-3/5 lg:text-8xl">Proyects</h1>
         <Link href="https://www.github.com/armanyfelix" target="_blank" className={Btn.btn}>
-          <span className="font-mono px-6 text-2xl md:text-4xl">github</span>
+          <span className="px-6 font-mono text-2xl md:text-4xl">github</span>
         </Link>
       </div>
       <div className="carousel w-full px-5 md:p-20">
@@ -69,19 +69,19 @@ const Proyects: FC<ProyectsProps> = () => {
           <div
             key={`proyect${i}`}
             id={`proyect${i}`}
-            className="carousel-item relative w-full md:max-h-[80vh] py-20 px-5 md:px-20"
+            className="carousel-item relative w-full px-5 py-20 md:max-h-[80vh] md:px-20"
           >
-            <div className="lg:flex justify-between p-6 md:p-10 rounded-2xl ring-2 ring-primary bg-primary shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20">
-              <div className="lg:w-2/5 md:p-5">
+            <div className="justify-between rounded-2xl bg-primary bg-opacity-20 p-6 shadow-xl ring-2 ring-primary backdrop-blur backdrop-brightness-90 backdrop-filter md:p-10 lg:flex">
+              <div className="md:p-5 lg:w-2/5">
                 <Link href="https://www.civity.mx" target="_blank" className="text-6xl">
                   {p.title}
                 </Link>
-                <p className="text-justify my-6">{p.description}</p>
+                <p className="my-6 text-justify">{p.description}</p>
               </div>
               <div
-                className={`md:w-3/5 md:grid ${
+                className={`md:grid md:w-3/5 ${
                   p.type === 'web' ? 'md:grid-cols-2' : 'grid-flow-col'
-                } mx-auto gap-5 my-auto flex overflow-auto`}
+                } mx-auto my-auto flex gap-5 overflow-auto`}
               >
                 {p.images?.map((url, i) => (
                   <Image
@@ -90,16 +90,16 @@ const Proyects: FC<ProyectsProps> = () => {
                     alt=""
                     width={900}
                     height={700}
-                    className="rounded-xl max-h-[70vh] w-auto mx-auto mb-5"
+                    className="mx-auto mb-5 max-h-[70vh] w-auto rounded-xl"
                   />
                 ))}
               </div>
             </div>
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-[93%] md:top-1/2">
-              <a href={`#proyect${i === 0 ? data.length - 1 : i - 1}`} className="btn btn-circle">
+            <div className="absolute left-5 right-5 top-[93%] flex -translate-y-1/2 transform justify-between md:top-1/2">
+              <a href={`#proyect${i === 0 ? data.length - 1 : i - 1}`} className="btn-circle btn">
                 ❮
               </a>
-              <a href={`#proyect${i === data.length - 1 ? 0 : i + 1}`} className="btn btn-circle">
+              <a href={`#proyect${i === data.length - 1 ? 0 : i + 1}`} className="btn-circle btn">
                 ❯
               </a>
             </div>

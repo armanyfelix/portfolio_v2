@@ -1,10 +1,10 @@
-import '../styles/globals.css';
-import { FC, ReactNode } from 'react';
+import { Metadata } from 'next';
 import { Ysabeau } from 'next/font/google';
+import { FC, ReactNode } from 'react';
+import Background from '../components/layout/Background';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
-import { Metadata } from 'next';
-import Background from '../components/layout/Background';
+import '../styles/globals.css';
 
 /* eslint new-cap: ["error", { "capIsNew": false }] */
 const ysabeau = Ysabeau({ subsets: ['latin'] });

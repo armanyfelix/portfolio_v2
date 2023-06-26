@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import waves from 'vanta/dist/vanta.waves.min';
 import * as THREE from 'three';
+import waves from 'vanta/dist/vanta.waves.min';
 
 export default function Background() {
   const [vantaEffect, setVantaEffect] = useState<any>(0);
@@ -135,7 +135,7 @@ export default function Background() {
 
   return (
     <div>
-      <div id="main" ref={vantaRef} className="fixed top-0 right-0 left-0 bottom-0">
+      <div id="main" ref={vantaRef} className="fixed bottom-0 left-0 right-0 top-0">
         {' '}
       </div>
     </div>

@@ -1,6 +1,6 @@
 const themes = [
   {
-    name: 'Light',
+    name: 'light',
     emoji: '☀️',
   },
   {
