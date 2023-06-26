@@ -1,12 +1,18 @@
 'use client';
 
 import { FC, useState, useEffect } from 'react';
+import { themeChange } from 'theme-change';
 import Link from 'next/link';
+import themes from '../../data/themes.module';
+import HamburgerSwap from '../svg/HamburgerSwap';
 
 interface Props {}
 
 const Header: FC<Props> = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const [topClasses, setTopClasses] = useState<string>('');
+  const [theme, setTheme] = useState<string>('');
+
   useEffect(() => {
     let prevScrollpos = window.pageYOffset;
     window.onscroll = function () {
@@ -25,160 +31,140 @@ const Header: FC<Props> = () => {
         transition.style.transition = 'top 0.6s';
       } else {
         const position = (document.getElementById('top') as HTMLElement) || null;
-        position.style.top = '-70px';
+        position.style.top = '-100px';
       }
       prevScrollpos = currentScrollPos;
     };
   }, []);
-  const [open, setOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    themeChange(false);
+  }, []);
+
+  useEffect(() => {
+    async function init() {
+      const currentTheme = (await localStorage.getItem('theme')) || 'dark';
+      setTheme(currentTheme);
+    }
+    init();
+  }, []);
 
   return (
     <>
       <header
         id="top"
-        className={`fixed top-0 right-0 left-0 flex justify-between z-40 items-center px-6 py-3 lg:px-56 ${topClasses}`}
+        className={`fixed top-0 right-0 left-0 flex justify-evenly z-40 items-center py-2 ${topClasses}`}
       >
         <div className="py-3">
           <Link href="/" legacyBehavior>
-            <h1 className="text-2xl font-thin text-white cursor-pointer">Luis Armany</h1>
+            <h1 className="text-2xl font-light italic cursor-pointer text-primary">Luis Armany</h1>
           </Link>
         </div>
         <div id="site-menu" className="flex flex-col z-50 sm:flex-row justify-between items-center">
-          <nav
-            className={`w-full sm:w-auto hidden md:block font-bold text-white self-end sm:space-x-6 sm:self-center sm:flex flex-row items-center`}
-          >
-            <Link
-              onClick={() => setOpen(false)}
-              href="#proyects"
-              className="text-center text-white no-underline text-2xl items-center hover:text-blue-400 easy-in-out duration-500"
-            >
-              <span>Proyects</span>
-            </Link>
-            <Link
-              onClick={() => setOpen(false)}
-              href="#about"
-              className="text-center text-white no-underline text-2xl items-center hover:text-indigo-400 easy-in-out duration-500"
-            >
-              <span>About</span>
-            </Link>
-            <Link
-              onClick={() => setOpen(false)}
-              href="#contact"
-              className="text-center text-white no-underline text-2xl items-center hover:text-purple-400 easy-in-out duration-500"
-            >
-              <span>Contact</span>
-            </Link>
+          <nav className="w-full sm:w-auto hidden md:block self-end">
+            <ul className="flex items-center space-x-3 text-secondary">
+              <li>
+                <Link onClick={() => setOpen(false)} href="#proyects" className="btn-nav">
+                  Proyects
+                </Link>
+              </li>
+              <li>
+                <Link onClick={() => setOpen(false)} href="#about" className="btn-nav">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link onClick={() => setOpen(false)} href="#contact" className="btn-nav">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <ThemesSelector theme={theme} setTheme={setTheme} />
+              </li>
+            </ul>
           </nav>
-          <button
-            id="menuBtn"
-            aria-label="menu"
-            className={`p-0 hamburger sm:hidden block focus:outline-none ${open ? 'open' : ''}`}
-            onClick={() => setOpen(!open)}
-          >
-            <span className="hamburger__top-bun" />
-            <span className="hamburger__bottom-bun" />
-          </button>
+          <label className="md:hidden inline-grid swap swap-rotate">
+            <input type="checkbox" checked={open} onChange={() => setOpen(!open)} />
+            <HamburgerSwap />
+          </label>
         </div>
       </header>
-
       {/* MENU */}
       <section
-        className={`${open ? 'right-0 w-full md:w-[50%] lg:w-[30%]' : 'translate-x-96 -right-96'}
-          transition duration-700 easy-in-out fixed top-0 text-white z-50 h-screen bg-black/30 backdrop-blur-md b`}
+        className={`${
+          open ? 'left-0' : '-left-full'
+        }         w-3/5 transition duration-700 easy-in-out fixed top-0 z-50 h-screen bg-black/30 backdrop-blur-md`}
       >
-        <button
-          id="menuBtn"
-          aria-label="menu"
-          className={`mt-2 mr-6 hamburger block float-right ${open ? 'open' : ''}`}
-          onClick={() => setOpen(!open)}
-        >
-          <span className="hamburger__top-bun" />
-          <span className="hamburger__bottom-bun" />
-        </button>
-        <nav className={`font-bold text-white flex flex-col space-y-5 mt-20 items-center`}>
-          <Link
-            onClick={() => setOpen(false)}
-            href="#proyects"
-            className="text-center font-mono text-white no-underline items-center hover:text-blue-400"
-          >
-            <span className="text-5xl">Proyects</span>
-          </Link>
-          <Link
-            onClick={() => setOpen(false)}
-            href="#about"
-            className=" text-center font-mono text-white no-underline text-xl items-center hover:text-indigo-400"
-          >
-            <span className="text-5xl">About</span>
-          </Link>
-          <Link
-            onClick={() => setOpen(false)}
-            href="#contact"
-            className="text-center font-mono text-white no-underline text-xl items-center hover:text-purple-400"
-          >
-            <span className="text-5xl">Contact</span>
-          </Link>
+        <nav className={`font-bold text-white flex flex-col space-y-5 mt-20 items-left`}>
+          <Nav setOpen={setOpen} />
         </nav>
       </section>
-      <style jsx>{`
-        /* HAMBURGER MENU */
-        .hamburger {
-          cursor: pointer;
-          width: 48px;
-          height: 48px;
-          transition: all 0.25s;
-          border: 0;
-          background: transparent;
-        }
-        .hamburger__top-bun,
-        .hamburger__bottom-bun {
-          content: '';
-          position: absolute;
-          width: 24px;
-          height: 2px;
-          background: #fff;
-          transform: rotate(0);
-          transition: all 0.5s;
-        }
-        .hamburger:hover [className*='-bun'] {
-          background: #333;
-        }
-        .hamburger__top-bun {
-          transform: translateY(-5px);
-        }
-        .hamburger__bottom-bun {
-          transform: translateY(3px);
-        }
-        .open {
-          transform: rotate(90deg);
-          transform: translateY(-1px);
-        }
-        .open .hamburger__top-bun {
-          transform: rotate(45deg) translateY(0px);
-        }
-        .open .hamburger__bottom-bun {
-          transform: rotate(-45deg) translateY(0px);
-        }
-      `}</style>
+      <div
+        className={`${open ? 'block' : 'hidden'} opacity-50 bg-black fixed inset-0 z-40`}
+        onClick={() => setOpen(false)}
+      />
     </>
   );
 };
 
-// const ThemeIcon = () => {
-//   const { theme, setTheme } = useTheme();
-//   const router = useRouter()
-//   const handleTheme = () => {
-//     setTheme(theme === 'dark' ? 'light' : 'dark');
-//     router.reload();
-//   };
-//   return (
-//     <button onClick={() => handleTheme()} className=" outline-none border-none decoration-slice">
-//       {theme === 'light' ? (
-//         <div className="w-6 h-6 rounded-full bg-gradient-to-tl from-red-600 via-red-60  to-yellow-600 shadow-sun hover:animate-pulse"></div>
-//       ) : (
-//         <div className="w-6 h-6 rounded-full bg-gradient-to-bl from-gray-600  to-gray-700 shadow-moon hover:animate-pulse"></div>
-//       )}
-//     </button>
-//   );
-// };
+const Nav = ({ setOpen }: any) => {
+  return (
+    <ul className="menu">
+      <li>
+        <Link
+          onClick={() => setOpen(false)}
+          href="#proyects"
+          // className="text-center font-mono text-white no-underline items-center hover:text-blue-400"
+        >
+          <span className="text-xl">Proyects</span>
+        </Link>
+      </li>
+      <li>
+        <Link
+          onClick={() => setOpen(false)}
+          href="#about"
+          className=" text-center font-mono text-white no-underline text-xl items-center hover:text-indigo-400"
+        >
+          <span className="text-xl">About</span>
+        </Link>
+      </li>
+      <li>
+        <Link
+          onClick={() => setOpen(false)}
+          href="#contact"
+          className="text-center font-mono text-white no-underline text-xl items-center hover:text-purple-400"
+        >
+          <span className="text-xl">Contact</span>
+        </Link>
+      </li>
+    </ul>
+  );
+};
+
+const ThemesSelector = ({ theme, setTheme }: any) => {
+  return (
+    <div className="dropdown dropdown-end">
+      <label tabIndex={0} className="btn-nav">
+        {theme && themes.find((t) => t.name === theme)?.emoji}
+      </label>
+      <ul
+        tabIndex={0}
+        className="menu dropdown-content max-h-[40rem] z-[1] p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+      >
+        {themes.map((theme) => (
+          <li key={theme.name}>
+            <button
+              data-set-theme={theme.name}
+              data-act-class="ACTIVECLASS"
+              onClick={() => setTheme(theme.name)}
+            >
+              {theme.emoji} {theme.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 export default Header;

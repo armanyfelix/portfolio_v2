@@ -57,28 +57,26 @@ const data = [
 
 const Proyects: FC<ProyectsProps> = () => {
   return (
-    <section id="proyects" className="min-h-screen p-8 md:pt-24 mt-40">
+    <section id="proyects" className="min-h-screen md:pt-24 mt-40">
       <div className="flex justify-between items-center lg:px-52 sm:m-2 md:m-3 lg:m-4 xl:m-5">
-        <h1 className="lg:w-3/5 text-white lg:text-8xl md:text-5xl sm:text-3xl text-3xl items-center">
-          Proyects
-        </h1>
+        <h1 className="lg:w-3/5 lg:text-8xl md:text-5xl sm:text-3xl text-3xl items-center">Proyects</h1>
         <Link href="https://www.github.com/armanyfelix" target="_blank" className={Btn.btn}>
-          <span className="font-mono px-6  text-2xl md:text-4xl">See all</span>
+          <span className="font-mono px-6 text-2xl md:text-4xl">github</span>
         </Link>
       </div>
-      <div className="carousel w-full p-20">
+      <div className="carousel w-full px-5 md:p-20">
         {data.map((p, i) => (
           <div
             key={`proyect${i}`}
             id={`proyect${i}`}
-            className="carousel-item relative w-full md:min-h-[80vh] md:max-h-[80vh] pt-20 px-20"
+            className="carousel-item relative w-full md:max-h-[80vh] py-20 px-5 md:px-20"
           >
-            <div className="lg:flex justify-between p-6 md:p-10 rounded-2xl ring-2 ring-slate-100 bg-black shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20">
+            <div className="lg:flex justify-between p-6 md:p-10 rounded-2xl ring-2 ring-primary bg-primary shadow-xl backdrop-filter backdrop-blur backdrop-brightness-90 bg-opacity-20">
               <div className="lg:w-2/5 md:p-5">
                 <Link href="https://www.civity.mx" target="_blank" className="text-6xl">
                   {p.title}
                 </Link>
-                <p className="text-justify mt-6">{p.description}</p>
+                <p className="text-justify my-6">{p.description}</p>
               </div>
               <div
                 className={`md:w-3/5 md:grid ${
@@ -92,12 +90,12 @@ const Proyects: FC<ProyectsProps> = () => {
                     alt=""
                     width={900}
                     height={700}
-                    className="rounded-xl max-h-[70vh] w-auto mx-auto"
+                    className="rounded-xl max-h-[70vh] w-auto mx-auto mb-5"
                   />
                 ))}
               </div>
             </div>
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2 pt-20">
+            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-[93%] md:top-1/2">
               <a href={`#proyect${i === 0 ? data.length - 1 : i - 1}`} className="btn btn-circle">
                 ❮
               </a>

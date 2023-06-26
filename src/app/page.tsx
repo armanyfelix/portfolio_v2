@@ -23,7 +23,7 @@ const Page: FC<Props> = () => {
         pass: process.env.REACT_APP_PASS,
       },
     });
-    // JUST NECESSARY FOR TEST THE EMAIL CONNECTION
+    // JUST NECESSARY TO TEST THE EMAIL CONNECTION
     // transporter.verify((error: Boolean) => {
     //     if (error) {
     //         console.log(error);

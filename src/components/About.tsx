@@ -1,3 +1,5 @@
+'use client';
+
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,19 +12,19 @@ const About: FC<Props> = () => {
   return (
     <section id="about" className="w-full min-h-screen mt-40">
       <div className="flex justify-between items-center px-10 lg:px-52 sm:m-2 md:m-3 lg:m-4 xl:m-5">
-        <h1 className="text-white lg:text-8xl md:text-5xl sm:text-3xl text-3xl items-center">About Me</h1>
+        <h1 className="lg:text-8xl md:text-5xl sm:text-3xl text-3xl items-center">About Me</h1>
         <Link href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true">
           <button className={resumen.btn}>
             <span className="font-mono px-9 pb-1.5 text-base sm:text-2xl md:text-2xl">Resumen</span>
           </button>
         </Link>
       </div>
-      <div className="md:flex flex-wrap justify-center text-center items-center mt-28 lg:px-20 bg-white shadow-2xl bg-opacity-5 backdrop-blur-sm">
+      <div className="md:flex flex-wrap justify-center text-center items-center mt-28 lg:px-20 shadow-2xl bg-opacity-5 backdrop-blur-sm">
         <div className="md:w-1/2 h-2/3 flex justify-center">
           <Image src={me} width="420" height="420" alt="me" />
         </div>
         <div className="md:w-1/2 mx-auto p-6 lg:px-20">
-          <p className="text-justify lg:text-lg text-base text-white">
+          <p className="text-justify lg:text-lg text-base ">
             Hi there! I{'’'}m a software developer with a passion for creating innovative solutions that make
             people{'’'}s lives easier. Since I was 15 years old I{"'"}ve been creating basic HTML websites,
             android apps and just play around with tech, when I{'’'}m not coding away at my computer, you can

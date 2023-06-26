@@ -12,9 +12,9 @@ interface Props {}
 
 const Home: FC<Props> = () => {
   return (
-    <section className=" h-screen w-full text-white">
+    <section className=" h-screen w-full">
       <div className="text-center mx-auto flex flex-col align-middle justify-center h-full">
-        <h3 className=" md:text-4xl text-3xl pb-3 text-white">Hi, I{"'"}m Armany</h3>
+        <h3 className=" md:text-4xl text-3xl pb-3">Hi, I{"'"}m Armany</h3>
         <h1 className="items-middle font-bold text-4xl mt-3 md:text-8xl">Software Engineer</h1>
       </div>
       {/* <Link href="#proyects" className="relative border-none bottom-20 mx-auto w-full text-center">

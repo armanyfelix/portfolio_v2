@@ -7,42 +7,17 @@ import { Metadata } from 'next';
 import Background from '../components/layout/Background';
 
 /* eslint new-cap: ["error", { "capIsNew": false }] */
-const ysabeau = Ysabeau({
-  subsets: ['latin'],
-  display: 'swap',
-});
+const ysabeau = Ysabeau({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Armany Felix | Portfolio',
-  description: 'Welcome to Next.js',
+  description:
+    'I’m a software developer with a passion for creating innovative solutions that make people’s lives easier.',
 };
 
 interface Props {
   children: ReactNode;
 }
-
-// Multiple layouts types example
-// export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
-//   getLayout?: (page: ReactElement) => ReactNode
-// }
-
-// type AppPropsWithLayout = AppProps & {
-//   Component: NextPageWithLayout
-// }
-
-// const mohaveFont = localFont({
-//   src: [
-//     {
-//       path: '/public/fonts/Mohave/Mohave-VariableFont_wght.ttf',
-//       style: 'normal',
-//     },
-//     {
-//       path: '/public/fonts/Mohave/Mohave-Italic-VariableFont_wght.ttf',
-//       style: 'italic',
-//     },
-//   ],
-//   variable: '--font-mohave',
-// });
 
 const RootLayout: FC<Props> = ({ children }) => {
   return (

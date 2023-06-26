@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .btn-nav {
+    @apply btn btn-sm text-lg rounded-xl bg-opacity-0 border-opacity-0 hover:bg-opacity-30 hover:border-opacity-10 hover:shadow-xl active:bg-opacity-70 text-secondary;
+  }
+}
+
 * {
   scroll-behavior: smooth;
   box-sizing: border-box;
