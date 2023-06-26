@@ -13,7 +13,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
   // const [status, setStatus] = useState<string>('Submit');
 
   return (
-    <section id="#contact" className=" py-24 antialiased lg:h-screen lg:py-1">
+    <section id="contact" className=" py-24 antialiased lg:h-screen lg:py-1">
       <div className="flex min-h-screen w-full items-center justify-center">
         <div className="flex w-full max-w-4xl flex-col justify-between  space-y-6 rounded-xl border-2 border-opacity-30 p-8 shadow-lg backdrop-blur backdrop-filter sm:p-12 md:flex-row md:space-x-6 md:space-y-0">
           <div className="flex flex-col justify-between">

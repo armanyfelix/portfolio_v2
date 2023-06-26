@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 import { themeChange } from 'theme-change';
 import themes from '../../data/themes.module';
-import HamburgerSwap from '../../svgs/HamburgerSwap';
+import HamburgerSwap from '../svgs/HamburgerSwap';
 
 interface Props {}
 
 const Header: FC<Props> = () => {
-  // const [open, setOpen] = useState<boolean>(false);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [themesOpen, setThemesOpen] = useState<boolean>(false);
   const [topClasses, setTopClasses] = useState<string>('');
   const [theme, setTheme] = useState<string>('');
 
@@ -20,20 +21,20 @@ const Header: FC<Props> = () => {
       if (currentScrollPos === 0) {
         setTopClasses('ease-in transform duration-300');
       } else {
-        setTopClasses('bg-accent-focus bg-opacity-30 shadow-lg backdrop-blur-md backdrop-brightness-75');
+        setTopClasses('bg-accent-focus bg-opacity-30 shadow-lg backdrop-blur backdrop-brightness-75');
       }
       if (prevScrollpos > currentScrollPos) {
         const position = (document.getElementById('top') as HTMLElement) || null;
         position.style.top = '0';
         const transition = (document.getElementById('top') as HTMLElement) || null;
         transition.style.transition = 'top 0.6s';
-      } else {
+      } else if (!menuOpen) {
         const position = (document.getElementById('top') as HTMLElement) || null;
         position.style.top = '-100px';
       }
       prevScrollpos = currentScrollPos;
     };
-  }, []);
+  }, [menuOpen]);
 
   useEffect(() => {
     themeChange(false);
@@ -49,107 +50,126 @@ const Header: FC<Props> = () => {
 
   return (
     <>
-      <header id="top" className={`fixed left-0 right-0 top-0 z-40 px-3 pt-3`}>
-        <div className={`group flex items-center justify-evenly rounded-xl ${topClasses}`}>
-          <div className="py-3">
+      <header id="top" className={`fixed left-0 right-0 top-0 z-40  px-3 pt-3`}>
+        <div className={`rounded-btn py-3 md:py-1 ${topClasses}`}>
+          <section className="flex w-full items-center justify-evenly">
             <Link href="/" legacyBehavior>
-              <h1 className="cursor-pointer text-2xl font-light italic text-primary">Luis Armany</h1>
+              <h1 className="cursor-pointer text-2xl font-light italic">Armany Felix</h1>
             </Link>
-          </div>
-          <div className="z-50 flex flex-col items-center justify-between sm:flex-row">
-            <nav className="hidden w-full self-end sm:w-auto md:block">
-              <ul className="flex items-center space-x-3 text-secondary">
-                <li>
-                  <Link href="#proyects" className="btn-ghost btn">
-                    Proyects
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#about" className="btn-ghost btn">
-                    About
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#contact" className="btn-ghost btn">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <div className="dropdown-end dropdown">
-                    <label tabIndex={0} className="btn-ghost btn">
+            <div className="z-50 flex flex-col items-center justify-between sm:flex-row">
+              <nav className="hidden w-full self-end sm:w-auto md:block">
+                <ul className="flex items-center space-x-3">
+                  <li>
+                    <Link href="#proyects" onClick={() => setThemesOpen(false)} className="btn-ghost btn">
+                      Proyects
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#about" onClick={() => setThemesOpen(false)} className="btn-ghost btn">
+                      About
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#contact" onClick={() => setThemesOpen(false)} className="btn-ghost btn">
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <button onClick={() => setThemesOpen(!themesOpen)} className="btn-ghost btn w-full">
                       {theme && themes.find((t) => t.name === theme)?.emoji}
-                    </label>
-                    <ul
-                      tabIndex={0}
-                      className="dropdown-content menu rounded-box z-[1] mt-4 max-h-[60vh] w-[30rem] overflow-auto bg-accent-focus bg-opacity-30 p-3 shadow-lg backdrop-blur-md backdrop-brightness-75"
-                    >
-                      {themes.map((t: { name: string; emoji: string }) => (
-                        <li key={t.name}>
-                          <button
-                            data-set-theme={t.name}
-                            data-act-class="ACTIVECLASS"
-                            onClick={() => setTheme(t.name)}
-                          >
-                            {t.emoji} {t.name}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </nav>
-            <label className="swap swap-rotate inline-grid p-0 md:hidden">
-              <input type="checkbox" />
-              <HamburgerSwap />
-            </label>
-          </div>
-        </div>
-        {/* <section className="text-center">
-          <ul className="flex justify-evenly items-center">
-            <li>
-              <Link onClick={() => setOpen(false)} href="#proyects" className="btn btn-ghost">
-                Proyects
-              </Link>
-            </li>
-            <li>
-              <Link onClick={() => setOpen(false)} href="#about" className="btn btn-ghost">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link onClick={() => setOpen(false)} href="#contact" className="btn btn-ghost">
-                Contact
-              </Link>
-            </li>
-          </ul>
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn-nav">
-              {theme && `${themes.find((t) => t.name === theme)?.emoji} ${theme}`}
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu dropdown-content max-h-[40rem] z-[1] p-2 shadow bg-base-100 rounded-box w-40 mt-4"
-            >
-              {themes.map((theme) => (
-                <li key={theme.name}>
-                  <button
-                    data-set-theme={theme.name}
-                    data-act-class="ACTIVECLASS"
-                    onClick={() => setTheme(theme.name)}
-                  >
-                    {theme.emoji} {theme.name}
-                  </button>
-                </li>
-              ))}
+                    </button>
+                  </li>
+                </ul>
+              </nav>
+              <label className="swap swap-rotate inline-grid p-0 md:hidden">
+                <input type="checkbox" checked={menuOpen} onChange={() => setMenuOpen(!menuOpen)} />
+                <HamburgerSwap />
+              </label>
+            </div>
+          </section>
+          <section
+            className={`${
+              menuOpen
+                ? 'block transform transition duration-700 ease-in-out '
+                : 'hidden transform transition duration-700 ease-in-out'
+            } mx-4 mt-4`}
+          >
+            <ul>
+              <li>
+                <Link
+                  href="#proyects"
+                  onClick={() => {
+                    setMenuOpen(!menuOpen);
+                    setThemesOpen(false);
+                  }}
+                  className="btn-ghost btn w-full"
+                >
+                  Proyects
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#about"
+                  onClick={() => {
+                    setMenuOpen(!menuOpen);
+                    setThemesOpen(false);
+                  }}
+                  className="btn-ghost btn w-full"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#contact"
+                  onClick={() => {
+                    setMenuOpen(!menuOpen);
+                    setThemesOpen(false);
+                  }}
+                  className="btn-ghost btn w-full"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <button onClick={() => setThemesOpen(!themesOpen)} className="btn-ghost btn w-full">
+                  {theme && themes.find((t) => t.name === theme)?.emoji}
+                </button>
+              </li>
             </ul>
-          </div>
-        </section> */}
+          </section>
+        </div>
       </header>
-      {/* <div
-        className={`${open ? 'block' : 'hidden'} opacity-50 bg-black fixed inset-0 z-40`}
-        onClick={() => setOpen(false)}
-      /> */}
+      <ul
+        className={`${
+          themesOpen ? 'fixed' : 'hidden'
+        } rounded-box right-1/2 top-[16.4rem] z-40 mt-7 max-h-[40vh] w-[93vw] translate-x-1/2 overflow-auto bg-accent-focus bg-opacity-30 p-3 shadow-lg backdrop-blur-md backdrop-brightness-75 md:right-1/4 md:top-[3.2rem] md:max-h-[70vh] md:w-auto md:translate-x-24`}
+      >
+        {themes.map((t: { name: string; emoji: string }) => (
+          <li key={t.name}>
+            <button
+              data-set-theme={t.name}
+              data-act-class="ACTIVECLASS"
+              onClick={() => {
+                setTheme(t.name);
+                setThemesOpen(false);
+                setMenuOpen(false);
+              }}
+              className="btn-ghost btn w-full md:justify-start"
+            >
+              {t.emoji} {t.name}
+            </button>
+          </li>
+        ))}
+      </ul>
+      <div
+        className={`${menuOpen ? 'block' : 'hidden'} fixed inset-0 z-30 bg-black opacity-50`}
+        onClick={() => setMenuOpen(false)}
+      />
+      <div
+        className={`${themesOpen ? 'block' : 'hidden'} fixed inset-0 z-30`}
+        onClick={() => setThemesOpen(false)}
+      />
     </>
   );
 };

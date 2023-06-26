@@ -33,7 +33,7 @@ const themes = [
   },
   {
     name: 'cyberpunk',
-    emoji: '👾',
+    emoji: '🦾',
   },
   {
     name: 'valentine',
