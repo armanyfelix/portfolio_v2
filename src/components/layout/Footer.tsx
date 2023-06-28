@@ -8,7 +8,7 @@ interface Props {}
 
 const Footer: FC<Props> = () => {
   return (
-    <footer className="footer footer-center rounded bg-primary bg-opacity-20 p-10 text-base-content shadow-xl backdrop-blur backdrop-brightness-90 backdrop-filter">
+    <footer className="footer footer-center rounded bg-primary bg-opacity-20 p-10 shadow-xl backdrop-blur backdrop-brightness-90">
       <div className="grid grid-flow-col gap-4">
         <Link href="#proyects" className="link-hover link">
           Proyects

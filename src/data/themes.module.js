@@ -1,5 +1,9 @@
 const themes = [
   {
+    name: 'mytheme',
+    emoji: '😎',
+  },
+  {
     name: 'light',
     emoji: '☀️',
   },

@@ -21,7 +21,7 @@ const Header: FC<Props> = () => {
       if (currentScrollPos === 0) {
         setTopClasses('ease-in transform duration-300');
       } else {
-        setTopClasses('bg-primary bg-opacity-30 shadow-lg backdrop-blur backdrop-brightness-75');
+        setTopClasses('bg-primary bg-opacity-20 p-10 shadow-xl backdrop-blur backdrop-brightness-90');
       }
       if (prevScrollpos > currentScrollPos) {
         const position = (document.getElementById('top') as HTMLElement) || null;
