@@ -12,8 +12,13 @@
   transform: rotate(45deg);
   border-left: none;
   border-top: none;
-  border-right: 2px #fff solid;
-  border-bottom: 2px #fff solid;
+  border-right: 1px #fff solid;
+  border-bottom: 1px #fff solid;
+  /*webkit-background-clip: text;
+  color: transparent;
+  filter: invert(100%) grayscale(1);
+  mix-blend-mode: difference;
+  -webkit-filter: invert(100%) grayscale(1);*/
 }
 
 .arrow:before {
@@ -26,6 +31,11 @@
   border-top: none;
   border-right: 1px #fff solid;
   border-bottom: 1px #fff solid;
+  /*-webkit-background-clip: text;
+  color: transparent;
+  filter: invert(100%) grayscale(1);
+  mix-blend-mode: difference;
+  -webkit-filter: invert(100%) grayscale(1);*/
   animation-duration: 2s;
   animation-iteration-count: infinite;
   animation-name: arrow;

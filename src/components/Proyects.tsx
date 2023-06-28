@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import Btn from '../styles/customBtn.module.css';
 // import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import { FC } from 'react';
 // import marquee from '../styles/marquee.module.css'
@@ -14,7 +13,7 @@ interface ProyectsProps {}
 
 const data = [
   {
-    title: 'Civity CMS',
+    name: 'Civity CMS',
     description:
       'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
     url: 'https://admin.civity.mx/',
@@ -23,7 +22,7 @@ const data = [
     images: ['civity_cms_1.png', 'civity_cms_2.png', 'civity_cms_3.png', 'civity_cms_4.png'],
   },
   {
-    title: 'Civity App',
+    name: 'Civity App',
     description:
       "The Civity app is designed for residents of condominiums managed by Civity CMS. With rhis app, you can pay your bills, reserve common areas, vote on condo decisions, report incidents, and stay on top of what's happening in your community. It is the easiest way to manage your property and access all the services of your condominium.",
     url: 'https://app.civity.mx/',
@@ -58,23 +57,23 @@ const data = [
 const Proyects: FC<ProyectsProps> = () => {
   return (
     <section id="proyects" className="mt-40 min-h-screen md:pt-24">
-      <div className="flex items-center justify-between sm:m-2 md:m-3 lg:m-4 lg:px-52 xl:m-5">
-        <h1 className="items-center text-3xl sm:text-3xl md:text-5xl lg:w-3/5 lg:text-8xl">Proyects</h1>
-        <Link href="https://www.github.com/armanyfelix" target="_blank" className={Btn.btn}>
-          <span className="px-6 font-mono text-2xl md:text-4xl">github</span>
+      <div className="mx-auto flex w-2/4 items-center justify-evenly">
+        <h1 className="text-3xl text-secondary sm:text-3xl md:text-5xl lg:w-3/5 lg:text-7xl">Proyects</h1>
+        <Link href="https://www.github.com/armanyfelix" target="_blank" className="btn-secondary btn">
+          <Image src="/icons/github.svg" alt="github" width={50} height={50} />
         </Link>
       </div>
-      <div className="carousel w-full px-5 md:p-20">
+      <div className="carousel mx-auto w-full px-5 md:w-3/4 md:p-20">
         {data.map((p, i) => (
           <div
             key={`proyect${i}`}
             id={`proyect${i}`}
-            className="carousel-item relative w-full px-5 py-20 md:max-h-[80vh] md:px-20"
+            className="carousel-item relative w-full md:max-h-[80vh] "
           >
-            <div className="justify-between rounded-2xl bg-primary bg-opacity-20 p-6 shadow-xl ring-2 ring-primary backdrop-blur backdrop-brightness-90 backdrop-filter md:p-10 lg:flex">
+            <div className="  justify-between rounded-2xl bg-primary bg-opacity-20 p-6 shadow-xl ring-2 ring-primary backdrop-blur backdrop-brightness-90 backdrop-filter lg:flex">
               <div className="md:p-5 lg:w-2/5">
                 <Link href="https://www.civity.mx" target="_blank" className="text-6xl">
-                  {p.title}
+                  {p.name}
                 </Link>
                 <p className="my-6 text-justify">{p.description}</p>
               </div>
@@ -95,16 +94,22 @@ const Proyects: FC<ProyectsProps> = () => {
                 ))}
               </div>
             </div>
-            <div className="absolute left-5 right-5 top-[93%] flex -translate-y-1/2 transform justify-between md:top-1/2">
-              <a href={`#proyect${i === 0 ? data.length - 1 : i - 1}`} className="btn-circle btn">
-                ❮
-              </a>
-              <a href={`#proyect${i === data.length - 1 ? 0 : i + 1}`} className="btn-circle btn">
-                ❯
-              </a>
-            </div>
           </div>
         ))}
+      </div>
+      <div className="flex w-full items-center justify-center gap-2 py-2">
+        <a href="#proyect0" className="btn-circle btn">
+          ❮
+        </a>
+        {data.map((p, i) => (
+          <a key={p.name} href={`#proyect_${i}`} className="btn-xs btn">
+            {i + 1}
+          </a>
+        ))}
+
+        <a href="#proyect1" className="btn-circle btn">
+          ❯
+        </a>
       </div>
     </section>
   );

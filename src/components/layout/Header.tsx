@@ -54,7 +54,7 @@ const Header: FC<Props> = () => {
         <div className={`rounded-btn py-3 md:py-1 ${topClasses}`}>
           <section className="flex w-full items-center justify-evenly">
             <Link href="/" legacyBehavior>
-              <h1 className="cursor-pointer text-2xl font-light italic">Armany Felix</h1>
+              <h1 className="cursor-pointer text-2xl font-light italic text-secondary">Armany Felix</h1>
             </Link>
             <div className="z-50 flex flex-col items-center justify-between sm:flex-row">
               <nav className="hidden w-full self-end sm:w-auto md:block">
@@ -140,6 +140,7 @@ const Header: FC<Props> = () => {
           </section>
         </div>
       </header>
+      {/* THEMES MENU */}
       <ul
         className={`${
           themesOpen ? 'fixed' : 'hidden'
@@ -162,6 +163,7 @@ const Header: FC<Props> = () => {
           </li>
         ))}
       </ul>
+      {/* BACKDROPS */}
       <div
         className={`${menuOpen ? 'block' : 'hidden'} fixed inset-0 z-30 bg-black opacity-50`}
         onClick={() => setMenuOpen(false)}
