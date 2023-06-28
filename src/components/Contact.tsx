@@ -36,13 +36,13 @@ const Contact: FC<Props> = ({ sendEmail }) => {
   };
 
   return (
-    <section id="contact" className="  antialiased lg:h-screen lg:py-1">
+    <section id="contact" className="antialiased lg:h-screen lg:py-1">
       <div className="flex min-h-screen w-full items-center justify-center">
-        <div className="flex w-full max-w-4xl flex-col justify-between  space-y-6 rounded-xl border-2 border-opacity-30 p-8 shadow-lg backdrop-blur backdrop-filter sm:p-12 md:flex-row md:space-x-6 md:space-y-0">
+        <div className="flex w-full max-w-4xl flex-col justify-between space-y-6 rounded-xl border-2 border-opacity-30 bg-neutral bg-opacity-30 p-8 shadow-lg backdrop-blur backdrop-filter sm:p-12 md:flex-row md:space-x-6 md:space-y-0">
           <div className="flex flex-col justify-between">
             <div>
-              <h1 className="font-simplex text-5xl font-bold tracking-wide">Contact</h1>
-              <p className="pb-9 pt-2 text-sm">
+              <h1 className="text-5xl font-bold tracking-wide text-secondary">Contact</h1>
+              <p className="pb-9 pt-2 text-sm text-accent">
                 If you are interested in working with me, please leave me a message.
                 <br />I will answer you as soon as possible.
               </p>
@@ -71,7 +71,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
             </div>
           </div>
           <div>
-            <div className="box-border rounded-xl border-2 border-opacity-30 bg-opacity-10 p-8 shadow-lg backdrop-blur backdrop-contrast-150 backdrop-filter md:w-80">
+            <div className="box-border rounded-xl  bg-primary bg-opacity-10 p-8 shadow-lg backdrop-blur backdrop-filter md:w-80">
               <form action={handleSendEmail} className="flex flex-col space-y-4">
                 <input
                   type="text"

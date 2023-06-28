@@ -9,7 +9,7 @@ interface Props {}
 
 const About: FC<Props> = () => {
   return (
-    <section id="about" className="min-h-screen w-full">
+    <section id="about" className="min-h-screen w-full pt-60">
       <div className="mx-auto flex w-2/4 items-center justify-evenly">
         <h1 className="text-3xl text-secondary sm:text-3xl md:text-5xl lg:w-3/5 lg:text-7xl">About Me</h1>
         <Link
