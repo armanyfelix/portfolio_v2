@@ -4,19 +4,20 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import me from '../../public/images/about/ME.png';
-import resumen from '../styles/customBtn.module.css';
 
 interface Props {}
 
 const About: FC<Props> = () => {
   return (
-    <section id="about" className="mt-40 min-h-screen w-full">
-      <div className="flex items-center justify-between px-10 sm:m-2 md:m-3 lg:m-4 lg:px-52 xl:m-5">
-        <h1 className="items-center text-3xl sm:text-3xl md:text-5xl lg:text-8xl">About Me</h1>
-        <Link href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true">
-          <button className={resumen.btn}>
-            <span className="px-9 pb-1.5 font-mono text-base sm:text-2xl md:text-2xl">Resumen</span>
-          </button>
+    <section id="about" className="min-h-screen w-full">
+      <div className="mx-auto flex w-2/4 items-center justify-evenly">
+        <h1 className="text-3xl text-secondary sm:text-3xl md:text-5xl lg:w-3/5 lg:text-7xl">About Me</h1>
+        <Link
+          href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true"
+          target="_blank"
+          className="glass btn pl-2.5 pr-3 text-xl font-bold text-secondary"
+        >
+          CV
         </Link>
       </div>
       <div className="mt-28 flex-wrap items-center justify-center bg-opacity-5 text-center shadow-2xl backdrop-blur-sm md:flex lg:px-20">
@@ -25,13 +26,10 @@ const About: FC<Props> = () => {
         </div>
         <div className="mx-auto p-6 md:w-1/2 lg:px-20">
           <p className="text-justify text-base lg:text-lg ">
-            Hi there! I{'’'}m a software developer with a passion for creating innovative solutions that make
+            Hi there! I{'’'}m a software developer with the mission of creating innovative solutions that make
             people{'’'}s lives easier. Since I was 15 years old I{"'"}ve been creating basic HTML websites,
-            android apps and just play around with tech, when I{'’'}m not coding away at my computer, you can
-            find me exploring new technologies, tinkering with gadgets, or playing video games. I love a good
-            challenge and am always looking for ways to improve my skills and push the boundaries of what{'’'}
-            s possible. So if you{'’'}re looking for a developer who{'’'}s equal parts creative and technical,
-            look no further - I{'’'}m your person!
+            android apps and just playing around with tech, I love a good challenge and I am always looking
+            for ways to improve my skills and push the boundaries of what{'’'}s possible.
           </p>
           {/* <p className="text-justify lg:text-lg md:text-base text-white">
             With a strong background in both front-end and back-end development, I am experienced in working

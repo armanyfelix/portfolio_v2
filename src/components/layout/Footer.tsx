@@ -30,10 +30,10 @@ const Footer: FC<Props> = () => {
         </div>
         <div className="flex items-end justify-end space-x-3">
           <Link href="https://www.linkedin.com/in/luis-armany-felix-vega-9b60241b8/">
-            <Image src="/icons/linkedinF.svg" width="25" height="25" alt="linkedIn" />
+            <Image src="/icons/linkedin.svg" width="25" height="25" alt="linkedIn" />
           </Link>
           <Link href="https://github.com/armanyfelix/">
-            <Image src="/icons/githubF.svg" width="25" height="25" alt="github" />
+            <Image src="/icons/github.svg" width="25" height="25" alt="github" />
           </Link>
         </div>
       </div>

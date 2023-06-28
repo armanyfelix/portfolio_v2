@@ -1,60 +1,91 @@
 'use client';
 
-// import Image from 'next/image';
+import { ArrowTopRightOnSquareIcon, CodeBracketSquareIcon } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
 import Github from './svg/Github';
 
 interface ProyectsProps {}
 
-// const data = [
-//   {
-//     name: 'Civity CMS',
-//     description:
-//       'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
-//     url: 'https://admin.civity.mx/',
-//     stack: [],
-//     type: 'web',
-//     images: ['civity_cms_1.png', 'civity_cms_2.png', 'civity_cms_3.png', 'civity_cms_4.png'],
-//   },
-//   {
-//     name: 'Civity App',
-//     description:
-//       "The Civity app is designed for residents of condominiums managed by Civity CMS. With rhis app, you can pay your bills, reserve common areas, vote on condo decisions, report incidents, and stay on top of what's happening in your community. It is the easiest way to manage your property and access all the services of your condominium.",
-//     url: 'https://app.civity.mx/',
-//     stack: [],
-//     type: 'mobile',
-//     images: ['civity_app_1.png', 'civity_app_2.png', 'civity_app_3.png', 'civity_app_4.png'],
-//   },
-//   // {
-//   //   name: 'Website and Store',
-//   //   url: 'https://omar-villatoro.netlify.app/',
-//   //   type: 'web',
-//   //   source: 'https://github.com/armanyfelix/villatoro',
-//   //   description:
-//   //     "This is a website for a artists with a e-commerce to sell they painting, also has a gallery and information about his work's. Maked with MERN stack from scratch.",
-//   //   images: [],
-//   //   tecs: ['React', 'Redux', 'MongoDB', 'Express', 'Stripe', 'Taiwindcss'],
-//   // },
-//   {
-//     name: "Car's bodyshop",
-//     url: 'https://felixgarages.netlify.app/',
-//     source: 'https://github.com/armanyfelix/felixgarage',
-//     description:
-//       "This is a landing page for a car's bodyshop that has a gallery with they work and different contact methods.",
-//     images: [],
-//     stack: ['React', 'Tailwindcss', 'Express', 'Messenger-chat', 'Google-Maps-api'],
-//   },
-// ];
+const data = [
+  {
+    name: 'Civity CMS',
+    description:
+      'Civity is a property management software that offers you management tools that facilitate a clear and organized administration. From billing automation, common area reservations, voting, guest control and mouch more. Your administration will be more efficient, streamline access to your community information, you will save time and strengthen the management of your Condominiums and Buildings.',
+    url: 'https://admin.civity.mx/',
+    source: '',
+    stack: [],
+    type: 'web',
+    images: ['civity_cms_1.png', 'civity_cms_2.png', 'civity_cms_3.png', 'civity_cms_4.png'],
+  },
+  {
+    name: 'Civity App',
+    description:
+      "The Civity app is designed for residents of condominiums managed by Civity CMS. With rhis app, you can pay your bills, reserve common areas, vote on condo decisions, report incidents, and stay on top of what's happening in your community. It is the easiest way to manage your property and access all the services of your condominium.",
+    url: 'https://app.civity.mx/',
+    stack: [],
+    source: '',
+    type: 'mobile',
+    images: ['civity_app_1.png', 'civity_app_2.png', 'civity_app_3.png', 'civity_app_4.png'],
+  },
+  // {
+  //   name: 'Website and Store',
+  //   url: 'https://omar-villatoro.netlify.app/',
+  //   type: 'web',
+  //   source: 'https://github.com/armanyfelix/villatoro',
+  //   description:
+  //     "This is a website for a artists with a e-commerce to sell they painting, also has a gallery and information about his work's. Maked with MERN stack from scratch.",
+  //   images: [],
+  //   tecs: ['React', 'Redux', 'MongoDB', 'Express', 'Stripe', 'Taiwindcss'],
+  // },
+  // {
+  //   name: "Car's bodyshop",
+  //   url: 'https://felixgarages.netlify.app/',
+  //   source: 'https://github.com/armanyfelix/felixgarage',
+  //   description:
+  //     "This is a landing page for a car's bodyshop that has a gallery with they work and different contact methods.",
+  //   images: [],
+  //   stack: ['React', 'Tailwindcss', 'Express', 'Messenger-chat', 'Google-Maps-api'],
+  // },
+];
 
 const Proyects: FC<ProyectsProps> = () => {
   return (
-    <section id="proyects" className="min-h-screen">
-      <div className="mx-auto flex w-2/4 translate-y-72 items-center justify-evenly">
+    <section id="proyects" className="min-h-screen pt-36">
+      <div className="mx-auto flex w-2/4 items-center justify-evenly">
         <h1 className="text-3xl text-secondary sm:text-3xl md:text-5xl lg:w-3/5 lg:text-7xl">Proyects</h1>
-        <Link href="https://www.github.com/armanyfelix" target="_blank" className="glass btn">
+        <Link href="https://www.github.com/armanyfelix" target="_blank" className="glass btn px-2">
           <Github />
         </Link>
+      </div>
+      <div className="mt-36 grid w-full grid-cols-2 justify-items-center">
+        {data.map((d) => (
+          <div key={d.name} className="card glass w-96 self-center">
+            <figure>
+              <Image
+                src={`/images/proyects/${d.images[0]}`}
+                width={d.type === 'web' ? 384 : 90}
+                height={384}
+                alt=""
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{d.name}</h2>
+              <p>{d.description}</p>
+              <div className="card-actions mt-4 justify-end">
+                {d?.source && (
+                  <Link href={d?.source} className="btn-primary btn px-3">
+                    <CodeBracketSquareIcon className="h-6 w-6" />
+                  </Link>
+                )}
+                <Link href={d.url} className="btn-primary btn px-3">
+                  <ArrowTopRightOnSquareIcon className="h-6 w-6" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
