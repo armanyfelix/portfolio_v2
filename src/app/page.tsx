@@ -45,20 +45,9 @@ const Page: FC<Props> = () => {
     await new Promise((resolve, reject) => {
       transporter.sendMail(mail, (err, info) => {
         if (err) {
-          // console.error(err);
           reject(err);
-          // res.status(500).json({
-          //   error: 'error' + JSON.stringify(err),
-          //   status: 'ERROR',
-          //   message: 'There was an error, the email could not be sent',
-          // });
         } else {
           resolve(info);
-          // res.status(200).json({
-          //   message: 'Mail sent successfully',
-          //   status: 'OK',
-          //   error: '',
-          // });
         }
       });
     });
@@ -72,10 +61,8 @@ const Page: FC<Props> = () => {
     await new Promise((resolve, reject) => {
       transporter.sendMail(mailReply, (err, info) => {
         if (err) {
-          console.log(err);
           reject(err);
         } else {
-          console.log(info);
           resolve(info);
         }
       });

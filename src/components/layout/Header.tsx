@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { FC, useEffect, useState } from 'react';
 import { themeChange } from 'theme-change';
 import themes from '../../data/themes.module';
-import HamburgerSwap from '../svgs/HamburgerSwap';
+import HamburgerSwap from '../svg/HamburgerSwap';
 
 interface Props {}
 
@@ -21,7 +21,7 @@ const Header: FC<Props> = () => {
       if (currentScrollPos === 0) {
         setTopClasses('ease-in transform duration-300');
       } else {
-        setTopClasses('bg-accent-focus bg-opacity-30 shadow-lg backdrop-blur backdrop-brightness-75');
+        setTopClasses('bg-primary bg-opacity-30 shadow-lg backdrop-blur backdrop-brightness-75');
       }
       if (prevScrollpos > currentScrollPos) {
         const position = (document.getElementById('top') as HTMLElement) || null;
@@ -38,23 +38,27 @@ const Header: FC<Props> = () => {
 
   useEffect(() => {
     themeChange(false);
-  }, []);
 
-  useEffect(() => {
-    async function init() {
-      const currentTheme = (await localStorage.getItem('theme')) || 'dark';
+    function init() {
+      let systemTheme = 'dark';
+      const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+      if (!darkThemeMq.matches) {
+        systemTheme = 'light';
+      }
+      const currentTheme = localStorage.getItem('theme') || systemTheme;
       setTheme(currentTheme);
     }
+
     init();
   }, []);
 
   return (
     <>
-      <header id="top" className={`fixed left-0 right-0 top-0 z-40  px-3 pt-3`}>
+      <header id="top" className={`fixed left-0 right-0 top-0 z-40 px-3 pt-3`}>
         <div className={`rounded-btn py-3 md:py-1 ${topClasses}`}>
           <section className="flex w-full items-center justify-evenly">
             <Link href="/" legacyBehavior>
-              <h1 className="cursor-pointer text-2xl font-light italic text-secondary">Armany Felix</h1>
+              <h1 className="cursor-pointer text-2xl font-light italic ">Armany Felix</h1>
             </Link>
             <div className="z-50 flex flex-col items-center justify-between sm:flex-row">
               <nav className="hidden w-full self-end sm:w-auto md:block">
@@ -74,7 +78,7 @@ const Header: FC<Props> = () => {
                       Contact
                     </Link>
                   </li>
-                  <li>
+                  <li className="tooltip tooltip-bottom" data-tip={theme}>
                     <button onClick={() => setThemesOpen(!themesOpen)} className="btn-ghost btn w-full">
                       {theme && themes.find((t) => t.name === theme)?.emoji}
                     </button>

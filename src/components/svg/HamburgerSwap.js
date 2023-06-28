@@ -2,7 +2,7 @@ export default function HamburgerSwap() {
   return (
     <>
       <svg
-        className="swap-off fill-current"
+        className="swap-off fill-secondary"
         xmlns="htttp://www.w3.org/2000/svg"
         width="32"
         height="32"
@@ -11,7 +11,7 @@ export default function HamburgerSwap() {
         <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
       </svg>
       <svg
-        className="swap-on fill-current"
+        className="swap-on fill-secondary"
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
