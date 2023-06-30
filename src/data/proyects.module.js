@@ -26,14 +26,6 @@ const ProyectsData = [
     image: '/img/criptoQuote.png',
     tecs: ' Html JavaScript Css Normalize Skeleton',
   },
-  {
-    name: 'Simple CRM',
-    url: 'https://simplecrm.netlify.app',
-    source: 'https://github.com/armanyfelix/CRM',
-    description: 'A simple client relationship manager who work with a indexed database in the browser.',
-    image: '/img/crm.png',
-    tecs: ' I going to do it with nextjs, firebase and recoil very soon',
-  },
 ];
 
 module.exports = ProyectsData;
