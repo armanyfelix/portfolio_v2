@@ -54,8 +54,8 @@ const data = [
 const Proyects: FC<ProyectsProps> = () => {
   return (
     <section id="proyects" className="min-h-screen pt-36">
-      <div className="mx-auto flex items-center justify-evenly md:w-2/4">
-        <h1 className="text-5xl text-secondary lg:w-3/5 lg:text-7xl">Proyects</h1>
+      <div className="mx-auto flex w-full items-center justify-between px-5 sm:justify-evenly sm:px-10">
+        <h1 className="text-5xl font-bold text-secondary lg:text-7xl">Proyects</h1>
         <Link href="https://www.github.com/armanyfelix" target="_blank" className="glass btn px-2">
           <Github />
         </Link>
@@ -65,7 +65,7 @@ const Proyects: FC<ProyectsProps> = () => {
           <div key={d.name} className="m-3">
             <div className="card glass h-full w-full max-w-[28rem]">
               <figure>
-                <div className="carousel-center carousel h-[240px] max-h-[240px] min-h-[240px] w-full">
+                <div className="carousel-center carousel h-[200px] max-h-[200px] min-h-[240px] w-full md:max-h-[240px]">
                   {d.images?.map((img, j) => (
                     <div
                       key={img}

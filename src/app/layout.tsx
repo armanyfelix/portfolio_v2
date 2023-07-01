@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Ysabeau } from 'next/font/google';
 import { FC, ReactNode } from 'react';
-import Background from '../components/layout/Background';
+// import Background from '../components/layout/Background';
 import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import '../styles/globals.css';
@@ -23,7 +23,7 @@ const RootLayout: FC<Props> = ({ children }) => {
   return (
     <html lang="en" className={ysabeau.className}>
       <body>
-        <Background />
+        {/* <Background /> */}
         <Header />
         <main className="relative">{children}</main>
         <Footer />

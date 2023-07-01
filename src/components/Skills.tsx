@@ -7,14 +7,14 @@ interface Props {}
 
 const Skills: FC<Props> = () => {
   return (
-    <section className="lg:min-h- mx-auto items-center justify-center md:w-2/3 lg:pt-4">
+    <section className="mx-auto my-32 items-center justify-center md:w-2/3">
       <div className="mt-8 md:mx-28 lg:mx-52">
-        <h1 className="pb-10 text-center text-3xl font-bold">Technologies I{"'"}m working with:</h1>
-        <div className="mx-auto justify-between sm:flex">
+        <h1 className="pb-10 text-center text-3xl font-bold">Technologies I like:</h1>
+        <div className="flex flex-col items-center justify-center md:justify-between">
           <ul className="list-none space-y-5 p-5">
             <li className="flex items-center">
               <Image src="/icons/javascript.svg" width="38" height="38" alt="javaScript" />
-              <span className="mx-2">JavaScript (ES6+)</span>
+              <span className="mx-2">JavaScript</span>
             </li>
             <li className="flex items-center">
               <Image src="/icons/html5.svg" width="38" height="38" alt="html5" />

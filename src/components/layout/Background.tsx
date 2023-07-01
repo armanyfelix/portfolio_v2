@@ -6,16 +6,21 @@ import waves from 'vanta/dist/vanta.waves.min';
 
 export default function Background() {
   const [vantaEffect, setVantaEffect] = useState<any>(0);
-  // const [theme, setTheme] = useState<string>('');
+  const [theme] = useState<string>(localStorage.getItem('theme') || 'dark');
   const vantaRef = useRef(null);
 
   useEffect(() => {
-    let theme = '';
-    async function init() {
-      theme = (await localStorage.getItem('theme')) || 'dark';
+    // window.addEventListener('storage', () => {
+    //   setTheme(localStorage.getItem('theme') || 'dark');
+
+    // });
+    const init = async () => {
+      // let currentTheme = localStorage.getItem('theme') || 'dark';
+      // console.log(currentTheme);
       // if (vantaEffect) vantaEffect.destroy();
-    }
+    };
     init();
+    console.log('on effect', theme);
     if (theme) {
       let color = '';
       switch (theme) {
@@ -29,7 +34,7 @@ export default function Background() {
           color = '#FAF7F5';
           break;
         case 'bumblebee':
-          color = '#FFFFFF';
+          color = '#fcfcfc';
           break;
         case 'emerald':
           color = '#FFFFFF';
@@ -108,36 +113,37 @@ export default function Background() {
           break;
       }
       if (!vantaEffect) {
-        setVantaEffect(
-          waves({
-            el: vantaRef.current,
-            THREE,
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: true,
-            minHeight: 100.0,
-            minWidth: 100.0,
-            scale: 1.0,
-            scaleMobile: 0.5,
-            color,
-            shininess: 30,
-            waveHeight: 30,
-            waveSpeed: 0.7,
-            zoom: 1,
-          })
-        );
+        const effect = waves({
+          el: vantaRef.current,
+          THREE,
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: true,
+          minHeight: 100.0,
+          minWidth: 100.0,
+          scale: 1.0,
+          scaleMobile: 0.5,
+          color,
+          shininess: 30,
+          waveHeight: 30,
+          waveSpeed: 0.7,
+          zoom: 1,
+        });
+        setVantaEffect(effect);
       }
       return () => {
         if (vantaEffect) vantaEffect.destroy();
       };
     }
-  }, [vantaEffect]);
+  }, [theme, vantaEffect]);
 
   return (
     <div>
-      <div id="main" ref={vantaRef} className="fixed bottom-0 left-0 right-0 top-0">
-        {' '}
-      </div>
+      {theme && (
+        <div id="main" ref={vantaRef} className="fixed bottom-0 left-0 right-0 top-0">
+          {' '}
+        </div>
+      )}
     </div>
   );
 }
