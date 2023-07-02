@@ -10,18 +10,26 @@ import {
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 
 interface Props {
   sendEmail: (data: FormData) => Promise<void>;
 }
 
 const Contact: FC<Props> = ({ sendEmail }) => {
+  const form = useRef<any>(null);
   const [sending, setSending] = useState<boolean>(false);
   const [error, setError] = useState<boolean | undefined>(undefined);
 
+  function validateEmail(email: string): boolean {
+    const res =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return res.test(String(email).toLowerCase());
+  }
+
   const handleSendEmail = async (e: FormData) => {
     try {
+      setSending(true);
       await sendEmail(e);
       setError(false);
       setSending(false);
@@ -72,7 +80,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
           </div>
           <div>
             <div className="rounded-box box-border bg-black bg-opacity-10 p-4 shadow-xl md:w-80 md:p-8">
-              <form action={handleSendEmail} className="flex flex-col space-y-4">
+              <form action={handleSendEmail} className="flex flex-col space-y-4" ref={form}>
                 <input
                   type="text"
                   name="name"
@@ -93,10 +101,76 @@ const Contact: FC<Props> = ({ sendEmail }) => {
                   placeholder="Message"
                   required
                 />
+                <div className="rating rating-half rating-lg">
+                  <input type="radio" name="rating-10" className="rating-hidden" />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-1 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-2 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-1 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-2 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-1 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-2 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-1 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-2 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-1 mask-star-2 bg-orange-400"
+                  />
+                  <input
+                    type="radio"
+                    name="rating-10"
+                    className="mask mask-half-2 mask-star-2 bg-orange-400"
+                  />
+                </div>
                 <div className="justify-end text-right">
-                  <button type="submit" className="btn-primary btn" onClick={() => setSending(true)}>
+                  <button
+                    type="submit"
+                    className="btn-primary btn w-full"
+                    onClick={() => {
+                      if (
+                        form.current &&
+                        form.current['name'].value &&
+                        validateEmail(form.current['email']?.value) &&
+                        form.current['message'].value
+                      ) {
+                        setSending(true);
+                      }
+                    }}
+                  >
                     {sending ? (
-                      <span className="loading loading-dots loading-md" />
+                      <span className="loading loading-dots loading-lg" />
                     ) : (
                       <PaperAirplaneIcon className="h-6 w-6" />
                     )}
@@ -109,7 +183,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
       </div>
       {error ? (
         <button
-          className="alert alert-error fixed left-3 right-3 top-20 z-50 w-auto"
+          className="alert alert-error fixed left-3 right-3 top-2 z-50 w-full"
           onClick={() => setError(undefined)}
         >
           <XCircleIcon className="h-9 w-9" />
@@ -118,11 +192,11 @@ const Contact: FC<Props> = ({ sendEmail }) => {
       ) : (
         error === false && (
           <button
-            className="alert alert-success fixed left-3 right-3 top-20 z-50 w-auto"
+            className="alert alert-success fixed right-1/2 top-24 z-50 w-auto translate-x-1/2"
             onClick={() => setError(undefined)}
           >
             <CheckCircleIcon className="h-9 w-9" />
-            <span>The mail was send successfully! I will answer you ASAP. 😜</span>
+            <span>The mail was send successfully! I will answer you ASAP. ✌️😁</span>
           </button>
         )
       )}
