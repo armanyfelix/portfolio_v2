@@ -25,7 +25,7 @@ const Header: FC<Props> = () => {
       if (currentScrollPos === 0) {
         setTopClasses('ease-in transform duration-300');
       } else {
-        setTopClasses('bg-base-100 bg-opacity-30 p-10 shadow-xl backdrop-blur-md');
+        setTopClasses('bg-accent bg-opacity-30 shadow-xl backdrop-blur-md');
       }
       if (prevScrollpos > currentScrollPos) {
         const position = (document.getElementById('top') as HTMLElement) || null;
@@ -63,22 +63,22 @@ const Header: FC<Props> = () => {
           color = '#000914';
           break;
         case 'light':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'dark':
           color = '#1D232A';
           break;
         case 'cupcake':
-          color = '#FAF7F5';
+          color = '#b9b0b0';
           break;
         case 'bumblebee':
-          color = '#fcfcfc';
+          color = '#b1abab';
           break;
         case 'emerald':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'corporate':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'synthwave':
           color = '#1A103C';
@@ -96,7 +96,7 @@ const Header: FC<Props> = () => {
           color = '#212121';
           break;
         case 'garden':
-          color = '#E9E7E7';
+          color = '#b3adad';
           break;
         case 'forest':
           color = '#171212';
@@ -105,16 +105,16 @@ const Header: FC<Props> = () => {
           color = '#345CA8';
           break;
         case 'lofi':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'pastel':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'fantasy':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'wireframe':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'black':
           color = '#000000';
@@ -126,19 +126,19 @@ const Header: FC<Props> = () => {
           color = '#272935';
           break;
         case 'cmyk':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'autumn':
-          color = '#F2F2F2';
+          color = '#C6C3C3';
           break;
         case 'business':
           color = '#212121';
           break;
         case 'acid':
-          color = '#FAFAFA';
+          color = '#9b9292';
           break;
         case 'lemonade':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'night':
           color = '#0F1729';
@@ -147,7 +147,10 @@ const Header: FC<Props> = () => {
           color = '#211720';
           break;
         case 'winter':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
+          break;
+        default:
+          color = '#000914';
           break;
       }
       if (!vantaEffect || color !== vantaEffect?.options?.color) {
@@ -179,7 +182,7 @@ const Header: FC<Props> = () => {
   return (
     <>
       <header id="top" className={`fixed left-0 right-0 top-0 z-40 px-3 pt-3`}>
-        <div className={`rounded-btn py-3 md:py-1 ${topClasses}`}>
+        <div className={`rounded-btn px-10 py-3 ${topClasses}`}>
           <section className="flex w-full items-center justify-between md:justify-evenly">
             <Link href="/" legacyBehavior>
               <h1 className="cursor-pointer text-2xl font-light italic ">Armany Felix</h1>

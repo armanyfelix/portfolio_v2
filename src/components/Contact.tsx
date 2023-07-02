@@ -38,25 +38,25 @@ const Contact: FC<Props> = ({ sendEmail }) => {
   return (
     <section id="contact" className="antialiased lg:h-screen lg:py-1">
       <div className="flex min-h-screen w-full items-center justify-center">
-        <div className="flex w-full max-w-4xl flex-col justify-between space-y-6 rounded-xl border-2 border-opacity-30 bg-neutral bg-opacity-30 p-8 shadow-lg backdrop-blur backdrop-filter sm:p-12 md:flex-row md:space-x-6 md:space-y-0">
-          <div className="flex flex-col justify-between">
+        <div className="rounded-box mx-3 mb-28 flex w-full max-w-5xl flex-col justify-between space-y-6 border-opacity-30 bg-accent bg-opacity-30 p-4 shadow-lg backdrop-blur backdrop-filter sm:p-10 md:mx-6 md:flex-row md:space-x-4 md:space-y-0 md:p-12 lg:p-16">
+          <div className="flex flex-col justify-between antialiased">
             <div>
-              <h1 className="text-5xl font-bold tracking-wide text-secondary">Contact</h1>
-              <p className="pb-9 pt-2 text-sm text-accent">
-                If you are interested in working with me, please leave me a message.
+              <h1 className="text-5xl font-bold tracking-wide text-secondary lg:text-7xl">Contact</h1>
+              <p className="pt-2 text-lg font-bold text-neutral">
+                If you are interested in working with me, please send me a email.
                 <br />I will answer you as soon as possible.
               </p>
             </div>
             <div className="mt-8 flex flex-col space-y-4 md:mt-0">
-              <div className="inline-flex space-x-2">
+              <div className="inline-flex space-x-2 text-neutral">
                 <PhoneIcon className="h-6 w-6" />
                 <span>+(52) 664 212 2325</span>
               </div>
-              <div className="inline-flex items-center space-x-2">
+              <div className="inline-flex items-center space-x-2 text-neutral">
                 <AtSymbolIcon className="h-6 w-6" />
                 <span>luis.armany.felix@gmail.com</span>
               </div>
-              <div className="inline-flex items-center space-x-2">
+              <div className="inline-flex items-center space-x-2 text-neutral">
                 <MapPinIcon className="h-6 w-6" />
                 <span>Tijuana B.C. Mexico</span>
               </div>
@@ -71,25 +71,25 @@ const Contact: FC<Props> = ({ sendEmail }) => {
             </div>
           </div>
           <div>
-            <div className="box-border rounded-xl  bg-primary bg-opacity-10 p-8 shadow-lg backdrop-blur backdrop-filter md:w-80">
+            <div className="rounded-box box-border bg-black bg-opacity-10 p-4 shadow-xl md:w-80 md:p-8">
               <form action={handleSendEmail} className="flex flex-col space-y-4">
                 <input
                   type="text"
                   name="name"
-                  className="w-full rounded-lg bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
+                  className="rounded-box box-border w-full bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
                   placeholder="Name"
                   required
                 />
                 <input
                   type="email"
                   name="email"
-                  className="w-full rounded-lg bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
+                  className="rounded-box w-full bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
                   placeholder="Email"
                   required
                 />
                 <textarea
                   name="message"
-                  className="w-full rounded-lg bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
+                  className="rounded-box w-full bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
                   placeholder="Message"
                   required
                 />

@@ -56,7 +56,11 @@ const Proyects: FC<ProyectsProps> = () => {
     <section id="proyects" className="min-h-screen pt-36">
       <div className="mx-auto flex w-full items-center justify-between px-5 sm:justify-evenly sm:px-10">
         <h1 className="text-5xl font-bold text-secondary lg:text-7xl">Proyects</h1>
-        <Link href="https://www.github.com/armanyfelix" target="_blank" className="glass btn px-2">
+        <Link
+          href="https://www.github.com/armanyfelix"
+          target="_blank"
+          className="glass btn px-2 text-7xl lg:btn-lg"
+        >
           <Github />
         </Link>
       </div>

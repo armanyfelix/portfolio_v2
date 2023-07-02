@@ -25,22 +25,22 @@ export default function Background() {
       let color = '';
       switch (theme) {
         case 'light':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'dark':
           color = '#1D232A';
           break;
         case 'cupcake':
-          color = '#FAF7F5';
+          color = '#b9b0b0';
           break;
         case 'bumblebee':
-          color = '#fcfcfc';
+          color = '#b1abab';
           break;
         case 'emerald':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'corporate':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'synthwave':
           color = '#1A103C';
@@ -58,7 +58,7 @@ export default function Background() {
           color = '#212121';
           break;
         case 'garden':
-          color = '#E9E7E7';
+          color = '#b3adad';
           break;
         case 'forest':
           color = '#171212';
@@ -67,16 +67,16 @@ export default function Background() {
           color = '#345CA8';
           break;
         case 'lofi':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'pastel':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'fantasy':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'wireframe':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'black':
           color = '#000000';
@@ -88,19 +88,19 @@ export default function Background() {
           color = '#272935';
           break;
         case 'cmyk':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'autumn':
-          color = '#F2F2F2';
+          color = '#c08159';
           break;
         case 'business':
           color = '#212121';
           break;
         case 'acid':
-          color = '#FAFAFA';
+          color = '#9b9292';
           break;
         case 'lemonade':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
         case 'night':
           color = '#0F1729';
@@ -109,7 +109,7 @@ export default function Background() {
           color = '#211720';
           break;
         case 'winter':
-          color = '#FFFFFF';
+          color = '#bbbbbb';
           break;
       }
       if (!vantaEffect) {

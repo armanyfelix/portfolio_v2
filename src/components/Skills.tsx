@@ -8,9 +8,11 @@ interface Props {}
 const Skills: FC<Props> = () => {
   return (
     <section className="mx-auto my-32 items-center justify-center md:w-2/3">
-      <div className="mt-8 md:mx-28 lg:mx-52">
-        <h1 className="pb-10 text-center text-3xl font-bold">Technologies I like:</h1>
-        <div className="flex flex-col items-center justify-center md:justify-between">
+      <div className="mx-auto mt-10 xl:w-2/3">
+        <h1 className="pb-10 text-center text-3xl font-bold text-primary md:text-4xl lg:text-5xl">
+          Technologies I like:
+        </h1>
+        <div className="flex flex-col flex-wrap items-center justify-center md:flex-row md:justify-between">
           <ul className="list-none space-y-5 p-5">
             <li className="flex items-center">
               <Image src="/icons/javascript.svg" width="38" height="38" alt="javaScript" />

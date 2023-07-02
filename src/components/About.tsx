@@ -15,17 +15,17 @@ const About: FC<Props> = () => {
         <Link
           href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true"
           target="_blank"
-          className="glass btn pl-2.5 pr-3 text-xl font-bold text-secondary"
+          className="glass btn pl-2.5 pr-3 text-xl font-bold text-secondary shadow-xl lg:btn-lg lg:text-3xl"
         >
           CV
         </Link>
       </div>
-      <div className="mt-28 flex-wrap items-center justify-center bg-primary text-center shadow-2xl backdrop-blur md:flex lg:px-20">
-        <div className="flex h-2/3 justify-center px-6 md:w-1/2">
-          <Image src={me} width="420" height="420" alt="me" />
+      <div className="mt-28 flex flex-wrap items-center justify-evenly bg-accent bg-opacity-30 px-6 pb-10 text-center shadow-2xl backdrop-blur lg:pb-0 xl:px-56">
+        <div className="mb-6 lg:mb-0 lg:mr-6 ">
+          <Image src={me} width="420" height="220" alt="me" />
         </div>
-        <div className="mx-auto p-6 md:w-1/2 lg:px-20">
-          <p className="text-justify lg:text-lg">
+        <div className="lg:w-2/4">
+          <p className="text-justify text-neutral antialiased md:text-lg lg:text-xl">
             Hi there! I{'’'}m a full stack software developer with a strong background in development with
             Node.js and React and I have also done some things with Java and Python. Since I was 15 years old
             I{"'"}ve been creating basic HTML websites, android apps and just playing around with tech, I love
