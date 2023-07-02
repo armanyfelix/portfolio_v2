@@ -99,9 +99,10 @@ const Contact: FC<Props> = ({ sendEmail }) => {
                   name="message"
                   className="rounded-box w-full bg-opacity-50 px-4 py-2 font-semibold shadow-xl focus:shadow-inner"
                   placeholder="Message"
+                  rows={4}
                   required
                 />
-                <div className="rating rating-half rating-lg">
+                {/* <div className="rating rating-half rating-lg">
                   <input type="radio" name="rating-10" className="rating-hidden" />
                   <input
                     type="radio"
@@ -153,7 +154,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
                     name="rating-10"
                     className="mask mask-half-2 mask-star-2 bg-orange-400"
                   />
-                </div>
+                </div> */}
                 <div className="justify-end text-right">
                   <button
                     type="submit"
