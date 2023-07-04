@@ -13,7 +13,7 @@ const About: FC<Props> = () => {
       <div className="mx-auto flex items-center justify-between px-5 md:w-2/4 md:justify-evenly">
         <h1 className="text-5xl font-bold text-secondary lg:w-3/5 lg:text-7xl">About Me</h1>
         <Link
-          href="https://docs.google.com/document/d/1VhnkfTEZcFpjd51uswrxccZlWiCBumZw/edit?usp=sharing&ouid=106059346458081499165&rtpof=true&sd=true"
+          href="https://drive.google.com/file/d/11lsDIPaB8w48O2L1js_2fI44sOSgCwIU/view?usp=sharing"
           target="_blank"
           className="glass btn pl-2.5 pr-3 text-xl font-bold text-secondary shadow-xl lg:btn-lg lg:text-3xl"
         >
