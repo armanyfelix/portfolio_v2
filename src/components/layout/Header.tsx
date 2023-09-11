@@ -6,6 +6,7 @@ import { themeChange } from 'theme-change';
 import * as THREE from 'three';
 import waves from 'vanta/dist/vanta.waves.min';
 import themes from '../../data/themes.module';
+import { backgroundColor } from '../../helpers/vanta';
 import HamburgerSwap from '../svg/HamburgerSwap';
 
 interface Props {}
@@ -57,102 +58,7 @@ const Header: FC<Props> = () => {
 
   useEffect(() => {
     if (theme) {
-      let color = '';
-      switch (theme) {
-        case 'mytheme':
-          color = '#000914';
-          break;
-        case 'light':
-          color = '#bbbbbb';
-          break;
-        case 'dark':
-          color = '#1D232A';
-          break;
-        case 'cupcake':
-          color = '#b9b0b0';
-          break;
-        case 'bumblebee':
-          color = '#b1abab';
-          break;
-        case 'emerald':
-          color = '#bbbbbb';
-          break;
-        case 'corporate':
-          color = '#bbbbbb';
-          break;
-        case 'synthwave':
-          color = '#1A103C';
-          break;
-        case 'retro':
-          color = '#E4D8B4';
-          break;
-        case 'cyberpunk':
-          color = '#FFEE00';
-          break;
-        case 'valentine':
-          color = '#F0D6E8';
-          break;
-        case 'halloween':
-          color = '#212121';
-          break;
-        case 'garden':
-          color = '#b3adad';
-          break;
-        case 'forest':
-          color = '#171212';
-          break;
-        case 'aqua':
-          color = '#345CA8';
-          break;
-        case 'lofi':
-          color = '#bbbbbb';
-          break;
-        case 'pastel':
-          color = '#bbbbbb';
-          break;
-        case 'fantasy':
-          color = '#bbbbbb';
-          break;
-        case 'wireframe':
-          color = '#bbbbbb';
-          break;
-        case 'black':
-          color = '#000000';
-          break;
-        case 'luxury':
-          color = '#09090B';
-          break;
-        case 'dracula':
-          color = '#272935';
-          break;
-        case 'cmyk':
-          color = '#bbbbbb';
-          break;
-        case 'autumn':
-          color = '#C6C3C3';
-          break;
-        case 'business':
-          color = '#212121';
-          break;
-        case 'acid':
-          color = '#9b9292';
-          break;
-        case 'lemonade':
-          color = '#bbbbbb';
-          break;
-        case 'night':
-          color = '#0F1729';
-          break;
-        case 'coffee':
-          color = '#211720';
-          break;
-        case 'winter':
-          color = '#bbbbbb';
-          break;
-        default:
-          color = '#000914';
-          break;
-      }
+      const color = backgroundColor(theme);
       if (!vantaEffect || color !== vantaEffect?.options?.color) {
         setVantaEffect(
           waves({
@@ -181,9 +87,9 @@ const Header: FC<Props> = () => {
 
   return (
     <>
-      <header id="top" className={`fixed left-0 right-0 top-0 z-40 px-3 pt-3`}>
+      <header id="top" className={`fixed right-1/2 top-0 z-40 w-1/2 translate-x-1/2 px-3 pt-3`}>
         <div className={`rounded-btn px-10 py-3 ${topClasses}`}>
-          <section className="flex w-full items-center justify-between md:justify-evenly">
+          <section className="flex w-full items-center justify-between">
             <Link href="/" legacyBehavior>
               <h1 className="cursor-pointer text-2xl font-light italic ">Armany Felix</h1>
             </Link>
@@ -191,22 +97,22 @@ const Header: FC<Props> = () => {
               <nav className="hidden w-full self-end sm:w-auto md:block">
                 <ul className="flex items-center space-x-3">
                   <li>
-                    <Link href="#proyects" onClick={() => setThemesOpen(false)} className="btn-ghost btn">
+                    <Link href="#proyects" onClick={() => setThemesOpen(false)} className="btn btn-ghost">
                       Proyects
                     </Link>
                   </li>
                   <li>
-                    <Link href="#about" onClick={() => setThemesOpen(false)} className="btn-ghost btn">
+                    <Link href="#about" onClick={() => setThemesOpen(false)} className="btn btn-ghost">
                       About
                     </Link>
                   </li>
                   <li>
-                    <Link href="#contact" onClick={() => setThemesOpen(false)} className="btn-ghost btn">
+                    <Link href="#contact" onClick={() => setThemesOpen(false)} className="btn btn-ghost">
                       Contact
                     </Link>
                   </li>
                   <li className="tooltip tooltip-bottom" data-tip={theme}>
-                    <button onClick={() => setThemesOpen(!themesOpen)} className="btn-ghost btn w-full">
+                    <button onClick={() => setThemesOpen(!themesOpen)} className=" btn btn-ghost w-full">
                       {theme && themes.find((t) => t.name === theme)?.emoji}
                     </button>
                   </li>
@@ -233,7 +139,7 @@ const Header: FC<Props> = () => {
                     setMenuOpen(!menuOpen);
                     setThemesOpen(false);
                   }}
-                  className="btn-ghost btn w-full"
+                  className="btn btn-ghost w-full"
                 >
                   Proyects
                 </Link>
@@ -245,7 +151,7 @@ const Header: FC<Props> = () => {
                     setMenuOpen(!menuOpen);
                     setThemesOpen(false);
                   }}
-                  className="btn-ghost btn w-full"
+                  className="btn btn-ghost w-full"
                 >
                   About
                 </Link>
@@ -257,13 +163,13 @@ const Header: FC<Props> = () => {
                     setMenuOpen(!menuOpen);
                     setThemesOpen(false);
                   }}
-                  className="btn-ghost btn w-full"
+                  className="btn btn-ghost w-full"
                 >
                   Contact
                 </Link>
               </li>
               <li>
-                <button onClick={() => setThemesOpen(!themesOpen)} className="btn-ghost btn w-full">
+                <button onClick={() => setThemesOpen(!themesOpen)} className="btn btn-ghost w-full">
                   {theme && themes.find((t) => t.name === theme)?.emoji}
                 </button>
               </li>
@@ -288,7 +194,7 @@ const Header: FC<Props> = () => {
                 setMenuOpen(false);
                 // window.location.reload();
               }}
-              className="btn-ghost btn w-full md:justify-start"
+              className="btn btn-ghost w-full md:justify-start"
             >
               {t.emoji} {t.name}
             </button>

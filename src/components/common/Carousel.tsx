@@ -14,7 +14,7 @@ interface Props {
 const Carousel: FC<Props> = ({ data }) => {
   return (
     <>
-      <div className="carousel-center carousel rounded-box mx-auto w-full">
+      <div className="carousel carousel-center rounded-box mx-auto w-full">
         {data.map((p, i) => (
           <div key={`proyect_${i + 1}`} id={`proyect_${i + 1}`} className="carousel-item relative w-full">
             <div className="mx-auto mt-[14vh] max-h-[80vh] max-w-[90vw] justify-between rounded-2xl bg-primary bg-opacity-20 p-4 shadow-xl ring-2 ring-primary backdrop-blur backdrop-brightness-90 backdrop-filter md:mt-[30vh] md:w-2/3 md:max-w-screen-2xl lg:flex">
@@ -42,10 +42,10 @@ const Carousel: FC<Props> = ({ data }) => {
               </div>
             </div>
             <div className="absolute bottom-1/4 left-64 right-64 flex -translate-y-1/3 transform justify-between">
-              <a href={`#proyect_${i === 0 ? data.length : i}`} className="btn-circle btn">
+              <a href={`#proyect_${i === 0 ? data.length : i}`} className="btn btn-circle">
                 ❮
               </a>
-              <a href={`#proyect_${data.length === i + 1 ? 1 : i + 2}`} className="btn-circle btn">
+              <a href={`#proyect_${data.length === i + 1 ? 1 : i + 2}`} className="btn btn-circle">
                 ❯
               </a>
             </div>
@@ -54,7 +54,7 @@ const Carousel: FC<Props> = ({ data }) => {
       </div>
       <div className="mt-10 flex w-full items-center justify-center gap-2">
         {data.map((p, i) => (
-          <a key={p.name} href={`#proyect_${i + 1}`} className="btn-xs btn">
+          <a key={p.name} href={`#proyect_${i + 1}`} className="btn btn-xs">
             {i + 1}
           </a>
         ))}

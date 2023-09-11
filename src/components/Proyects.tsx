@@ -59,7 +59,7 @@ const Proyects: FC<ProyectsProps> = () => {
         <Link
           href="https://www.github.com/armanyfelix"
           target="_blank"
-          className="glass btn px-2 text-7xl lg:btn-lg"
+          className="btn glass px-2 text-7xl lg:btn-lg"
         >
           <Github />
         </Link>
@@ -69,7 +69,7 @@ const Proyects: FC<ProyectsProps> = () => {
           <div key={d.name} className="m-3">
             <div className="card glass h-full w-full max-w-[28rem]">
               <figure>
-                <div className="carousel-center carousel h-[200px] max-h-[200px] min-h-[240px] w-full md:max-h-[240px]">
+                <div className="carousel carousel-center h-[200px] max-h-[200px] min-h-[240px] w-full md:max-h-[240px]">
                   {d.images?.map((img, j) => (
                     <div
                       key={img}
@@ -90,7 +90,7 @@ const Proyects: FC<ProyectsProps> = () => {
                             href={`#${
                               j === 0 ? `proyect-${i}.${d.images.length - 1}` : `proyect-${i}.${j - 1}`
                             }`}
-                            className="btn-circle btn"
+                            className="btn btn-circle"
                           >
                             ❮
                           </a>
@@ -98,7 +98,7 @@ const Proyects: FC<ProyectsProps> = () => {
                             href={`#${
                               j + 1 === d.images.length ? `proyect-${i}.0` : `proyect-${i}.${j + 1}`
                             }`}
-                            className="btn-circle btn"
+                            className="btn btn-circle"
                           >
                             ❯
                           </a>
@@ -113,11 +113,11 @@ const Proyects: FC<ProyectsProps> = () => {
                 <p className="overflow-auto">{d.description}</p>
                 <div className="card-actions mt-4 justify-end">
                   {d?.source && (
-                    <Link href={d?.source} className="btn-primary btn px-3">
+                    <Link href={d?.source} className="btn btn-primary px-3">
                       <CodeBracketSquareIcon className="h-6 w-6" />
                     </Link>
                   )}
-                  <Link href={d.url} target="_blank" className="btn-primary btn px-3">
+                  <Link href={d.url} target="_blank" className="btn btn-primary px-3">
                     <ArrowTopRightOnSquareIcon className="h-6 w-6" />
                   </Link>
                 </div>

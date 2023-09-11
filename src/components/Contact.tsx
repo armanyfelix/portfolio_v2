@@ -158,7 +158,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
                 <div className="justify-end text-right">
                   <button
                     type="submit"
-                    className="btn-primary btn w-full"
+                    className="btn btn-primary w-full"
                     onClick={() => {
                       if (
                         form.current &&

@@ -15,7 +15,7 @@ const About: FC<Props> = () => {
         <Link
           href="https://drive.google.com/file/d/11lsDIPaB8w48O2L1js_2fI44sOSgCwIU/view?usp=sharing"
           target="_blank"
-          className="glass btn pl-2.5 pr-3 text-xl font-bold text-secondary shadow-xl lg:btn-lg lg:text-3xl"
+          className="btn glass pl-2.5 pr-3 text-xl font-bold text-secondary shadow-xl lg:btn-lg lg:text-3xl"
         >
           CV
         </Link>

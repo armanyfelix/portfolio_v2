@@ -39,8 +39,13 @@ module.exports = {
           '--tab-radius': '0.5rem', // border radius of tabs
         },
       },
+      {
+        dark: {
+          ...require('daisyui/src/theming/themes')['[data-theme-dark]'],
+          primary: '#525FE1',
+        },
+      },
       'light',
-      'dark',
       'cupcake',
       'bumblebee',
       'emerald',
