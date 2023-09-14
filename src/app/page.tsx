@@ -7,7 +7,6 @@ import Skills from '../components/Skills'
 import { apiUrl } from '../constants/api'
 import { gmailPassword, gmailUser } from '../constants/nodemailer'
 import { getProyects } from '../utils/getProyects'
-// import { cache } from 'react'
 
 // const pb = new PocketBase(apiUrl)
 
@@ -83,13 +82,3 @@ export default async function Page() {
     </div>
   )
 }
-
-// Multiple layouts example
-// Page.getLayout = function getLayout(page: ReactElement) {
-//   return (
-//     <Layout>
-//       {page}
-//     </Layout>
-
-//   )
-// }
