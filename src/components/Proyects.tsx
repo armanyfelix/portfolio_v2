@@ -3,25 +3,26 @@
 import { ArrowTopRightOnSquareIcon, CodeBracketSquareIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import { imageLoader } from '../helpers/images'
 import Github from './svg/Github'
 
 interface Props {
-  getProyects: () => void
+  proyects: any
   apiUrl: string | undefined
 }
 
-export default function Proyects({ getProyects, apiUrl }: Props) {
-  const [data, setData] = useState<any>([])
+export default function Proyects({ apiUrl, proyects }: Props) {
+  // const [data, setData] = useState<any>([])
 
-  useEffect(() => {
-    async function onProyects() {
-      const res = await getProyects()
-      setData(res)
-    }
-    onProyects()
-  }, [getProyects])
+  // const proyects = onProyects()
+  // useEffect(() => {
+  //   async function handleProyect() {
+  //     const proyects = await onProyects()
+  //     setData(proyects)
+  // console.log(proyects)
+  //   }
+  //   handleProyect()
+  // })
 
   return (
     <section id="proyects" className="min-h-screen pt-36">
@@ -36,8 +37,8 @@ export default function Proyects({ getProyects, apiUrl }: Props) {
         </Link>
       </div>
       <div className="mt-36 grid h-full w-full justify-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.length &&
-          data.map((d: any, i: number) => (
+        {proyects.length &&
+          proyects.map((d: any, i: number) => (
             <div key={d.name} className="m-3">
               <div className="card glass h-full w-full max-w-[28rem]">
                 <figure>
