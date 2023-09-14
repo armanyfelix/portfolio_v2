@@ -2,7 +2,8 @@ import PocketBase from 'pocketbase'
 import { cache } from 'react'
 import { apiUrl } from '../constants/api'
 
-export const revalidate = 36
+export const revalidate = 3600
+
 const pb = new PocketBase(apiUrl)
 
 export const getProyects = cache(async () => {

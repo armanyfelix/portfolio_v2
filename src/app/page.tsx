@@ -8,8 +8,6 @@ import { apiUrl } from '../constants/api'
 import { gmailPassword, gmailUser } from '../constants/nodemailer'
 import { getProyects } from '../utils/getProyects'
 
-// const pb = new PocketBase(apiUrl)
-
 export default async function Page() {
   async function sendEmail(data: FormData) {
     'use server'
