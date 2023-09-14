@@ -9,7 +9,19 @@ module.exports = {
     extend: {
       fontFamily: {
         mohave: ['var(--font-mohave)'],
-        ysabeau: ['var(--font-ysabeau)'],
+        // ysabeau: ['var(--font-ysabeau)'],
+      },
+      animation: {
+        'fade-out': 'fade-out 0.5s forwards',
+        'fade-in': 'fade-in 0.5s forwards',
+      },
+      keyframes: {
+        'fade-out': {
+          to: { display: 'none', opacity: 0 },
+        },
+        'fade-in': {
+          to: { display: 'block', opacity: 100 },
+        },
       },
     },
   },
@@ -82,4 +94,4 @@ module.exports = {
     prefix: '', // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
     logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
   },
-};
+}

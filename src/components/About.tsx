@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
-import me from '../../public/images/about/ME.png';
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC } from 'react'
+import me from '../../public/images/about/ME.png'
 
 interface Props {}
 
@@ -35,7 +35,7 @@ const About: FC<Props> = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About

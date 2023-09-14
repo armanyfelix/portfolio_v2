@@ -1,64 +1,64 @@
-'use client';
+'use client'
 
-import Link from 'next/link';
-import { FC, useEffect, useRef, useState } from 'react';
-import { themeChange } from 'theme-change';
-import * as THREE from 'three';
-import waves from 'vanta/dist/vanta.waves.min';
-import themes from '../../data/themes.module';
-import { backgroundColor } from '../../helpers/vanta';
-import HamburgerSwap from '../svg/HamburgerSwap';
+import Link from 'next/link'
+import { FC, useEffect, useRef, useState } from 'react'
+import { themeChange } from 'theme-change'
+import * as THREE from 'three'
+import waves from 'vanta/dist/vanta.waves.min'
+import themes from '../../data/themes.module'
+import { backgroundColor } from '../../helpers/vanta'
+import HamburgerSwap from '../svg/HamburgerSwap'
 
 interface Props {}
 
 // let effect: any = null;
 const Header: FC<Props> = () => {
-  const [vantaEffect, setVantaEffect] = useState<any>(0);
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [themesOpen, setThemesOpen] = useState<boolean>(false);
-  const [topClasses, setTopClasses] = useState<string>('');
-  const [theme, setTheme] = useState<string>('');
-  const vantaRef = useRef(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(0)
+  const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const [themesOpen, setThemesOpen] = useState<boolean>(false)
+  const [topClasses, setTopClasses] = useState<string>('')
+  const [theme, setTheme] = useState<string>('')
+  const vantaRef = useRef(null)
   useEffect(() => {
-    let prevScrollpos = window.pageYOffset;
+    let prevScrollpos = window.pageYOffset
     window.onscroll = function () {
-      const currentScrollPos = window.pageYOffset;
+      const currentScrollPos = window.pageYOffset
       if (currentScrollPos === 0) {
-        setTopClasses('ease-in transform duration-300');
+        setTopClasses('ease-in ')
       } else {
-        setTopClasses('bg-accent bg-opacity-30 shadow-xl backdrop-blur-md');
+        setTopClasses('bg-accent bg-opacity-30 shadow-xl backdrop-blur-md')
       }
       if (prevScrollpos > currentScrollPos) {
-        const position = (document.getElementById('top') as HTMLElement) || null;
-        position.style.top = '0';
-        const transition = (document.getElementById('top') as HTMLElement) || null;
-        transition.style.transition = 'top 0.6s';
+        const position = (document.getElementById('top') as HTMLElement) || null
+        position.style.top = '0'
+        const transition = (document.getElementById('top') as HTMLElement) || null
+        transition.style.transition = 'top 0.6s'
       } else if (!menuOpen) {
-        const position = (document.getElementById('top') as HTMLElement) || null;
-        position.style.top = '-100px';
+        const position = (document.getElementById('top') as HTMLElement) || null
+        position.style.top = '-100px'
       }
-      prevScrollpos = currentScrollPos;
-    };
-  }, [menuOpen]);
+      prevScrollpos = currentScrollPos
+    }
+  }, [menuOpen])
 
   useEffect(() => {
-    themeChange(false);
+    themeChange(false)
 
     function init() {
-      let systemTheme = 'dark';
-      const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+      let systemTheme = 'dark'
+      const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)')
       if (!darkThemeMq.matches) {
-        systemTheme = 'light';
+        systemTheme = 'light'
       }
-      const currentTheme = localStorage.getItem('theme') || systemTheme;
-      setTheme(currentTheme);
+      const currentTheme = localStorage.getItem('theme') || systemTheme
+      setTheme(currentTheme)
     }
-    init();
-  }, []);
+    init()
+  }, [])
 
   useEffect(() => {
     if (theme) {
-      const color = backgroundColor(theme);
+      const color = backgroundColor(theme)
       if (!vantaEffect || color !== vantaEffect?.options?.color) {
         setVantaEffect(
           waves({
@@ -77,42 +77,61 @@ const Header: FC<Props> = () => {
             waveSpeed: 0.3,
             zoom: 1,
           })
-        );
+        )
       }
     }
     return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [theme, vantaEffect]);
+      if (vantaEffect) vantaEffect.destroy()
+    }
+  }, [theme, vantaEffect])
 
   return (
     <>
-      <header id="top" className={`fixed right-1/2 top-0 z-40 w-1/2 translate-x-1/2 px-3 pt-3`}>
-        <div className={`rounded-btn px-10 py-3 ${topClasses}`}>
+      <header
+        id="top"
+        className={`fixed right-1/2 top-0 z-40 w-full md:w-5/6 lg:w-4/6 xl:w-3/6 translate-x-1/2 px-3 pt-3`}
+      >
+        <div
+          className={`${
+            menuOpen ? 'rounded-2xl py-8' : 'rounded-btn py-3'
+          } duration-500 transform ease-in-out px-10 md:py-1 ${topClasses}`}
+        >
           <section className="flex w-full items-center justify-between">
             <Link href="/" legacyBehavior>
-              <h1 className="cursor-pointer text-2xl font-light italic ">Armany Felix</h1>
+              <h1 className="cursor-pointer text-3xl font-bold italic ">Armany Felix</h1>
             </Link>
             <div className="z-50 flex flex-col items-center justify-between sm:flex-row">
               <nav className="hidden w-full self-end sm:w-auto md:block">
                 <ul className="flex items-center space-x-3">
                   <li>
-                    <Link href="#proyects" onClick={() => setThemesOpen(false)} className="btn btn-ghost">
+                    <Link
+                      href="#proyects"
+                      onClick={() => setThemesOpen(false)}
+                      className="btn btn-ghost text-lg"
+                    >
                       Proyects
                     </Link>
                   </li>
                   <li>
-                    <Link href="#about" onClick={() => setThemesOpen(false)} className="btn btn-ghost">
+                    <Link
+                      href="#about"
+                      onClick={() => setThemesOpen(false)}
+                      className="btn btn-ghost text-lg"
+                    >
                       About
                     </Link>
                   </li>
                   <li>
-                    <Link href="#contact" onClick={() => setThemesOpen(false)} className="btn btn-ghost">
+                    <Link
+                      href="#contact"
+                      onClick={() => setThemesOpen(false)}
+                      className="btn btn-ghost text-lg"
+                    >
                       Contact
                     </Link>
                   </li>
                   <li className="tooltip tooltip-bottom" data-tip={theme}>
-                    <button onClick={() => setThemesOpen(!themesOpen)} className=" btn btn-ghost w-full">
+                    <button onClick={() => setThemesOpen(!themesOpen)} className="btn btn-ghost w-full">
                       {theme && themes.find((t) => t.name === theme)?.emoji}
                     </button>
                   </li>
@@ -124,20 +143,14 @@ const Header: FC<Props> = () => {
               </label>
             </div>
           </section>
-          <section
-            className={`${
-              menuOpen
-                ? 'block transform transition duration-700 ease-in-out '
-                : 'hidden transform transition duration-700 ease-in-out'
-            } mx-4 mt-4`}
-          >
+          <section className={`${menuOpen ? 'block' : 'hidden'} mx-4 mt-4 `}>
             <ul>
               <li>
                 <Link
                   href="#proyects"
                   onClick={() => {
-                    setMenuOpen(!menuOpen);
-                    setThemesOpen(false);
+                    setMenuOpen(!menuOpen)
+                    setThemesOpen(false)
                   }}
                   className="btn btn-ghost w-full"
                 >
@@ -148,8 +161,8 @@ const Header: FC<Props> = () => {
                 <Link
                   href="#about"
                   onClick={() => {
-                    setMenuOpen(!menuOpen);
-                    setThemesOpen(false);
+                    setMenuOpen(!menuOpen)
+                    setThemesOpen(false)
                   }}
                   className="btn btn-ghost w-full"
                 >
@@ -160,8 +173,8 @@ const Header: FC<Props> = () => {
                 <Link
                   href="#contact"
                   onClick={() => {
-                    setMenuOpen(!menuOpen);
-                    setThemesOpen(false);
+                    setMenuOpen(!menuOpen)
+                    setThemesOpen(false)
                   }}
                   className="btn btn-ghost w-full"
                 >
@@ -189,9 +202,9 @@ const Header: FC<Props> = () => {
               data-set-theme={t.name}
               data-act-class="ACTIVECLASS"
               onClick={() => {
-                setTheme(t.name);
-                setThemesOpen(false);
-                setMenuOpen(false);
+                setTheme(t.name)
+                setThemesOpen(false)
+                setMenuOpen(false)
                 // window.location.reload();
               }}
               className="btn btn-ghost w-full md:justify-start"
@@ -218,7 +231,7 @@ const Header: FC<Props> = () => {
         )}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

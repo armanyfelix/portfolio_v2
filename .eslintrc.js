@@ -8,7 +8,6 @@ module.exports = {
   },
   plugins: ['prettier'],
   rules: {
-    'prettier/prettier': 'error',
     'valid-jsdoc': 'off',
     'require-jsdoc': 'off',
   },
@@ -21,4 +20,4 @@ module.exports = {
     // Allows for the use of imports
     sourceType: 'module',
   },
-};
+}

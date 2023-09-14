@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { FC } from 'react';
+import { FC } from 'react'
 
 /**
  * @interface Props
@@ -15,7 +15,7 @@ const Home: FC<Props> = () => {
         <h1 className="text-3xl font-bold sm:text-5xl md:text-7xl lg:text-9xl">Software Engineer</h1>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

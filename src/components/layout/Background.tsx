@@ -1,13 +1,13 @@
-'use client';
+'use client'
 
-import { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
-import waves from 'vanta/dist/vanta.waves.min';
+import { useEffect, useRef, useState } from 'react'
+import * as THREE from 'three'
+import waves from 'vanta/dist/vanta.waves.min'
 
 export default function Background() {
-  const [vantaEffect, setVantaEffect] = useState<any>(0);
-  const [theme] = useState<string>(localStorage.getItem('theme') || 'dark');
-  const vantaRef = useRef(null);
+  const [vantaEffect, setVantaEffect] = useState<any>(0)
+  const [theme] = useState<string>(localStorage.getItem('theme') || 'dark')
+  const vantaRef = useRef(null)
 
   useEffect(() => {
     // window.addEventListener('storage', () => {
@@ -18,99 +18,99 @@ export default function Background() {
       // let currentTheme = localStorage.getItem('theme') || 'dark';
       // console.log(currentTheme);
       // if (vantaEffect) vantaEffect.destroy();
-    };
-    init();
-    console.log('on effect', theme);
+    }
+    init()
+    console.log('on effect', theme)
     if (theme) {
-      let color = '';
+      let color = ''
       switch (theme) {
         case 'light':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'dark':
-          color = '#1D232A';
-          break;
+          color = '#1D232A'
+          break
         case 'cupcake':
-          color = '#b9b0b0';
-          break;
+          color = '#b9b0b0'
+          break
         case 'bumblebee':
-          color = '#b1abab';
-          break;
+          color = '#b1abab'
+          break
         case 'emerald':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'corporate':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'synthwave':
-          color = '#1A103C';
-          break;
+          color = '#1A103C'
+          break
         case 'retro':
-          color = '#E4D8B4';
-          break;
+          color = '#E4D8B4'
+          break
         case 'cyberpunk':
-          color = '#FFEE00';
-          break;
+          color = '#FFEE00'
+          break
         case 'valentine':
-          color = '#F0D6E8';
-          break;
+          color = '#F0D6E8'
+          break
         case 'halloween':
-          color = '#212121';
-          break;
+          color = '#212121'
+          break
         case 'garden':
-          color = '#b3adad';
-          break;
+          color = '#b3adad'
+          break
         case 'forest':
-          color = '#171212';
-          break;
+          color = '#171212'
+          break
         case 'aqua':
-          color = '#345CA8';
-          break;
+          color = '#345CA8'
+          break
         case 'lofi':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'pastel':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'fantasy':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'wireframe':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'black':
-          color = '#000000';
-          break;
+          color = '#000000'
+          break
         case 'luxury':
-          color = '#09090B';
-          break;
+          color = '#09090B'
+          break
         case 'dracula':
-          color = '#272935';
-          break;
+          color = '#272935'
+          break
         case 'cmyk':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'autumn':
-          color = '#c08159';
-          break;
+          color = '#c08159'
+          break
         case 'business':
-          color = '#212121';
-          break;
+          color = '#212121'
+          break
         case 'acid':
-          color = '#9b9292';
-          break;
+          color = '#9b9292'
+          break
         case 'lemonade':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
         case 'night':
-          color = '#0F1729';
-          break;
+          color = '#0F1729'
+          break
         case 'coffee':
-          color = '#211720';
-          break;
+          color = '#211720'
+          break
         case 'winter':
-          color = '#bbbbbb';
-          break;
+          color = '#bbbbbb'
+          break
       }
       if (!vantaEffect) {
         const effect = waves({
@@ -128,14 +128,14 @@ export default function Background() {
           waveHeight: 30,
           waveSpeed: 0.7,
           zoom: 1,
-        });
-        setVantaEffect(effect);
+        })
+        setVantaEffect(effect)
       }
       return () => {
-        if (vantaEffect) vantaEffect.destroy();
-      };
+        if (vantaEffect) vantaEffect.destroy()
+      }
     }
-  }, [theme, vantaEffect]);
+  }, [theme, vantaEffect])
 
   return (
     <div>
@@ -145,5 +145,5 @@ export default function Background() {
         </div>
       )}
     </div>
-  );
+  )
 }

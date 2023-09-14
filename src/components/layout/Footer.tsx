@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC } from 'react'
 
 interface Props {}
 
@@ -34,7 +34,7 @@ const Footer: FC<Props> = () => {
         <p>Copyright © {new Date().getFullYear()} - All right reserved by Armany Felix</p>
       </div>
     </footer>
-  );
-};
+  )
+}
 
-export default Footer;
+export default Footer

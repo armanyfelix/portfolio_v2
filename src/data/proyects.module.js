@@ -26,6 +26,6 @@ const ProyectsData = [
     image: '/img/criptoQuote.png',
     tecs: ' Html JavaScript Css Normalize Skeleton',
   },
-];
+]
 
-module.exports = ProyectsData;
+module.exports = ProyectsData

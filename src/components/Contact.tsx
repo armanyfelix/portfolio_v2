@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import {
   AtSymbolIcon,
@@ -7,41 +7,41 @@ import {
   PaperAirplaneIcon,
   PhoneIcon,
   XCircleIcon,
-} from '@heroicons/react/24/outline';
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC, useRef, useState } from 'react';
+} from '@heroicons/react/24/outline'
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC, useRef, useState } from 'react'
 
 interface Props {
-  sendEmail: (data: FormData) => Promise<void>;
+  sendEmail: (data: FormData) => Promise<void>
 }
 
 const Contact: FC<Props> = ({ sendEmail }) => {
-  const form = useRef<any>(null);
-  const [sending, setSending] = useState<boolean>(false);
-  const [error, setError] = useState<boolean | undefined>(undefined);
+  const form = useRef<any>(null)
+  const [sending, setSending] = useState<boolean>(false)
+  const [error, setError] = useState<boolean | undefined>(undefined)
 
   function validateEmail(email: string): boolean {
     const res =
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return res.test(String(email).toLowerCase());
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    return res.test(String(email).toLowerCase())
   }
 
   const handleSendEmail = async (e: FormData) => {
     try {
-      setSending(true);
-      await sendEmail(e);
-      setError(false);
-      setSending(false);
+      setSending(true)
+      await sendEmail(e)
+      setError(false)
+      setSending(false)
     } catch {
-      setError(true);
-      setSending(false);
+      setError(true)
+      setSending(false)
     }
 
     setTimeout(() => {
-      setError(undefined);
-    }, 5000);
-  };
+      setError(undefined)
+    }, 5000)
+  }
 
   return (
     <section id="contact" className="antialiased lg:h-screen lg:py-1">
@@ -166,7 +166,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
                         validateEmail(form.current['email']?.value) &&
                         form.current['message'].value
                       ) {
-                        setSending(true);
+                        setSending(true)
                       }
                     }}
                   >
@@ -202,7 +202,7 @@ const Contact: FC<Props> = ({ sendEmail }) => {
         )
       )}
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

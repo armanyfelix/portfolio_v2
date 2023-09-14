@@ -23,7 +23,7 @@
  *
  * @group PocketBase
  */
-declare function cronAdd(jobId: string, cronExpr: string, handler: () => void): void;
+declare function cronAdd(jobId: string, cronExpr: string, handler: () => void): void
 
 /**
  * CronRemove removes a single registered cron job by its name.
@@ -38,7 +38,7 @@ declare function cronAdd(jobId: string, cronExpr: string, handler: () => void): 
  *
  * @group PocketBase
  */
-declare function cronRemove(jobId: string): void;
+declare function cronRemove(jobId: string): void
 
 // -------------------------------------------------------------------
 // routerBinds
@@ -64,7 +64,7 @@ declare function routerAdd(
   path: string,
   handler: echo.HandlerFunc,
   ...middlewares: Array<string | echo.MiddlewareFunc>
-): void;
+): void
 
 /**
  * RouterUse registers one or more global middlewares that are executed
@@ -85,7 +85,7 @@ declare function routerAdd(
  *
  * @group PocketBase
  */
-declare function routerUse(...middlewares: Array<string | echo.MiddlewareFunc>): void;
+declare function routerUse(...middlewares: Array<string | echo.MiddlewareFunc>): void
 
 /**
  * RouterPre registers one or more global middlewares that are executed
@@ -112,7 +112,7 @@ declare function routerUse(...middlewares: Array<string | echo.MiddlewareFunc>):
  *
  * @group PocketBase
  */
-declare function routerPre(...middlewares: Array<string | echo.MiddlewareFunc>): void;
+declare function routerPre(...middlewares: Array<string | echo.MiddlewareFunc>): void
 
 // -------------------------------------------------------------------
 // baseBinds
@@ -123,10 +123,10 @@ declare function routerPre(...middlewares: Array<string | echo.MiddlewareFunc>):
  *
  * @group PocketBase
  */
-declare var __hooks: string;
+declare var __hooks: string
 
 // skip on* hook methods as they are registered via the global on* method
-type appWithoutHooks = Omit<pocketbase.PocketBase, `on${string}`>;
+type appWithoutHooks = Omit<pocketbase.PocketBase, `on${string}`>
 
 /**
  * `$app` is the current running PocketBase instance that is globally
@@ -137,7 +137,7 @@ type appWithoutHooks = Omit<pocketbase.PocketBase, `on${string}`>;
  * @namespace
  * @group PocketBase
  */
-declare var $app: appWithoutHooks;
+declare var $app: appWithoutHooks
 
 /**
  * `$template` is a global helper to load and cache HTML templates on the fly.
@@ -159,7 +159,7 @@ declare var $app: appWithoutHooks;
  * @namespace
  * @group PocketBase
  */
-declare var $template: template.Registry;
+declare var $template: template.Registry
 
 /**
  * readerToString reads the content of the specified io.Reader until
@@ -177,7 +177,7 @@ declare var $template: template.Registry;
  *
  * @group PocketBase
  */
-declare function readerToString(reader: any, maxBytes?: number): string;
+declare function readerToString(reader: any, maxBytes?: number): string
 
 /**
  * arrayOf creates a placeholder array of the specified models.
@@ -193,7 +193,7 @@ declare function readerToString(reader: any, maxBytes?: number): string;
  *
  * @group PocketBase
  */
-declare function arrayOf<T>(model: T): Array<T>;
+declare function arrayOf<T>(model: T): Array<T>
 
 /**
  * DynamicModel creates a new dynamic model with fields from the provided data shape.
@@ -213,7 +213,7 @@ declare function arrayOf<T>(model: T): Array<T>;
  * @group PocketBase
  */
 declare class DynamicModel {
-  constructor(shape?: { [key: string]: any });
+  constructor(shape?: { [key: string]: any })
 }
 
 /**
@@ -233,10 +233,10 @@ declare class DynamicModel {
  * @group PocketBase
  */
 declare const Record: {
-  new (collection?: models.Collection, data?: { [key: string]: any }): models.Record;
+  new (collection?: models.Collection, data?: { [key: string]: any }): models.Record
 
   // note: declare as "newable" const due to conflict with the Record TS utility type
-};
+}
 
 interface Collection extends models.Collection {} // merge
 /**
@@ -267,7 +267,7 @@ interface Collection extends models.Collection {} // merge
  * @group PocketBase
  */
 declare class Collection implements models.Collection {
-  constructor(data?: Partial<models.Collection>);
+  constructor(data?: Partial<models.Collection>)
 }
 
 interface Admin extends models.Admin {} // merge
@@ -283,7 +283,7 @@ interface Admin extends models.Admin {} // merge
  * @group PocketBase
  */
 declare class Admin implements models.Admin {
-  constructor(data?: Partial<models.Admin>);
+  constructor(data?: Partial<models.Admin>)
 }
 
 interface Schema extends schema.Schema {} // merge
@@ -293,7 +293,7 @@ interface Schema extends schema.Schema {} // merge
  * @group PocketBase
  */
 declare class Schema implements schema.Schema {
-  constructor(data?: Partial<schema.Schema>);
+  constructor(data?: Partial<schema.Schema>)
 }
 
 interface SchemaField extends schema.SchemaField {} // merge
@@ -303,7 +303,7 @@ interface SchemaField extends schema.SchemaField {} // merge
  * @group PocketBase
  */
 declare class SchemaField implements schema.SchemaField {
-  constructor(data?: Partial<schema.SchemaField>);
+  constructor(data?: Partial<schema.SchemaField>)
 }
 
 interface MailerMessage extends mailer.Message {} // merge
@@ -327,7 +327,7 @@ interface MailerMessage extends mailer.Message {} // merge
  * @group PocketBase
  */
 declare class MailerMessage implements mailer.Message {
-  constructor(message?: Partial<mailer.Message>);
+  constructor(message?: Partial<mailer.Message>)
 }
 
 interface Command extends cobra.Command {} // merge
@@ -348,7 +348,7 @@ interface Command extends cobra.Command {} // merge
  * @group PocketBase
  */
 declare class Command implements cobra.Command {
-  constructor(cmd?: Partial<cobra.Command>);
+  constructor(cmd?: Partial<cobra.Command>)
 }
 
 interface RequestInfo extends models.RequestInfo {} // merge
@@ -375,7 +375,7 @@ interface RequestInfo extends models.RequestInfo {} // merge
  * @group PocketBase
  */
 declare class RequestInfo implements models.RequestInfo {
-  constructor(date?: Partial<models.RequestInfo>);
+  constructor(date?: Partial<models.RequestInfo>)
 }
 
 interface DateTime extends types.DateTime {} // merge
@@ -393,7 +393,7 @@ interface DateTime extends types.DateTime {} // merge
  * @group PocketBase
  */
 declare class DateTime implements types.DateTime {
-  constructor(date?: string);
+  constructor(date?: string)
 }
 
 interface ValidationError extends ozzo_validation.Error {} // merge
@@ -408,7 +408,7 @@ interface ValidationError extends ozzo_validation.Error {} // merge
  * @group PocketBase
  */
 declare class ValidationError implements ozzo_validation.Error {
-  constructor(code?: string, message?: string);
+  constructor(code?: string, message?: string)
 }
 
 interface Dao extends daos.Dao {} // merge
@@ -417,7 +417,7 @@ interface Dao extends daos.Dao {} // merge
  * @group PocketBase
  */
 declare class Dao implements daos.Dao {
-  constructor(concurrentDB?: dbx.Builder, nonconcurrentDB?: dbx.Builder);
+  constructor(concurrentDB?: dbx.Builder, nonconcurrentDB?: dbx.Builder)
 }
 
 // -------------------------------------------------------------------
@@ -434,24 +434,24 @@ declare namespace $dbx {
   /**
    * {@inheritDoc dbx.HashExp}
    */
-  export function hashExp(pairs: { [key: string]: any }): dbx.Expression;
+  export function hashExp(pairs: { [key: string]: any }): dbx.Expression
 
-  let _in: dbx._in;
-  export { _in as in };
+  let _in: dbx._in
+  export { _in as in }
 
-  export let exp: dbx.newExp;
-  export let not: dbx.not;
-  export let and: dbx.and;
-  export let or: dbx.or;
-  export let notIn: dbx.notIn;
-  export let like: dbx.like;
-  export let orLike: dbx.orLike;
-  export let notLike: dbx.notLike;
-  export let orNotLike: dbx.orNotLike;
-  export let exists: dbx.exists;
-  export let notExists: dbx.notExists;
-  export let between: dbx.between;
-  export let notBetween: dbx.notBetween;
+  export let exp: dbx.newExp
+  export let not: dbx.not
+  export let and: dbx.and
+  export let or: dbx.or
+  export let notIn: dbx.notIn
+  export let like: dbx.like
+  export let orLike: dbx.orLike
+  export let notLike: dbx.notLike
+  export let orNotLike: dbx.orNotLike
+  export let exists: dbx.exists
+  export let notExists: dbx.notExists
+  export let between: dbx.between
+  export let notBetween: dbx.notBetween
 }
 
 // -------------------------------------------------------------------
@@ -467,14 +467,14 @@ declare namespace $dbx {
  * @group PocketBase
  */
 declare namespace $tokens {
-  let adminAuthToken: tokens.newAdminAuthToken;
-  let adminResetPasswordToken: tokens.newAdminResetPasswordToken;
-  let adminFileToken: tokens.newAdminFileToken;
-  let recordAuthToken: tokens.newRecordAuthToken;
-  let recordVerifyToken: tokens.newRecordVerifyToken;
-  let recordResetPasswordToken: tokens.newRecordResetPasswordToken;
-  let recordChangeEmailToken: tokens.newRecordChangeEmailToken;
-  let recordFileToken: tokens.newRecordFileToken;
+  let adminAuthToken: tokens.newAdminAuthToken
+  let adminResetPasswordToken: tokens.newAdminResetPasswordToken
+  let adminFileToken: tokens.newAdminFileToken
+  let recordAuthToken: tokens.newRecordAuthToken
+  let recordVerifyToken: tokens.newRecordVerifyToken
+  let recordResetPasswordToken: tokens.newRecordResetPasswordToken
+  let recordChangeEmailToken: tokens.newRecordChangeEmailToken
+  let recordFileToken: tokens.newRecordFileToken
 }
 
 // -------------------------------------------------------------------
@@ -488,21 +488,21 @@ declare namespace $tokens {
  * @group PocketBase
  */
 declare namespace $security {
-  let randomString: security.randomString;
-  let randomStringWithAlphabet: security.randomStringWithAlphabet;
-  let pseudorandomString: security.pseudorandomString;
-  let pseudorandomStringWithAlphabet: security.pseudorandomStringWithAlphabet;
-  let parseUnverifiedJWT: security.parseUnverifiedJWT;
-  let parseJWT: security.parseJWT;
-  let createJWT: security.newJWT;
-  let encrypt: security.encrypt;
-  let decrypt: security.decrypt;
-  let hs256: security.hs256;
-  let hs512: security.hs512;
-  let equal: security.equal;
-  let md5: security.md5;
-  let sha256: security.sha256;
-  let sha512: security.sha512;
+  let randomString: security.randomString
+  let randomStringWithAlphabet: security.randomStringWithAlphabet
+  let pseudorandomString: security.pseudorandomString
+  let pseudorandomStringWithAlphabet: security.pseudorandomStringWithAlphabet
+  let parseUnverifiedJWT: security.parseUnverifiedJWT
+  let parseJWT: security.parseJWT
+  let createJWT: security.newJWT
+  let encrypt: security.encrypt
+  let decrypt: security.decrypt
+  let hs256: security.hs256
+  let hs512: security.hs512
+  let equal: security.equal
+  let md5: security.md5
+  let sha256: security.sha256
+  let sha512: security.sha512
 }
 
 // -------------------------------------------------------------------
@@ -516,9 +516,9 @@ declare namespace $security {
  * @group PocketBase
  */
 declare namespace $filesystem {
-  let fileFromPath: filesystem.newFileFromPath;
-  let fileFromBytes: filesystem.newFileFromBytes;
-  let fileFromMultipart: filesystem.newFileFromMultipart;
+  let fileFromPath: filesystem.newFileFromPath
+  let fileFromBytes: filesystem.newFileFromBytes
+  let fileFromMultipart: filesystem.newFileFromMultipart
 }
 
 // -------------------------------------------------------------------
@@ -532,21 +532,21 @@ declare namespace $filesystem {
  * @group PocketBase
  */
 declare namespace $filepath {
-  export let base: filepath.base;
-  export let clean: filepath.clean;
-  export let dir: filepath.dir;
-  export let ext: filepath.ext;
-  export let fromSlash: filepath.fromSlash;
-  export let glob: filepath.glob;
-  export let isAbs: filepath.isAbs;
-  export let join: filepath.join;
-  export let match: filepath.match;
-  export let rel: filepath.rel;
-  export let split: filepath.split;
-  export let splitList: filepath.splitList;
-  export let toSlash: filepath.toSlash;
-  export let walk: filepath.walk;
-  export let walkDir: filepath.walkDir;
+  export let base: filepath.base
+  export let clean: filepath.clean
+  export let dir: filepath.dir
+  export let ext: filepath.ext
+  export let fromSlash: filepath.fromSlash
+  export let glob: filepath.glob
+  export let isAbs: filepath.isAbs
+  export let join: filepath.join
+  export let match: filepath.match
+  export let rel: filepath.rel
+  export let split: filepath.split
+  export let splitList: filepath.splitList
+  export let toSlash: filepath.toSlash
+  export let walk: filepath.walk
+  export let walkDir: filepath.walkDir
 }
 
 // -------------------------------------------------------------------
@@ -560,22 +560,22 @@ declare namespace $filepath {
  * @group PocketBase
  */
 declare namespace $os {
-  export let exec: exec.command;
-  export let args: os.args;
-  export let exit: os.exit;
-  export let getenv: os.getenv;
-  export let dirFS: os.dirFS;
-  export let readFile: os.readFile;
-  export let writeFile: os.writeFile;
-  export let readDir: os.readDir;
-  export let tempDir: os.tempDir;
-  export let truncate: os.truncate;
-  export let getwd: os.getwd;
-  export let mkdir: os.mkdir;
-  export let mkdirAll: os.mkdirAll;
-  export let rename: os.rename;
-  export let remove: os.remove;
-  export let removeAll: os.removeAll;
+  export let exec: exec.command
+  export let args: os.args
+  export let exit: os.exit
+  export let getenv: os.getenv
+  export let dirFS: os.dirFS
+  export let readFile: os.readFile
+  export let writeFile: os.writeFile
+  export let readDir: os.readDir
+  export let tempDir: os.tempDir
+  export let truncate: os.truncate
+  export let getwd: os.getwd
+  export let mkdir: os.mkdir
+  export let mkdirAll: os.mkdirAll
+  export let rename: os.rename
+  export let remove: os.remove
+  export let removeAll: os.removeAll
 }
 
 // -------------------------------------------------------------------
@@ -588,7 +588,7 @@ interface AdminLoginForm extends forms.AdminLogin {} // merge
  * @group PocketBase
  */
 declare class AdminLoginForm implements forms.AdminLogin {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 interface AdminPasswordResetConfirmForm extends forms.AdminPasswordResetConfirm {} // merge
@@ -597,7 +597,7 @@ interface AdminPasswordResetConfirmForm extends forms.AdminPasswordResetConfirm 
  * @group PocketBase
  */
 declare class AdminPasswordResetConfirmForm implements forms.AdminPasswordResetConfirm {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 interface AdminPasswordResetRequestForm extends forms.AdminPasswordResetRequest {} // merge
@@ -606,7 +606,7 @@ interface AdminPasswordResetRequestForm extends forms.AdminPasswordResetRequest 
  * @group PocketBase
  */
 declare class AdminPasswordResetRequestForm implements forms.AdminPasswordResetRequest {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 interface AdminUpsertForm extends forms.AdminUpsert {} // merge
@@ -615,7 +615,7 @@ interface AdminUpsertForm extends forms.AdminUpsert {} // merge
  * @group PocketBase
  */
 declare class AdminUpsertForm implements forms.AdminUpsert {
-  constructor(app: core.App, admin: models.Admin);
+  constructor(app: core.App, admin: models.Admin)
 }
 
 interface AppleClientSecretCreateForm extends forms.AppleClientSecretCreate {} // merge
@@ -624,7 +624,7 @@ interface AppleClientSecretCreateForm extends forms.AppleClientSecretCreate {} /
  * @group PocketBase
  */
 declare class AppleClientSecretCreateForm implements forms.AppleClientSecretCreate {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 interface CollectionUpsertForm extends forms.CollectionUpsert {} // merge
@@ -633,7 +633,7 @@ interface CollectionUpsertForm extends forms.CollectionUpsert {} // merge
  * @group PocketBase
  */
 declare class CollectionUpsertForm implements forms.CollectionUpsert {
-  constructor(app: core.App, collection: models.Collection);
+  constructor(app: core.App, collection: models.Collection)
 }
 
 interface CollectionsImportForm extends forms.CollectionsImport {} // merge
@@ -642,7 +642,7 @@ interface CollectionsImportForm extends forms.CollectionsImport {} // merge
  * @group PocketBase
  */
 declare class CollectionsImportForm implements forms.CollectionsImport {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 interface RealtimeSubscribeForm extends forms.RealtimeSubscribe {} // merge
@@ -658,7 +658,7 @@ interface RecordEmailChangeConfirmForm extends forms.RecordEmailChangeConfirm {}
  * @group PocketBase
  */
 declare class RecordEmailChangeConfirmForm implements forms.RecordEmailChangeConfirm {
-  constructor(app: core.App, collection: models.Collection);
+  constructor(app: core.App, collection: models.Collection)
 }
 
 interface RecordEmailChangeRequestForm extends forms.RecordEmailChangeRequest {} // merge
@@ -667,7 +667,7 @@ interface RecordEmailChangeRequestForm extends forms.RecordEmailChangeRequest {}
  * @group PocketBase
  */
 declare class RecordEmailChangeRequestForm implements forms.RecordEmailChangeRequest {
-  constructor(app: core.App, record: models.Record);
+  constructor(app: core.App, record: models.Record)
 }
 
 interface RecordOAuth2LoginForm extends forms.RecordOAuth2Login {} // merge
@@ -676,7 +676,7 @@ interface RecordOAuth2LoginForm extends forms.RecordOAuth2Login {} // merge
  * @group PocketBase
  */
 declare class RecordOAuth2LoginForm implements forms.RecordOAuth2Login {
-  constructor(app: core.App, collection: models.Collection, optAuthRecord?: models.Record);
+  constructor(app: core.App, collection: models.Collection, optAuthRecord?: models.Record)
 }
 
 interface RecordPasswordLoginForm extends forms.RecordPasswordLogin {} // merge
@@ -685,7 +685,7 @@ interface RecordPasswordLoginForm extends forms.RecordPasswordLogin {} // merge
  * @group PocketBase
  */
 declare class RecordPasswordLoginForm implements forms.RecordPasswordLogin {
-  constructor(app: core.App, collection: models.Collection);
+  constructor(app: core.App, collection: models.Collection)
 }
 
 interface RecordPasswordResetConfirmForm extends forms.RecordPasswordResetConfirm {} // merge
@@ -694,7 +694,7 @@ interface RecordPasswordResetConfirmForm extends forms.RecordPasswordResetConfir
  * @group PocketBase
  */
 declare class RecordPasswordResetConfirmForm implements forms.RecordPasswordResetConfirm {
-  constructor(app: core.App, collection: models.Collection);
+  constructor(app: core.App, collection: models.Collection)
 }
 
 interface RecordPasswordResetRequestForm extends forms.RecordPasswordResetRequest {} // merge
@@ -703,7 +703,7 @@ interface RecordPasswordResetRequestForm extends forms.RecordPasswordResetReques
  * @group PocketBase
  */
 declare class RecordPasswordResetRequestForm implements forms.RecordPasswordResetRequest {
-  constructor(app: core.App, collection: models.Collection);
+  constructor(app: core.App, collection: models.Collection)
 }
 
 interface RecordUpsertForm extends forms.RecordUpsert {} // merge
@@ -712,7 +712,7 @@ interface RecordUpsertForm extends forms.RecordUpsert {} // merge
  * @group PocketBase
  */
 declare class RecordUpsertForm implements forms.RecordUpsert {
-  constructor(app: core.App, record: models.Record);
+  constructor(app: core.App, record: models.Record)
 }
 
 interface RecordVerificationConfirmForm extends forms.RecordVerificationConfirm {} // merge
@@ -721,7 +721,7 @@ interface RecordVerificationConfirmForm extends forms.RecordVerificationConfirm 
  * @group PocketBase
  */
 declare class RecordVerificationConfirmForm implements forms.RecordVerificationConfirm {
-  constructor(app: core.App, collection: models.Collection);
+  constructor(app: core.App, collection: models.Collection)
 }
 
 interface RecordVerificationRequestForm extends forms.RecordVerificationRequest {} // merge
@@ -730,7 +730,7 @@ interface RecordVerificationRequestForm extends forms.RecordVerificationRequest 
  * @group PocketBase
  */
 declare class RecordVerificationRequestForm implements forms.RecordVerificationRequest {
-  constructor(app: core.App, collection: models.Collection);
+  constructor(app: core.App, collection: models.Collection)
 }
 
 interface SettingsUpsertForm extends forms.SettingsUpsert {} // merge
@@ -739,7 +739,7 @@ interface SettingsUpsertForm extends forms.SettingsUpsert {} // merge
  * @group PocketBase
  */
 declare class SettingsUpsertForm implements forms.SettingsUpsert {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 interface TestEmailSendForm extends forms.TestEmailSend {} // merge
@@ -748,7 +748,7 @@ interface TestEmailSendForm extends forms.TestEmailSend {} // merge
  * @group PocketBase
  */
 declare class TestEmailSendForm implements forms.TestEmailSend {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 interface TestS3FilesystemForm extends forms.TestS3Filesystem {} // merge
@@ -757,7 +757,7 @@ interface TestS3FilesystemForm extends forms.TestS3Filesystem {} // merge
  * @group PocketBase
  */
 declare class TestS3FilesystemForm implements forms.TestS3Filesystem {
-  constructor(app: core.App);
+  constructor(app: core.App)
 }
 
 // -------------------------------------------------------------------
@@ -771,7 +771,7 @@ interface ApiError extends apis.ApiError {} // merge
  * @group PocketBase
  */
 declare class ApiError implements apis.ApiError {
-  constructor(status?: number, message?: string, data?: any);
+  constructor(status?: number, message?: string, data?: any)
 }
 
 interface NotFoundError extends apis.ApiError {} // merge
@@ -781,7 +781,7 @@ interface NotFoundError extends apis.ApiError {} // merge
  * @group PocketBase
  */
 declare class NotFoundError implements apis.ApiError {
-  constructor(message?: string, data?: any);
+  constructor(message?: string, data?: any)
 }
 
 interface BadRequestError extends apis.ApiError {} // merge
@@ -791,7 +791,7 @@ interface BadRequestError extends apis.ApiError {} // merge
  * @group PocketBase
  */
 declare class BadRequestError implements apis.ApiError {
-  constructor(message?: string, data?: any);
+  constructor(message?: string, data?: any)
 }
 
 interface ForbiddenError extends apis.ApiError {} // merge
@@ -801,7 +801,7 @@ interface ForbiddenError extends apis.ApiError {} // merge
  * @group PocketBase
  */
 declare class ForbiddenError implements apis.ApiError {
-  constructor(message?: string, data?: any);
+  constructor(message?: string, data?: any)
 }
 
 interface UnauthorizedError extends apis.ApiError {} // merge
@@ -811,7 +811,7 @@ interface UnauthorizedError extends apis.ApiError {} // merge
  * @group PocketBase
  */
 declare class UnauthorizedError implements apis.ApiError {
-  constructor(message?: string, data?: any);
+  constructor(message?: string, data?: any)
 }
 
 /**
@@ -826,18 +826,18 @@ declare namespace $apis {
    * If a file resource is missing and indexFallback is set, the request
    * will be forwarded to the base index.html (useful for SPA).
    */
-  export function staticDirectoryHandler(dir: string, indexFallback: boolean): echo.HandlerFunc;
+  export function staticDirectoryHandler(dir: string, indexFallback: boolean): echo.HandlerFunc
 
-  let requireRecordAuth: apis.requireRecordAuth;
-  let requireAdminAuth: apis.requireAdminAuth;
-  let requireAdminAuthOnlyIfAny: apis.requireAdminAuthOnlyIfAny;
-  let requireAdminOrRecordAuth: apis.requireAdminOrRecordAuth;
-  let requireAdminOrOwnerAuth: apis.requireAdminOrOwnerAuth;
-  let activityLogger: apis.activityLogger;
-  let requestInfo: apis.requestInfo;
-  let recordAuthResponse: apis.recordAuthResponse;
-  let enrichRecord: apis.enrichRecord;
-  let enrichRecords: apis.enrichRecords;
+  let requireRecordAuth: apis.requireRecordAuth
+  let requireAdminAuth: apis.requireAdminAuth
+  let requireAdminAuthOnlyIfAny: apis.requireAdminAuthOnlyIfAny
+  let requireAdminOrRecordAuth: apis.requireAdminOrRecordAuth
+  let requireAdminOrOwnerAuth: apis.requireAdminOrOwnerAuth
+  let activityLogger: apis.activityLogger
+  let requestInfo: apis.requestInfo
+  let recordAuthResponse: apis.recordAuthResponse
+  let enrichRecord: apis.enrichRecord
+  let enrichRecords: apis.enrichRecords
 }
 
 // -------------------------------------------------------------------
@@ -868,19 +868,19 @@ declare namespace $http {
    * ```
    */
   function send(config: {
-    url: string;
-    body?: string;
-    method?: string; // default to "GET"
-    headers?: { [key: string]: string };
-    timeout?: number; // default to 120
+    url: string
+    body?: string
+    method?: string // default to "GET"
+    headers?: { [key: string]: string }
+    timeout?: number // default to 120
 
     // deprecated, please use body instead
-    data?: { [key: string]: any };
+    data?: { [key: string]: any }
   }): {
-    statusCode: number;
-    raw: string;
-    json: any;
-  };
+    statusCode: number
+    raw: string
+    json: any
+  }
 }
 
 // -------------------------------------------------------------------
@@ -894,304 +894,304 @@ declare namespace $http {
  *
  * @group PocketBase
  */
-declare function migrate(up: (db: dbx.Builder) => void, down?: (db: dbx.Builder) => void): void;
+declare function migrate(up: (db: dbx.Builder) => void, down?: (db: dbx.Builder) => void): void
 /** @group PocketBase */ declare function onAdminAfterAuthRefreshRequest(
   handler: (e: core.AdminAuthRefreshEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminAfterAuthWithPasswordRequest(
   handler: (e: core.AdminAuthWithPasswordEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminAfterConfirmPasswordResetRequest(
   handler: (e: core.AdminConfirmPasswordResetEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminAfterCreateRequest(
   handler: (e: core.AdminCreateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminAfterDeleteRequest(
   handler: (e: core.AdminDeleteEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminAfterRequestPasswordResetRequest(
   handler: (e: core.AdminRequestPasswordResetEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminAfterUpdateRequest(
   handler: (e: core.AdminUpdateEvent) => void
-): void;
-/** @group PocketBase */ declare function onAdminAuthRequest(handler: (e: core.AdminAuthEvent) => void): void;
+): void
+/** @group PocketBase */ declare function onAdminAuthRequest(handler: (e: core.AdminAuthEvent) => void): void
 /** @group PocketBase */ declare function onAdminBeforeAuthRefreshRequest(
   handler: (e: core.AdminAuthRefreshEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminBeforeAuthWithPasswordRequest(
   handler: (e: core.AdminAuthWithPasswordEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminBeforeConfirmPasswordResetRequest(
   handler: (e: core.AdminConfirmPasswordResetEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminBeforeCreateRequest(
   handler: (e: core.AdminCreateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminBeforeDeleteRequest(
   handler: (e: core.AdminDeleteEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminBeforeRequestPasswordResetRequest(
   handler: (e: core.AdminRequestPasswordResetEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onAdminBeforeUpdateRequest(
   handler: (e: core.AdminUpdateEvent) => void
-): void;
-/** @group PocketBase */ declare function onAdminViewRequest(handler: (e: core.AdminViewEvent) => void): void;
+): void
+/** @group PocketBase */ declare function onAdminViewRequest(handler: (e: core.AdminViewEvent) => void): void
 /** @group PocketBase */ declare function onAdminsListRequest(
   handler: (e: core.AdminsListEvent) => void
-): void;
-/** @group PocketBase */ declare function onAfterApiError(handler: (e: core.ApiErrorEvent) => void): void;
-/** @group PocketBase */ declare function onAfterBootstrap(handler: (e: core.BootstrapEvent) => void): void;
-/** @group PocketBase */ declare function onBeforeApiError(handler: (e: core.ApiErrorEvent) => void): void;
-/** @group PocketBase */ declare function onBeforeBootstrap(handler: (e: core.BootstrapEvent) => void): void;
+): void
+/** @group PocketBase */ declare function onAfterApiError(handler: (e: core.ApiErrorEvent) => void): void
+/** @group PocketBase */ declare function onAfterBootstrap(handler: (e: core.BootstrapEvent) => void): void
+/** @group PocketBase */ declare function onBeforeApiError(handler: (e: core.ApiErrorEvent) => void): void
+/** @group PocketBase */ declare function onBeforeBootstrap(handler: (e: core.BootstrapEvent) => void): void
 /** @group PocketBase */ declare function onCollectionAfterCreateRequest(
   handler: (e: core.CollectionCreateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionAfterDeleteRequest(
   handler: (e: core.CollectionDeleteEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionAfterUpdateRequest(
   handler: (e: core.CollectionUpdateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionBeforeCreateRequest(
   handler: (e: core.CollectionCreateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionBeforeDeleteRequest(
   handler: (e: core.CollectionDeleteEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionBeforeUpdateRequest(
   handler: (e: core.CollectionUpdateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionViewRequest(
   handler: (e: core.CollectionViewEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionsAfterImportRequest(
   handler: (e: core.CollectionsImportEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionsBeforeImportRequest(
   handler: (e: core.CollectionsImportEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onCollectionsListRequest(
   handler: (e: core.CollectionsListEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onFileAfterTokenRequest(
   handler: (e: core.FileTokenEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onFileBeforeTokenRequest(
   handler: (e: core.FileTokenEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onFileDownloadRequest(
   handler: (e: core.FileDownloadEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onMailerAfterAdminResetPasswordSend(
   handler: (e: core.MailerAdminEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onMailerAfterRecordChangeEmailSend(
   handler: (e: core.MailerRecordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onMailerAfterRecordResetPasswordSend(
   handler: (e: core.MailerRecordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onMailerAfterRecordVerificationSend(
   handler: (e: core.MailerRecordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onMailerBeforeAdminResetPasswordSend(
   handler: (e: core.MailerAdminEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onMailerBeforeRecordChangeEmailSend(
   handler: (e: core.MailerRecordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onMailerBeforeRecordResetPasswordSend(
   handler: (e: core.MailerRecordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onMailerBeforeRecordVerificationSend(
   handler: (e: core.MailerRecordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onModelAfterCreate(
   handler: (e: core.ModelEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onModelAfterDelete(
   handler: (e: core.ModelEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onModelAfterUpdate(
   handler: (e: core.ModelEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onModelBeforeCreate(
   handler: (e: core.ModelEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onModelBeforeDelete(
   handler: (e: core.ModelEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onModelBeforeUpdate(
   handler: (e: core.ModelEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRealtimeAfterMessageSend(
   handler: (e: core.RealtimeMessageEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onRealtimeAfterSubscribeRequest(
   handler: (e: core.RealtimeSubscribeEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onRealtimeBeforeMessageSend(
   handler: (e: core.RealtimeMessageEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onRealtimeBeforeSubscribeRequest(
   handler: (e: core.RealtimeSubscribeEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onRealtimeConnectRequest(
   handler: (e: core.RealtimeConnectEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onRealtimeDisconnectRequest(
   handler: (e: core.RealtimeDisconnectEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterAuthRefreshRequest(
   handler: (e: core.RecordAuthRefreshEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterAuthWithOAuth2Request(
   handler: (e: core.RecordAuthWithOAuth2Event) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterAuthWithPasswordRequest(
   handler: (e: core.RecordAuthWithPasswordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterConfirmEmailChangeRequest(
   handler: (e: core.RecordConfirmEmailChangeEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterConfirmPasswordResetRequest(
   handler: (e: core.RecordConfirmPasswordResetEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterConfirmVerificationRequest(
   handler: (e: core.RecordConfirmVerificationEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterCreateRequest(
   handler: (e: core.RecordCreateEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterDeleteRequest(
   handler: (e: core.RecordDeleteEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterRequestEmailChangeRequest(
   handler: (e: core.RecordRequestEmailChangeEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterRequestPasswordResetRequest(
   handler: (e: core.RecordRequestPasswordResetEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterRequestVerificationRequest(
   handler: (e: core.RecordRequestVerificationEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterUnlinkExternalAuthRequest(
   handler: (e: core.RecordUnlinkExternalAuthEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAfterUpdateRequest(
   handler: (e: core.RecordUpdateEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordAuthRequest(
   handler: (e: core.RecordAuthEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeAuthRefreshRequest(
   handler: (e: core.RecordAuthRefreshEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeAuthWithOAuth2Request(
   handler: (e: core.RecordAuthWithOAuth2Event) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeAuthWithPasswordRequest(
   handler: (e: core.RecordAuthWithPasswordEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeConfirmEmailChangeRequest(
   handler: (e: core.RecordConfirmEmailChangeEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeConfirmPasswordResetRequest(
   handler: (e: core.RecordConfirmPasswordResetEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeConfirmVerificationRequest(
   handler: (e: core.RecordConfirmVerificationEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeCreateRequest(
   handler: (e: core.RecordCreateEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeDeleteRequest(
   handler: (e: core.RecordDeleteEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeRequestEmailChangeRequest(
   handler: (e: core.RecordRequestEmailChangeEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeRequestPasswordResetRequest(
   handler: (e: core.RecordRequestPasswordResetEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeRequestVerificationRequest(
   handler: (e: core.RecordRequestVerificationEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeUnlinkExternalAuthRequest(
   handler: (e: core.RecordUnlinkExternalAuthEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordBeforeUpdateRequest(
   handler: (e: core.RecordUpdateEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordListExternalAuthsRequest(
   handler: (e: core.RecordListExternalAuthsEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordViewRequest(
   handler: (e: core.RecordViewEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onRecordsListRequest(
   handler: (e: core.RecordsListEvent) => void,
   ...tags: string[]
-): void;
+): void
 /** @group PocketBase */ declare function onSettingsAfterUpdateRequest(
   handler: (e: core.SettingsUpdateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onSettingsBeforeUpdateRequest(
   handler: (e: core.SettingsUpdateEvent) => void
-): void;
+): void
 /** @group PocketBase */ declare function onSettingsListRequest(
   handler: (e: core.SettingsListEvent) => void
-): void;
-/** @group PocketBase */ declare function onTerminate(handler: (e: core.TerminateEvent) => void): void;
-type _TygojaDict = { [key: string | number | symbol]: any };
-type _TygojaAny = any;
+): void
+/** @group PocketBase */ declare function onTerminate(handler: (e: core.TerminateEvent) => void): void
+type _TygojaDict = { [key: string | number | symbol]: any }
+type _TygojaAny = any
 
 /**
  * Package os provides a platform-independent interface to operating system
@@ -1258,7 +1258,7 @@ namespace os {
      *
      * Most clients are better served by the more efficient ReadDir method.
      */
-    readdir(n: number): Array<FileInfo>;
+    readdir(n: number): Array<FileInfo>
   }
   interface File {
     /**
@@ -1278,7 +1278,7 @@ namespace os {
      * directory, Readdirnames returns the names read until that point and
      * a non-nil error.
      */
-    readdirnames(n: number): Array<string>;
+    readdirnames(n: number): Array<string>
   }
   /**
    * A DirEntry is an entry read from a directory
@@ -1298,7 +1298,7 @@ namespace os {
      * If n <= 0, ReadDir returns all the DirEntry records remaining in the directory.
      * When it succeeds, it returns a nil error (not io.EOF).
      */
-    readDir(n: number): Array<DirEntry>;
+    readDir(n: number): Array<DirEntry>
   }
   interface readDir {
     /**
@@ -1308,7 +1308,7 @@ namespace os {
      * ReadDir returns the entries it was able to read before the error,
      * along with the error.
      */
-    (name: string): Array<DirEntry>;
+    (name: string): Array<DirEntry>
   }
   /**
    * Auxiliary information if the File describes a directory
@@ -1319,7 +1319,7 @@ namespace os {
      * Expand replaces ${var} or $var in the string based on the mapping function.
      * For example, os.ExpandEnv(s) is equivalent to os.Expand(s, os.Getenv).
      */
-    (s: string, mapping: (_arg0: string) => string): string;
+    (s: string, mapping: (_arg0: string) => string): string
   }
   interface expandEnv {
     /**
@@ -1327,7 +1327,7 @@ namespace os {
      * of the current environment variables. References to undefined
      * variables are replaced by the empty string.
      */
-    (s: string): string;
+    (s: string): string
   }
   interface getenv {
     /**
@@ -1335,7 +1335,7 @@ namespace os {
      * It returns the value, which will be empty if the variable is not present.
      * To distinguish between an empty value and an unset value, use LookupEnv.
      */
-    (key: string): string;
+    (key: string): string
   }
   interface lookupEnv {
     /**
@@ -1345,36 +1345,36 @@ namespace os {
      * Otherwise the returned value will be empty and the boolean will
      * be false.
      */
-    (key: string): [string, boolean];
+    (key: string): [string, boolean]
   }
   interface setenv {
     /**
      * Setenv sets the value of the environment variable named by the key.
      * It returns an error, if any.
      */
-    (key: string): void;
+    (key: string): void
   }
   interface unsetenv {
     /**
      * Unsetenv unsets a single environment variable.
      */
-    (key: string): void;
+    (key: string): void
   }
   interface clearenv {
     /**
      * Clearenv deletes all environment variables.
      */
-    (): void;
+    (): void
   }
   interface environ {
     /**
      * Environ returns a copy of strings representing the environment,
      * in the form "key=value".
      */
-    (): Array<string>;
+    (): Array<string>
   }
   interface timeout {
-    timeout(): boolean;
+    timeout(): boolean
   }
   /**
    * PathError records an error and the operation and file path that caused it.
@@ -1384,20 +1384,20 @@ namespace os {
    * SyscallError records an error from a specific system call.
    */
   interface SyscallError {
-    syscall: string;
-    err: Error;
+    syscall: string
+    err: Error
   }
   interface SyscallError {
-    error(): string;
+    error(): string
   }
   interface SyscallError {
-    unwrap(): void;
+    unwrap(): void
   }
   interface SyscallError {
     /**
      * Timeout reports whether this error represents a timeout.
      */
-    timeout(): boolean;
+    timeout(): boolean
   }
   interface newSyscallError {
     /**
@@ -1405,7 +1405,7 @@ namespace os {
      * with the given system call name and error details.
      * As a convenience, if err is nil, NewSyscallError returns nil.
      */
-    (syscall: string, err: Error): void;
+    (syscall: string, err: Error): void
   }
   interface isExist {
     /**
@@ -1416,7 +1416,7 @@ namespace os {
      * This function predates errors.Is. It only supports errors returned by
      * the os package. New code should use errors.Is(err, fs.ErrExist).
      */
-    (err: Error): boolean;
+    (err: Error): boolean
   }
   interface isNotExist {
     /**
@@ -1427,7 +1427,7 @@ namespace os {
      * This function predates errors.Is. It only supports errors returned by
      * the os package. New code should use errors.Is(err, fs.ErrNotExist).
      */
-    (err: Error): boolean;
+    (err: Error): boolean
   }
   interface isPermission {
     /**
@@ -1438,7 +1438,7 @@ namespace os {
      * This function predates errors.Is. It only supports errors returned by
      * the os package. New code should use errors.Is(err, fs.ErrPermission).
      */
-    (err: Error): boolean;
+    (err: Error): boolean
   }
   interface isTimeout {
     /**
@@ -1451,14 +1451,14 @@ namespace os {
      * New code should use errors.Is with a value appropriate to the call
      * returning the error, such as os.ErrDeadlineExceeded.
      */
-    (err: Error): boolean;
+    (err: Error): boolean
   }
   interface syscallErrorType extends syscall.Errno {}
   /**
    * Process stores the information about a process created by StartProcess.
    */
   interface Process {
-    pid: number;
+    pid: number
   }
   /**
    * ProcAttr holds the attributes that will be applied to a new process
@@ -1469,13 +1469,13 @@ namespace os {
      * If Dir is non-empty, the child changes into the directory before
      * creating the process.
      */
-    dir: string;
+    dir: string
     /**
      * If Env is non-nil, it gives the environment variables for the
      * new process in the form returned by Environ.
      * If it is nil, the result of Environ will be used.
      */
-    env: Array<string>;
+    env: Array<string>
     /**
      * Files specifies the open files inherited by the new process. The
      * first three entries correspond to standard input, standard output, and
@@ -1486,14 +1486,14 @@ namespace os {
      * to blocking mode, which means that SetDeadline will stop working
      * and calling Close will not interrupt a Read or Write.
      */
-    files: Array<File | undefined>;
+    files: Array<File | undefined>
     /**
      * Operating system-specific process creation attributes.
      * Note that setting this field means that your program
      * may not execute properly or even compile on some
      * operating systems.
      */
-    sys?: syscall.SysProcAttr;
+    sys?: syscall.SysProcAttr
   }
   /**
    * A Signal represents an operating system signal.
@@ -1501,20 +1501,20 @@ namespace os {
    * on Unix it is syscall.Signal.
    */
   interface Signal {
-    string(): string;
-    signal(): void; // to distinguish from other Stringers
+    string(): string
+    signal(): void // to distinguish from other Stringers
   }
   interface getpid {
     /**
      * Getpid returns the process id of the caller.
      */
-    (): number;
+    (): number
   }
   interface getppid {
     /**
      * Getppid returns the process id of the caller's parent.
      */
-    (): number;
+    (): number
   }
   interface findProcess {
     /**
@@ -1526,7 +1526,7 @@ namespace os {
      * On Unix systems, FindProcess always succeeds and returns a Process
      * for the given pid, regardless of whether the process exists.
      */
-    (pid: number): Process | undefined;
+    (pid: number): Process | undefined
   }
   interface startProcess {
     /**
@@ -1544,7 +1544,7 @@ namespace os {
      *
      * If there is an error, it will be of type *PathError.
      */
-    (name: string, argv: Array<string>, attr: ProcAttr): Process | undefined;
+    (name: string, argv: Array<string>, attr: ProcAttr): Process | undefined
   }
   interface Process {
     /**
@@ -1552,7 +1552,7 @@ namespace os {
      * rendering it unusable in the future.
      * Release only needs to be called if Wait is not.
      */
-    release(): void;
+    release(): void
   }
   interface Process {
     /**
@@ -1560,7 +1560,7 @@ namespace os {
      * the Process has actually exited. This only kills the Process itself,
      * not any other processes it may have started.
      */
-    kill(): void;
+    kill(): void
   }
   interface Process {
     /**
@@ -1570,26 +1570,26 @@ namespace os {
      * On most operating systems, the Process must be a child
      * of the current process or an error will be returned.
      */
-    wait(): ProcessState | undefined;
+    wait(): ProcessState | undefined
   }
   interface Process {
     /**
      * Signal sends a signal to the Process.
      * Sending Interrupt on Windows is not implemented.
      */
-    signal(sig: Signal): void;
+    signal(sig: Signal): void
   }
   interface ProcessState {
     /**
      * UserTime returns the user CPU time of the exited process and its children.
      */
-    userTime(): time.Duration;
+    userTime(): time.Duration
   }
   interface ProcessState {
     /**
      * SystemTime returns the system CPU time of the exited process and its children.
      */
-    systemTime(): time.Duration;
+    systemTime(): time.Duration
   }
   interface ProcessState {
     /**
@@ -1597,14 +1597,14 @@ namespace os {
      * On Unix systems this reports true if the program exited due to calling exit,
      * but false if the program terminated due to a signal.
      */
-    exited(): boolean;
+    exited(): boolean
   }
   interface ProcessState {
     /**
      * Success reports whether the program exited successfully,
      * such as with exit status 0 on Unix.
      */
-    success(): boolean;
+    success(): boolean
   }
   interface ProcessState {
     /**
@@ -1612,7 +1612,7 @@ namespace os {
      * the process. Convert it to the appropriate underlying
      * type, such as syscall.WaitStatus on Unix, to access its contents.
      */
-    sys(): any;
+    sys(): any
   }
   interface ProcessState {
     /**
@@ -1622,7 +1622,7 @@ namespace os {
      * (On Unix, *syscall.Rusage matches struct rusage as defined in the
      * getrusage(2) manual page.)
      */
-    sysUsage(): any;
+    sysUsage(): any
   }
   /**
    * ProcessState stores information about a process, as reported by Wait.
@@ -1632,17 +1632,17 @@ namespace os {
     /**
      * Pid returns the process id of the exited process.
      */
-    pid(): number;
+    pid(): number
   }
   interface ProcessState {
-    string(): string;
+    string(): string
   }
   interface ProcessState {
     /**
      * ExitCode returns the exit code of the exited process, or -1
      * if the process hasn't exited or was terminated by a signal.
      */
-    exitCode(): number;
+    exitCode(): number
   }
   interface executable {
     /**
@@ -1658,29 +1658,29 @@ namespace os {
      * The main use case is finding resources located relative to an
      * executable.
      */
-    (): string;
+    (): string
   }
   interface File {
     /**
      * Name returns the name of the file as presented to Open.
      */
-    name(): string;
+    name(): string
   }
   /**
    * LinkError records an error during a link or symlink or rename
    * system call and the paths that caused it.
    */
   interface LinkError {
-    op: string;
-    old: string;
-    new: string;
-    err: Error;
+    op: string
+    old: string
+    new: string
+    err: Error
   }
   interface LinkError {
-    error(): string;
+    error(): string
   }
   interface LinkError {
-    unwrap(): void;
+    unwrap(): void
   }
   interface File {
     /**
@@ -1688,7 +1688,7 @@ namespace os {
      * It returns the number of bytes read and any error encountered.
      * At end of file, Read returns 0, io.EOF.
      */
-    read(b: string): number;
+    read(b: string): number
   }
   interface File {
     /**
@@ -1697,15 +1697,15 @@ namespace os {
      * ReadAt always returns a non-nil error when n < len(b).
      * At end of file, that error is io.EOF.
      */
-    readAt(b: string, off: number): number;
+    readAt(b: string, off: number): number
   }
   interface File {
     /**
      * ReadFrom implements io.ReaderFrom.
      */
-    readFrom(r: io.Reader): number;
+    readFrom(r: io.Reader): number
   }
-  type _subsedpf = io.Writer;
+  type _subsedpf = io.Writer
   interface onlyWriter extends _subsedpf {}
   interface File {
     /**
@@ -1713,7 +1713,7 @@ namespace os {
      * It returns the number of bytes written and an error, if any.
      * Write returns a non-nil error when n != len(b).
      */
-    write(b: string): number;
+    write(b: string): number
   }
   interface File {
     /**
@@ -1723,7 +1723,7 @@ namespace os {
      *
      * If file was opened with the O_APPEND flag, WriteAt returns an error.
      */
-    writeAt(b: string, off: number): number;
+    writeAt(b: string, off: number): number
   }
   interface File {
     /**
@@ -1737,14 +1737,14 @@ namespace os {
      * system; you can seek to the beginning of the directory on Unix-like
      * operating systems, but not on Windows.
      */
-    seek(offset: number, whence: number): number;
+    seek(offset: number, whence: number): number
   }
   interface File {
     /**
      * WriteString is like Write, but writes the contents of string s rather than
      * a slice of bytes.
      */
-    writeString(s: string): number;
+    writeString(s: string): number
   }
   interface mkdir {
     /**
@@ -1752,14 +1752,14 @@ namespace os {
      * bits (before umask).
      * If there is an error, it will be of type *PathError.
      */
-    (name: string, perm: FileMode): void;
+    (name: string, perm: FileMode): void
   }
   interface chdir {
     /**
      * Chdir changes the current working directory to the named directory.
      * If there is an error, it will be of type *PathError.
      */
-    (dir: string): void;
+    (dir: string): void
   }
   interface open {
     /**
@@ -1768,7 +1768,7 @@ namespace os {
      * descriptor has mode O_RDONLY.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string): File | undefined;
+    (name: string): File | undefined
   }
   interface create {
     /**
@@ -1778,7 +1778,7 @@ namespace os {
      * be used for I/O; the associated file descriptor has mode O_RDWR.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string): File | undefined;
+    (name: string): File | undefined
   }
   interface openFile {
     /**
@@ -1789,7 +1789,7 @@ namespace os {
      * methods on the returned File can be used for I/O.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string, flag: number, perm: FileMode): File | undefined;
+    (name: string, flag: number, perm: FileMode): File | undefined
   }
   interface rename {
     /**
@@ -1798,7 +1798,7 @@ namespace os {
      * OS-specific restrictions may apply when oldpath and newpath are in different directories.
      * If there is an error, it will be of type *LinkError.
      */
-    (oldpath: string): void;
+    (oldpath: string): void
   }
   interface tempDir {
     /**
@@ -1812,7 +1812,7 @@ namespace os {
      * The directory is neither guaranteed to exist nor have accessible
      * permissions.
      */
-    (): string;
+    (): string
   }
   interface userCacheDir {
     /**
@@ -1830,7 +1830,7 @@ namespace os {
      * If the location cannot be determined (for example, $HOME is not defined),
      * then it will return an error.
      */
-    (): string;
+    (): string
   }
   interface userConfigDir {
     /**
@@ -1848,7 +1848,7 @@ namespace os {
      * If the location cannot be determined (for example, $HOME is not defined),
      * then it will return an error.
      */
-    (): string;
+    (): string
   }
   interface userHomeDir {
     /**
@@ -1858,7 +1858,7 @@ namespace os {
      * On Windows, it returns %USERPROFILE%.
      * On Plan 9, it returns the $home environment variable.
      */
-    (): string;
+    (): string
   }
   interface chmod {
     /**
@@ -1881,14 +1881,14 @@ namespace os {
      * On Plan 9, the mode's permission bits, ModeAppend, ModeExclusive,
      * and ModeTemporary are used.
      */
-    (name: string, mode: FileMode): void;
+    (name: string, mode: FileMode): void
   }
   interface File {
     /**
      * Chmod changes the mode of the file to mode.
      * If there is an error, it will be of type *PathError.
      */
-    chmod(mode: FileMode): void;
+    chmod(mode: FileMode): void
   }
   interface File {
     /**
@@ -1917,7 +1917,7 @@ namespace os {
      *
      * A zero value for t means I/O operations will not time out.
      */
-    setDeadline(t: time.Time): void;
+    setDeadline(t: time.Time): void
   }
   interface File {
     /**
@@ -1926,7 +1926,7 @@ namespace os {
      * A zero value for t means Read will not time out.
      * Not all files support setting deadlines; see SetDeadline.
      */
-    setReadDeadline(t: time.Time): void;
+    setReadDeadline(t: time.Time): void
   }
   interface File {
     /**
@@ -1937,14 +1937,14 @@ namespace os {
      * A zero value for t means Write will not time out.
      * Not all files support setting deadlines; see SetDeadline.
      */
-    setWriteDeadline(t: time.Time): void;
+    setWriteDeadline(t: time.Time): void
   }
   interface File {
     /**
      * SyscallConn returns a raw file.
      * This implements the syscall.Conn interface.
      */
-    syscallConn(): syscall.RawConn;
+    syscallConn(): syscall.RawConn
   }
   interface dirFS {
     /**
@@ -1959,14 +1959,14 @@ namespace os {
      *
      * The directory dir must not be "".
      */
-    (dir: string): fs.FS;
+    (dir: string): fs.FS
   }
   interface dirFS extends String {}
   interface dirFS {
-    open(name: string): fs.File;
+    open(name: string): fs.File
   }
   interface dirFS {
-    stat(name: string): fs.FileInfo;
+    stat(name: string): fs.FileInfo
   }
   interface readFile {
     /**
@@ -1975,7 +1975,7 @@ namespace os {
      * Because ReadFile reads the whole file, it does not treat an EOF from Read
      * as an error to be reported.
      */
-    (name: string): string;
+    (name: string): string
   }
   interface writeFile {
     /**
@@ -1983,7 +1983,7 @@ namespace os {
      * If the file does not exist, WriteFile creates it with permissions perm (before umask);
      * otherwise WriteFile truncates it before writing, without changing permissions.
      */
-    (name: string, data: string, perm: FileMode): void;
+    (name: string, data: string, perm: FileMode): void
   }
   interface File {
     /**
@@ -1992,7 +1992,7 @@ namespace os {
      * be canceled and return immediately with an ErrClosed error.
      * Close will return an error if it has already been called.
      */
-    close(): void;
+    close(): void
   }
   interface chown {
     /**
@@ -2004,7 +2004,7 @@ namespace os {
      * On Windows or Plan 9, Chown always returns the syscall.EWINDOWS or
      * EPLAN9 error, wrapped in *PathError.
      */
-    (name: string, uid: number): void;
+    (name: string, uid: number): void
   }
   interface lchown {
     /**
@@ -2015,7 +2015,7 @@ namespace os {
      * On Windows, it always returns the syscall.EWINDOWS error, wrapped
      * in *PathError.
      */
-    (name: string, uid: number): void;
+    (name: string, uid: number): void
   }
   interface File {
     /**
@@ -2025,7 +2025,7 @@ namespace os {
      * On Windows, it always returns the syscall.EWINDOWS error, wrapped
      * in *PathError.
      */
-    chown(uid: number): void;
+    chown(uid: number): void
   }
   interface File {
     /**
@@ -2033,7 +2033,7 @@ namespace os {
      * It does not change the I/O offset.
      * If there is an error, it will be of type *PathError.
      */
-    truncate(size: number): void;
+    truncate(size: number): void
   }
   interface File {
     /**
@@ -2041,7 +2041,7 @@ namespace os {
      * Typically, this means flushing the file system's in-memory copy
      * of recently written data to disk.
      */
-    sync(): void;
+    sync(): void
   }
   interface chtimes {
     /**
@@ -2052,7 +2052,7 @@ namespace os {
      * less precise time unit.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string, atime: time.Time, mtime: time.Time): void;
+    (name: string, atime: time.Time, mtime: time.Time): void
   }
   interface File {
     /**
@@ -2060,7 +2060,7 @@ namespace os {
      * which must be a directory.
      * If there is an error, it will be of type *PathError.
      */
-    chdir(): void;
+    chdir(): void
   }
   /**
    * file is the real representation of *File.
@@ -2084,7 +2084,7 @@ namespace os {
      *
      * As an alternative, see the f.SyscallConn method.
      */
-    fd(): number;
+    fd(): number
   }
   interface newFile {
     /**
@@ -2098,7 +2098,7 @@ namespace os {
      * conditions described in the comments of the Fd method, and the same
      * constraints apply.
      */
-    (fd: number, name: string): File | undefined;
+    (fd: number, name: string): File | undefined
   }
   /**
    * newFileKind describes the kind of file to newFile.
@@ -2110,21 +2110,21 @@ namespace os {
      * If the file is a symbolic link, it changes the size of the link's target.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string, size: number): void;
+    (name: string, size: number): void
   }
   interface remove {
     /**
      * Remove removes the named file or (empty) directory.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string): void;
+    (name: string): void
   }
   interface link {
     /**
      * Link creates newname as a hard link to the oldname file.
      * If there is an error, it will be of type *LinkError.
      */
-    (oldname: string): void;
+    (oldname: string): void
   }
   interface symlink {
     /**
@@ -2133,27 +2133,27 @@ namespace os {
      * if oldname is later created as a directory the symlink will not work.
      * If there is an error, it will be of type *LinkError.
      */
-    (oldname: string): void;
+    (oldname: string): void
   }
   interface readlink {
     /**
      * Readlink returns the destination of the named symbolic link.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string): string;
+    (name: string): string
   }
   interface unixDirent {}
   interface unixDirent {
-    name(): string;
+    name(): string
   }
   interface unixDirent {
-    isDir(): boolean;
+    isDir(): boolean
   }
   interface unixDirent {
-    type(): FileMode;
+    type(): FileMode
   }
   interface unixDirent {
-    info(): FileInfo;
+    info(): FileInfo
   }
   interface getwd {
     /**
@@ -2162,7 +2162,7 @@ namespace os {
      * reached via multiple paths (due to symbolic links),
      * Getwd may return any one of them.
      */
-    (): string;
+    (): string
   }
   interface mkdirAll {
     /**
@@ -2174,7 +2174,7 @@ namespace os {
      * If path is already a directory, MkdirAll does nothing
      * and returns nil.
      */
-    (path: string, perm: FileMode): void;
+    (path: string, perm: FileMode): void
   }
   interface removeAll {
     /**
@@ -2184,20 +2184,20 @@ namespace os {
      * returns nil (no error).
      * If there is an error, it will be of type *PathError.
      */
-    (path: string): void;
+    (path: string): void
   }
   interface isPathSeparator {
     /**
      * IsPathSeparator reports whether c is a directory separator character.
      */
-    (c: number): boolean;
+    (c: number): boolean
   }
   interface pipe {
     /**
      * Pipe returns a connected pair of Files; reads from r return bytes written to w.
      * It returns the files and an error, if any.
      */
-    (): [File | undefined, File | undefined];
+    (): [File | undefined, File | undefined]
   }
   interface getuid {
     /**
@@ -2205,7 +2205,7 @@ namespace os {
      *
      * On Windows, it returns -1.
      */
-    (): number;
+    (): number
   }
   interface geteuid {
     /**
@@ -2213,7 +2213,7 @@ namespace os {
      *
      * On Windows, it returns -1.
      */
-    (): number;
+    (): number
   }
   interface getgid {
     /**
@@ -2221,7 +2221,7 @@ namespace os {
      *
      * On Windows, it returns -1.
      */
-    (): number;
+    (): number
   }
   interface getegid {
     /**
@@ -2229,7 +2229,7 @@ namespace os {
      *
      * On Windows, it returns -1.
      */
-    (): number;
+    (): number
   }
   interface getgroups {
     /**
@@ -2238,7 +2238,7 @@ namespace os {
      * On Windows, it returns syscall.EWINDOWS. See the os/user package
      * for a possible alternative.
      */
-    (): Array<number>;
+    (): Array<number>
   }
   interface exit {
     /**
@@ -2248,27 +2248,27 @@ namespace os {
      *
      * For portability, the status code should be in the range [0, 125].
      */
-    (code: number): void;
+    (code: number): void
   }
   /**
    * rawConn implements syscall.RawConn.
    */
   interface rawConn {}
   interface rawConn {
-    control(f: (_arg0: number) => void): void;
+    control(f: (_arg0: number) => void): void
   }
   interface rawConn {
-    read(f: (_arg0: number) => boolean): void;
+    read(f: (_arg0: number) => boolean): void
   }
   interface rawConn {
-    write(f: (_arg0: number) => boolean): void;
+    write(f: (_arg0: number) => boolean): void
   }
   interface stat {
     /**
      * Stat returns a FileInfo describing the named file.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string): FileInfo;
+    (name: string): FileInfo
   }
   interface lstat {
     /**
@@ -2277,20 +2277,20 @@ namespace os {
      * describes the symbolic link. Lstat makes no attempt to follow the link.
      * If there is an error, it will be of type *PathError.
      */
-    (name: string): FileInfo;
+    (name: string): FileInfo
   }
   interface File {
     /**
      * Stat returns the FileInfo structure describing file.
      * If there is an error, it will be of type *PathError.
      */
-    stat(): FileInfo;
+    stat(): FileInfo
   }
   interface hostname {
     /**
      * Hostname returns the host name reported by the kernel.
      */
-    (): string;
+    (): string
   }
   interface createTemp {
     /**
@@ -2303,7 +2303,7 @@ namespace os {
      * The caller can use the file's Name method to find the pathname of the file.
      * It is the caller's responsibility to remove the file when it is no longer needed.
      */
-    (dir: string): File | undefined;
+    (dir: string): File | undefined
   }
   interface mkdirTemp {
     /**
@@ -2315,18 +2315,18 @@ namespace os {
      * Multiple programs or goroutines calling MkdirTemp simultaneously will not choose the same directory.
      * It is the caller's responsibility to remove the directory when it is no longer needed.
      */
-    (dir: string): string;
+    (dir: string): string
   }
   interface getpagesize {
     /**
      * Getpagesize returns the underlying system's memory page size.
      */
-    (): number;
+    (): number
   }
   /**
    * File represents an open file descriptor.
    */
-  type _subvkfPa = file;
+  type _subvkfPa = file
   interface File extends _subvkfPa {}
   /**
    * A FileInfo describes a file and is returned by Stat and Lstat.
@@ -2341,10 +2341,10 @@ namespace os {
    */
   interface FileMode extends fs.FileMode {}
   interface fileStat {
-    name(): string;
+    name(): string
   }
   interface fileStat {
-    isDir(): boolean;
+    isDir(): boolean
   }
   interface sameFile {
     /**
@@ -2355,23 +2355,23 @@ namespace os {
      * SameFile only applies to results returned by this package's Stat.
      * It returns false in other cases.
      */
-    (fi1: FileInfo): boolean;
+    (fi1: FileInfo): boolean
   }
   /**
    * A fileStat is the implementation of FileInfo returned by Stat and Lstat.
    */
   interface fileStat {}
   interface fileStat {
-    size(): number;
+    size(): number
   }
   interface fileStat {
-    mode(): FileMode;
+    mode(): FileMode
   }
   interface fileStat {
-    modTime(): time.Time;
+    modTime(): time.Time
   }
   interface fileStat {
-    sys(): any;
+    sys(): any
   }
 }
 
@@ -2414,7 +2414,7 @@ namespace filepath {
      * On Windows, escaping is disabled. Instead, '\\' is treated as
      * path separator.
      */
-    (pattern: string): boolean;
+    (pattern: string): boolean
   }
   interface glob {
     /**
@@ -2427,7 +2427,7 @@ namespace filepath {
      * The only possible returned error is ErrBadPattern, when pattern
      * is malformed.
      */
-    (pattern: string): Array<string>;
+    (pattern: string): Array<string>
   }
   /**
    * A lazybuf is a lazily constructed path buffer.
@@ -2464,7 +2464,7 @@ namespace filepath {
      * Getting Dot-Dot Right,''
      * https://9p.io/sys/doc/lexnames.html
      */
-    (path: string): string;
+    (path: string): string
   }
   interface toSlash {
     /**
@@ -2472,7 +2472,7 @@ namespace filepath {
      * in path with a slash ('/') character. Multiple separators are
      * replaced by multiple slashes.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface fromSlash {
     /**
@@ -2480,7 +2480,7 @@ namespace filepath {
      * in path with a separator character. Multiple slashes are replaced
      * by multiple separators.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface splitList {
     /**
@@ -2489,7 +2489,7 @@ namespace filepath {
      * Unlike strings.Split, SplitList returns an empty slice when passed an empty
      * string.
      */
-    (path: string): Array<string>;
+    (path: string): Array<string>
   }
   interface split {
     /**
@@ -2499,7 +2499,7 @@ namespace filepath {
      * and file set to path.
      * The returned values have the property that path = dir+file.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface join {
     /**
@@ -2511,7 +2511,7 @@ namespace filepath {
      * On Windows, the result will only be a UNC path if the first
      * non-empty element is a UNC path.
      */
-    (...elem: string[]): string;
+    (...elem: string[]): string
   }
   interface ext {
     /**
@@ -2520,7 +2520,7 @@ namespace filepath {
      * in the final element of path; it is empty if there is
      * no dot.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface evalSymlinks {
     /**
@@ -2530,7 +2530,7 @@ namespace filepath {
      * unless one of the components is an absolute symbolic link.
      * EvalSymlinks calls Clean on the result.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface abs {
     /**
@@ -2540,7 +2540,7 @@ namespace filepath {
      * path name for a given file is not guaranteed to be unique.
      * Abs calls Clean on the result.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface rel {
     /**
@@ -2553,7 +2553,7 @@ namespace filepath {
      * knowing the current working directory would be necessary to compute it.
      * Rel calls Clean on the result.
      */
-    (basepath: string): string;
+    (basepath: string): string
   }
   /**
    * WalkFunc is the type of the function called by Walk to visit each
@@ -2595,7 +2595,7 @@ namespace filepath {
    * Readdirnames.
    */
   interface WalkFunc {
-    (path: string, info: fs.FileInfo, err: Error): void;
+    (path: string, info: fs.FileInfo, err: Error): void
   }
   interface walkDir {
     /**
@@ -2611,20 +2611,20 @@ namespace filepath {
      *
      * WalkDir does not follow symbolic links.
      */
-    (root: string, fn: fs.WalkDirFunc): void;
+    (root: string, fn: fs.WalkDirFunc): void
   }
   interface statDirEntry {}
   interface statDirEntry {
-    name(): string;
+    name(): string
   }
   interface statDirEntry {
-    isDir(): boolean;
+    isDir(): boolean
   }
   interface statDirEntry {
-    type(): fs.FileMode;
+    type(): fs.FileMode
   }
   interface statDirEntry {
-    info(): fs.FileInfo;
+    info(): fs.FileInfo
   }
   interface walk {
     /**
@@ -2643,7 +2643,7 @@ namespace filepath {
      * Walk is less efficient than WalkDir, introduced in Go 1.16,
      * which avoids calling os.Lstat on every visited file or directory.
      */
-    (root: string, fn: WalkFunc): void;
+    (root: string, fn: WalkFunc): void
   }
   interface base {
     /**
@@ -2652,7 +2652,7 @@ namespace filepath {
      * If the path is empty, Base returns ".".
      * If the path consists entirely of separators, Base returns a single separator.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface dir {
     /**
@@ -2663,7 +2663,7 @@ namespace filepath {
      * If the path consists entirely of separators, Dir returns a single separator.
      * The returned path does not end in a separator unless it is the root directory.
      */
-    (path: string): string;
+    (path: string): string
   }
   interface volumeName {
     /**
@@ -2672,13 +2672,13 @@ namespace filepath {
      * Given "\\host\share\foo" it returns "\\host\share".
      * On other platforms it returns "".
      */
-    (path: string): string;
+    (path: string): string
   }
   interface isAbs {
     /**
      * IsAbs reports whether the path is absolute.
      */
-    (path: string): boolean;
+    (path: string): boolean
   }
   interface hasPrefix {
     /**
@@ -2687,7 +2687,7 @@ namespace filepath {
      * Deprecated: HasPrefix does not respect path boundaries and
      * does not ignore case when required.
      */
-    (p: string): boolean;
+    (p: string): boolean
   }
 }
 
@@ -2699,57 +2699,57 @@ namespace security {
      *
      * [RFC 7636]: https://datatracker.ietf.org/doc/html/rfc7636#section-4.2
      */
-    (code: string): string;
+    (code: string): string
   }
   interface md5 {
     /**
      * MD5 creates md5 hash from the provided plain text.
      */
-    (text: string): string;
+    (text: string): string
   }
   interface sha256 {
     /**
      * SHA256 creates sha256 hash as defined in FIPS 180-4 from the provided text.
      */
-    (text: string): string;
+    (text: string): string
   }
   interface sha512 {
     /**
      * SHA512 creates sha512 hash as defined in FIPS 180-4 from the provided text.
      */
-    (text: string): string;
+    (text: string): string
   }
   interface hs256 {
     /**
      * HS256 creates a HMAC hash with sha256 digest algorithm.
      */
-    (text: string, secret: string): string;
+    (text: string, secret: string): string
   }
   interface hs512 {
     /**
      * HS512 creates a HMAC hash with sha512 digest algorithm.
      */
-    (text: string, secret: string): string;
+    (text: string, secret: string): string
   }
   interface equal {
     /**
      * Equal compares two hash strings for equality without leaking timing information.
      */
-    (hash1: string, hash2: string): boolean;
+    (hash1: string, hash2: string): boolean
   }
   // @ts-ignore
-  import crand = rand;
+  import crand = rand
   interface encrypt {
     /**
      * Encrypt encrypts data with key (must be valid 32 char aes key).
      */
-    (data: string, key: string): string;
+    (data: string, key: string): string
   }
   interface decrypt {
     /**
      * Decrypt decrypts encrypted text with key (must be valid 32 chars aes key).
      */
-    (cipherText: string, key: string): string;
+    (cipherText: string, key: string): string
   }
   interface parseUnverifiedJWT {
     /**
@@ -2758,19 +2758,19 @@ namespace security {
      *
      * It verifies only the exp, iat and nbf claims.
      */
-    (token: string): jwt.MapClaims;
+    (token: string): jwt.MapClaims
   }
   interface parseJWT {
     /**
      * ParseJWT verifies and parses JWT token and returns its claims.
      */
-    (token: string, verificationKey: string): jwt.MapClaims;
+    (token: string, verificationKey: string): jwt.MapClaims
   }
   interface newJWT {
     /**
      * NewJWT generates and returns new HS256 signed JWT token.
      */
-    (payload: jwt.MapClaims, signingKey: string, secondsDuration: number): string;
+    (payload: jwt.MapClaims, signingKey: string, secondsDuration: number): string
   }
   interface newToken {
     /**
@@ -2779,19 +2779,19 @@ namespace security {
      *
      * NewToken is a legacy alias for NewJWT that generates a HS256 signed JWT token.
      */
-    (payload: jwt.MapClaims, signingKey: string, secondsDuration: number): string;
+    (payload: jwt.MapClaims, signingKey: string, secondsDuration: number): string
   }
   // @ts-ignore
-  import cryptoRand = rand;
+  import cryptoRand = rand
   // @ts-ignore
-  import mathRand = rand;
+  import mathRand = rand
   interface randomString {
     /**
      * RandomString generates a cryptographically random string with the specified length.
      *
      * The generated string matches [A-Za-z0-9]+ and it's transparent to URL-encoding.
      */
-    (length: number): string;
+    (length: number): string
   }
   interface randomStringWithAlphabet {
     /**
@@ -2800,7 +2800,7 @@ namespace security {
      *
      * It panics if for some reason rand.Int returns a non-nil error.
      */
-    (length: number, alphabet: string): string;
+    (length: number, alphabet: string): string
   }
   interface pseudorandomString {
     /**
@@ -2810,7 +2810,7 @@ namespace security {
      *
      * For a cryptographically random string (but a little bit slower) use RandomString instead.
      */
-    (length: number): string;
+    (length: number): string
   }
   interface pseudorandomStringWithAlphabet {
     /**
@@ -2819,7 +2819,7 @@ namespace security {
      *
      * For a cryptographically random (but a little bit slower) use RandomStringWithAlphabet instead.
      */
-    (length: number, alphabet: string): string;
+    (length: number, alphabet: string): string
   }
 }
 
@@ -2867,7 +2867,7 @@ namespace exec {
      * quoting yourself and provide the full command line in SysProcAttr.CmdLine,
      * leaving Args empty.
      */
-    (name: string, ...arg: string[]): Cmd | undefined;
+    (name: string, ...arg: string[]): Cmd | undefined
   }
 }
 
@@ -2876,7 +2876,7 @@ namespace filesystem {
    * FileReader defines an interface for a file resource reader.
    */
   interface FileReader {
-    open(): io.ReadSeekCloser;
+    open(): io.ReadSeekCloser
   }
   /**
    * File defines a single file [io.ReadSeekCloser] resource.
@@ -2884,72 +2884,72 @@ namespace filesystem {
    * The file could be from a local path, multipipart/formdata header, etc.
    */
   interface File {
-    name: string;
-    originalName: string;
-    size: number;
-    reader: FileReader;
+    name: string
+    originalName: string
+    size: number
+    reader: FileReader
   }
   interface newFileFromPath {
     /**
      * NewFileFromPath creates a new File instance from the provided local file path.
      */
-    (path: string): File | undefined;
+    (path: string): File | undefined
   }
   interface newFileFromBytes {
     /**
      * NewFileFromBytes creates a new File instance from the provided byte slice.
      */
-    (b: string, name: string): File | undefined;
+    (b: string, name: string): File | undefined
   }
   interface newFileFromMultipart {
     /**
      * NewFileFromMultipart creates a new File instace from the provided multipart header.
      */
-    (mh: multipart.FileHeader): File | undefined;
+    (mh: multipart.FileHeader): File | undefined
   }
   /**
    * MultipartReader defines a FileReader from [multipart.FileHeader].
    */
   interface MultipartReader {
-    header?: multipart.FileHeader;
+    header?: multipart.FileHeader
   }
   interface MultipartReader {
     /**
      * Open implements the [filesystem.FileReader] interface.
      */
-    open(): io.ReadSeekCloser;
+    open(): io.ReadSeekCloser
   }
   /**
    * PathReader defines a FileReader from a local file path.
    */
   interface PathReader {
-    path: string;
+    path: string
   }
   interface PathReader {
     /**
      * Open implements the [filesystem.FileReader] interface.
      */
-    open(): io.ReadSeekCloser;
+    open(): io.ReadSeekCloser
   }
   /**
    * BytesReader defines a FileReader from bytes content.
    */
   interface BytesReader {
-    bytes: string;
+    bytes: string
   }
   interface BytesReader {
     /**
      * Open implements the [filesystem.FileReader] interface.
      */
-    open(): io.ReadSeekCloser;
+    open(): io.ReadSeekCloser
   }
-  type _subkOZzn = bytes.Reader;
+  type _subkOZzn = bytes.Reader
   interface bytesReadSeekCloser extends _subkOZzn {}
   interface bytesReadSeekCloser {
     /**
      * Close implements the [io.ReadSeekCloser] interface.
      */
-    close(): void;
+    close(): void
   }
   interface System {}
   interface newS3 {
@@ -2965,7 +2965,7 @@ namespace filesystem {
       accessKey: string,
       secretKey: string,
       s3ForcePathStyle: boolean
-    ): System | undefined;
+    ): System | undefined
   }
   interface newLocal {
     /**
@@ -2973,31 +2973,31 @@ namespace filesystem {
      *
      * NB! Make sure to call `Close()` after you are done working with it.
      */
-    (dirPath: string): System | undefined;
+    (dirPath: string): System | undefined
   }
   interface System {
     /**
      * SetContext assigns the specified context to the current filesystem.
      */
-    setContext(ctx: context.Context): void;
+    setContext(ctx: context.Context): void
   }
   interface System {
     /**
      * Close releases any resources used for the related filesystem.
      */
-    close(): void;
+    close(): void
   }
   interface System {
     /**
      * Exists checks if file with fileKey path exists or not.
      */
-    exists(fileKey: string): boolean;
+    exists(fileKey: string): boolean
   }
   interface System {
     /**
      * Attributes returns the attributes for the file with fileKey path.
      */
-    attributes(fileKey: string): blob.Attributes | undefined;
+    attributes(fileKey: string): blob.Attributes | undefined
   }
   interface System {
     /**
@@ -3005,43 +3005,43 @@ namespace filesystem {
      *
      * NB! Make sure to call `Close()` after you are done working with it.
      */
-    getFile(fileKey: string): blob.Reader | undefined;
+    getFile(fileKey: string): blob.Reader | undefined
   }
   interface System {
     /**
      * List returns a flat list with info for all files under the specified prefix.
      */
-    list(prefix: string): Array<blob.ListObject | undefined>;
+    list(prefix: string): Array<blob.ListObject | undefined>
   }
   interface System {
     /**
      * Upload writes content into the fileKey location.
      */
-    upload(content: string, fileKey: string): void;
+    upload(content: string, fileKey: string): void
   }
   interface System {
     /**
      * UploadFile uploads the provided multipart file to the fileKey location.
      */
-    uploadFile(file: File, fileKey: string): void;
+    uploadFile(file: File, fileKey: string): void
   }
   interface System {
     /**
      * UploadMultipart uploads the provided multipart file to the fileKey location.
      */
-    uploadMultipart(fh: multipart.FileHeader, fileKey: string): void;
+    uploadMultipart(fh: multipart.FileHeader, fileKey: string): void
   }
   interface System {
     /**
      * Delete deletes stored file at fileKey location.
      */
-    delete(fileKey: string): void;
+    delete(fileKey: string): void
   }
   interface System {
     /**
      * DeletePrefix deletes everything starting with the specified prefix.
      */
-    deletePrefix(prefix: string): Array<Error>;
+    deletePrefix(prefix: string): Array<Error>
   }
   interface System {
     /**
@@ -3050,7 +3050,7 @@ namespace filesystem {
      * If the `download` query parameter is used the file will be always served for
      * download no matter of its type (aka. with "Content-Disposition: attachment").
      */
-    serve(res: http.ResponseWriter, req: http.Request, fileKey: string, name: string): void;
+    serve(res: http.ResponseWriter, req: http.Request, fileKey: string, name: string): void
   }
   interface System {
     /**
@@ -3065,7 +3065,7 @@ namespace filesystem {
      * - WxHb (eg. 300x100b) - resize and crop to WxH viewbox (from bottom)
      * - WxHf (eg. 300x100f) - fit inside a WxH viewbox (without cropping)
      */
-    createThumb(originalKey: string, thumbKey: string): void;
+    createThumb(originalKey: string, thumbKey: string): void
   }
 }
 
@@ -3084,46 +3084,46 @@ namespace dbx {
      * The SQL statement may contain parameter placeholders which can be bound with actual parameter
      * values before the statement is executed.
      */
-    newQuery(_arg0: string): Query | undefined;
+    newQuery(_arg0: string): Query | undefined
     /**
      * Select returns a new SelectQuery object that can be used to build a SELECT statement.
      * The parameters to this method should be the list column names to be selected.
      * A column name may have an optional alias name. For example, Select("id", "my_name AS name").
      */
-    select(..._arg0: string[]): SelectQuery | undefined;
+    select(..._arg0: string[]): SelectQuery | undefined
     /**
      * ModelQuery returns a new ModelQuery object that can be used to perform model insertion, update, and deletion.
      * The parameter to this method should be a pointer to the model struct that needs to be inserted, updated, or deleted.
      */
-    model(_arg0: {}): ModelQuery | undefined;
+    model(_arg0: {}): ModelQuery | undefined
     /**
      * GeneratePlaceholder generates an anonymous parameter placeholder with the given parameter ID.
      */
-    generatePlaceholder(_arg0: number): string;
+    generatePlaceholder(_arg0: number): string
     /**
      * Quote quotes a string so that it can be embedded in a SQL statement as a string value.
      */
-    quote(_arg0: string): string;
+    quote(_arg0: string): string
     /**
      * QuoteSimpleTableName quotes a simple table name.
      * A simple table name does not contain any schema prefix.
      */
-    quoteSimpleTableName(_arg0: string): string;
+    quoteSimpleTableName(_arg0: string): string
     /**
      * QuoteSimpleColumnName quotes a simple column name.
      * A simple column name does not contain any table prefix.
      */
-    quoteSimpleColumnName(_arg0: string): string;
+    quoteSimpleColumnName(_arg0: string): string
     /**
      * QueryBuilder returns the query builder supporting the current DB.
      */
-    queryBuilder(): QueryBuilder;
+    queryBuilder(): QueryBuilder
     /**
      * Insert creates a Query that represents an INSERT SQL statement.
      * The keys of cols are the column names, while the values of cols are the corresponding column
      * values to be inserted.
      */
-    insert(table: string, cols: Params): Query | undefined;
+    insert(table: string, cols: Params): Query | undefined
     /**
      * Upsert creates a Query that represents an UPSERT SQL statement.
      * Upsert inserts a row into the table if the primary key or unique index is not found.
@@ -3131,63 +3131,63 @@ namespace dbx {
      * The keys of cols are the column names, while the values of cols are the corresponding column
      * values to be inserted.
      */
-    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined;
+    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined
     /**
      * Update creates a Query that represents an UPDATE SQL statement.
      * The keys of cols are the column names, while the values of cols are the corresponding new column
      * values. If the "where" expression is nil, the UPDATE SQL statement will have no WHERE clause
      * (be careful in this case as the SQL statement will update ALL rows in the table).
      */
-    update(table: string, cols: Params, where: Expression): Query | undefined;
+    update(table: string, cols: Params, where: Expression): Query | undefined
     /**
      * Delete creates a Query that represents a DELETE SQL statement.
      * If the "where" expression is nil, the DELETE SQL statement will have no WHERE clause
      * (be careful in this case as the SQL statement will delete ALL rows in the table).
      */
-    delete(table: string, where: Expression): Query | undefined;
+    delete(table: string, where: Expression): Query | undefined
     /**
      * CreateTable creates a Query that represents a CREATE TABLE SQL statement.
      * The keys of cols are the column names, while the values of cols are the corresponding column types.
      * The optional "options" parameters will be appended to the generated SQL statement.
      */
-    createTable(table: string, cols: _TygojaDict, ...options: string[]): Query | undefined;
+    createTable(table: string, cols: _TygojaDict, ...options: string[]): Query | undefined
     /**
      * RenameTable creates a Query that can be used to rename a table.
      */
-    renameTable(oldName: string): Query | undefined;
+    renameTable(oldName: string): Query | undefined
     /**
      * DropTable creates a Query that can be used to drop a table.
      */
-    dropTable(table: string): Query | undefined;
+    dropTable(table: string): Query | undefined
     /**
      * TruncateTable creates a Query that can be used to truncate a table.
      */
-    truncateTable(table: string): Query | undefined;
+    truncateTable(table: string): Query | undefined
     /**
      * AddColumn creates a Query that can be used to add a column to a table.
      */
-    addColumn(table: string): Query | undefined;
+    addColumn(table: string): Query | undefined
     /**
      * DropColumn creates a Query that can be used to drop a column from a table.
      */
-    dropColumn(table: string): Query | undefined;
+    dropColumn(table: string): Query | undefined
     /**
      * RenameColumn creates a Query that can be used to rename a column in a table.
      */
-    renameColumn(table: string): Query | undefined;
+    renameColumn(table: string): Query | undefined
     /**
      * AlterColumn creates a Query that can be used to change the definition of a table column.
      */
-    alterColumn(table: string): Query | undefined;
+    alterColumn(table: string): Query | undefined
     /**
      * AddPrimaryKey creates a Query that can be used to specify primary key(s) for a table.
      * The "name" parameter specifies the name of the primary key constraint.
      */
-    addPrimaryKey(table: string, ...cols: string[]): Query | undefined;
+    addPrimaryKey(table: string, ...cols: string[]): Query | undefined
     /**
      * DropPrimaryKey creates a Query that can be used to remove the named primary key constraint from a table.
      */
-    dropPrimaryKey(table: string): Query | undefined;
+    dropPrimaryKey(table: string): Query | undefined
     /**
      * AddForeignKey creates a Query that can be used to add a foreign key constraint to a table.
      * The length of cols and refCols must be the same as they refer to the primary and referential columns.
@@ -3199,23 +3199,23 @@ namespace dbx {
       cols: Array<string>,
       refTable: string,
       ...options: string[]
-    ): Query | undefined;
+    ): Query | undefined
     /**
      * DropForeignKey creates a Query that can be used to remove the named foreign key constraint from a table.
      */
-    dropForeignKey(table: string): Query | undefined;
+    dropForeignKey(table: string): Query | undefined
     /**
      * CreateIndex creates a Query that can be used to create an index for a table.
      */
-    createIndex(table: string, ...cols: string[]): Query | undefined;
+    createIndex(table: string, ...cols: string[]): Query | undefined
     /**
      * CreateUniqueIndex creates a Query that can be used to create a unique index for a table.
      */
-    createUniqueIndex(table: string, ...cols: string[]): Query | undefined;
+    createUniqueIndex(table: string, ...cols: string[]): Query | undefined
     /**
      * DropIndex creates a Query that can be used to remove the named index from a table.
      */
-    dropIndex(table: string): Query | undefined;
+    dropIndex(table: string): Query | undefined
   }
   /**
    * BaseBuilder provides a basic implementation of the Builder interface.
@@ -3225,19 +3225,19 @@ namespace dbx {
     /**
      * NewBaseBuilder creates a new BaseBuilder instance.
      */
-    (db: DB, executor: Executor): BaseBuilder | undefined;
+    (db: DB, executor: Executor): BaseBuilder | undefined
   }
   interface BaseBuilder {
     /**
      * DB returns the DB instance that this builder is associated with.
      */
-    db(): DB | undefined;
+    db(): DB | undefined
   }
   interface BaseBuilder {
     /**
      * Executor returns the executor object (a DB instance or a transaction) for executing SQL statements.
      */
-    executor(): Executor;
+    executor(): Executor
   }
   interface BaseBuilder {
     /**
@@ -3245,33 +3245,33 @@ namespace dbx {
      * The SQL statement may contain parameter placeholders which can be bound with actual parameter
      * values before the statement is executed.
      */
-    newQuery(sql: string): Query | undefined;
+    newQuery(sql: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * GeneratePlaceholder generates an anonymous parameter placeholder with the given parameter ID.
      */
-    generatePlaceholder(_arg0: number): string;
+    generatePlaceholder(_arg0: number): string
   }
   interface BaseBuilder {
     /**
      * Quote quotes a string so that it can be embedded in a SQL statement as a string value.
      */
-    quote(s: string): string;
+    quote(s: string): string
   }
   interface BaseBuilder {
     /**
      * QuoteSimpleTableName quotes a simple table name.
      * A simple table name does not contain any schema prefix.
      */
-    quoteSimpleTableName(s: string): string;
+    quoteSimpleTableName(s: string): string
   }
   interface BaseBuilder {
     /**
      * QuoteSimpleColumnName quotes a simple column name.
      * A simple column name does not contain any table prefix.
      */
-    quoteSimpleColumnName(s: string): string;
+    quoteSimpleColumnName(s: string): string
   }
   interface BaseBuilder {
     /**
@@ -3279,7 +3279,7 @@ namespace dbx {
      * The keys of cols are the column names, while the values of cols are the corresponding column
      * values to be inserted.
      */
-    insert(table: string, cols: Params): Query | undefined;
+    insert(table: string, cols: Params): Query | undefined
   }
   interface BaseBuilder {
     /**
@@ -3289,7 +3289,7 @@ namespace dbx {
      * The keys of cols are the column names, while the values of cols are the corresponding column
      * values to be inserted.
      */
-    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined;
+    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined
   }
   interface BaseBuilder {
     /**
@@ -3298,7 +3298,7 @@ namespace dbx {
      * values. If the "where" expression is nil, the UPDATE SQL statement will have no WHERE clause
      * (be careful in this case as the SQL statement will update ALL rows in the table).
      */
-    update(table: string, cols: Params, where: Expression): Query | undefined;
+    update(table: string, cols: Params, where: Expression): Query | undefined
   }
   interface BaseBuilder {
     /**
@@ -3306,7 +3306,7 @@ namespace dbx {
      * If the "where" expression is nil, the DELETE SQL statement will have no WHERE clause
      * (be careful in this case as the SQL statement will delete ALL rows in the table).
      */
-    delete(table: string, where: Expression): Query | undefined;
+    delete(table: string, where: Expression): Query | undefined
   }
   interface BaseBuilder {
     /**
@@ -3314,62 +3314,62 @@ namespace dbx {
      * The keys of cols are the column names, while the values of cols are the corresponding column types.
      * The optional "options" parameters will be appended to the generated SQL statement.
      */
-    createTable(table: string, cols: _TygojaDict, ...options: string[]): Query | undefined;
+    createTable(table: string, cols: _TygojaDict, ...options: string[]): Query | undefined
   }
   interface BaseBuilder {
     /**
      * RenameTable creates a Query that can be used to rename a table.
      */
-    renameTable(oldName: string): Query | undefined;
+    renameTable(oldName: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * DropTable creates a Query that can be used to drop a table.
      */
-    dropTable(table: string): Query | undefined;
+    dropTable(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * TruncateTable creates a Query that can be used to truncate a table.
      */
-    truncateTable(table: string): Query | undefined;
+    truncateTable(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * AddColumn creates a Query that can be used to add a column to a table.
      */
-    addColumn(table: string): Query | undefined;
+    addColumn(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * DropColumn creates a Query that can be used to drop a column from a table.
      */
-    dropColumn(table: string): Query | undefined;
+    dropColumn(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * RenameColumn creates a Query that can be used to rename a column in a table.
      */
-    renameColumn(table: string): Query | undefined;
+    renameColumn(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * AlterColumn creates a Query that can be used to change the definition of a table column.
      */
-    alterColumn(table: string): Query | undefined;
+    alterColumn(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * AddPrimaryKey creates a Query that can be used to specify primary key(s) for a table.
      * The "name" parameter specifies the name of the primary key constraint.
      */
-    addPrimaryKey(table: string, ...cols: string[]): Query | undefined;
+    addPrimaryKey(table: string, ...cols: string[]): Query | undefined
   }
   interface BaseBuilder {
     /**
      * DropPrimaryKey creates a Query that can be used to remove the named primary key constraint from a table.
      */
-    dropPrimaryKey(table: string): Query | undefined;
+    dropPrimaryKey(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
@@ -3383,53 +3383,53 @@ namespace dbx {
       cols: Array<string>,
       refTable: string,
       ...options: string[]
-    ): Query | undefined;
+    ): Query | undefined
   }
   interface BaseBuilder {
     /**
      * DropForeignKey creates a Query that can be used to remove the named foreign key constraint from a table.
      */
-    dropForeignKey(table: string): Query | undefined;
+    dropForeignKey(table: string): Query | undefined
   }
   interface BaseBuilder {
     /**
      * CreateIndex creates a Query that can be used to create an index for a table.
      */
-    createIndex(table: string, ...cols: string[]): Query | undefined;
+    createIndex(table: string, ...cols: string[]): Query | undefined
   }
   interface BaseBuilder {
     /**
      * CreateUniqueIndex creates a Query that can be used to create a unique index for a table.
      */
-    createUniqueIndex(table: string, ...cols: string[]): Query | undefined;
+    createUniqueIndex(table: string, ...cols: string[]): Query | undefined
   }
   interface BaseBuilder {
     /**
      * DropIndex creates a Query that can be used to remove the named index from a table.
      */
-    dropIndex(table: string): Query | undefined;
+    dropIndex(table: string): Query | undefined
   }
   /**
    * MssqlBuilder is the builder for SQL Server databases.
    */
-  type _subabrGp = BaseBuilder;
+  type _subabrGp = BaseBuilder
   interface MssqlBuilder extends _subabrGp {}
   /**
    * MssqlQueryBuilder is the query builder for SQL Server databases.
    */
-  type _subPMzLj = BaseQueryBuilder;
+  type _subPMzLj = BaseQueryBuilder
   interface MssqlQueryBuilder extends _subPMzLj {}
   interface newMssqlBuilder {
     /**
      * NewMssqlBuilder creates a new MssqlBuilder instance.
      */
-    (db: DB, executor: Executor): Builder;
+    (db: DB, executor: Executor): Builder
   }
   interface MssqlBuilder {
     /**
      * QueryBuilder returns the query builder supporting the current DB.
      */
-    queryBuilder(): QueryBuilder;
+    queryBuilder(): QueryBuilder
   }
   interface MssqlBuilder {
     /**
@@ -3437,69 +3437,69 @@ namespace dbx {
      * The parameters to this method should be the list column names to be selected.
      * A column name may have an optional alias name. For example, Select("id", "my_name AS name").
      */
-    select(...cols: string[]): SelectQuery | undefined;
+    select(...cols: string[]): SelectQuery | undefined
   }
   interface MssqlBuilder {
     /**
      * Model returns a new ModelQuery object that can be used to perform model-based DB operations.
      * The model passed to this method should be a pointer to a model struct.
      */
-    model(model: {}): ModelQuery | undefined;
+    model(model: {}): ModelQuery | undefined
   }
   interface MssqlBuilder {
     /**
      * QuoteSimpleTableName quotes a simple table name.
      * A simple table name does not contain any schema prefix.
      */
-    quoteSimpleTableName(s: string): string;
+    quoteSimpleTableName(s: string): string
   }
   interface MssqlBuilder {
     /**
      * QuoteSimpleColumnName quotes a simple column name.
      * A simple column name does not contain any table prefix.
      */
-    quoteSimpleColumnName(s: string): string;
+    quoteSimpleColumnName(s: string): string
   }
   interface MssqlBuilder {
     /**
      * RenameTable creates a Query that can be used to rename a table.
      */
-    renameTable(oldName: string): Query | undefined;
+    renameTable(oldName: string): Query | undefined
   }
   interface MssqlBuilder {
     /**
      * RenameColumn creates a Query that can be used to rename a column in a table.
      */
-    renameColumn(table: string): Query | undefined;
+    renameColumn(table: string): Query | undefined
   }
   interface MssqlBuilder {
     /**
      * AlterColumn creates a Query that can be used to change the definition of a table column.
      */
-    alterColumn(table: string): Query | undefined;
+    alterColumn(table: string): Query | undefined
   }
   interface MssqlQueryBuilder {
     /**
      * BuildOrderByAndLimit generates the ORDER BY and LIMIT clauses.
      */
-    buildOrderByAndLimit(sql: string, cols: Array<string>, limit: number, offset: number): string;
+    buildOrderByAndLimit(sql: string, cols: Array<string>, limit: number, offset: number): string
   }
   /**
    * MysqlBuilder is the builder for MySQL databases.
    */
-  type _subIBWll = BaseBuilder;
+  type _subIBWll = BaseBuilder
   interface MysqlBuilder extends _subIBWll {}
   interface newMysqlBuilder {
     /**
      * NewMysqlBuilder creates a new MysqlBuilder instance.
      */
-    (db: DB, executor: Executor): Builder;
+    (db: DB, executor: Executor): Builder
   }
   interface MysqlBuilder {
     /**
      * QueryBuilder returns the query builder supporting the current DB.
      */
-    queryBuilder(): QueryBuilder;
+    queryBuilder(): QueryBuilder
   }
   interface MysqlBuilder {
     /**
@@ -3507,28 +3507,28 @@ namespace dbx {
      * The parameters to this method should be the list column names to be selected.
      * A column name may have an optional alias name. For example, Select("id", "my_name AS name").
      */
-    select(...cols: string[]): SelectQuery | undefined;
+    select(...cols: string[]): SelectQuery | undefined
   }
   interface MysqlBuilder {
     /**
      * Model returns a new ModelQuery object that can be used to perform model-based DB operations.
      * The model passed to this method should be a pointer to a model struct.
      */
-    model(model: {}): ModelQuery | undefined;
+    model(model: {}): ModelQuery | undefined
   }
   interface MysqlBuilder {
     /**
      * QuoteSimpleTableName quotes a simple table name.
      * A simple table name does not contain any schema prefix.
      */
-    quoteSimpleTableName(s: string): string;
+    quoteSimpleTableName(s: string): string
   }
   interface MysqlBuilder {
     /**
      * QuoteSimpleColumnName quotes a simple column name.
      * A simple column name does not contain any table prefix.
      */
-    quoteSimpleColumnName(s: string): string;
+    quoteSimpleColumnName(s: string): string
   }
   interface MysqlBuilder {
     /**
@@ -3538,41 +3538,41 @@ namespace dbx {
      * The keys of cols are the column names, while the values of cols are the corresponding column
      * values to be inserted.
      */
-    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined;
+    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined
   }
   interface MysqlBuilder {
     /**
      * RenameColumn creates a Query that can be used to rename a column in a table.
      */
-    renameColumn(table: string): Query | undefined;
+    renameColumn(table: string): Query | undefined
   }
   interface MysqlBuilder {
     /**
      * DropPrimaryKey creates a Query that can be used to remove the named primary key constraint from a table.
      */
-    dropPrimaryKey(table: string): Query | undefined;
+    dropPrimaryKey(table: string): Query | undefined
   }
   interface MysqlBuilder {
     /**
      * DropForeignKey creates a Query that can be used to remove the named foreign key constraint from a table.
      */
-    dropForeignKey(table: string): Query | undefined;
+    dropForeignKey(table: string): Query | undefined
   }
   /**
    * OciBuilder is the builder for Oracle databases.
    */
-  type _subCkUus = BaseBuilder;
+  type _subCkUus = BaseBuilder
   interface OciBuilder extends _subCkUus {}
   /**
    * OciQueryBuilder is the query builder for Oracle databases.
    */
-  type _subeXatv = BaseQueryBuilder;
+  type _subeXatv = BaseQueryBuilder
   interface OciQueryBuilder extends _subeXatv {}
   interface newOciBuilder {
     /**
      * NewOciBuilder creates a new OciBuilder instance.
      */
-    (db: DB, executor: Executor): Builder;
+    (db: DB, executor: Executor): Builder
   }
   interface OciBuilder {
     /**
@@ -3580,61 +3580,61 @@ namespace dbx {
      * The parameters to this method should be the list column names to be selected.
      * A column name may have an optional alias name. For example, Select("id", "my_name AS name").
      */
-    select(...cols: string[]): SelectQuery | undefined;
+    select(...cols: string[]): SelectQuery | undefined
   }
   interface OciBuilder {
     /**
      * Model returns a new ModelQuery object that can be used to perform model-based DB operations.
      * The model passed to this method should be a pointer to a model struct.
      */
-    model(model: {}): ModelQuery | undefined;
+    model(model: {}): ModelQuery | undefined
   }
   interface OciBuilder {
     /**
      * GeneratePlaceholder generates an anonymous parameter placeholder with the given parameter ID.
      */
-    generatePlaceholder(i: number): string;
+    generatePlaceholder(i: number): string
   }
   interface OciBuilder {
     /**
      * QueryBuilder returns the query builder supporting the current DB.
      */
-    queryBuilder(): QueryBuilder;
+    queryBuilder(): QueryBuilder
   }
   interface OciBuilder {
     /**
      * DropIndex creates a Query that can be used to remove the named index from a table.
      */
-    dropIndex(table: string): Query | undefined;
+    dropIndex(table: string): Query | undefined
   }
   interface OciBuilder {
     /**
      * RenameTable creates a Query that can be used to rename a table.
      */
-    renameTable(oldName: string): Query | undefined;
+    renameTable(oldName: string): Query | undefined
   }
   interface OciBuilder {
     /**
      * AlterColumn creates a Query that can be used to change the definition of a table column.
      */
-    alterColumn(table: string): Query | undefined;
+    alterColumn(table: string): Query | undefined
   }
   interface OciQueryBuilder {
     /**
      * BuildOrderByAndLimit generates the ORDER BY and LIMIT clauses.
      */
-    buildOrderByAndLimit(sql: string, cols: Array<string>, limit: number, offset: number): string;
+    buildOrderByAndLimit(sql: string, cols: Array<string>, limit: number, offset: number): string
   }
   /**
    * PgsqlBuilder is the builder for PostgreSQL databases.
    */
-  type _subVnxQF = BaseBuilder;
+  type _subVnxQF = BaseBuilder
   interface PgsqlBuilder extends _subVnxQF {}
   interface newPgsqlBuilder {
     /**
      * NewPgsqlBuilder creates a new PgsqlBuilder instance.
      */
-    (db: DB, executor: Executor): Builder;
+    (db: DB, executor: Executor): Builder
   }
   interface PgsqlBuilder {
     /**
@@ -3642,26 +3642,26 @@ namespace dbx {
      * The parameters to this method should be the list column names to be selected.
      * A column name may have an optional alias name. For example, Select("id", "my_name AS name").
      */
-    select(...cols: string[]): SelectQuery | undefined;
+    select(...cols: string[]): SelectQuery | undefined
   }
   interface PgsqlBuilder {
     /**
      * Model returns a new ModelQuery object that can be used to perform model-based DB operations.
      * The model passed to this method should be a pointer to a model struct.
      */
-    model(model: {}): ModelQuery | undefined;
+    model(model: {}): ModelQuery | undefined
   }
   interface PgsqlBuilder {
     /**
      * GeneratePlaceholder generates an anonymous parameter placeholder with the given parameter ID.
      */
-    generatePlaceholder(i: number): string;
+    generatePlaceholder(i: number): string
   }
   interface PgsqlBuilder {
     /**
      * QueryBuilder returns the query builder supporting the current DB.
      */
-    queryBuilder(): QueryBuilder;
+    queryBuilder(): QueryBuilder
   }
   interface PgsqlBuilder {
     /**
@@ -3671,42 +3671,42 @@ namespace dbx {
      * The keys of cols are the column names, while the values of cols are the corresponding column
      * values to be inserted.
      */
-    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined;
+    upsert(table: string, cols: Params, ...constraints: string[]): Query | undefined
   }
   interface PgsqlBuilder {
     /**
      * DropIndex creates a Query that can be used to remove the named index from a table.
      */
-    dropIndex(table: string): Query | undefined;
+    dropIndex(table: string): Query | undefined
   }
   interface PgsqlBuilder {
     /**
      * RenameTable creates a Query that can be used to rename a table.
      */
-    renameTable(oldName: string): Query | undefined;
+    renameTable(oldName: string): Query | undefined
   }
   interface PgsqlBuilder {
     /**
      * AlterColumn creates a Query that can be used to change the definition of a table column.
      */
-    alterColumn(table: string): Query | undefined;
+    alterColumn(table: string): Query | undefined
   }
   /**
    * SqliteBuilder is the builder for SQLite databases.
    */
-  type _subKdVlm = BaseBuilder;
+  type _subKdVlm = BaseBuilder
   interface SqliteBuilder extends _subKdVlm {}
   interface newSqliteBuilder {
     /**
      * NewSqliteBuilder creates a new SqliteBuilder instance.
      */
-    (db: DB, executor: Executor): Builder;
+    (db: DB, executor: Executor): Builder
   }
   interface SqliteBuilder {
     /**
      * QueryBuilder returns the query builder supporting the current DB.
      */
-    queryBuilder(): QueryBuilder;
+    queryBuilder(): QueryBuilder
   }
   interface SqliteBuilder {
     /**
@@ -3714,65 +3714,65 @@ namespace dbx {
      * The parameters to this method should be the list column names to be selected.
      * A column name may have an optional alias name. For example, Select("id", "my_name AS name").
      */
-    select(...cols: string[]): SelectQuery | undefined;
+    select(...cols: string[]): SelectQuery | undefined
   }
   interface SqliteBuilder {
     /**
      * Model returns a new ModelQuery object that can be used to perform model-based DB operations.
      * The model passed to this method should be a pointer to a model struct.
      */
-    model(model: {}): ModelQuery | undefined;
+    model(model: {}): ModelQuery | undefined
   }
   interface SqliteBuilder {
     /**
      * QuoteSimpleTableName quotes a simple table name.
      * A simple table name does not contain any schema prefix.
      */
-    quoteSimpleTableName(s: string): string;
+    quoteSimpleTableName(s: string): string
   }
   interface SqliteBuilder {
     /**
      * QuoteSimpleColumnName quotes a simple column name.
      * A simple column name does not contain any table prefix.
      */
-    quoteSimpleColumnName(s: string): string;
+    quoteSimpleColumnName(s: string): string
   }
   interface SqliteBuilder {
     /**
      * DropIndex creates a Query that can be used to remove the named index from a table.
      */
-    dropIndex(table: string): Query | undefined;
+    dropIndex(table: string): Query | undefined
   }
   interface SqliteBuilder {
     /**
      * TruncateTable creates a Query that can be used to truncate a table.
      */
-    truncateTable(table: string): Query | undefined;
+    truncateTable(table: string): Query | undefined
   }
   interface SqliteBuilder {
     /**
      * RenameTable creates a Query that can be used to rename a table.
      */
-    renameTable(oldName: string): Query | undefined;
+    renameTable(oldName: string): Query | undefined
   }
   interface SqliteBuilder {
     /**
      * AlterColumn creates a Query that can be used to change the definition of a table column.
      */
-    alterColumn(table: string): Query | undefined;
+    alterColumn(table: string): Query | undefined
   }
   interface SqliteBuilder {
     /**
      * AddPrimaryKey creates a Query that can be used to specify primary key(s) for a table.
      * The "name" parameter specifies the name of the primary key constraint.
      */
-    addPrimaryKey(table: string, ...cols: string[]): Query | undefined;
+    addPrimaryKey(table: string, ...cols: string[]): Query | undefined
   }
   interface SqliteBuilder {
     /**
      * DropPrimaryKey creates a Query that can be used to remove the named primary key constraint from a table.
      */
-    dropPrimaryKey(table: string): Query | undefined;
+    dropPrimaryKey(table: string): Query | undefined
   }
   interface SqliteBuilder {
     /**
@@ -3786,30 +3786,30 @@ namespace dbx {
       cols: Array<string>,
       refTable: string,
       ...options: string[]
-    ): Query | undefined;
+    ): Query | undefined
   }
   interface SqliteBuilder {
     /**
      * DropForeignKey creates a Query that can be used to remove the named foreign key constraint from a table.
      */
-    dropForeignKey(table: string): Query | undefined;
+    dropForeignKey(table: string): Query | undefined
   }
   /**
    * StandardBuilder is the builder that is used by DB for an unknown driver.
    */
-  type _subtgSCf = BaseBuilder;
+  type _subtgSCf = BaseBuilder
   interface StandardBuilder extends _subtgSCf {}
   interface newStandardBuilder {
     /**
      * NewStandardBuilder creates a new StandardBuilder instance.
      */
-    (db: DB, executor: Executor): Builder;
+    (db: DB, executor: Executor): Builder
   }
   interface StandardBuilder {
     /**
      * QueryBuilder returns the query builder supporting the current DB.
      */
-    queryBuilder(): QueryBuilder;
+    queryBuilder(): QueryBuilder
   }
   interface StandardBuilder {
     /**
@@ -3817,14 +3817,14 @@ namespace dbx {
      * The parameters to this method should be the list column names to be selected.
      * A column name may have an optional alias name. For example, Select("id", "my_name AS name").
      */
-    select(...cols: string[]): SelectQuery | undefined;
+    select(...cols: string[]): SelectQuery | undefined
   }
   interface StandardBuilder {
     /**
      * Model returns a new ModelQuery object that can be used to perform model-based DB operations.
      * The model passed to this method should be a pointer to a model struct.
      */
-    model(model: {}): ModelQuery | undefined;
+    model(model: {}): ModelQuery | undefined
   }
   /**
    * LogFunc logs a message for each SQL statement being executed.
@@ -3833,7 +3833,7 @@ namespace dbx {
    * are provided, they will be passed to fmt.Sprintf() to generate the log message.
    */
   interface LogFunc {
-    (format: string, ...a: {}[]): void;
+    (format: string, ...a: {}[]): void
   }
   /**
    * PerfFunc is called when a query finishes execution.
@@ -3843,7 +3843,7 @@ namespace dbx {
    * the SQL statement is executed or queried (usually SELECT statements).
    */
   interface PerfFunc {
-    (ns: number, sql: string, execute: boolean): void;
+    (ns: number, sql: string, execute: boolean): void
   }
   /**
    * QueryLogFunc is called each time when performing a SQL query.
@@ -3851,7 +3851,7 @@ namespace dbx {
    * while rows and err are the result of the query.
    */
   interface QueryLogFunc {
-    (ctx: context.Context, t: time.Duration, sql: string, rows: sql.Rows, err: Error): void;
+    (ctx: context.Context, t: time.Duration, sql: string, rows: sql.Rows, err: Error): void
   }
   /**
    * ExecLogFunc is called each time when a SQL statement is executed.
@@ -3859,45 +3859,45 @@ namespace dbx {
    * while result and err refer to the result of the execution.
    */
   interface ExecLogFunc {
-    (ctx: context.Context, t: time.Duration, sql: string, result: sql.Result, err: Error): void;
+    (ctx: context.Context, t: time.Duration, sql: string, result: sql.Result, err: Error): void
   }
   /**
    * BuilderFunc creates a Builder instance using the given DB instance and Executor.
    */
   interface BuilderFunc {
-    (_arg0: DB, _arg1: Executor): Builder;
+    (_arg0: DB, _arg1: Executor): Builder
   }
   /**
    * DB enhances sql.DB by providing a set of DB-agnostic query building methods.
    * DB allows easier query building and population of data into Go variables.
    */
-  type _subRxORM = Builder;
+  type _subRxORM = Builder
   interface DB extends _subRxORM {
     /**
      * FieldMapper maps struct fields to DB columns. Defaults to DefaultFieldMapFunc.
      */
-    fieldMapper: FieldMapFunc;
+    fieldMapper: FieldMapFunc
     /**
      * TableMapper maps structs to table names. Defaults to GetTableName.
      */
-    tableMapper: TableMapFunc;
+    tableMapper: TableMapFunc
     /**
      * LogFunc logs the SQL statements being executed. Defaults to nil, meaning no logging.
      */
-    logFunc: LogFunc;
+    logFunc: LogFunc
     /**
      * PerfFunc logs the SQL execution time. Defaults to nil, meaning no performance profiling.
      * Deprecated: Please use QueryLogFunc and ExecLogFunc instead.
      */
-    perfFunc: PerfFunc;
+    perfFunc: PerfFunc
     /**
      * QueryLogFunc is called each time when performing a SQL query that returns data.
      */
-    queryLogFunc: QueryLogFunc;
+    queryLogFunc: QueryLogFunc
     /**
      * ExecLogFunc is called each time when a SQL statement is executed.
      */
-    execLogFunc: ExecLogFunc;
+    execLogFunc: ExecLogFunc
   }
   /**
    * Errors represents a list of errors.
@@ -3907,7 +3907,7 @@ namespace dbx {
     /**
      * NewFromDB encapsulates an existing database connection.
      */
-    (sqlDB: sql.DB, driverName: string): DB | undefined;
+    (sqlDB: sql.DB, driverName: string): DB | undefined
   }
   interface open {
     /**
@@ -3915,39 +3915,39 @@ namespace dbx {
      * Note that Open does not check if DSN is specified correctly. It doesn't try to establish a DB connection either.
      * Please refer to sql.Open() for more information.
      */
-    (driverName: string): DB | undefined;
+    (driverName: string): DB | undefined
   }
   interface mustOpen {
     /**
      * MustOpen opens a database and establishes a connection to it.
      * Please refer to sql.Open() and sql.Ping() for more information.
      */
-    (driverName: string): DB | undefined;
+    (driverName: string): DB | undefined
   }
   interface DB {
     /**
      * Clone makes a shallow copy of DB.
      */
-    clone(): DB | undefined;
+    clone(): DB | undefined
   }
   interface DB {
     /**
      * WithContext returns a new instance of DB associated with the given context.
      */
-    withContext(ctx: context.Context): DB | undefined;
+    withContext(ctx: context.Context): DB | undefined
   }
   interface DB {
     /**
      * Context returns the context associated with the DB instance.
      * It returns nil if no context is associated.
      */
-    context(): context.Context;
+    context(): context.Context
   }
   interface DB {
     /**
      * DB returns the sql.DB instance encapsulated by dbx.DB.
      */
-    db(): sql.DB | undefined;
+    db(): sql.DB | undefined
   }
   interface DB {
     /**
@@ -3955,25 +3955,25 @@ namespace dbx {
      * It is rare to Close a DB, as the DB handle is meant to be
      * long-lived and shared between many goroutines.
      */
-    close(): void;
+    close(): void
   }
   interface DB {
     /**
      * Begin starts a transaction.
      */
-    begin(): Tx | undefined;
+    begin(): Tx | undefined
   }
   interface DB {
     /**
      * BeginTx starts a transaction with the given context and transaction options.
      */
-    beginTx(ctx: context.Context, opts: sql.TxOptions): Tx | undefined;
+    beginTx(ctx: context.Context, opts: sql.TxOptions): Tx | undefined
   }
   interface DB {
     /**
      * Wrap encapsulates an existing transaction.
      */
-    wrap(sqlTx: sql.Tx): Tx | undefined;
+    wrap(sqlTx: sql.Tx): Tx | undefined
   }
   interface DB {
     /**
@@ -3981,7 +3981,7 @@ namespace dbx {
      * If the function returns an error, the transaction will be rolled back.
      * Otherwise, the transaction will be committed.
      */
-    transactional(f: (_arg0: Tx) => void): void;
+    transactional(f: (_arg0: Tx) => void): void
   }
   interface DB {
     /**
@@ -3989,13 +3989,13 @@ namespace dbx {
      * If the function returns an error, the transaction will be rolled back.
      * Otherwise, the transaction will be committed.
      */
-    transactionalContext(ctx: context.Context, opts: sql.TxOptions, f: (_arg0: Tx) => void): void;
+    transactionalContext(ctx: context.Context, opts: sql.TxOptions, f: (_arg0: Tx) => void): void
   }
   interface DB {
     /**
      * DriverName returns the name of the DB driver.
      */
-    driverName(): string;
+    driverName(): string
   }
   interface DB {
     /**
@@ -4003,7 +4003,7 @@ namespace dbx {
      * If the table name contains DB schema prefix, it will be handled accordingly.
      * This method will do nothing if the table name is already quoted or if it contains parenthesis.
      */
-    quoteTableName(s: string): string;
+    quoteTableName(s: string): string
   }
   interface DB {
     /**
@@ -4011,13 +4011,13 @@ namespace dbx {
      * If the table name contains table name prefix, it will be handled accordingly.
      * This method will do nothing if the column name is already quoted or if it contains parenthesis.
      */
-    quoteColumnName(s: string): string;
+    quoteColumnName(s: string): string
   }
   interface Errors {
     /**
      * Error returns the error string of Errors.
      */
-    error(): string;
+    error(): string
   }
   /**
    * Expression represents a DB expression that can be embedded in a SQL statement.
@@ -4027,7 +4027,7 @@ namespace dbx {
      * Build converts an expression into a SQL fragment.
      * If the expression contains binding parameters, they will be added to the given Params.
      */
-    build(_arg0: DB, _arg1: Params): string;
+    build(_arg0: DB, _arg1: Params): string
   }
   /**
    * HashExp represents a hash expression.
@@ -4044,39 +4044,39 @@ namespace dbx {
     /**
      * NewExp generates an expression with the specified SQL fragment and the optional binding parameters.
      */
-    (e: string, ...params: Params[]): Expression;
+    (e: string, ...params: Params[]): Expression
   }
   interface not {
     /**
      * Not generates a NOT expression which prefixes "NOT" to the specified expression.
      */
-    (e: Expression): Expression;
+    (e: Expression): Expression
   }
   interface and {
     /**
      * And generates an AND expression which concatenates the given expressions with "AND".
      */
-    (...exps: Expression[]): Expression;
+    (...exps: Expression[]): Expression
   }
   interface or {
     /**
      * Or generates an OR expression which concatenates the given expressions with "OR".
      */
-    (...exps: Expression[]): Expression;
+    (...exps: Expression[]): Expression
   }
   interface _in {
     /**
      * In generates an IN expression for the specified column and the list of allowed values.
      * If values is empty, a SQL "0=1" will be generated which represents a false expression.
      */
-    (col: string, ...values: {}[]): Expression;
+    (col: string, ...values: {}[]): Expression
   }
   interface notIn {
     /**
      * NotIn generates an NOT IN expression for the specified column and the list of disallowed values.
      * If values is empty, an empty string will be returned indicating a true expression.
      */
-    (col: string, ...values: {}[]): Expression;
+    (col: string, ...values: {}[]): Expression
   }
   interface like {
     /**
@@ -4090,7 +4090,7 @@ namespace dbx {
      * You may call Escape() and/or Match() to change the default behavior. For example, Like("name", "key").Match(false, true)
      * generates "name" LIKE "key%".
      */
-    (col: string, ...values: string[]): LikeExp | undefined;
+    (col: string, ...values: string[]): LikeExp | undefined
   }
   interface notLike {
     /**
@@ -4098,7 +4098,7 @@ namespace dbx {
      * For example, NotLike("name", "key", "word") will generate a SQL expression:
      * "name" NOT LIKE "%key%" AND "name" NOT LIKE "%word%". Please see Like() for more details.
      */
-    (col: string, ...values: string[]): LikeExp | undefined;
+    (col: string, ...values: string[]): LikeExp | undefined
   }
   interface orLike {
     /**
@@ -4107,7 +4107,7 @@ namespace dbx {
      * For example, OrLike("name", "key", "word") will generate a SQL expression:
      * "name" LIKE "%key%" OR "name" LIKE "%word%". Please see Like() for more details.
      */
-    (col: string, ...values: string[]): LikeExp | undefined;
+    (col: string, ...values: string[]): LikeExp | undefined
   }
   interface orNotLike {
     /**
@@ -4115,33 +4115,33 @@ namespace dbx {
      * For example, OrNotLike("name", "key", "word") will generate a SQL expression:
      * "name" NOT LIKE "%key%" OR "name" NOT LIKE "%word%". Please see Like() for more details.
      */
-    (col: string, ...values: string[]): LikeExp | undefined;
+    (col: string, ...values: string[]): LikeExp | undefined
   }
   interface exists {
     /**
      * Exists generates an EXISTS expression by prefixing "EXISTS" to the given expression.
      */
-    (exp: Expression): Expression;
+    (exp: Expression): Expression
   }
   interface notExists {
     /**
      * NotExists generates an EXISTS expression by prefixing "NOT EXISTS" to the given expression.
      */
-    (exp: Expression): Expression;
+    (exp: Expression): Expression
   }
   interface between {
     /**
      * Between generates a BETWEEN expression.
      * For example, Between("age", 10, 30) generates: "age" BETWEEN 10 AND 30
      */
-    (col: string, from: {}): Expression;
+    (col: string, from: {}): Expression
   }
   interface notBetween {
     /**
      * NotBetween generates a NOT BETWEEN expression.
      * For example, NotBetween("age", 10, 30) generates: "age" NOT BETWEEN 10 AND 30
      */
-    (col: string, from: {}): Expression;
+    (col: string, from: {}): Expression
   }
   /**
    * Exp represents an expression with a SQL fragment and a list of optional binding parameters.
@@ -4151,13 +4151,13 @@ namespace dbx {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   interface HashExp {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   /**
    * NotExp represents an expression that should prefix "NOT" to a specified expression.
@@ -4167,7 +4167,7 @@ namespace dbx {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   /**
    * AndOrExp represents an expression that concatenates multiple expressions using either "AND" or "OR".
@@ -4177,7 +4177,7 @@ namespace dbx {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   /**
    * InExp represents an "IN" or "NOT IN" expression.
@@ -4187,7 +4187,7 @@ namespace dbx {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   /**
    * LikeExp represents a variant of LIKE expressions.
@@ -4197,7 +4197,7 @@ namespace dbx {
      * Like stores the LIKE operator. It can be "LIKE", "NOT LIKE".
      * It may also be customized as something like "ILIKE".
      */
-    like: string;
+    like: string
   }
   interface LikeExp {
     /**
@@ -4205,19 +4205,19 @@ namespace dbx {
      * Each string at position 2i represents a special character and the string at position 2i+1 is
      * the corresponding escaped version.
      */
-    escape(...chars: string[]): LikeExp | undefined;
+    escape(...chars: string[]): LikeExp | undefined
   }
   interface LikeExp {
     /**
      * Match specifies whether to do wildcard matching on the left and/or right of given strings.
      */
-    match(left: boolean): LikeExp | undefined;
+    match(left: boolean): LikeExp | undefined
   }
   interface LikeExp {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   /**
    * ExistsExp represents an EXISTS or NOT EXISTS expression.
@@ -4227,7 +4227,7 @@ namespace dbx {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   /**
    * BetweenExp represents a BETWEEN or a NOT BETWEEN expression.
@@ -4237,13 +4237,13 @@ namespace dbx {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   interface enclose {
     /**
      * Enclose surrounds the provided nonempty expression with parenthesis "()".
      */
-    (exp: Expression): Expression;
+    (exp: Expression): Expression
   }
   /**
    * EncloseExp represents a parenthesis enclosed expression.
@@ -4253,38 +4253,38 @@ namespace dbx {
     /**
      * Build converts an expression into a SQL fragment.
      */
-    build(db: DB, params: Params): string;
+    build(db: DB, params: Params): string
   }
   /**
    * TableModel is the interface that should be implemented by models which have unconventional table names.
    */
   interface TableModel {
-    tableName(): string;
+    tableName(): string
   }
   /**
    * ModelQuery represents a query associated with a struct model.
    */
   interface ModelQuery {}
   interface newModelQuery {
-    (model: {}, fieldMapFunc: FieldMapFunc, db: DB, builder: Builder): ModelQuery | undefined;
+    (model: {}, fieldMapFunc: FieldMapFunc, db: DB, builder: Builder): ModelQuery | undefined
   }
   interface ModelQuery {
     /**
      * Context returns the context associated with the query.
      */
-    context(): context.Context;
+    context(): context.Context
   }
   interface ModelQuery {
     /**
      * WithContext associates a context with the query.
      */
-    withContext(ctx: context.Context): ModelQuery | undefined;
+    withContext(ctx: context.Context): ModelQuery | undefined
   }
   interface ModelQuery {
     /**
      * Exclude excludes the specified struct fields from being inserted/updated into the DB table.
      */
-    exclude(...attrs: string[]): ModelQuery | undefined;
+    exclude(...attrs: string[]): ModelQuery | undefined
   }
   interface ModelQuery {
     /**
@@ -4297,7 +4297,7 @@ namespace dbx {
      * If a model has an empty primary key, it is considered auto-incremental and the corresponding struct
      * field will be filled with the generated primary key value after a successful insertion.
      */
-    insert(...attrs: string[]): void;
+    insert(...attrs: string[]): void
   }
   interface ModelQuery {
     /**
@@ -4308,31 +4308,31 @@ namespace dbx {
      * You may pass a list of the fields to this method to indicate that only those fields should be updated.
      * You may also call Exclude to exclude some fields from being updated.
      */
-    update(...attrs: string[]): void;
+    update(...attrs: string[]): void
   }
   interface ModelQuery {
     /**
      * Delete deletes a row in the table using the primary key specified by the struct model associated with this query.
      */
-    delete(): void;
+    delete(): void
   }
   /**
    * ExecHookFunc executes before op allowing custom handling like auto fail/retry.
    */
   interface ExecHookFunc {
-    (q: Query, op: () => void): void;
+    (q: Query, op: () => void): void
   }
   /**
    * OneHookFunc executes right before the query populate the row result from One() call (aka. op).
    */
   interface OneHookFunc {
-    (q: Query, a: {}, op: (b: {}) => void): void;
+    (q: Query, a: {}, op: (b: {}) => void): void
   }
   /**
    * AllHookFunc executes right before the query populate the row result from All() call (aka. op).
    */
   interface AllHookFunc {
-    (q: Query, sliceA: {}, op: (sliceB: {}) => void): void;
+    (q: Query, sliceA: {}, op: (sliceB: {}) => void): void
   }
   /**
    * Params represents a list of parameter values to be bound to a SQL statement.
@@ -4346,23 +4346,23 @@ namespace dbx {
     /**
      * Exec executes a SQL statement
      */
-    exec(query: string, ...args: {}[]): sql.Result;
+    exec(query: string, ...args: {}[]): sql.Result
     /**
      * ExecContext executes a SQL statement with the given context
      */
-    execContext(ctx: context.Context, query: string, ...args: {}[]): sql.Result;
+    execContext(ctx: context.Context, query: string, ...args: {}[]): sql.Result
     /**
      * Query queries a SQL statement
      */
-    query(query: string, ...args: {}[]): sql.Rows | undefined;
+    query(query: string, ...args: {}[]): sql.Rows | undefined
     /**
      * QueryContext queries a SQL statement with the given context
      */
-    queryContext(ctx: context.Context, query: string, ...args: {}[]): sql.Rows | undefined;
+    queryContext(ctx: context.Context, query: string, ...args: {}[]): sql.Rows | undefined
     /**
      * Prepare creates a prepared statement
      */
-    prepare(query: string): sql.Stmt | undefined;
+    prepare(query: string): sql.Stmt | undefined
   }
   /**
    * Query represents a SQL statement to be executed.
@@ -4371,35 +4371,35 @@ namespace dbx {
     /**
      * FieldMapper maps struct field names to DB column names.
      */
-    fieldMapper: FieldMapFunc;
+    fieldMapper: FieldMapFunc
     /**
      * LastError contains the last error (if any) of the query.
      * LastError is cleared by Execute(), Row(), Rows(), One(), and All().
      */
-    lastError: Error;
+    lastError: Error
     /**
      * LogFunc is used to log the SQL statement being executed.
      */
-    logFunc: LogFunc;
+    logFunc: LogFunc
     /**
      * PerfFunc is used to log the SQL execution time. It is ignored if nil.
      * Deprecated: Please use QueryLogFunc and ExecLogFunc instead.
      */
-    perfFunc: PerfFunc;
+    perfFunc: PerfFunc
     /**
      * QueryLogFunc is called each time when performing a SQL query that returns data.
      */
-    queryLogFunc: QueryLogFunc;
+    queryLogFunc: QueryLogFunc
     /**
      * ExecLogFunc is called each time when a SQL statement is executed.
      */
-    execLogFunc: ExecLogFunc;
+    execLogFunc: ExecLogFunc
   }
   interface newQuery {
     /**
      * NewQuery creates a new Query with the given SQL statement.
      */
-    (db: DB, executor: Executor, sql: string): Query | undefined;
+    (db: DB, executor: Executor, sql: string): Query | undefined
   }
   interface Query {
     /**
@@ -4407,19 +4407,19 @@ namespace dbx {
      * The actual SQL (RawSQL) being executed is obtained by replacing the named
      * parameter placeholders with anonymous ones.
      */
-    sql(): string;
+    sql(): string
   }
   interface Query {
     /**
      * Context returns the context associated with the query.
      */
-    context(): context.Context;
+    context(): context.Context
   }
   interface Query {
     /**
      * WithContext associates a context with the query.
      */
-    withContext(ctx: context.Context): Query | undefined;
+    withContext(ctx: context.Context): Query | undefined
   }
   interface Query {
     /**
@@ -4428,7 +4428,7 @@ namespace dbx {
      * It is called for every Query resolver (Execute(), One(), All(), Row(), Column()),
      * allowing you to implement auto fail/retry or any other additional handling.
      */
-    withExecHook(fn: ExecHookFunc): Query | undefined;
+    withExecHook(fn: ExecHookFunc): Query | undefined
   }
   interface Query {
     /**
@@ -4436,7 +4436,7 @@ namespace dbx {
      * called on q.One(), allowing you to implement custom struct scan based
      * on the One() argument and/or result.
      */
-    withOneHook(fn: OneHookFunc): Query | undefined;
+    withOneHook(fn: OneHookFunc): Query | undefined
   }
   interface Query {
     /**
@@ -4444,40 +4444,40 @@ namespace dbx {
      * called on q.All(), allowing you to implement custom slice scan based
      * on the All() argument and/or result.
      */
-    withAllHook(fn: AllHookFunc): Query | undefined;
+    withAllHook(fn: AllHookFunc): Query | undefined
   }
   interface Query {
     /**
      * Params returns the parameters to be bound to the SQL statement represented by this query.
      */
-    params(): Params;
+    params(): Params
   }
   interface Query {
     /**
      * Prepare creates a prepared statement for later queries or executions.
      * Close() should be called after finishing all queries.
      */
-    prepare(): Query | undefined;
+    prepare(): Query | undefined
   }
   interface Query {
     /**
      * Close closes the underlying prepared statement.
      * Close does nothing if the query has not been prepared before.
      */
-    close(): void;
+    close(): void
   }
   interface Query {
     /**
      * Bind sets the parameters that should be bound to the SQL statement.
      * The parameter placeholders in the SQL statement are in the format of "{:ParamName}".
      */
-    bind(params: Params): Query | undefined;
+    bind(params: Params): Query | undefined
   }
   interface Query {
     /**
      * Execute executes the SQL statement without retrieving data.
      */
-    execute(): sql.Result;
+    execute(): sql.Result
   }
   interface Query {
     /**
@@ -4486,7 +4486,7 @@ namespace dbx {
      * the variable to be populated.
      * Note that when the query has no rows in the result set, an sql.ErrNoRows will be returned.
      */
-    one(a: {}): void;
+    one(a: {}): void
   }
   interface Query {
     /**
@@ -4495,7 +4495,7 @@ namespace dbx {
      * Refer to Rows.ScanStruct() and Rows.ScanMap() for more details on how each slice element can be.
      * If the query returns no row, the slice will be an empty slice (not nil).
      */
-    all(slice: {}): void;
+    all(slice: {}): void
   }
   interface Query {
     /**
@@ -4503,20 +4503,20 @@ namespace dbx {
      * Note that the number of the variables should match to that of the columns in the query result.
      * Note that when the query has no rows in the result set, an sql.ErrNoRows will be returned.
      */
-    row(...a: {}[]): void;
+    row(...a: {}[]): void
   }
   interface Query {
     /**
      * Column executes the SQL statement and populates the first column of the result into a slice.
      * Note that the parameter must be a pointer to a slice.
      */
-    column(a: {}): void;
+    column(a: {}): void
   }
   interface Query {
     /**
      * Rows executes the SQL statement and returns a Rows object to allow retrieving data row by row.
      */
-    rows(): Rows | undefined;
+    rows(): Rows | undefined
   }
   /**
    * QueryBuilder builds different clauses for a SELECT SQL statement.
@@ -4525,35 +4525,35 @@ namespace dbx {
     /**
      * BuildSelect generates a SELECT clause from the given selected column names.
      */
-    buildSelect(cols: Array<string>, distinct: boolean, option: string): string;
+    buildSelect(cols: Array<string>, distinct: boolean, option: string): string
     /**
      * BuildFrom generates a FROM clause from the given tables.
      */
-    buildFrom(tables: Array<string>): string;
+    buildFrom(tables: Array<string>): string
     /**
      * BuildGroupBy generates a GROUP BY clause from the given group-by columns.
      */
-    buildGroupBy(cols: Array<string>): string;
+    buildGroupBy(cols: Array<string>): string
     /**
      * BuildJoin generates a JOIN clause from the given join information.
      */
-    buildJoin(_arg0: Array<JoinInfo>, _arg1: Params): string;
+    buildJoin(_arg0: Array<JoinInfo>, _arg1: Params): string
     /**
      * BuildWhere generates a WHERE clause from the given expression.
      */
-    buildWhere(_arg0: Expression, _arg1: Params): string;
+    buildWhere(_arg0: Expression, _arg1: Params): string
     /**
      * BuildHaving generates a HAVING clause from the given expression.
      */
-    buildHaving(_arg0: Expression, _arg1: Params): string;
+    buildHaving(_arg0: Expression, _arg1: Params): string
     /**
      * BuildOrderByAndLimit generates the ORDER BY and LIMIT clauses.
      */
-    buildOrderByAndLimit(_arg0: string, _arg1: Array<string>, _arg2: number, _arg3: number): string;
+    buildOrderByAndLimit(_arg0: string, _arg1: Array<string>, _arg2: number, _arg3: number): string
     /**
      * BuildUnion generates a UNION clause from the given union information.
      */
-    buildUnion(_arg0: Array<UnionInfo>, _arg1: Params): string;
+    buildUnion(_arg0: Array<UnionInfo>, _arg1: Params): string
   }
   /**
    * BaseQueryBuilder provides a basic implementation of QueryBuilder.
@@ -4563,73 +4563,73 @@ namespace dbx {
     /**
      * NewBaseQueryBuilder creates a new BaseQueryBuilder instance.
      */
-    (db: DB): BaseQueryBuilder | undefined;
+    (db: DB): BaseQueryBuilder | undefined
   }
   interface BaseQueryBuilder {
     /**
      * DB returns the DB instance associated with the query builder.
      */
-    db(): DB | undefined;
+    db(): DB | undefined
   }
   interface BaseQueryBuilder {
     /**
      * BuildSelect generates a SELECT clause from the given selected column names.
      */
-    buildSelect(cols: Array<string>, distinct: boolean, option: string): string;
+    buildSelect(cols: Array<string>, distinct: boolean, option: string): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildFrom generates a FROM clause from the given tables.
      */
-    buildFrom(tables: Array<string>): string;
+    buildFrom(tables: Array<string>): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildJoin generates a JOIN clause from the given join information.
      */
-    buildJoin(joins: Array<JoinInfo>, params: Params): string;
+    buildJoin(joins: Array<JoinInfo>, params: Params): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildWhere generates a WHERE clause from the given expression.
      */
-    buildWhere(e: Expression, params: Params): string;
+    buildWhere(e: Expression, params: Params): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildHaving generates a HAVING clause from the given expression.
      */
-    buildHaving(e: Expression, params: Params): string;
+    buildHaving(e: Expression, params: Params): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildGroupBy generates a GROUP BY clause from the given group-by columns.
      */
-    buildGroupBy(cols: Array<string>): string;
+    buildGroupBy(cols: Array<string>): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildOrderByAndLimit generates the ORDER BY and LIMIT clauses.
      */
-    buildOrderByAndLimit(sql: string, cols: Array<string>, limit: number, offset: number): string;
+    buildOrderByAndLimit(sql: string, cols: Array<string>, limit: number, offset: number): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildUnion generates a UNION clause from the given union information.
      */
-    buildUnion(unions: Array<UnionInfo>, params: Params): string;
+    buildUnion(unions: Array<UnionInfo>, params: Params): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildOrderBy generates the ORDER BY clause.
      */
-    buildOrderBy(cols: Array<string>): string;
+    buildOrderBy(cols: Array<string>): string
   }
   interface BaseQueryBuilder {
     /**
      * BuildLimit generates the LIMIT clause.
      */
-    buildLimit(limit: number, offset: number): string;
+    buildLimit(limit: number, offset: number): string
   }
   /**
    * VarTypeError indicates a variable type error when trying to populating a variable with DB result.
@@ -4639,7 +4639,7 @@ namespace dbx {
     /**
      * Error returns the error message.
      */
-    error(): string;
+    error(): string
   }
   /**
    * NullStringMap is a map of sql.NullString that can be used to hold DB query result.
@@ -4650,7 +4650,7 @@ namespace dbx {
    * Rows enhances sql.Rows by providing additional data query methods.
    * Rows can be obtained by calling Query.Rows(). It is mainly used to populate data row by row.
    */
-  type _subQfXwS = sql.Rows;
+  type _subQfXwS = sql.Rows
   interface Rows extends _subQfXwS {}
   interface Rows {
     /**
@@ -4659,7 +4659,7 @@ namespace dbx {
      * The NullStringMap will be populated using column names as keys and their values as
      * the corresponding element values.
      */
-    scanMap(a: NullStringMap): void;
+    scanMap(a: NullStringMap): void
   }
   interface Rows {
     /**
@@ -4676,13 +4676,13 @@ namespace dbx {
      * To change the default behavior, set DB.FieldMapper with your custom mapping function.
      * You may also set Query.FieldMapper to change the behavior for particular queries.
      */
-    scanStruct(a: {}): void;
+    scanStruct(a: {}): void
   }
   /**
    * BuildHookFunc defines a callback function that is executed on Query creation.
    */
   interface BuildHookFunc {
-    (q: Query): void;
+    (q: Query): void
   }
   /**
    * SelectQuery represents a DB-agnostic SELECT query.
@@ -4692,220 +4692,220 @@ namespace dbx {
     /**
      * FieldMapper maps struct field names to DB column names.
      */
-    fieldMapper: FieldMapFunc;
+    fieldMapper: FieldMapFunc
     /**
      * TableMapper maps structs to DB table names.
      */
-    tableMapper: TableMapFunc;
+    tableMapper: TableMapFunc
   }
   /**
    * JoinInfo contains the specification for a JOIN clause.
    */
   interface JoinInfo {
-    join: string;
-    table: string;
-    on: Expression;
+    join: string
+    table: string
+    on: Expression
   }
   /**
    * UnionInfo contains the specification for a UNION clause.
    */
   interface UnionInfo {
-    all: boolean;
-    query?: Query;
+    all: boolean
+    query?: Query
   }
   interface newSelectQuery {
     /**
      * NewSelectQuery creates a new SelectQuery instance.
      */
-    (builder: Builder, db: DB): SelectQuery | undefined;
+    (builder: Builder, db: DB): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * WithBuildHook runs the provided hook function with the query created on Build().
      */
-    withBuildHook(fn: BuildHookFunc): SelectQuery | undefined;
+    withBuildHook(fn: BuildHookFunc): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Context returns the context associated with the query.
      */
-    context(): context.Context;
+    context(): context.Context
   }
   interface SelectQuery {
     /**
      * WithContext associates a context with the query.
      */
-    withContext(ctx: context.Context): SelectQuery | undefined;
+    withContext(ctx: context.Context): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Select specifies the columns to be selected.
      * Column names will be automatically quoted.
      */
-    select(...cols: string[]): SelectQuery | undefined;
+    select(...cols: string[]): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * AndSelect adds additional columns to be selected.
      * Column names will be automatically quoted.
      */
-    andSelect(...cols: string[]): SelectQuery | undefined;
+    andSelect(...cols: string[]): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Distinct specifies whether to select columns distinctively.
      * By default, distinct is false.
      */
-    distinct(v: boolean): SelectQuery | undefined;
+    distinct(v: boolean): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * SelectOption specifies additional option that should be append to "SELECT".
      */
-    selectOption(option: string): SelectQuery | undefined;
+    selectOption(option: string): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * From specifies which tables to select from.
      * Table names will be automatically quoted.
      */
-    from(...tables: string[]): SelectQuery | undefined;
+    from(...tables: string[]): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Where specifies the WHERE condition.
      */
-    where(e: Expression): SelectQuery | undefined;
+    where(e: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * AndWhere concatenates a new WHERE condition with the existing one (if any) using "AND".
      */
-    andWhere(e: Expression): SelectQuery | undefined;
+    andWhere(e: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * OrWhere concatenates a new WHERE condition with the existing one (if any) using "OR".
      */
-    orWhere(e: Expression): SelectQuery | undefined;
+    orWhere(e: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Join specifies a JOIN clause.
      * The "typ" parameter specifies the JOIN type (e.g. "INNER JOIN", "LEFT JOIN").
      */
-    join(typ: string, table: string, on: Expression): SelectQuery | undefined;
+    join(typ: string, table: string, on: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * InnerJoin specifies an INNER JOIN clause.
      * This is a shortcut method for Join.
      */
-    innerJoin(table: string, on: Expression): SelectQuery | undefined;
+    innerJoin(table: string, on: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * LeftJoin specifies a LEFT JOIN clause.
      * This is a shortcut method for Join.
      */
-    leftJoin(table: string, on: Expression): SelectQuery | undefined;
+    leftJoin(table: string, on: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * RightJoin specifies a RIGHT JOIN clause.
      * This is a shortcut method for Join.
      */
-    rightJoin(table: string, on: Expression): SelectQuery | undefined;
+    rightJoin(table: string, on: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * OrderBy specifies the ORDER BY clause.
      * Column names will be properly quoted. A column name can contain "ASC" or "DESC" to indicate its ordering direction.
      */
-    orderBy(...cols: string[]): SelectQuery | undefined;
+    orderBy(...cols: string[]): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * AndOrderBy appends additional columns to the existing ORDER BY clause.
      * Column names will be properly quoted. A column name can contain "ASC" or "DESC" to indicate its ordering direction.
      */
-    andOrderBy(...cols: string[]): SelectQuery | undefined;
+    andOrderBy(...cols: string[]): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * GroupBy specifies the GROUP BY clause.
      * Column names will be properly quoted.
      */
-    groupBy(...cols: string[]): SelectQuery | undefined;
+    groupBy(...cols: string[]): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * AndGroupBy appends additional columns to the existing GROUP BY clause.
      * Column names will be properly quoted.
      */
-    andGroupBy(...cols: string[]): SelectQuery | undefined;
+    andGroupBy(...cols: string[]): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Having specifies the HAVING clause.
      */
-    having(e: Expression): SelectQuery | undefined;
+    having(e: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * AndHaving concatenates a new HAVING condition with the existing one (if any) using "AND".
      */
-    andHaving(e: Expression): SelectQuery | undefined;
+    andHaving(e: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * OrHaving concatenates a new HAVING condition with the existing one (if any) using "OR".
      */
-    orHaving(e: Expression): SelectQuery | undefined;
+    orHaving(e: Expression): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Union specifies a UNION clause.
      */
-    union(q: Query): SelectQuery | undefined;
+    union(q: Query): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * UnionAll specifies a UNION ALL clause.
      */
-    unionAll(q: Query): SelectQuery | undefined;
+    unionAll(q: Query): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Limit specifies the LIMIT clause.
      * A negative limit means no limit.
      */
-    limit(limit: number): SelectQuery | undefined;
+    limit(limit: number): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Offset specifies the OFFSET clause.
      * A negative offset means no offset.
      */
-    offset(offset: number): SelectQuery | undefined;
+    offset(offset: number): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Bind specifies the parameter values to be bound to the query.
      */
-    bind(params: Params): SelectQuery | undefined;
+    bind(params: Params): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * AndBind appends additional parameters to be bound to the query.
      */
-    andBind(params: Params): SelectQuery | undefined;
+    andBind(params: Params): SelectQuery | undefined
   }
   interface SelectQuery {
     /**
      * Build builds the SELECT query and returns an executable Query object.
      */
-    build(): Query | undefined;
+    build(): Query | undefined
   }
   interface SelectQuery {
     /**
@@ -4917,7 +4917,7 @@ namespace dbx {
      *
      * Note that when the query has no rows in the result set, an sql.ErrNoRows will be returned.
      */
-    one(a: {}): void;
+    one(a: {}): void
   }
   interface SelectQuery {
     /**
@@ -4928,7 +4928,7 @@ namespace dbx {
      * to infer the name of the primary key column. Only simple primary key is supported. For composite primary keys,
      * please use Where() to specify the filtering condition.
      */
-    model(pk: {}): void;
+    model(pk: {}): void
   }
   interface SelectQuery {
     /**
@@ -4940,21 +4940,21 @@ namespace dbx {
      * to be selected from by calling getTableName() which will return either the type name of the slice elements
      * or the TableName() method if the slice element implements the TableModel interface.
      */
-    all(slice: {}): void;
+    all(slice: {}): void
   }
   interface SelectQuery {
     /**
      * Rows builds and executes the SELECT query and returns a Rows object for data retrieval purpose.
      * This is a shortcut to SelectQuery.Build().Rows()
      */
-    rows(): Rows | undefined;
+    rows(): Rows | undefined
   }
   interface SelectQuery {
     /**
      * Row builds and executes the SELECT query and populates the first row of the result into the specified variables.
      * This is a shortcut to SelectQuery.Build().Row()
      */
-    row(...a: {}[]): void;
+    row(...a: {}[]): void
   }
   interface SelectQuery {
     /**
@@ -4962,50 +4962,50 @@ namespace dbx {
      * Note that the parameter must be a pointer to a slice.
      * This is a shortcut to SelectQuery.Build().Column()
      */
-    column(a: {}): void;
+    column(a: {}): void
   }
   /**
    * QueryInfo represents a debug/info struct with exported SelectQuery fields.
    */
   interface QueryInfo {
-    builder: Builder;
-    selects: Array<string>;
-    distinct: boolean;
-    selectOption: string;
-    from: Array<string>;
-    where: Expression;
-    join: Array<JoinInfo>;
-    orderBy: Array<string>;
-    groupBy: Array<string>;
-    having: Expression;
-    union: Array<UnionInfo>;
-    limit: number;
-    offset: number;
-    params: Params;
-    context: context.Context;
-    buildHook: BuildHookFunc;
+    builder: Builder
+    selects: Array<string>
+    distinct: boolean
+    selectOption: string
+    from: Array<string>
+    where: Expression
+    join: Array<JoinInfo>
+    orderBy: Array<string>
+    groupBy: Array<string>
+    having: Expression
+    union: Array<UnionInfo>
+    limit: number
+    offset: number
+    params: Params
+    context: context.Context
+    buildHook: BuildHookFunc
   }
   interface SelectQuery {
     /**
      * Info exports common SelectQuery fields allowing to inspect the
      * current select query options.
      */
-    info(): QueryInfo | undefined;
+    info(): QueryInfo | undefined
   }
   /**
    * FieldMapFunc converts a struct field name into a DB column name.
    */
   interface FieldMapFunc {
-    (_arg0: string): string;
+    (_arg0: string): string
   }
   /**
    * TableMapFunc converts a sample struct into a DB table name.
    */
   interface TableMapFunc {
-    (a: {}): string;
+    (a: {}): string
   }
   interface structInfo {}
-  type _subGdTwL = structInfo;
+  type _subGdTwL = structInfo
   interface structValue extends _subGdTwL {}
   interface fieldInfo {}
   interface structInfoMapKey {}
@@ -5018,7 +5018,7 @@ namespace dbx {
      * with the DB values, allowing you to further normalize or validate
      * the loaded data.
      */
-    postScan(): void;
+    postScan(): void
   }
   interface defaultFieldMapFunc {
     /**
@@ -5027,7 +5027,7 @@ namespace dbx {
      * and the name will be turned into lower case. For example, "FirstName" maps to "first_name", and "MyID" becomes "my_id".
      * See DB.FieldMapper for more details.
      */
-    (f: string): string;
+    (f: string): string
   }
   interface getTableName {
     /**
@@ -5035,24 +5035,24 @@ namespace dbx {
      * or slice of structs. To get the actual table name for a model, you should use DB.TableMapFunc() instead.
      * Do not call this method in a model's TableName() method because it will cause infinite loop.
      */
-    (a: {}): string;
+    (a: {}): string
   }
   /**
    * Tx enhances sql.Tx with additional querying methods.
    */
-  type _subUwOGp = Builder;
+  type _subUwOGp = Builder
   interface Tx extends _subUwOGp {}
   interface Tx {
     /**
      * Commit commits the transaction.
      */
-    commit(): void;
+    commit(): void
   }
   interface Tx {
     /**
      * Rollback aborts the transaction.
      */
-    rollback(): void;
+    rollback(): void
   }
 }
 
@@ -5088,7 +5088,7 @@ namespace template {
      *
      * Use the Registry.Load* methods to load templates into the registry.
      */
-    (): Registry | undefined;
+    (): Registry | undefined
   }
   /**
    * Registry defines a templates registry that is safe to be used by multiple goroutines.
@@ -5103,14 +5103,14 @@ namespace template {
      *
      * There must be at least 1 filename specified.
      */
-    loadFiles(...filenames: string[]): Renderer | undefined;
+    loadFiles(...filenames: string[]): Renderer | undefined
   }
   interface Registry {
     /**
      * LoadString caches (if not already) the specified inline string as a
      * single template and returns a ready to use Renderer instance.
      */
-    loadString(text: string): Renderer | undefined;
+    loadString(text: string): Renderer | undefined
   }
   interface Registry {
     /**
@@ -5120,7 +5120,7 @@ namespace template {
      * There must be at least 1 file matching the provided globPattern(s)
      * (note that most file names serves as glob patterns matching themselves).
      */
-    loadFS(fs: fs.FS, ...globPatterns: string[]): Renderer | undefined;
+    loadFS(fs: fs.FS, ...globPatterns: string[]): Renderer | undefined
   }
   /**
    * Renderer defines a single parsed template.
@@ -5131,7 +5131,7 @@ namespace template {
      * Render executes the template with the specified data as the dot object
      * and returns the result as plain string.
      */
-    render(data: any): string;
+    render(data: any): string
   }
 }
 
@@ -5143,12 +5143,12 @@ namespace ozzo_validation {
    * Error interface represents an validation error
    */
   interface Error {
-    error(): string;
-    code(): string;
-    message(): string;
-    setMessage(_arg0: string): Error;
-    params(): _TygojaDict;
-    setParams(_arg0: _TygojaDict): Error;
+    error(): string
+    code(): string
+    message(): string
+    setMessage(_arg0: string): Error
+    params(): _TygojaDict
+    setParams(_arg0: _TygojaDict): Error
   }
 }
 
@@ -5160,49 +5160,49 @@ namespace tokens {
     /**
      * NewAdminAuthToken generates and returns a new admin authentication token.
      */
-    (app: core.App, admin: models.Admin): string;
+    (app: core.App, admin: models.Admin): string
   }
   interface newAdminResetPasswordToken {
     /**
      * NewAdminResetPasswordToken generates and returns a new admin password reset request token.
      */
-    (app: core.App, admin: models.Admin): string;
+    (app: core.App, admin: models.Admin): string
   }
   interface newAdminFileToken {
     /**
      * NewAdminFileToken generates and returns a new admin private file access token.
      */
-    (app: core.App, admin: models.Admin): string;
+    (app: core.App, admin: models.Admin): string
   }
   interface newRecordAuthToken {
     /**
      * NewRecordAuthToken generates and returns a new auth record authentication token.
      */
-    (app: core.App, record: models.Record): string;
+    (app: core.App, record: models.Record): string
   }
   interface newRecordVerifyToken {
     /**
      * NewRecordVerifyToken generates and returns a new record verification token.
      */
-    (app: core.App, record: models.Record): string;
+    (app: core.App, record: models.Record): string
   }
   interface newRecordResetPasswordToken {
     /**
      * NewRecordResetPasswordToken generates and returns a new auth record password reset request token.
      */
-    (app: core.App, record: models.Record): string;
+    (app: core.App, record: models.Record): string
   }
   interface newRecordChangeEmailToken {
     /**
      * NewRecordChangeEmailToken generates and returns a new auth record change email request token.
      */
-    (app: core.App, record: models.Record, newEmail: string): string;
+    (app: core.App, record: models.Record, newEmail: string): string
   }
   interface newRecordFileToken {
     /**
      * NewRecordFileToken generates and returns a new record private file access token.
      */
-    (app: core.App, record: models.Record): string;
+    (app: core.App, record: models.Record): string
   }
 }
 
@@ -5212,13 +5212,13 @@ namespace tokens {
  */
 namespace forms {
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   /**
    * AdminLogin is an admin email/pass login form.
    */
   interface AdminLogin {
-    identity: string;
-    password: string;
+    identity: string
+    password: string
   }
   interface newAdminLogin {
     /**
@@ -5228,19 +5228,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App): AdminLogin | undefined;
+    (app: core.App): AdminLogin | undefined
   }
   interface AdminLogin {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface AdminLogin {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface AdminLogin {
     /**
@@ -5250,15 +5250,15 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to
      * further modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): models.Admin | undefined;
+    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): models.Admin | undefined
   }
   /**
    * AdminPasswordResetConfirm is an admin password reset confirmation form.
    */
   interface AdminPasswordResetConfirm {
-    token: string;
-    password: string;
-    passwordConfirm: string;
+    token: string
+    password: string
+    passwordConfirm: string
   }
   interface newAdminPasswordResetConfirm {
     /**
@@ -5268,7 +5268,7 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App): AdminPasswordResetConfirm | undefined;
+    (app: core.App): AdminPasswordResetConfirm | undefined
   }
   interface AdminPasswordResetConfirm {
     /**
@@ -5277,13 +5277,13 @@ namespace forms {
      * This is useful if you want to use a specific transaction Dao instance
      * instead of the default app.Dao().
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface AdminPasswordResetConfirm {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface AdminPasswordResetConfirm {
     /**
@@ -5293,13 +5293,13 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): models.Admin | undefined;
+    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): models.Admin | undefined
   }
   /**
    * AdminPasswordResetRequest is an admin password reset request form.
    */
   interface AdminPasswordResetRequest {
-    email: string;
+    email: string
   }
   interface newAdminPasswordResetRequest {
     /**
@@ -5309,13 +5309,13 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App): AdminPasswordResetRequest | undefined;
+    (app: core.App): AdminPasswordResetRequest | undefined
   }
   interface AdminPasswordResetRequest {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface AdminPasswordResetRequest {
     /**
@@ -5323,7 +5323,7 @@ namespace forms {
      *
      * This method doesn't verify that admin with `form.Email` exists (this is done on Submit).
      */
-    validate(): void;
+    validate(): void
   }
   interface AdminPasswordResetRequest {
     /**
@@ -5333,17 +5333,17 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): void
   }
   /**
    * AdminUpsert is a [models.Admin] upsert (create/update) form.
    */
   interface AdminUpsert {
-    id: string;
-    avatar: number;
-    email: string;
-    password: string;
-    passwordConfirm: string;
+    id: string
+    avatar: number
+    email: string
+    password: string
+    passwordConfirm: string
   }
   interface newAdminUpsert {
     /**
@@ -5354,19 +5354,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, admin: models.Admin): AdminUpsert | undefined;
+    (app: core.App, admin: models.Admin): AdminUpsert | undefined
   }
   interface AdminUpsert {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface AdminUpsert {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface AdminUpsert {
     /**
@@ -5375,7 +5375,7 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<models.Admin | undefined>[]): void
   }
   /**
    * AppleClientSecretCreate is a [models.Admin] upsert (create/update) form.
@@ -5386,70 +5386,70 @@ namespace forms {
     /**
      * ClientId is the identifier of your app (aka. Service ID).
      */
-    clientId: string;
+    clientId: string
     /**
      * TeamId is a 10-character string associated with your developer account
      * (usually could be found next to your name in the Apple Developer site).
      */
-    teamId: string;
+    teamId: string
     /**
      * KeyId is a 10-character key identifier generated for the "Sign in with Apple"
      * private key associated with your developer account.
      */
-    keyId: string;
+    keyId: string
     /**
      * PrivateKey is the private key associated to your app.
      * Usually wrapped within -----BEGIN PRIVATE KEY----- X -----END PRIVATE KEY-----.
      */
-    privateKey: string;
+    privateKey: string
     /**
      * Duration specifies how long the generated JWT token should be considered valid.
      * The specified value must be in seconds and max 15777000 (~6months).
      */
-    duration: number;
+    duration: number
   }
   interface newAppleClientSecretCreate {
     /**
      * NewAppleClientSecretCreate creates a new [AppleClientSecretCreate] form with initializer
      * config created from the provided [core.App] instances.
      */
-    (app: core.App): AppleClientSecretCreate | undefined;
+    (app: core.App): AppleClientSecretCreate | undefined
   }
   interface AppleClientSecretCreate {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface AppleClientSecretCreate {
     /**
      * Submit validates the form and returns a new Apple Client Secret JWT.
      */
-    submit(): string;
+    submit(): string
   }
   /**
    * BackupCreate is a request form for creating a new app backup.
    */
   interface BackupCreate {
-    name: string;
+    name: string
   }
   interface newBackupCreate {
     /**
      * NewBackupCreate creates new BackupCreate request form.
      */
-    (app: core.App): BackupCreate | undefined;
+    (app: core.App): BackupCreate | undefined
   }
   interface BackupCreate {
     /**
      * SetContext replaces the default form context with the provided one.
      */
-    setContext(ctx: context.Context): void;
+    setContext(ctx: context.Context): void
   }
   interface BackupCreate {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface BackupCreate {
     /**
@@ -5458,31 +5458,31 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before creating the backup.
      */
-    submit(...interceptors: InterceptorFunc<string>[]): void;
+    submit(...interceptors: InterceptorFunc<string>[]): void
   }
   /**
    * BackupUpload is a request form for uploading a new app backup.
    */
   interface BackupUpload {
-    file?: filesystem.File;
+    file?: filesystem.File
   }
   interface newBackupUpload {
     /**
      * NewBackupUpload creates new BackupUpload request form.
      */
-    (app: core.App): BackupUpload | undefined;
+    (app: core.App): BackupUpload | undefined
   }
   interface BackupUpload {
     /**
      * SetContext replaces the default form upload context with the provided one.
      */
-    setContext(ctx: context.Context): void;
+    setContext(ctx: context.Context): void
   }
   interface BackupUpload {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface BackupUpload {
     /**
@@ -5491,38 +5491,38 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before uploading the backup.
      */
-    submit(...interceptors: InterceptorFunc<filesystem.File | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<filesystem.File | undefined>[]): void
   }
   /**
    * InterceptorNextFunc is a interceptor handler function.
    * Usually used in combination with InterceptorFunc.
    */
   interface InterceptorNextFunc<T> {
-    (t: T): void;
+    (t: T): void
   }
   /**
    * InterceptorFunc defines a single interceptor function that
    * will execute the provided next func handler.
    */
   interface InterceptorFunc<T> {
-    (next: InterceptorNextFunc<T>): InterceptorNextFunc<T>;
+    (next: InterceptorNextFunc<T>): InterceptorNextFunc<T>
   }
   /**
    * CollectionUpsert is a [models.Collection] upsert (create/update) form.
    */
   interface CollectionUpsert {
-    id: string;
-    type: string;
-    name: string;
-    system: boolean;
-    schema: schema.Schema;
-    indexes: types.JsonArray<string>;
-    listRule?: string;
-    viewRule?: string;
-    createRule?: string;
-    updateRule?: string;
-    deleteRule?: string;
-    options: types.JsonMap;
+    id: string
+    type: string
+    name: string
+    system: boolean
+    schema: schema.Schema
+    indexes: types.JsonArray<string>
+    listRule?: string
+    viewRule?: string
+    createRule?: string
+    updateRule?: string
+    deleteRule?: string
+    options: types.JsonMap
   }
   interface newCollectionUpsert {
     /**
@@ -5533,19 +5533,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, collection: models.Collection): CollectionUpsert | undefined;
+    (app: core.App, collection: models.Collection): CollectionUpsert | undefined
   }
   interface CollectionUpsert {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface CollectionUpsert {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface CollectionUpsert {
     /**
@@ -5556,15 +5556,15 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Collection | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<models.Collection | undefined>[]): void
   }
   /**
    * CollectionsImport is a form model to bulk import
    * (create, replace and delete) collections from a user provided list.
    */
   interface CollectionsImport {
-    collections: Array<models.Collection | undefined>;
-    deleteMissing: boolean;
+    collections: Array<models.Collection | undefined>
+    deleteMissing: boolean
   }
   interface newCollectionsImport {
     /**
@@ -5574,19 +5574,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App): CollectionsImport | undefined;
+    (app: core.App): CollectionsImport | undefined
   }
   interface CollectionsImport {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface CollectionsImport {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface CollectionsImport {
     /**
@@ -5602,33 +5602,33 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<Array<models.Collection | undefined>>[]): void;
+    submit(...interceptors: InterceptorFunc<Array<models.Collection | undefined>>[]): void
   }
   /**
    * RealtimeSubscribe is a realtime subscriptions request form.
    */
   interface RealtimeSubscribe {
-    clientId: string;
-    subscriptions: Array<string>;
+    clientId: string
+    subscriptions: Array<string>
   }
   interface newRealtimeSubscribe {
     /**
      * NewRealtimeSubscribe creates new RealtimeSubscribe request form.
      */
-    (): RealtimeSubscribe | undefined;
+    (): RealtimeSubscribe | undefined
   }
   interface RealtimeSubscribe {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   /**
    * RecordEmailChangeConfirm is an auth record email change confirmation form.
    */
   interface RecordEmailChangeConfirm {
-    token: string;
-    password: string;
+    token: string
+    password: string
   }
   interface newRecordEmailChangeConfirm {
     /**
@@ -5638,19 +5638,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, collection: models.Collection): RecordEmailChangeConfirm | undefined;
+    (app: core.App, collection: models.Collection): RecordEmailChangeConfirm | undefined
   }
   interface RecordEmailChangeConfirm {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordEmailChangeConfirm {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordEmailChangeConfirm {
     /**
@@ -5660,13 +5660,13 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to
      * further modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined
   }
   /**
    * RecordEmailChangeRequest is an auth record email change request form.
    */
   interface RecordEmailChangeRequest {
-    newEmail: string;
+    newEmail: string
   }
   interface newRecordEmailChangeRequest {
     /**
@@ -5676,19 +5676,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, record: models.Record): RecordEmailChangeRequest | undefined;
+    (app: core.App, record: models.Record): RecordEmailChangeRequest | undefined
   }
   interface RecordEmailChangeRequest {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordEmailChangeRequest {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordEmailChangeRequest {
     /**
@@ -5697,23 +5697,23 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to
      * further modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void
   }
   /**
    * RecordOAuth2LoginData defines the OA
    */
   interface RecordOAuth2LoginData {
-    externalAuth?: models.ExternalAuth;
-    record?: models.Record;
-    oAuth2User?: auth.AuthUser;
-    providerClient: auth.Provider;
+    externalAuth?: models.ExternalAuth
+    record?: models.Record
+    oAuth2User?: auth.AuthUser
+    providerClient: auth.Provider
   }
   /**
    * BeforeOAuth2RecordCreateFunc defines a callback function that will
    * be called before OAuth2 new Record creation.
    */
   interface BeforeOAuth2RecordCreateFunc {
-    (createForm: RecordUpsert, authRecord: models.Record, authUser: auth.AuthUser): void;
+    (createForm: RecordUpsert, authRecord: models.Record, authUser: auth.AuthUser): void
   }
   /**
    * RecordOAuth2Login is an auth record OAuth2 login form.
@@ -5722,24 +5722,24 @@ namespace forms {
     /**
      * The name of the OAuth2 client provider (eg. "google")
      */
-    provider: string;
+    provider: string
     /**
      * The authorization code returned from the initial request.
      */
-    code: string;
+    code: string
     /**
      * The code verifier sent with the initial request as part of the code_challenge.
      */
-    codeVerifier: string;
+    codeVerifier: string
     /**
      * The redirect url sent with the initial request.
      */
-    redirectUrl: string;
+    redirectUrl: string
     /**
      * Additional data that will be used for creating a new auth record
      * if an existing OAuth2 account doesn't exist.
      */
-    createData: _TygojaDict;
+    createData: _TygojaDict
   }
   interface newRecordOAuth2Login {
     /**
@@ -5751,25 +5751,25 @@ namespace forms {
      */
     (app: core.App, collection: models.Collection, optAuthRecord: models.Record):
       | RecordOAuth2Login
-      | undefined;
+      | undefined
   }
   interface RecordOAuth2Login {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordOAuth2Login {
     /**
      * SetBeforeNewRecordCreateFunc sets a before OAuth2 record create callback handler.
      */
-    setBeforeNewRecordCreateFunc(f: BeforeOAuth2RecordCreateFunc): void;
+    setBeforeNewRecordCreateFunc(f: BeforeOAuth2RecordCreateFunc): void
   }
   interface RecordOAuth2Login {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordOAuth2Login {
     /**
@@ -5786,14 +5786,14 @@ namespace forms {
      */
     submit(
       ...interceptors: InterceptorFunc<RecordOAuth2LoginData | undefined>[]
-    ): [models.Record | undefined, auth.AuthUser | undefined];
+    ): [models.Record | undefined, auth.AuthUser | undefined]
   }
   /**
    * RecordPasswordLogin is record username/email + password login form.
    */
   interface RecordPasswordLogin {
-    identity: string;
-    password: string;
+    identity: string
+    password: string
   }
   interface newRecordPasswordLogin {
     /**
@@ -5803,19 +5803,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, collection: models.Collection): RecordPasswordLogin | undefined;
+    (app: core.App, collection: models.Collection): RecordPasswordLogin | undefined
   }
   interface RecordPasswordLogin {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordPasswordLogin {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordPasswordLogin {
     /**
@@ -5825,15 +5825,15 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to
      * further modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined
   }
   /**
    * RecordPasswordResetConfirm is an auth record password reset confirmation form.
    */
   interface RecordPasswordResetConfirm {
-    token: string;
-    password: string;
-    passwordConfirm: string;
+    token: string
+    password: string
+    passwordConfirm: string
   }
   interface newRecordPasswordResetConfirm {
     /**
@@ -5843,19 +5843,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, collection: models.Collection): RecordPasswordResetConfirm | undefined;
+    (app: core.App, collection: models.Collection): RecordPasswordResetConfirm | undefined
   }
   interface RecordPasswordResetConfirm {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordPasswordResetConfirm {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordPasswordResetConfirm {
     /**
@@ -5865,13 +5865,13 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined
   }
   /**
    * RecordPasswordResetRequest is an auth record reset password request form.
    */
   interface RecordPasswordResetRequest {
-    email: string;
+    email: string
   }
   interface newRecordPasswordResetRequest {
     /**
@@ -5881,13 +5881,13 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, collection: models.Collection): RecordPasswordResetRequest | undefined;
+    (app: core.App, collection: models.Collection): RecordPasswordResetRequest | undefined
   }
   interface RecordPasswordResetRequest {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordPasswordResetRequest {
     /**
@@ -5895,7 +5895,7 @@ namespace forms {
      *
      * This method doesn't checks whether auth record with `form.Email` exists (this is done on Submit).
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordPasswordResetRequest {
     /**
@@ -5905,7 +5905,7 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void
   }
   /**
    * RecordUpsert is a [models.Record] upsert (create/update) form.
@@ -5914,18 +5914,18 @@ namespace forms {
     /**
      * base model fields
      */
-    id: string;
+    id: string
     /**
      * auth collection fields
      * ---
      */
-    username: string;
-    email: string;
-    emailVisibility: boolean;
-    verified: boolean;
-    password: string;
-    passwordConfirm: string;
-    oldPassword: string;
+    username: string
+    email: string
+    emailVisibility: boolean
+    verified: boolean
+    password: string
+    passwordConfirm: string
+    oldPassword: string
   }
   interface newRecordUpsert {
     /**
@@ -5936,13 +5936,13 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, record: models.Record): RecordUpsert | undefined;
+    (app: core.App, record: models.Record): RecordUpsert | undefined
   }
   interface RecordUpsert {
     /**
      * Data returns the loaded form's data.
      */
-    data(): _TygojaDict;
+    data(): _TygojaDict
   }
   interface RecordUpsert {
     /**
@@ -5950,13 +5950,13 @@ namespace forms {
      * form to enable/disable directly changing some system record fields
      * (often used with auth collection records).
      */
-    setFullManageAccess(fullManageAccess: boolean): void;
+    setFullManageAccess(fullManageAccess: boolean): void
   }
   interface RecordUpsert {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordUpsert {
     /**
@@ -5965,19 +5965,19 @@ namespace forms {
      *
      * File upload is supported only via multipart/form-data.
      */
-    loadRequest(r: http.Request, keyPrefix: string): void;
+    loadRequest(r: http.Request, keyPrefix: string): void
   }
   interface RecordUpsert {
     /**
      * FilesToUpload returns the parsed request files ready for upload.
      */
-    filesToUpload(): _TygojaDict;
+    filesToUpload(): _TygojaDict
   }
   interface RecordUpsert {
     /**
      * FilesToUpload returns the parsed request filenames ready to be deleted.
      */
-    filesToDelete(): Array<string>;
+    filesToDelete(): Array<string>
   }
   interface RecordUpsert {
     /**
@@ -5998,7 +5998,7 @@ namespace forms {
      * 	form.AddFiles("documents", f1, f2)
      * ```
      */
-    addFiles(key: string, ...files: (filesystem.File | undefined)[]): void;
+    addFiles(key: string, ...files: (filesystem.File | undefined)[]): void
   }
   interface RecordUpsert {
     /**
@@ -6017,22 +6017,22 @@ namespace forms {
      * 	form.AddFiles("documents")
      * ```
      */
-    removeFiles(key: string, ...toDelete: string[]): void;
+    removeFiles(key: string, ...toDelete: string[]): void
   }
   interface RecordUpsert {
     /**
      * LoadData loads and normalizes the provided regular record data fields into the form.
      */
-    loadData(requestInfo: _TygojaDict): void;
+    loadData(requestInfo: _TygojaDict): void
   }
   interface RecordUpsert {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordUpsert {
-    validateAndFill(): void;
+    validateAndFill(): void
   }
   interface RecordUpsert {
     /**
@@ -6041,7 +6041,7 @@ namespace forms {
      *
      * This method doesn't handle file uploads/deletes or trigger any app events!
      */
-    drySubmit(callback: (txDao: daos.Dao) => void): void;
+    drySubmit(callback: (txDao: daos.Dao) => void): void
   }
   interface RecordUpsert {
     /**
@@ -6050,13 +6050,13 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void
   }
   /**
    * RecordVerificationConfirm is an auth record email verification confirmation form.
    */
   interface RecordVerificationConfirm {
-    token: string;
+    token: string
   }
   interface newRecordVerificationConfirm {
     /**
@@ -6066,19 +6066,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, collection: models.Collection): RecordVerificationConfirm | undefined;
+    (app: core.App, collection: models.Collection): RecordVerificationConfirm | undefined
   }
   interface RecordVerificationConfirm {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordVerificationConfirm {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordVerificationConfirm {
     /**
@@ -6088,13 +6088,13 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): models.Record | undefined
   }
   /**
    * RecordVerificationRequest is an auth record email verification request form.
    */
   interface RecordVerificationRequest {
-    email: string;
+    email: string
   }
   interface newRecordVerificationRequest {
     /**
@@ -6104,13 +6104,13 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App, collection: models.Collection): RecordVerificationRequest | undefined;
+    (app: core.App, collection: models.Collection): RecordVerificationRequest | undefined
   }
   interface RecordVerificationRequest {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface RecordVerificationRequest {
     /**
@@ -6118,7 +6118,7 @@ namespace forms {
      *
      * // This method doesn't verify that auth record with `form.Email` exists (this is done on Submit).
      */
-    validate(): void;
+    validate(): void
   }
   interface RecordVerificationRequest {
     /**
@@ -6128,12 +6128,12 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<models.Record | undefined>[]): void
   }
   /**
    * SettingsUpsert is a [settings.Settings] upsert (create/update) form.
    */
-  type _subJtvqR = settings.Settings;
+  type _subJtvqR = settings.Settings
   interface SettingsUpsert extends _subJtvqR {}
   interface newSettingsUpsert {
     /**
@@ -6143,19 +6143,19 @@ namespace forms {
      * If you want to submit the form as part of a transaction,
      * you can change the default Dao via [SetDao()].
      */
-    (app: core.App): SettingsUpsert | undefined;
+    (app: core.App): SettingsUpsert | undefined
   }
   interface SettingsUpsert {
     /**
      * SetDao replaces the default form Dao instance with the provided one.
      */
-    setDao(dao: daos.Dao): void;
+    setDao(dao: daos.Dao): void
   }
   interface SettingsUpsert {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface SettingsUpsert {
     /**
@@ -6166,32 +6166,32 @@ namespace forms {
      * You can optionally provide a list of InterceptorFunc to further
      * modify the form behavior before persisting it.
      */
-    submit(...interceptors: InterceptorFunc<settings.Settings | undefined>[]): void;
+    submit(...interceptors: InterceptorFunc<settings.Settings | undefined>[]): void
   }
   /**
    * TestEmailSend is a email template test request form.
    */
   interface TestEmailSend {
-    template: string;
-    email: string;
+    template: string
+    email: string
   }
   interface newTestEmailSend {
     /**
      * NewTestEmailSend creates and initializes new TestEmailSend form.
      */
-    (app: core.App): TestEmailSend | undefined;
+    (app: core.App): TestEmailSend | undefined
   }
   interface TestEmailSend {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface TestEmailSend {
     /**
      * Submit validates and sends a test email to the form.Email address.
      */
-    submit(): void;
+    submit(): void
   }
   /**
    * TestS3Filesystem defines a S3 filesystem connection test.
@@ -6200,25 +6200,25 @@ namespace forms {
     /**
      * The name of the filesystem - storage or backups
      */
-    filesystem: string;
+    filesystem: string
   }
   interface newTestS3Filesystem {
     /**
      * NewTestS3Filesystem creates and initializes new TestS3Filesystem form.
      */
-    (app: core.App): TestS3Filesystem | undefined;
+    (app: core.App): TestS3Filesystem | undefined
   }
   interface TestS3Filesystem {
     /**
      * Validate makes the form validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface TestS3Filesystem {
     /**
      * Submit validates and performs a S3 filesystem connection test.
      */
-    submit(): void;
+    submit(): void
   }
 }
 
@@ -6228,56 +6228,56 @@ namespace forms {
 namespace apis {
   interface adminApi {}
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   /**
    * ApiError defines the struct for a basic api error response.
    */
   interface ApiError {
-    code: number;
-    message: string;
-    data: _TygojaDict;
+    code: number
+    message: string
+    data: _TygojaDict
   }
   interface ApiError {
     /**
      * Error makes it compatible with the `error` interface.
      */
-    error(): string;
+    error(): string
   }
   interface ApiError {
     /**
      * RawData returns the unformatted error data (could be an internal error, text, etc.)
      */
-    rawData(): any;
+    rawData(): any
   }
   interface newNotFoundError {
     /**
      * NewNotFoundError creates and returns 404 `ApiError`.
      */
-    (message: string, data: any): ApiError | undefined;
+    (message: string, data: any): ApiError | undefined
   }
   interface newBadRequestError {
     /**
      * NewBadRequestError creates and returns 400 `ApiError`.
      */
-    (message: string, data: any): ApiError | undefined;
+    (message: string, data: any): ApiError | undefined
   }
   interface newForbiddenError {
     /**
      * NewForbiddenError creates and returns 403 `ApiError`.
      */
-    (message: string, data: any): ApiError | undefined;
+    (message: string, data: any): ApiError | undefined
   }
   interface newUnauthorizedError {
     /**
      * NewUnauthorizedError creates and returns 401 `ApiError`.
      */
-    (message: string, data: any): ApiError | undefined;
+    (message: string, data: any): ApiError | undefined
   }
   interface newApiError {
     /**
      * NewApiError creates and returns new normalized `ApiError` instance.
      */
-    (status: number, message: string, data: any): ApiError | undefined;
+    (status: number, message: string, data: any): ApiError | undefined
   }
   interface backupApi {}
   interface initApi {
@@ -6285,7 +6285,7 @@ namespace apis {
      * InitApi creates a configured echo instance with registered
      * system and app specific routes and middlewares.
      */
-    (app: core.App): echo.Echo | undefined;
+    (app: core.App): echo.Echo | undefined
   }
   interface staticDirectoryHandler {
     /**
@@ -6297,17 +6297,17 @@ namespace apis {
      *
      * @see https://github.com/labstack/echo/issues/2211
      */
-    (fileSystem: fs.FS, indexFallback: boolean): echo.HandlerFunc;
+    (fileSystem: fs.FS, indexFallback: boolean): echo.HandlerFunc
   }
   interface collectionApi {}
   interface fileApi {}
   interface healthApi {}
   interface healthCheckResponse {
-    code: number;
-    message: string;
+    code: number
+    message: string
     data: {
-      canBackup: boolean;
-    };
+      canBackup: boolean
+    }
   }
   interface logsApi {}
   interface requireGuestOnly {
@@ -6317,7 +6317,7 @@ namespace apis {
      *
      * This middleware is the opposite of [apis.RequireAdminOrRecordAuth()].
      */
-    (): echo.MiddlewareFunc;
+    (): echo.MiddlewareFunc
   }
   interface requireRecordAuth {
     /**
@@ -6344,7 +6344,7 @@ namespace apis {
      * To restrict the auth record only to the loaded context collection,
      * use [apis.RequireSameContextRecordAuth()] instead.
      */
-    (...optCollectionNames: string[]): echo.MiddlewareFunc;
+    (...optCollectionNames: string[]): echo.MiddlewareFunc
   }
   interface requireSameContextRecordAuth {
     /**
@@ -6353,14 +6353,14 @@ namespace apis {
      *
      * The auth record must be from the same collection already loaded in the context.
      */
-    (): echo.MiddlewareFunc;
+    (): echo.MiddlewareFunc
   }
   interface requireAdminAuth {
     /**
      * RequireAdminAuth middleware requires a request to have
      * a valid admin Authorization header.
      */
-    (): echo.MiddlewareFunc;
+    (): echo.MiddlewareFunc
   }
   interface requireAdminAuthOnlyIfAny {
     /**
@@ -6368,7 +6368,7 @@ namespace apis {
      * a valid admin Authorization header ONLY if the application has
      * at least 1 existing Admin model.
      */
-    (app: core.App): echo.MiddlewareFunc;
+    (app: core.App): echo.MiddlewareFunc
   }
   interface requireAdminOrRecordAuth {
     /**
@@ -6379,7 +6379,7 @@ namespace apis {
      *
      * This middleware is the opposite of [apis.RequireGuestOnly()].
      */
-    (...optCollectionNames: string[]): echo.MiddlewareFunc;
+    (...optCollectionNames: string[]): echo.MiddlewareFunc
   }
   interface requireAdminOrOwnerAuth {
     /**
@@ -6390,7 +6390,7 @@ namespace apis {
      * for the auth record token expects to have the same id as the path
      * parameter ownerIdParam (default to "id" if empty).
      */
-    (ownerIdParam: string): echo.MiddlewareFunc;
+    (ownerIdParam: string): echo.MiddlewareFunc
   }
   interface loadAuthContext {
     /**
@@ -6400,7 +6400,7 @@ namespace apis {
      *
      * This middleware is expected to be already registered by default for all routes.
      */
-    (app: core.App): echo.MiddlewareFunc;
+    (app: core.App): echo.MiddlewareFunc
   }
   interface loadCollectionContext {
     /**
@@ -6409,7 +6409,7 @@ namespace apis {
      *
      * Set optCollectionTypes to further filter the found collection by its type.
      */
-    (app: core.App, ...optCollectionTypes: string[]): echo.MiddlewareFunc;
+    (app: core.App, ...optCollectionTypes: string[]): echo.MiddlewareFunc
   }
   interface activityLogger {
     /**
@@ -6419,38 +6419,38 @@ namespace apis {
      * The middleware does nothing if the app logs retention period is zero
      * (aka. app.Settings().Logs.MaxDays = 0).
      */
-    (app: core.App): echo.MiddlewareFunc;
+    (app: core.App): echo.MiddlewareFunc
   }
   interface realtimeApi {}
   interface recordData {
-    action: string;
-    record?: models.Record;
+    action: string
+    record?: models.Record
   }
   interface getter {
-    get(_arg0: string): any;
+    get(_arg0: string): any
   }
   interface recordAuthApi {}
   interface providerInfo {
-    name: string;
-    state: string;
-    codeVerifier: string;
-    codeChallenge: string;
-    codeChallengeMethod: string;
-    authUrl: string;
+    name: string
+    state: string
+    codeVerifier: string
+    codeChallenge: string
+    codeChallengeMethod: string
+    authUrl: string
   }
   interface recordApi {}
   interface requestData {
     /**
      * Deprecated: Use RequestInfo instead.
      */
-    (c: echo.Context): models.RequestInfo | undefined;
+    (c: echo.Context): models.RequestInfo | undefined
   }
   interface requestInfo {
     /**
      * RequestInfo exports cached common request data fields
      * (query, body, logged auth state, etc.) from the provided context.
      */
-    (c: echo.Context): models.RequestInfo | undefined;
+    (c: echo.Context): models.RequestInfo | undefined
   }
   interface recordAuthResponse {
     /**
@@ -6463,7 +6463,7 @@ namespace apis {
       authRecord: models.Record,
       meta: any,
       ...finalizers: ((token: string) => void)[]
-    ): void;
+    ): void
   }
   interface enrichRecord {
     /**
@@ -6474,7 +6474,7 @@ namespace apis {
      *     are visibe only for the current logged admin, record owner or record with manage access
      * ```
      */
-    (c: echo.Context, dao: daos.Dao, record: models.Record, ...defaultExpands: string[]): void;
+    (c: echo.Context, dao: daos.Dao, record: models.Record, ...defaultExpands: string[]): void
   }
   interface enrichRecords {
     /**
@@ -6490,7 +6490,7 @@ namespace apis {
       dao: daos.Dao,
       records: Array<models.Record | undefined>,
       ...defaultExpands: string[]
-    ): void;
+    ): void
   }
   /**
    * ServeConfig defines a configuration struct for apis.Serve().
@@ -6499,15 +6499,15 @@ namespace apis {
     /**
      * ShowStartBanner indicates whether to show or hide the server start console message.
      */
-    showStartBanner: boolean;
+    showStartBanner: boolean
     /**
      * HttpAddr is the TCP address to listen for the HTTP server (eg. `127.0.0.1:80`).
      */
-    httpAddr: string;
+    httpAddr: string
     /**
      * HttpsAddr is the TCP address to listen for the HTTPS server (eg. `127.0.0.1:443`).
      */
-    httpsAddr: string;
+    httpsAddr: string
     /**
      * Optional domains list to use when issuing the TLS certificate.
      *
@@ -6516,11 +6516,11 @@ namespace apis {
      * For convenience, for each "non-www" domain a "www" entry and
      * redirect will be automatically added.
      */
-    certificateDomains: Array<string>;
+    certificateDomains: Array<string>
     /**
      * AllowedOrigins is an optional list of CORS origins (default to "*").
      */
-    allowedOrigins: Array<string>;
+    allowedOrigins: Array<string>
   }
   interface serve {
     /**
@@ -6538,11 +6538,11 @@ namespace apis {
      * 	})
      * ```
      */
-    (app: core.App, config: ServeConfig): http.Server | undefined;
+    (app: core.App, config: ServeConfig): http.Server | undefined
   }
   interface migrationsConnection {
-    db?: dbx.DB;
-    migrationsList: migrate.MigrationsList;
+    db?: dbx.DB
+    migrationsList: migrate.MigrationsList
   }
   interface settingsApi {}
 }
@@ -6551,7 +6551,7 @@ namespace pocketbase {
   /**
    * appWrapper serves as a private core.App instance wrapper.
    */
-  type _subKSPES = core.App;
+  type _subKSPES = core.App
   interface appWrapper extends _subKSPES {}
   /**
    * PocketBase defines a PocketBase app launcher.
@@ -6559,12 +6559,12 @@ namespace pocketbase {
    * It implements [core.App] via embedding and all of the app interface methods
    * could be accessed directly through the instance (eg. PocketBase.DataDir()).
    */
-  type _subofMqD = appWrapper;
+  type _subofMqD = appWrapper
   interface PocketBase extends _subofMqD {
     /**
      * RootCmd is the main console command
      */
-    rootCmd?: cobra.Command;
+    rootCmd?: cobra.Command
   }
   /**
    * Config is the PocketBase initialization config struct.
@@ -6573,20 +6573,20 @@ namespace pocketbase {
     /**
      * optional default values for the console flags
      */
-    defaultDebug: boolean;
-    defaultDataDir: string; // if not set, it will fallback to "./pb_data"
-    defaultEncryptionEnv: string;
+    defaultDebug: boolean
+    defaultDataDir: string // if not set, it will fallback to "./pb_data"
+    defaultEncryptionEnv: string
     /**
      * hide the default console server info on app startup
      */
-    hideStartBanner: boolean;
+    hideStartBanner: boolean
     /**
      * optional DB configurations
      */
-    dataMaxOpenConns: number; // default to core.DefaultDataMaxOpenConns
-    dataMaxIdleConns: number; // default to core.DefaultDataMaxIdleConns
-    logsMaxOpenConns: number; // default to core.DefaultLogsMaxOpenConns
-    logsMaxIdleConns: number; // default to core.DefaultLogsMaxIdleConns
+    dataMaxOpenConns: number // default to core.DefaultDataMaxOpenConns
+    dataMaxIdleConns: number // default to core.DefaultDataMaxIdleConns
+    logsMaxOpenConns: number // default to core.DefaultLogsMaxOpenConns
+    logsMaxIdleConns: number // default to core.DefaultLogsMaxIdleConns
   }
   interface _new {
     /**
@@ -6599,7 +6599,7 @@ namespace pocketbase {
      * If you want to initialize the application before calling [Start()],
      * then you'll have to manually call [Bootstrap()].
      */
-    (): PocketBase | undefined;
+    (): PocketBase | undefined
   }
   interface newWithConfig {
     /**
@@ -6611,14 +6611,14 @@ namespace pocketbase {
      * If you want to initialize the application before calling [Start()],
      * then you'll have to manually call [Bootstrap()].
      */
-    (config: Config): PocketBase | undefined;
+    (config: Config): PocketBase | undefined
   }
   interface PocketBase {
     /**
      * Start starts the application, aka. registers the default system
      * commands (serve, migrate, version) and executes pb.RootCmd.
      */
-    start(): void;
+    start(): void
   }
   interface PocketBase {
     /**
@@ -6628,7 +6628,7 @@ namespace pocketbase {
      * This method differs from pb.Start() by not registering the default
      * system commands!
      */
-    execute(): void;
+    execute(): void
   }
 }
 
@@ -6674,7 +6674,7 @@ namespace io {
    * Implementations must not retain p.
    */
   interface Reader {
-    read(p: string): number;
+    read(p: string): number
   }
   /**
    * Writer is the interface that wraps the basic Write method.
@@ -6688,7 +6688,7 @@ namespace io {
    * Implementations must not retain p.
    */
   interface Writer {
-    write(p: string): number;
+    write(p: string): number
   }
   /**
    * ReadSeekCloser is the interface that groups the basic Read, Seek and Close
@@ -6722,29 +6722,29 @@ namespace io {
  */
 namespace syscall {
   interface SysProcAttr {
-    chroot: string; // Chroot.
-    credential?: Credential; // Credential.
+    chroot: string // Chroot.
+    credential?: Credential // Credential.
     /**
      * Ptrace tells the child to call ptrace(PTRACE_TRACEME).
      * Call runtime.LockOSThread before starting a process with this set,
      * and don't call UnlockOSThread until done with PtraceSyscall calls.
      */
-    ptrace: boolean;
-    setsid: boolean; // Create session.
+    ptrace: boolean
+    setsid: boolean // Create session.
     /**
      * Setpgid sets the process group ID of the child to Pgid,
      * or, if Pgid == 0, to the new child's process ID.
      */
-    setpgid: boolean;
+    setpgid: boolean
     /**
      * Setctty sets the controlling terminal of the child to
      * file descriptor Ctty. Ctty must be a descriptor number
      * in the child process: an index into ProcAttr.Files.
      * This is only meaningful if Setsid is true.
      */
-    setctty: boolean;
-    noctty: boolean; // Detach fd 0 from controlling terminal
-    ctty: number; // Controlling TTY fd
+    setctty: boolean
+    noctty: boolean // Detach fd 0 from controlling terminal
+    ctty: number // Controlling TTY fd
     /**
      * Foreground places the child process group in the foreground.
      * This implies Setpgid. The Ctty field must be set to
@@ -6752,24 +6752,24 @@ namespace syscall {
      * Unlike Setctty, in this case Ctty must be a descriptor
      * number in the parent process.
      */
-    foreground: boolean;
-    pgid: number; // Child's process group ID if Setpgid.
-    pdeathsig: Signal; // Signal that the process will get when its parent dies (Linux and FreeBSD only)
-    cloneflags: number; // Flags for clone calls (Linux only)
-    unshareflags: number; // Flags for unshare calls (Linux only)
-    uidMappings: Array<SysProcIDMap>; // User ID mappings for user namespaces.
-    gidMappings: Array<SysProcIDMap>; // Group ID mappings for user namespaces.
+    foreground: boolean
+    pgid: number // Child's process group ID if Setpgid.
+    pdeathsig: Signal // Signal that the process will get when its parent dies (Linux and FreeBSD only)
+    cloneflags: number // Flags for clone calls (Linux only)
+    unshareflags: number // Flags for unshare calls (Linux only)
+    uidMappings: Array<SysProcIDMap> // User ID mappings for user namespaces.
+    gidMappings: Array<SysProcIDMap> // Group ID mappings for user namespaces.
     /**
      * GidMappingsEnableSetgroups enabling setgroups syscall.
      * If false, then setgroups syscall will be disabled for the child process.
      * This parameter is no-op if GidMappings == nil. Otherwise for unprivileged
      * users this should be set to false for mappings work.
      */
-    gidMappingsEnableSetgroups: boolean;
-    ambientCaps: Array<number>; // Ambient capabilities (Linux only)
+    gidMappingsEnableSetgroups: boolean
+    ambientCaps: Array<number> // Ambient capabilities (Linux only)
   }
   // @ts-ignore
-  import errorspkg = errors;
+  import errorspkg = errors
   /**
    * A RawConn is a raw network connection.
    */
@@ -6780,7 +6780,7 @@ namespace syscall {
      * The file descriptor fd is guaranteed to remain valid while
      * f executes but not after f returns.
      */
-    control(f: (fd: number) => void): void;
+    control(f: (fd: number) => void): void
     /**
      * Read invokes f on the underlying connection's file
      * descriptor or handle; f is expected to try to read from the
@@ -6791,11 +6791,11 @@ namespace syscall {
      * The file descriptor is guaranteed to remain valid while f
      * executes but not after f returns.
      */
-    read(f: (fd: number) => boolean): void;
+    read(f: (fd: number) => boolean): void
     /**
      * Write is like Read but for writing.
      */
-    write(f: (fd: number) => boolean): void;
+    write(f: (fd: number) => boolean): void
   }
   /**
    * An Errno is an unsigned number describing an error condition.
@@ -6818,16 +6818,16 @@ namespace syscall {
    */
   interface Errno extends Number {}
   interface Errno {
-    error(): string;
+    error(): string
   }
   interface Errno {
-    is(target: Error): boolean;
+    is(target: Error): boolean
   }
   interface Errno {
-    temporary(): boolean;
+    temporary(): boolean
   }
   interface Errno {
-    timeout(): boolean;
+    timeout(): boolean
   }
 }
 
@@ -6921,14 +6921,14 @@ namespace time {
      * representation, use t.MarshalText, t.MarshalBinary, or t.Format
      * with an explicit format string.
      */
-    string(): string;
+    string(): string
   }
   interface Time {
     /**
      * GoString implements fmt.GoStringer and formats t to be printed in Go source
      * code.
      */
-    goString(): string;
+    goString(): string
   }
   interface Time {
     /**
@@ -6939,14 +6939,14 @@ namespace time {
      * The executable example for Time.Format demonstrates the working
      * of the layout string in detail and is a good reference.
      */
-    format(layout: string): string;
+    format(layout: string): string
   }
   interface Time {
     /**
      * AppendFormat is like Format but appends the textual
      * representation to b and returns the extended buffer.
      */
-    appendFormat(b: string, layout: string): string;
+    appendFormat(b: string, layout: string): string
   }
   /**
    * A Time represents an instant in time with nanosecond precision.
@@ -6998,13 +6998,13 @@ namespace time {
     /**
      * After reports whether the time instant t is after u.
      */
-    after(u: Time): boolean;
+    after(u: Time): boolean
   }
   interface Time {
     /**
      * Before reports whether the time instant t is before u.
      */
-    before(u: Time): boolean;
+    before(u: Time): boolean
   }
   interface Time {
     /**
@@ -7014,44 +7014,44 @@ namespace time {
      * See the documentation on the Time type for the pitfalls of using == with
      * Time values; most code should use Equal instead.
      */
-    equal(u: Time): boolean;
+    equal(u: Time): boolean
   }
   interface Time {
     /**
      * IsZero reports whether t represents the zero time instant,
      * January 1, year 1, 00:00:00 UTC.
      */
-    isZero(): boolean;
+    isZero(): boolean
   }
   interface Time {
     /**
      * Date returns the year, month, and day in which t occurs.
      */
-    date(): [number, Month, number];
+    date(): [number, Month, number]
   }
   interface Time {
     /**
      * Year returns the year in which t occurs.
      */
-    year(): number;
+    year(): number
   }
   interface Time {
     /**
      * Month returns the month of the year specified by t.
      */
-    month(): Month;
+    month(): Month
   }
   interface Time {
     /**
      * Day returns the day of the month specified by t.
      */
-    day(): number;
+    day(): number
   }
   interface Time {
     /**
      * Weekday returns the day of the week specified by t.
      */
-    weekday(): Weekday;
+    weekday(): Weekday
   }
   interface Time {
     /**
@@ -7060,45 +7060,45 @@ namespace time {
      * week 52 or 53 of year n-1, and Dec 29 to Dec 31 might belong to week 1
      * of year n+1.
      */
-    isoWeek(): number;
+    isoWeek(): number
   }
   interface Time {
     /**
      * Clock returns the hour, minute, and second within the day specified by t.
      */
-    clock(): number;
+    clock(): number
   }
   interface Time {
     /**
      * Hour returns the hour within the day specified by t, in the range [0, 23].
      */
-    hour(): number;
+    hour(): number
   }
   interface Time {
     /**
      * Minute returns the minute offset within the hour specified by t, in the range [0, 59].
      */
-    minute(): number;
+    minute(): number
   }
   interface Time {
     /**
      * Second returns the second offset within the minute specified by t, in the range [0, 59].
      */
-    second(): number;
+    second(): number
   }
   interface Time {
     /**
      * Nanosecond returns the nanosecond offset within the second specified by t,
      * in the range [0, 999999999].
      */
-    nanosecond(): number;
+    nanosecond(): number
   }
   interface Time {
     /**
      * YearDay returns the day of the year specified by t, in the range [1,365] for non-leap years,
      * and [1,366] in leap years.
      */
-    yearDay(): number;
+    yearDay(): number
   }
   /**
    * A Duration represents the elapsed time between two instants
@@ -7113,50 +7113,50 @@ namespace time {
      * second format use a smaller unit (milli-, micro-, or nanoseconds) to ensure
      * that the leading digit is non-zero. The zero duration formats as 0s.
      */
-    string(): string;
+    string(): string
   }
   interface Duration {
     /**
      * Nanoseconds returns the duration as an integer nanosecond count.
      */
-    nanoseconds(): number;
+    nanoseconds(): number
   }
   interface Duration {
     /**
      * Microseconds returns the duration as an integer microsecond count.
      */
-    microseconds(): number;
+    microseconds(): number
   }
   interface Duration {
     /**
      * Milliseconds returns the duration as an integer millisecond count.
      */
-    milliseconds(): number;
+    milliseconds(): number
   }
   interface Duration {
     /**
      * Seconds returns the duration as a floating point number of seconds.
      */
-    seconds(): number;
+    seconds(): number
   }
   interface Duration {
     /**
      * Minutes returns the duration as a floating point number of minutes.
      */
-    minutes(): number;
+    minutes(): number
   }
   interface Duration {
     /**
      * Hours returns the duration as a floating point number of hours.
      */
-    hours(): number;
+    hours(): number
   }
   interface Duration {
     /**
      * Truncate returns the result of rounding d toward zero to a multiple of m.
      * If m <= 0, Truncate returns d unchanged.
      */
-    truncate(m: Duration): Duration;
+    truncate(m: Duration): Duration
   }
   interface Duration {
     /**
@@ -7167,13 +7167,13 @@ namespace time {
      * Round returns the maximum (or minimum) duration.
      * If m <= 0, Round returns d unchanged.
      */
-    round(m: Duration): Duration;
+    round(m: Duration): Duration
   }
   interface Time {
     /**
      * Add returns the time t+d.
      */
-    add(d: Duration): Time;
+    add(d: Duration): Time
   }
   interface Time {
     /**
@@ -7182,7 +7182,7 @@ namespace time {
      * will be returned.
      * To compute t-d for a duration d, use t.Add(-d).
      */
-    sub(u: Time): Duration;
+    sub(u: Time): Duration
   }
   interface Time {
     /**
@@ -7195,19 +7195,19 @@ namespace time {
      * so, for example, adding one month to October 31 yields
      * December 1, the normalized form for November 31.
      */
-    addDate(years: number, months: number, days: number): Time;
+    addDate(years: number, months: number, days: number): Time
   }
   interface Time {
     /**
      * UTC returns t with the location set to UTC.
      */
-    utc(): Time;
+    utc(): Time
   }
   interface Time {
     /**
      * Local returns t with the location set to local time.
      */
-    local(): Time;
+    local(): Time
   }
   interface Time {
     /**
@@ -7217,20 +7217,20 @@ namespace time {
      *
      * In panics if loc is nil.
      */
-    in(loc: Location): Time;
+    in(loc: Location): Time
   }
   interface Time {
     /**
      * Location returns the time zone information associated with t.
      */
-    location(): Location | undefined;
+    location(): Location | undefined
   }
   interface Time {
     /**
      * Zone computes the time zone in effect at time t, returning the abbreviated
      * name of the zone (such as "CET") and its offset in seconds east of UTC.
      */
-    zone(): [string, number];
+    zone(): [string, number]
   }
   interface Time {
     /**
@@ -7241,7 +7241,7 @@ namespace time {
      * count of seconds, but since the method here returns a 64-bit
      * value it is valid for billions of years into the past or future.
      */
-    unix(): number;
+    unix(): number
   }
   interface Time {
     /**
@@ -7251,7 +7251,7 @@ namespace time {
      * years before or after 1970). The result does not depend on the
      * location associated with t.
      */
-    unixMilli(): number;
+    unixMilli(): number
   }
   interface Time {
     /**
@@ -7261,7 +7261,7 @@ namespace time {
      * after year 294246). The result does not depend on the location associated
      * with t.
      */
-    unixMicro(): number;
+    unixMicro(): number
   }
   interface Time {
     /**
@@ -7272,65 +7272,65 @@ namespace time {
      * on the zero Time is undefined. The result does not depend on the
      * location associated with t.
      */
-    unixNano(): number;
+    unixNano(): number
   }
   interface Time {
     /**
      * MarshalBinary implements the encoding.BinaryMarshaler interface.
      */
-    marshalBinary(): string;
+    marshalBinary(): string
   }
   interface Time {
     /**
      * UnmarshalBinary implements the encoding.BinaryUnmarshaler interface.
      */
-    unmarshalBinary(data: string): void;
+    unmarshalBinary(data: string): void
   }
   interface Time {
     /**
      * GobEncode implements the gob.GobEncoder interface.
      */
-    gobEncode(): string;
+    gobEncode(): string
   }
   interface Time {
     /**
      * GobDecode implements the gob.GobDecoder interface.
      */
-    gobDecode(data: string): void;
+    gobDecode(data: string): void
   }
   interface Time {
     /**
      * MarshalJSON implements the json.Marshaler interface.
      * The time is a quoted string in RFC 3339 format, with sub-second precision added if present.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface Time {
     /**
      * UnmarshalJSON implements the json.Unmarshaler interface.
      * The time is expected to be a quoted string in RFC 3339 format.
      */
-    unmarshalJSON(data: string): void;
+    unmarshalJSON(data: string): void
   }
   interface Time {
     /**
      * MarshalText implements the encoding.TextMarshaler interface.
      * The time is formatted in RFC 3339 format, with sub-second precision added if present.
      */
-    marshalText(): string;
+    marshalText(): string
   }
   interface Time {
     /**
      * UnmarshalText implements the encoding.TextUnmarshaler interface.
      * The time is expected to be in RFC 3339 format.
      */
-    unmarshalText(data: string): void;
+    unmarshalText(data: string): void
   }
   interface Time {
     /**
      * IsDST reports whether the time in the configured location is in Daylight Savings Time.
      */
-    isDST(): boolean;
+    isDST(): boolean
   }
   interface Time {
     /**
@@ -7342,7 +7342,7 @@ namespace time {
      * time. Thus, Truncate(Hour) may return a time with a non-zero
      * minute, depending on the time's Location.
      */
-    truncate(d: Duration): Time;
+    truncate(d: Duration): Time
   }
   interface Time {
     /**
@@ -7355,7 +7355,7 @@ namespace time {
      * time. Thus, Round(Hour) may return a time with a non-zero
      * minute, depending on the time's Location.
      */
-    round(d: Duration): Time;
+    round(d: Duration): Time
   }
 }
 
@@ -7384,7 +7384,7 @@ namespace fs {
      * ValidPath(name), returning a *PathError with Err set to
      * ErrInvalid or ErrNotExist.
      */
-    open(name: string): File;
+    open(name: string): File
   }
   /**
    * A File provides access to a single file.
@@ -7393,9 +7393,9 @@ namespace fs {
    * A file may implement io.ReaderAt or io.Seeker as optimizations.
    */
   interface File {
-    stat(): FileInfo;
-    read(_arg0: string): number;
-    close(): void;
+    stat(): FileInfo
+    read(_arg0: string): number
+    close(): void
   }
   /**
    * A DirEntry is an entry read from a directory
@@ -7407,16 +7407,16 @@ namespace fs {
      * This name is only the final element of the path (the base name), not the entire path.
      * For example, Name would return "hello.go" not "home/gopher/hello.go".
      */
-    name(): string;
+    name(): string
     /**
      * IsDir reports whether the entry describes a directory.
      */
-    isDir(): boolean;
+    isDir(): boolean
     /**
      * Type returns the type bits for the entry.
      * The type bits are a subset of the usual FileMode bits, those returned by the FileMode.Type method.
      */
-    type(): FileMode;
+    type(): FileMode
     /**
      * Info returns the FileInfo for the file or subdirectory described by the entry.
      * The returned FileInfo may be from the time of the original directory read
@@ -7425,18 +7425,18 @@ namespace fs {
      * If the entry denotes a symbolic link, Info reports the information about the link itself,
      * not the link's target.
      */
-    info(): FileInfo;
+    info(): FileInfo
   }
   /**
    * A FileInfo describes a file and is returned by Stat.
    */
   interface FileInfo {
-    name(): string; // base name of the file
-    size(): number; // length in bytes for regular files; system-dependent for others
-    mode(): FileMode; // file mode bits
-    modTime(): time.Time; // modification time
-    isDir(): boolean; // abbreviation for Mode().IsDir()
-    sys(): any; // underlying data source (can return nil)
+    name(): string // base name of the file
+    size(): number // length in bytes for regular files; system-dependent for others
+    mode(): FileMode // file mode bits
+    modTime(): time.Time // modification time
+    isDir(): boolean // abbreviation for Mode().IsDir()
+    sys(): any // underlying data source (can return nil)
   }
   /**
    * A FileMode represents a file's mode and permission bits.
@@ -7447,53 +7447,53 @@ namespace fs {
    */
   interface FileMode extends Number {}
   interface FileMode {
-    string(): string;
+    string(): string
   }
   interface FileMode {
     /**
      * IsDir reports whether m describes a directory.
      * That is, it tests for the ModeDir bit being set in m.
      */
-    isDir(): boolean;
+    isDir(): boolean
   }
   interface FileMode {
     /**
      * IsRegular reports whether m describes a regular file.
      * That is, it tests that no mode type bits are set.
      */
-    isRegular(): boolean;
+    isRegular(): boolean
   }
   interface FileMode {
     /**
      * Perm returns the Unix permission bits in m (m & ModePerm).
      */
-    perm(): FileMode;
+    perm(): FileMode
   }
   interface FileMode {
     /**
      * Type returns type bits in m (m & ModeType).
      */
-    type(): FileMode;
+    type(): FileMode
   }
   /**
    * PathError records an error and the operation and file path that caused it.
    */
   interface PathError {
-    op: string;
-    path: string;
-    err: Error;
+    op: string
+    path: string
+    err: Error
   }
   interface PathError {
-    error(): string;
+    error(): string
   }
   interface PathError {
-    unwrap(): void;
+    unwrap(): void
   }
   interface PathError {
     /**
      * Timeout reports whether this error represents a timeout.
      */
-    timeout(): boolean;
+    timeout(): boolean
   }
   /**
    * WalkDirFunc is the type of the function called by WalkDir to visit
@@ -7544,7 +7544,7 @@ namespace fs {
    * ```
    */
   interface WalkDirFunc {
-    (path: string, d: DirEntry, err: Error): void;
+    (path: string, d: DirEntry, err: Error): void
   }
 }
 
@@ -7566,7 +7566,7 @@ namespace bytes {
      * Len returns the number of bytes of the unread portion of the
      * slice.
      */
-    len(): number;
+    len(): number
   }
   interface Reader {
     /**
@@ -7575,61 +7575,61 @@ namespace bytes {
      * The returned value is always the same and is not affected by calls
      * to any other method.
      */
-    size(): number;
+    size(): number
   }
   interface Reader {
     /**
      * Read implements the io.Reader interface.
      */
-    read(b: string): number;
+    read(b: string): number
   }
   interface Reader {
     /**
      * ReadAt implements the io.ReaderAt interface.
      */
-    readAt(b: string, off: number): number;
+    readAt(b: string, off: number): number
   }
   interface Reader {
     /**
      * ReadByte implements the io.ByteReader interface.
      */
-    readByte(): string;
+    readByte(): string
   }
   interface Reader {
     /**
      * UnreadByte complements ReadByte in implementing the io.ByteScanner interface.
      */
-    unreadByte(): void;
+    unreadByte(): void
   }
   interface Reader {
     /**
      * ReadRune implements the io.RuneReader interface.
      */
-    readRune(): [string, number];
+    readRune(): [string, number]
   }
   interface Reader {
     /**
      * UnreadRune complements ReadRune in implementing the io.RuneScanner interface.
      */
-    unreadRune(): void;
+    unreadRune(): void
   }
   interface Reader {
     /**
      * Seek implements the io.Seeker interface.
      */
-    seek(offset: number, whence: number): number;
+    seek(offset: number, whence: number): number
   }
   interface Reader {
     /**
      * WriteTo implements the io.WriterTo interface.
      */
-    writeTo(w: io.Writer): number;
+    writeTo(w: io.Writer): number
   }
   interface Reader {
     /**
      * Reset resets the Reader to be reading from b.
      */
-    reset(b: string): void;
+    reset(b: string): void
   }
 }
 
@@ -7693,7 +7693,7 @@ namespace context {
      * should be canceled. Deadline returns ok==false when no deadline is
      * set. Successive calls to Deadline return the same results.
      */
-    deadline(): [time.Time, boolean];
+    deadline(): [time.Time, boolean]
     /**
      * Done returns a channel that's closed when work done on behalf of this
      * context should be canceled. Done may return nil if this context can
@@ -7727,7 +7727,7 @@ namespace context {
      * See https://blog.golang.org/pipelines for more examples of how to use
      * a Done channel for cancellation.
      */
-    done(): undefined;
+    done(): undefined
     /**
      * If Done is not yet closed, Err returns nil.
      * If Done is closed, Err returns a non-nil error explaining why:
@@ -7735,7 +7735,7 @@ namespace context {
      * or DeadlineExceeded if the context's deadline passed.
      * After Err returns a non-nil error, successive calls to Err return the same error.
      */
-    err(): void;
+    err(): void
     /**
      * Value returns the value associated with this context for key, or nil
      * if no value is associated with key. Successive calls to Value with
@@ -7785,7 +7785,7 @@ namespace context {
      * 	}
      * ```
      */
-    value(key: any): any;
+    value(key: any): any
   }
 }
 
@@ -7822,14 +7822,14 @@ namespace exec {
      * value. If Path is relative, it is evaluated relative
      * to Dir.
      */
-    path: string;
+    path: string
     /**
      * Args holds command line arguments, including the command as Args[0].
      * If the Args field is empty or nil, Run uses {Path}.
      *
      * In typical use, both Path and Args are set by calling Command.
      */
-    args: Array<string>;
+    args: Array<string>
     /**
      * Env specifies the environment of the process.
      * Each entry is of the form "key=value".
@@ -7840,13 +7840,13 @@ namespace exec {
      * As a special case on Windows, SYSTEMROOT is always added if
      * missing and not explicitly set to the empty string.
      */
-    env: Array<string>;
+    env: Array<string>
     /**
      * Dir specifies the working directory of the command.
      * If Dir is the empty string, Run runs the command in the
      * calling process's current directory.
      */
-    dir: string;
+    dir: string
     /**
      * Stdin specifies the process's standard input.
      *
@@ -7861,7 +7861,7 @@ namespace exec {
      * stops copying, either because it has reached the end of Stdin
      * (EOF or a read error) or because writing to the pipe returned an error.
      */
-    stdin: io.Reader;
+    stdin: io.Reader
     /**
      * Stdout and Stderr specify the process's standard output and error.
      *
@@ -7879,8 +7879,8 @@ namespace exec {
      * If Stdout and Stderr are the same writer, and have a type that can
      * be compared with ==, at most one goroutine at a time will call Write.
      */
-    stdout: io.Writer;
-    stderr: io.Writer;
+    stdout: io.Writer
+    stderr: io.Writer
     /**
      * ExtraFiles specifies additional open files to be inherited by the
      * new process. It does not include standard input, standard output, or
@@ -7888,21 +7888,21 @@ namespace exec {
      *
      * ExtraFiles is not supported on Windows.
      */
-    extraFiles: Array<os.File | undefined>;
+    extraFiles: Array<os.File | undefined>
     /**
      * SysProcAttr holds optional, operating system-specific attributes.
      * Run passes it to os.StartProcess as the os.ProcAttr's Sys field.
      */
-    sysProcAttr?: syscall.SysProcAttr;
+    sysProcAttr?: syscall.SysProcAttr
     /**
      * Process is the underlying process, once started.
      */
-    process?: os.Process;
+    process?: os.Process
     /**
      * ProcessState contains information about an exited process,
      * available after a call to Wait or Run.
      */
-    processState?: os.ProcessState;
+    processState?: os.ProcessState
   }
   interface Cmd {
     /**
@@ -7911,7 +7911,7 @@ namespace exec {
      * In particular, it is not suitable for use as input to a shell.
      * The output of String may vary across Go releases.
      */
-    string(): string;
+    string(): string
   }
   interface Cmd {
     /**
@@ -7929,7 +7929,7 @@ namespace exec {
      * thread state (for example, Linux or Plan 9 name spaces), the new
      * process will inherit the caller's thread state.
      */
-    run(): void;
+    run(): void
   }
   interface Cmd {
     /**
@@ -7940,7 +7940,7 @@ namespace exec {
      * The Wait method will return the exit code and release associated resources
      * once the command exits.
      */
-    start(): void;
+    start(): void
   }
   interface Cmd {
     /**
@@ -7962,7 +7962,7 @@ namespace exec {
      *
      * Wait releases any resources associated with the Cmd.
      */
-    wait(): void;
+    wait(): void
   }
   interface Cmd {
     /**
@@ -7970,14 +7970,14 @@ namespace exec {
      * Any returned error will usually be of type *ExitError.
      * If c.Stderr was nil, Output populates ExitError.Stderr.
      */
-    output(): string;
+    output(): string
   }
   interface Cmd {
     /**
      * CombinedOutput runs the command and returns its combined standard
      * output and standard error.
      */
-    combinedOutput(): string;
+    combinedOutput(): string
   }
   interface Cmd {
     /**
@@ -7988,7 +7988,7 @@ namespace exec {
      * For example, if the command being run will not exit until standard input
      * is closed, the caller must close the pipe.
      */
-    stdinPipe(): io.WriteCloser;
+    stdinPipe(): io.WriteCloser
   }
   interface Cmd {
     /**
@@ -8001,7 +8001,7 @@ namespace exec {
      * For the same reason, it is incorrect to call Run when using StdoutPipe.
      * See the example for idiomatic usage.
      */
-    stdoutPipe(): io.ReadCloser;
+    stdoutPipe(): io.ReadCloser
   }
   interface Cmd {
     /**
@@ -8014,7 +8014,7 @@ namespace exec {
      * For the same reason, it is incorrect to use Run when using StderrPipe.
      * See the StdoutPipe example for idiomatic usage.
      */
-    stderrPipe(): io.ReadCloser;
+    stderrPipe(): io.ReadCloser
   }
 }
 
@@ -8040,8 +8040,8 @@ namespace sql {
      * Isolation is the transaction isolation level.
      * If zero, the driver or database's default level is used.
      */
-    isolation: IsolationLevel;
-    readOnly: boolean;
+    isolation: IsolationLevel
+    readOnly: boolean
   }
   /**
    * DB is a database handle representing a pool of zero or more
@@ -8063,7 +8063,7 @@ namespace sql {
      * PingContext verifies a connection to the database is still alive,
      * establishing a connection if necessary.
      */
-    pingContext(ctx: context.Context): void;
+    pingContext(ctx: context.Context): void
   }
   interface DB {
     /**
@@ -8073,7 +8073,7 @@ namespace sql {
      * Ping uses context.Background internally; to specify the context, use
      * PingContext.
      */
-    ping(): void;
+    ping(): void
   }
   interface DB {
     /**
@@ -8084,7 +8084,7 @@ namespace sql {
      * It is rare to Close a DB, as the DB handle is meant to be
      * long-lived and shared between many goroutines.
      */
-    close(): void;
+    close(): void
   }
   interface DB {
     /**
@@ -8099,7 +8099,7 @@ namespace sql {
      * The default max idle connections is currently 2. This may change in
      * a future release.
      */
-    setMaxIdleConns(n: number): void;
+    setMaxIdleConns(n: number): void
   }
   interface DB {
     /**
@@ -8112,7 +8112,7 @@ namespace sql {
      * If n <= 0, then there is no limit on the number of open connections.
      * The default is 0 (unlimited).
      */
-    setMaxOpenConns(n: number): void;
+    setMaxOpenConns(n: number): void
   }
   interface DB {
     /**
@@ -8122,7 +8122,7 @@ namespace sql {
      *
      * If d <= 0, connections are not closed due to a connection's age.
      */
-    setConnMaxLifetime(d: time.Duration): void;
+    setConnMaxLifetime(d: time.Duration): void
   }
   interface DB {
     /**
@@ -8132,13 +8132,13 @@ namespace sql {
      *
      * If d <= 0, connections are not closed due to a connection's idle time.
      */
-    setConnMaxIdleTime(d: time.Duration): void;
+    setConnMaxIdleTime(d: time.Duration): void
   }
   interface DB {
     /**
      * Stats returns database statistics.
      */
-    stats(): DBStats;
+    stats(): DBStats
   }
   interface DB {
     /**
@@ -8151,7 +8151,7 @@ namespace sql {
      * The provided context is used for the preparation of the statement, not for the
      * execution of the statement.
      */
-    prepareContext(ctx: context.Context, query: string): Stmt | undefined;
+    prepareContext(ctx: context.Context, query: string): Stmt | undefined
   }
   interface DB {
     /**
@@ -8164,14 +8164,14 @@ namespace sql {
      * Prepare uses context.Background internally; to specify the context, use
      * PrepareContext.
      */
-    prepare(query: string): Stmt | undefined;
+    prepare(query: string): Stmt | undefined
   }
   interface DB {
     /**
      * ExecContext executes a query without returning any rows.
      * The args are for any placeholder parameters in the query.
      */
-    execContext(ctx: context.Context, query: string, ...args: any[]): Result;
+    execContext(ctx: context.Context, query: string, ...args: any[]): Result
   }
   interface DB {
     /**
@@ -8181,14 +8181,14 @@ namespace sql {
      * Exec uses context.Background internally; to specify the context, use
      * ExecContext.
      */
-    exec(query: string, ...args: any[]): Result;
+    exec(query: string, ...args: any[]): Result
   }
   interface DB {
     /**
      * QueryContext executes a query that returns rows, typically a SELECT.
      * The args are for any placeholder parameters in the query.
      */
-    queryContext(ctx: context.Context, query: string, ...args: any[]): Rows | undefined;
+    queryContext(ctx: context.Context, query: string, ...args: any[]): Rows | undefined
   }
   interface DB {
     /**
@@ -8198,7 +8198,7 @@ namespace sql {
      * Query uses context.Background internally; to specify the context, use
      * QueryContext.
      */
-    query(query: string, ...args: any[]): Rows | undefined;
+    query(query: string, ...args: any[]): Rows | undefined
   }
   interface DB {
     /**
@@ -8209,7 +8209,7 @@ namespace sql {
      * Otherwise, the *Row's Scan scans the first selected row and discards
      * the rest.
      */
-    queryRowContext(ctx: context.Context, query: string, ...args: any[]): Row | undefined;
+    queryRowContext(ctx: context.Context, query: string, ...args: any[]): Row | undefined
   }
   interface DB {
     /**
@@ -8223,7 +8223,7 @@ namespace sql {
      * QueryRow uses context.Background internally; to specify the context, use
      * QueryRowContext.
      */
-    queryRow(query: string, ...args: any[]): Row | undefined;
+    queryRow(query: string, ...args: any[]): Row | undefined
   }
   interface DB {
     /**
@@ -8238,7 +8238,7 @@ namespace sql {
      * If a non-default isolation level is used that the driver doesn't support,
      * an error will be returned.
      */
-    beginTx(ctx: context.Context, opts: TxOptions): Tx | undefined;
+    beginTx(ctx: context.Context, opts: TxOptions): Tx | undefined
   }
   interface DB {
     /**
@@ -8248,13 +8248,13 @@ namespace sql {
      * Begin uses context.Background internally; to specify the context, use
      * BeginTx.
      */
-    begin(): Tx | undefined;
+    begin(): Tx | undefined
   }
   interface DB {
     /**
      * Driver returns the database's underlying driver.
      */
-    driver(): any;
+    driver(): any
   }
   interface DB {
     /**
@@ -8266,7 +8266,7 @@ namespace sql {
      * Every Conn must be returned to the database pool after use by
      * calling Conn.Close.
      */
-    conn(ctx: context.Context): Conn | undefined;
+    conn(ctx: context.Context): Conn | undefined
   }
   /**
    * Tx is an in-progress database transaction.
@@ -8285,13 +8285,13 @@ namespace sql {
     /**
      * Commit commits the transaction.
      */
-    commit(): void;
+    commit(): void
   }
   interface Tx {
     /**
      * Rollback aborts the transaction.
      */
-    rollback(): void;
+    rollback(): void
   }
   interface Tx {
     /**
@@ -8306,7 +8306,7 @@ namespace sql {
      * for the execution of the returned statement. The returned statement
      * will run in the transaction context.
      */
-    prepareContext(ctx: context.Context, query: string): Stmt | undefined;
+    prepareContext(ctx: context.Context, query: string): Stmt | undefined
   }
   interface Tx {
     /**
@@ -8320,7 +8320,7 @@ namespace sql {
      * Prepare uses context.Background internally; to specify the context, use
      * PrepareContext.
      */
-    prepare(query: string): Stmt | undefined;
+    prepare(query: string): Stmt | undefined
   }
   interface Tx {
     /**
@@ -8340,7 +8340,7 @@ namespace sql {
      * The returned statement operates within the transaction and will be closed
      * when the transaction has been committed or rolled back.
      */
-    stmtContext(ctx: context.Context, stmt: Stmt): Stmt | undefined;
+    stmtContext(ctx: context.Context, stmt: Stmt): Stmt | undefined
   }
   interface Tx {
     /**
@@ -8360,14 +8360,14 @@ namespace sql {
      * Stmt uses context.Background internally; to specify the context, use
      * StmtContext.
      */
-    stmt(stmt: Stmt): Stmt | undefined;
+    stmt(stmt: Stmt): Stmt | undefined
   }
   interface Tx {
     /**
      * ExecContext executes a query that doesn't return rows.
      * For example: an INSERT and UPDATE.
      */
-    execContext(ctx: context.Context, query: string, ...args: any[]): Result;
+    execContext(ctx: context.Context, query: string, ...args: any[]): Result
   }
   interface Tx {
     /**
@@ -8377,13 +8377,13 @@ namespace sql {
      * Exec uses context.Background internally; to specify the context, use
      * ExecContext.
      */
-    exec(query: string, ...args: any[]): Result;
+    exec(query: string, ...args: any[]): Result
   }
   interface Tx {
     /**
      * QueryContext executes a query that returns rows, typically a SELECT.
      */
-    queryContext(ctx: context.Context, query: string, ...args: any[]): Rows | undefined;
+    queryContext(ctx: context.Context, query: string, ...args: any[]): Rows | undefined
   }
   interface Tx {
     /**
@@ -8392,7 +8392,7 @@ namespace sql {
      * Query uses context.Background internally; to specify the context, use
      * QueryContext.
      */
-    query(query: string, ...args: any[]): Rows | undefined;
+    query(query: string, ...args: any[]): Rows | undefined
   }
   interface Tx {
     /**
@@ -8403,7 +8403,7 @@ namespace sql {
      * Otherwise, the *Row's Scan scans the first selected row and discards
      * the rest.
      */
-    queryRowContext(ctx: context.Context, query: string, ...args: any[]): Row | undefined;
+    queryRowContext(ctx: context.Context, query: string, ...args: any[]): Row | undefined
   }
   interface Tx {
     /**
@@ -8417,7 +8417,7 @@ namespace sql {
      * QueryRow uses context.Background internally; to specify the context, use
      * QueryRowContext.
      */
-    queryRow(query: string, ...args: any[]): Row | undefined;
+    queryRow(query: string, ...args: any[]): Row | undefined
   }
   /**
    * Stmt is a prepared statement.
@@ -8436,7 +8436,7 @@ namespace sql {
      * ExecContext executes a prepared statement with the given arguments and
      * returns a Result summarizing the effect of the statement.
      */
-    execContext(ctx: context.Context, ...args: any[]): Result;
+    execContext(ctx: context.Context, ...args: any[]): Result
   }
   interface Stmt {
     /**
@@ -8446,14 +8446,14 @@ namespace sql {
      * Exec uses context.Background internally; to specify the context, use
      * ExecContext.
      */
-    exec(...args: any[]): Result;
+    exec(...args: any[]): Result
   }
   interface Stmt {
     /**
      * QueryContext executes a prepared query statement with the given arguments
      * and returns the query results as a *Rows.
      */
-    queryContext(ctx: context.Context, ...args: any[]): Rows | undefined;
+    queryContext(ctx: context.Context, ...args: any[]): Rows | undefined
   }
   interface Stmt {
     /**
@@ -8463,7 +8463,7 @@ namespace sql {
      * Query uses context.Background internally; to specify the context, use
      * QueryContext.
      */
-    query(...args: any[]): Rows | undefined;
+    query(...args: any[]): Rows | undefined
   }
   interface Stmt {
     /**
@@ -8474,7 +8474,7 @@ namespace sql {
      * Otherwise, the *Row's Scan scans the first selected row and discards
      * the rest.
      */
-    queryRowContext(ctx: context.Context, ...args: any[]): Row | undefined;
+    queryRowContext(ctx: context.Context, ...args: any[]): Row | undefined
   }
   interface Stmt {
     /**
@@ -8493,13 +8493,13 @@ namespace sql {
      * QueryRow uses context.Background internally; to specify the context, use
      * QueryRowContext.
      */
-    queryRow(...args: any[]): Row | undefined;
+    queryRow(...args: any[]): Row | undefined
   }
   interface Stmt {
     /**
      * Close closes the statement.
      */
-    close(): void;
+    close(): void
   }
   /**
    * Rows is the result of a query. Its cursor starts before the first row
@@ -8515,7 +8515,7 @@ namespace sql {
      *
      * Every call to Scan, even the first one, must be preceded by a call to Next.
      */
-    next(): boolean;
+    next(): boolean
   }
   interface Rows {
     /**
@@ -8528,28 +8528,28 @@ namespace sql {
      * scanning. If there are further result sets they may not have rows in the result
      * set.
      */
-    nextResultSet(): boolean;
+    nextResultSet(): boolean
   }
   interface Rows {
     /**
      * Err returns the error, if any, that was encountered during iteration.
      * Err may be called after an explicit or implicit Close.
      */
-    err(): void;
+    err(): void
   }
   interface Rows {
     /**
      * Columns returns the column names.
      * Columns returns an error if the rows are closed.
      */
-    columns(): Array<string>;
+    columns(): Array<string>
   }
   interface Rows {
     /**
      * ColumnTypes returns column information such as column type, length,
      * and nullable. Some information may not be available from some drivers.
      */
-    columnTypes(): Array<ColumnType | undefined>;
+    columnTypes(): Array<ColumnType | undefined>
   }
   interface Rows {
     /**
@@ -8616,7 +8616,7 @@ namespace sql {
      * If any of the first arguments implementing Scanner returns an error,
      * that error will be wrapped in the returned error
      */
-    scan(...dest: any[]): void;
+    scan(...dest: any[]): void
   }
   interface Rows {
     /**
@@ -8625,7 +8625,7 @@ namespace sql {
      * the Rows are closed automatically and it will suffice to check the
      * result of Err. Close is idempotent and does not affect the result of Err.
      */
-    close(): void;
+    close(): void
   }
   /**
    * A Result summarizes an executed SQL command.
@@ -8638,13 +8638,13 @@ namespace sql {
      * databases support this feature, and the syntax of such
      * statements varies.
      */
-    lastInsertId(): number;
+    lastInsertId(): number
     /**
      * RowsAffected returns the number of rows affected by an
      * update, insert, or delete. Not every database or database
      * driver may support this.
      */
-    rowsAffected(): number;
+    rowsAffected(): number
   }
 }
 
@@ -8657,13 +8657,13 @@ namespace migrate {
     /**
      * Item returns a single migration from the list by its index.
      */
-    item(index: number): Migration | undefined;
+    item(index: number): Migration | undefined
   }
   interface MigrationsList {
     /**
      * Items returns the internal migrations list slice.
      */
-    items(): Array<Migration | undefined>;
+    items(): Array<Migration | undefined>
   }
   interface MigrationsList {
     /**
@@ -8673,7 +8673,7 @@ namespace migrate {
      *
      * The list will be sorted automatically based on the migrations file name.
      */
-    register(up: (db: dbx.Builder) => void, down: (db: dbx.Builder) => void, ...optFilename: string[]): void;
+    register(up: (db: dbx.Builder) => void, down: (db: dbx.Builder) => void, ...optFilename: string[]): void
   }
 }
 
@@ -8693,35 +8693,35 @@ namespace jwt {
      * VerifyAudience Compares the aud claim against cmp.
      * If required is false, this method will return true if the value matches or is unset
      */
-    verifyAudience(cmp: string, req: boolean): boolean;
+    verifyAudience(cmp: string, req: boolean): boolean
   }
   interface MapClaims {
     /**
      * VerifyExpiresAt compares the exp claim against cmp (cmp <= exp).
      * If req is false, it will return true, if exp is unset.
      */
-    verifyExpiresAt(cmp: number, req: boolean): boolean;
+    verifyExpiresAt(cmp: number, req: boolean): boolean
   }
   interface MapClaims {
     /**
      * VerifyIssuedAt compares the exp claim against cmp (cmp >= iat).
      * If req is false, it will return true, if iat is unset.
      */
-    verifyIssuedAt(cmp: number, req: boolean): boolean;
+    verifyIssuedAt(cmp: number, req: boolean): boolean
   }
   interface MapClaims {
     /**
      * VerifyNotBefore compares the nbf claim against cmp (cmp >= nbf).
      * If req is false, it will return true, if nbf is unset.
      */
-    verifyNotBefore(cmp: number, req: boolean): boolean;
+    verifyNotBefore(cmp: number, req: boolean): boolean
   }
   interface MapClaims {
     /**
      * VerifyIssuer compares the iss claim against cmp.
      * If required is false, this method will return true if the value matches or is unset
      */
-    verifyIssuer(cmp: string, req: boolean): boolean;
+    verifyIssuer(cmp: string, req: boolean): boolean
   }
   interface MapClaims {
     /**
@@ -8730,7 +8730,7 @@ namespace jwt {
      * As well, if any of the above claims are not in the token, it will still
      * be considered a valid claim.
      */
-    valid(): void;
+    valid(): void
   }
 }
 
@@ -8746,15 +8746,15 @@ namespace multipart {
    * A FileHeader describes a file part of a multipart request.
    */
   interface FileHeader {
-    filename: string;
-    header: textproto.MIMEHeader;
-    size: number;
+    filename: string
+    header: textproto.MIMEHeader
+    size: number
   }
   interface FileHeader {
     /**
      * Open opens and returns the FileHeader's associated File.
      */
-    open(): File;
+    open(): File
   }
 }
 
@@ -8875,9 +8875,9 @@ namespace multipart {
  */
 namespace http {
   // @ts-ignore
-  import mathrand = rand;
+  import mathrand = rand
   // @ts-ignore
-  import urlpkg = url;
+  import urlpkg = url
   /**
    * A Request represents an HTTP request received by a server
    * or to be sent by a client.
@@ -8895,7 +8895,7 @@ namespace http {
      * the CONNECT method. See the documentation on Transport for
      * details.
      */
-    method: string;
+    method: string
     /**
      * URL specifies either the URI being requested (for server
      * requests) or the URL to access (for client requests).
@@ -8910,7 +8910,7 @@ namespace http {
      * specifies the Host header value to send in the HTTP
      * request.
      */
-    url?: url.URL;
+    url?: url.URL
     /**
      * The protocol version for incoming server requests.
      *
@@ -8918,9 +8918,9 @@ namespace http {
      * client code always uses either HTTP/1.1 or HTTP/2.
      * See the docs on Transport for details.
      */
-    proto: string; // "HTTP/1.0"
-    protoMajor: number; // 1
-    protoMinor: number; // 0
+    proto: string // "HTTP/1.0"
+    protoMajor: number // 1
+    protoMinor: number // 0
     /**
      * Header contains the request header fields either received
      * by the server or to be sent by the client.
@@ -8958,7 +8958,7 @@ namespace http {
      * values in Header may be ignored. See the documentation
      * for the Request.Write method.
      */
-    header: Header;
+    header: Header
     /**
      * Body is the request's body.
      *
@@ -8975,7 +8975,7 @@ namespace http {
      * In particular, calling Close should unblock a Read waiting
      * for input.
      */
-    body: io.ReadCloser;
+    body: io.ReadCloser
     /**
      * GetBody defines an optional func to return a new copy of
      * Body. It is used for client requests when a redirect requires
@@ -8984,7 +8984,7 @@ namespace http {
      *
      * For server requests, it is unused.
      */
-    getBody: () => io.ReadCloser;
+    getBody: () => io.ReadCloser
     /**
      * ContentLength records the length of the associated content.
      * The value -1 indicates that the length is unknown.
@@ -8994,7 +8994,7 @@ namespace http {
      * For client requests, a value of 0 with a non-nil Body is
      * also treated as unknown.
      */
-    contentLength: number;
+    contentLength: number
     /**
      * TransferEncoding lists the transfer encodings from outermost to
      * innermost. An empty list denotes the "identity" encoding.
@@ -9002,7 +9002,7 @@ namespace http {
      * automatically added and removed as necessary when sending and
      * receiving requests.
      */
-    transferEncoding: Array<string>;
+    transferEncoding: Array<string>
     /**
      * Close indicates whether to close the connection after
      * replying to this request (for servers) or after sending this
@@ -9015,7 +9015,7 @@ namespace http {
      * TCP connections between requests to the same hosts, as if
      * Transport.DisableKeepAlives were set.
      */
-    close: boolean;
+    close: boolean
     /**
      * For server requests, Host specifies the host on which the
      * URL is sought. For HTTP/1 (per RFC 7230, section 5.4), this
@@ -9037,14 +9037,14 @@ namespace http {
      * the value of URL.Host. Host may contain an international
      * domain name.
      */
-    host: string;
+    host: string
     /**
      * Form contains the parsed form data, including both the URL
      * field's query parameters and the PATCH, POST, or PUT form data.
      * This field is only available after ParseForm is called.
      * The HTTP client ignores Form and uses Body instead.
      */
-    form: url.Values;
+    form: url.Values
     /**
      * PostForm contains the parsed form data from PATCH, POST
      * or PUT body parameters.
@@ -9052,13 +9052,13 @@ namespace http {
      * This field is only available after ParseForm is called.
      * The HTTP client ignores PostForm and uses Body instead.
      */
-    postForm: url.Values;
+    postForm: url.Values
     /**
      * MultipartForm is the parsed multipart form, including file uploads.
      * This field is only available after ParseMultipartForm is called.
      * The HTTP client ignores MultipartForm and uses Body instead.
      */
-    multipartForm?: multipart.Form;
+    multipartForm?: multipart.Form
     /**
      * Trailer specifies additional headers that are sent after the request
      * body.
@@ -9079,7 +9079,7 @@ namespace http {
      *
      * Few HTTP clients, servers, or proxies support HTTP trailers.
      */
-    trailer: Header;
+    trailer: Header
     /**
      * RemoteAddr allows HTTP servers and other software to record
      * the network address that sent the request, usually for
@@ -9089,14 +9089,14 @@ namespace http {
      * handler.
      * This field is ignored by the HTTP client.
      */
-    remoteAddr: string;
+    remoteAddr: string
     /**
      * RequestURI is the unmodified request-target of the
      * Request-Line (RFC 7230, Section 3.1.1) as sent by the client
      * to a server. Usually the URL field should be used instead.
      * It is an error to set this field in an HTTP client request.
      */
-    requestURI: string;
+    requestURI: string
     /**
      * TLS allows HTTP servers and other software to record
      * information about the TLS connection on which the request
@@ -9106,7 +9106,7 @@ namespace http {
      * otherwise it leaves the field nil.
      * This field is ignored by the HTTP client.
      */
-    tls?: any;
+    tls?: any
     /**
      * Cancel is an optional channel whose closure indicates that the client
      * request should be regarded as canceled. Not all implementations of
@@ -9118,13 +9118,13 @@ namespace http {
      * instead. If a Request's Cancel field and context are both
      * set, it is undefined whether Cancel is respected.
      */
-    cancel: undefined;
+    cancel: undefined
     /**
      * Response is the redirect response which caused this request
      * to be created. This field is only populated during client
      * redirects.
      */
-    response?: Response;
+    response?: Response
   }
   interface Request {
     /**
@@ -9140,7 +9140,7 @@ namespace http {
      * client's connection closes, the request is canceled (with HTTP/2),
      * or when the ServeHTTP method returns.
      */
-    context(): context.Context;
+    context(): context.Context
   }
   interface Request {
     /**
@@ -9156,7 +9156,7 @@ namespace http {
      * want to modify before sending back out, use Request.Clone. Between
      * those two uses, it's rare to need WithContext.
      */
-    withContext(ctx: context.Context): Request | undefined;
+    withContext(ctx: context.Context): Request | undefined
   }
   interface Request {
     /**
@@ -9167,26 +9167,26 @@ namespace http {
      * lifetime of a request and its response: obtaining a connection,
      * sending the request, and reading the response headers and body.
      */
-    clone(ctx: context.Context): Request | undefined;
+    clone(ctx: context.Context): Request | undefined
   }
   interface Request {
     /**
      * ProtoAtLeast reports whether the HTTP protocol used
      * in the request is at least major.minor.
      */
-    protoAtLeast(major: number): boolean;
+    protoAtLeast(major: number): boolean
   }
   interface Request {
     /**
      * UserAgent returns the client's User-Agent, if sent in the request.
      */
-    userAgent(): string;
+    userAgent(): string
   }
   interface Request {
     /**
      * Cookies parses and returns the HTTP cookies sent with the request.
      */
-    cookies(): Array<Cookie | undefined>;
+    cookies(): Array<Cookie | undefined>
   }
   interface Request {
     /**
@@ -9195,7 +9195,7 @@ namespace http {
      * If multiple cookies match the given name, only one cookie will
      * be returned.
      */
-    cookie(name: string): Cookie | undefined;
+    cookie(name: string): Cookie | undefined
   }
   interface Request {
     /**
@@ -9206,7 +9206,7 @@ namespace http {
      * AddCookie only sanitizes c's name and value, and does not sanitize
      * a Cookie header already present in the request.
      */
-    addCookie(c: Cookie): void;
+    addCookie(c: Cookie): void
   }
   interface Request {
     /**
@@ -9219,7 +9219,7 @@ namespace http {
      * alternate (correct English) spelling req.Referrer() but cannot
      * diagnose programs that use Header["Referrer"].
      */
-    referer(): string;
+    referer(): string
   }
   interface Request {
     /**
@@ -9228,7 +9228,7 @@ namespace http {
      * Use this function instead of ParseMultipartForm to
      * process the request body as a stream.
      */
-    multipartReader(): multipart.Reader | undefined;
+    multipartReader(): multipart.Reader | undefined
   }
   interface Request {
     /**
@@ -9248,7 +9248,7 @@ namespace http {
      * hasn't been set to "identity", Write adds "Transfer-Encoding:
      * chunked" to the header. Body is closed after it is sent.
      */
-    write(w: io.Writer): void;
+    write(w: io.Writer): void
   }
   interface Request {
     /**
@@ -9259,7 +9259,7 @@ namespace http {
      * In either case, WriteProxy also writes a Host header, using
      * either r.Host or r.URL.Host.
      */
-    writeProxy(w: io.Writer): void;
+    writeProxy(w: io.Writer): void
   }
   interface Request {
     /**
@@ -9267,7 +9267,7 @@ namespace http {
      * Authorization header, if the request uses HTTP Basic Authentication.
      * See RFC 2617, Section 2.
      */
-    basicAuth(): [string, boolean];
+    basicAuth(): [string, boolean]
   }
   interface Request {
     /**
@@ -9281,7 +9281,7 @@ namespace http {
      * username and password. For instance, when used with OAuth2, both arguments
      * must be URL encoded first with url.QueryEscape.
      */
-    setBasicAuth(username: string): void;
+    setBasicAuth(username: string): void
   }
   interface Request {
     /**
@@ -9304,7 +9304,7 @@ namespace http {
      * ParseMultipartForm calls ParseForm automatically.
      * ParseForm is idempotent.
      */
-    parseForm(): void;
+    parseForm(): void
   }
   interface Request {
     /**
@@ -9317,7 +9317,7 @@ namespace http {
      * continues parsing the request body.
      * After one call to ParseMultipartForm, subsequent calls have no effect.
      */
-    parseMultipartForm(maxMemory: number): void;
+    parseMultipartForm(maxMemory: number): void
   }
   interface Request {
     /**
@@ -9329,7 +9329,7 @@ namespace http {
      * To access multiple values of the same key, call ParseForm and
      * then inspect Request.Form directly.
      */
-    formValue(key: string): string;
+    formValue(key: string): string
   }
   interface Request {
     /**
@@ -9339,14 +9339,14 @@ namespace http {
      * any errors returned by these functions.
      * If key is not present, PostFormValue returns the empty string.
      */
-    postFormValue(key: string): string;
+    postFormValue(key: string): string
   }
   interface Request {
     /**
      * FormFile returns the first file for the provided form key.
      * FormFile calls ParseMultipartForm and ParseForm if necessary.
      */
-    formFile(key: string): [multipart.File, multipart.FileHeader | undefined];
+    formFile(key: string): [multipart.File, multipart.FileHeader | undefined]
   }
   /**
    * A ResponseWriter interface is used by an HTTP handler to
@@ -9378,7 +9378,7 @@ namespace http {
      * To suppress automatic response headers (such as "Date"), set
      * their value to nil.
      */
-    header(): Header;
+    header(): Header
     /**
      * Write writes the data to the connection as part of an HTTP reply.
      *
@@ -9402,7 +9402,7 @@ namespace http {
      * by all HTTP/2 clients. Handlers should read before writing if
      * possible to maximize compatibility.
      */
-    write(_arg0: string): number;
+    write(_arg0: string): number
     /**
      * WriteHeader sends an HTTP response header with the provided
      * status code.
@@ -9418,7 +9418,7 @@ namespace http {
      * with the exception of 100-continue response header that the
      * Server sends automatically when the Request.Body is read.
      */
-    writeHeader(statusCode: number): void;
+    writeHeader(statusCode: number): void
   }
   /**
    * A Server defines parameters for running an HTTP server.
@@ -9431,8 +9431,8 @@ namespace http {
      * The service names are defined in RFC 6335 and assigned by IANA.
      * See net.Dial for details of the address format.
      */
-    addr: string;
-    handler: Handler; // handler to invoke, http.DefaultServeMux if nil
+    addr: string
+    handler: Handler // handler to invoke, http.DefaultServeMux if nil
     /**
      * TLSConfig optionally provides a TLS configuration for use
      * by ServeTLS and ListenAndServeTLS. Note that this value is
@@ -9442,7 +9442,7 @@ namespace http {
      * SetSessionTicketKeys, use Server.Serve with a TLS Listener
      * instead.
      */
-    tlsConfig?: any;
+    tlsConfig?: any
     /**
      * ReadTimeout is the maximum duration for reading the entire
      * request, including the body. A zero or negative value means
@@ -9453,7 +9453,7 @@ namespace http {
      * upload rate, most users will prefer to use
      * ReadHeaderTimeout. It is valid to use them both.
      */
-    readTimeout: time.Duration;
+    readTimeout: time.Duration
     /**
      * ReadHeaderTimeout is the amount of time allowed to read
      * request headers. The connection's read deadline is reset
@@ -9462,7 +9462,7 @@ namespace http {
      * is zero, the value of ReadTimeout is used. If both are
      * zero, there is no timeout.
      */
-    readHeaderTimeout: time.Duration;
+    readHeaderTimeout: time.Duration
     /**
      * WriteTimeout is the maximum duration before timing out
      * writes of the response. It is reset whenever a new
@@ -9470,14 +9470,14 @@ namespace http {
      * let Handlers make decisions on a per-request basis.
      * A zero or negative value means there will be no timeout.
      */
-    writeTimeout: time.Duration;
+    writeTimeout: time.Duration
     /**
      * IdleTimeout is the maximum amount of time to wait for the
      * next request when keep-alives are enabled. If IdleTimeout
      * is zero, the value of ReadTimeout is used. If both are
      * zero, there is no timeout.
      */
-    idleTimeout: time.Duration;
+    idleTimeout: time.Duration
     /**
      * MaxHeaderBytes controls the maximum number of bytes the
      * server will read parsing the request header's keys and
@@ -9485,7 +9485,7 @@ namespace http {
      * size of the request body.
      * If zero, DefaultMaxHeaderBytes is used.
      */
-    maxHeaderBytes: number;
+    maxHeaderBytes: number
     /**
      * TLSNextProto optionally specifies a function to take over
      * ownership of the provided TLS connection when an ALPN
@@ -9497,20 +9497,20 @@ namespace http {
      * If TLSNextProto is not nil, HTTP/2 support is not enabled
      * automatically.
      */
-    tlsNextProto: _TygojaDict;
+    tlsNextProto: _TygojaDict
     /**
      * ConnState specifies an optional callback function that is
      * called when a client connection changes state. See the
      * ConnState type and associated constants for details.
      */
-    connState: (_arg0: net.Conn, _arg1: ConnState) => void;
+    connState: (_arg0: net.Conn, _arg1: ConnState) => void
     /**
      * ErrorLog specifies an optional logger for errors accepting
      * connections, unexpected behavior from handlers, and
      * underlying FileSystem errors.
      * If nil, logging is done via the log package's standard logger.
      */
-    errorLog?: any;
+    errorLog?: any
     /**
      * BaseContext optionally specifies a function that returns
      * the base context for incoming requests on this server.
@@ -9519,14 +9519,14 @@ namespace http {
      * If BaseContext is nil, the default is context.Background().
      * If non-nil, it must return a non-nil context.
      */
-    baseContext: (_arg0: net.Listener) => context.Context;
+    baseContext: (_arg0: net.Listener) => context.Context
     /**
      * ConnContext optionally specifies a function that modifies
      * the context used for a new connection c. The provided ctx
      * is derived from the base context and has a ServerContextKey
      * value.
      */
-    connContext: (ctx: context.Context, c: net.Conn) => context.Context;
+    connContext: (ctx: context.Context, c: net.Conn) => context.Context
   }
   interface Server {
     /**
@@ -9540,7 +9540,7 @@ namespace http {
      * Close returns any error returned from closing the Server's
      * underlying Listener(s).
      */
-    close(): void;
+    close(): void
   }
   interface Server {
     /**
@@ -9565,7 +9565,7 @@ namespace http {
      * Once Shutdown has been called on a server, it may not be reused;
      * future calls to methods such as Serve will return ErrServerClosed.
      */
-    shutdown(ctx: context.Context): void;
+    shutdown(ctx: context.Context): void
   }
   interface Server {
     /**
@@ -9575,7 +9575,7 @@ namespace http {
      * This function should start protocol-specific graceful shutdown,
      * but should not wait for shutdown to complete.
      */
-    registerOnShutdown(f: () => void): void;
+    registerOnShutdown(f: () => void): void
   }
   interface Server {
     /**
@@ -9588,7 +9588,7 @@ namespace http {
      * ListenAndServe always returns a non-nil error. After Shutdown or Close,
      * the returned error is ErrServerClosed.
      */
-    listenAndServe(): void;
+    listenAndServe(): void
   }
   interface Server {
     /**
@@ -9603,7 +9603,7 @@ namespace http {
      * Serve always returns a non-nil error and closes l.
      * After Shutdown or Close, the returned error is ErrServerClosed.
      */
-    serve(l: net.Listener): void;
+    serve(l: net.Listener): void
   }
   interface Server {
     /**
@@ -9621,7 +9621,7 @@ namespace http {
      * ServeTLS always returns a non-nil error. After Shutdown or Close, the
      * returned error is ErrServerClosed.
      */
-    serveTLS(l: net.Listener, certFile: string): void;
+    serveTLS(l: net.Listener, certFile: string): void
   }
   interface Server {
     /**
@@ -9630,7 +9630,7 @@ namespace http {
      * resource-constrained environments or servers in the process of
      * shutting down should disable them.
      */
-    setKeepAlivesEnabled(v: boolean): void;
+    setKeepAlivesEnabled(v: boolean): void
   }
   interface Server {
     /**
@@ -9650,7 +9650,7 @@ namespace http {
      * ListenAndServeTLS always returns a non-nil error. After Shutdown or
      * Close, the returned error is ErrServerClosed.
      */
-    listenAndServeTLS(certFile: string): void;
+    listenAndServeTLS(certFile: string): void
   }
 }
 
@@ -9659,14 +9659,14 @@ namespace auth {
    * AuthUser defines a standardized oauth2 user data structure.
    */
   interface AuthUser {
-    id: string;
-    name: string;
-    username: string;
-    email: string;
-    avatarUrl: string;
-    rawUser: _TygojaDict;
-    accessToken: string;
-    refreshToken: string;
+    id: string
+    name: string
+    username: string
+    email: string
+    avatarUrl: string
+    rawUser: _TygojaDict
+    accessToken: string
+    refreshToken: string
   }
   /**
    * Provider defines a common interface for an OAuth2 client.
@@ -9675,91 +9675,91 @@ namespace auth {
     /**
      * Scopes returns the context associated with the provider (if any).
      */
-    context(): context.Context;
+    context(): context.Context
     /**
      * SetContext assigns the specified context to the current provider.
      */
-    setContext(ctx: context.Context): void;
+    setContext(ctx: context.Context): void
     /**
      * Scopes returns the provider access permissions that will be requested.
      */
-    scopes(): Array<string>;
+    scopes(): Array<string>
     /**
      * SetScopes sets the provider access permissions that will be requested later.
      */
-    setScopes(scopes: Array<string>): void;
+    setScopes(scopes: Array<string>): void
     /**
      * ClientId returns the provider client's app ID.
      */
-    clientId(): string;
+    clientId(): string
     /**
      * SetClientId sets the provider client's ID.
      */
-    setClientId(clientId: string): void;
+    setClientId(clientId: string): void
     /**
      * ClientSecret returns the provider client's app secret.
      */
-    clientSecret(): string;
+    clientSecret(): string
     /**
      * SetClientSecret sets the provider client's app secret.
      */
-    setClientSecret(secret: string): void;
+    setClientSecret(secret: string): void
     /**
      * RedirectUrl returns the end address to redirect the user
      * going through the OAuth flow.
      */
-    redirectUrl(): string;
+    redirectUrl(): string
     /**
      * SetRedirectUrl sets the provider's RedirectUrl.
      */
-    setRedirectUrl(url: string): void;
+    setRedirectUrl(url: string): void
     /**
      * AuthUrl returns the provider's authorization service url.
      */
-    authUrl(): string;
+    authUrl(): string
     /**
      * SetAuthUrl sets the provider's AuthUrl.
      */
-    setAuthUrl(url: string): void;
+    setAuthUrl(url: string): void
     /**
      * TokenUrl returns the provider's token exchange service url.
      */
-    tokenUrl(): string;
+    tokenUrl(): string
     /**
      * SetTokenUrl sets the provider's TokenUrl.
      */
-    setTokenUrl(url: string): void;
+    setTokenUrl(url: string): void
     /**
      * UserApiUrl returns the provider's user info api url.
      */
-    userApiUrl(): string;
+    userApiUrl(): string
     /**
      * SetUserApiUrl sets the provider's UserApiUrl.
      */
-    setUserApiUrl(url: string): void;
+    setUserApiUrl(url: string): void
     /**
      * Client returns an http client using the provided token.
      */
-    client(token: oauth2.Token): any | undefined;
+    client(token: oauth2.Token): any | undefined
     /**
      * BuildAuthUrl returns a URL to the provider's consent page
      * that asks for permissions for the required scopes explicitly.
      */
-    buildAuthUrl(state: string, ...opts: oauth2.AuthCodeOption[]): string;
+    buildAuthUrl(state: string, ...opts: oauth2.AuthCodeOption[]): string
     /**
      * FetchToken converts an authorization code to token.
      */
-    fetchToken(code: string, ...opts: oauth2.AuthCodeOption[]): oauth2.Token | undefined;
+    fetchToken(code: string, ...opts: oauth2.AuthCodeOption[]): oauth2.Token | undefined
     /**
      * FetchRawUserData requests and marshalizes into `result` the
      * the OAuth user api response.
      */
-    fetchRawUserData(token: oauth2.Token): string;
+    fetchRawUserData(token: oauth2.Token): string
     /**
      * FetchAuthUser is similar to FetchRawUserData, but normalizes and
      * marshalizes the user api response into a standardized AuthUser struct.
      */
-    fetchAuthUser(token: oauth2.Token): AuthUser | undefined;
+    fetchAuthUser(token: oauth2.Token): AuthUser | undefined
   }
 }
 
@@ -9776,20 +9776,20 @@ namespace types {
     /**
      * MarshalJSON implements the [json.Marshaler] interface.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface JsonArray<T> {
     /**
      * Value implements the [driver.Valuer] interface.
      */
-    value(): any;
+    value(): any
   }
   interface JsonArray<T> {
     /**
      * Scan implements [sql.Scanner] interface to scan the provided value
      * into the current JsonArray[T] instance.
      */
-    scan(value: any): void;
+    scan(value: any): void
   }
   /**
    * JsonMap defines a map that is safe for json and db read/write.
@@ -9799,7 +9799,7 @@ namespace types {
     /**
      * MarshalJSON implements the [json.Marshaler] interface.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface JsonMap {
     /**
@@ -9808,7 +9808,7 @@ namespace types {
      * This helper was added primarily to assist the goja integration since custom map types
      * don't have direct access to the map keys (https://pkg.go.dev/github.com/dop251/goja#hdr-Maps_with_methods).
      */
-    get(key: string): any;
+    get(key: string): any
   }
   interface JsonMap {
     /**
@@ -9817,20 +9817,20 @@ namespace types {
      * This helper was added primarily to assist the goja integration since custom map types
      * don't have direct access to the map keys (https://pkg.go.dev/github.com/dop251/goja#hdr-Maps_with_methods).
      */
-    set(key: string, value: any): void;
+    set(key: string, value: any): void
   }
   interface JsonMap {
     /**
      * Value implements the [driver.Valuer] interface.
      */
-    value(): any;
+    value(): any
   }
   interface JsonMap {
     /**
      * Scan implements [sql.Scanner] interface to scan the provided value
      * into the current `JsonMap` instance.
      */
-    scan(value: any): void;
+    scan(value: any): void
   }
 }
 
@@ -9900,37 +9900,37 @@ namespace blob {
     /**
      * Read implements io.Reader (https://golang.org/pkg/io/#Reader).
      */
-    read(p: string): number;
+    read(p: string): number
   }
   interface Reader {
     /**
      * Seek implements io.Seeker (https://golang.org/pkg/io/#Seeker).
      */
-    seek(offset: number, whence: number): number;
+    seek(offset: number, whence: number): number
   }
   interface Reader {
     /**
      * Close implements io.Closer (https://golang.org/pkg/io/#Closer).
      */
-    close(): void;
+    close(): void
   }
   interface Reader {
     /**
      * ContentType returns the MIME type of the blob.
      */
-    contentType(): string;
+    contentType(): string
   }
   interface Reader {
     /**
      * ModTime returns the time the blob was last modified.
      */
-    modTime(): time.Time;
+    modTime(): time.Time
   }
   interface Reader {
     /**
      * Size returns the size of the blob content in bytes.
      */
-    size(): number;
+    size(): number
   }
   interface Reader {
     /**
@@ -9939,7 +9939,7 @@ namespace blob {
      * examples in this package for examples, and the driver package
      * documentation for the specific types supported for that driver.
      */
-    as(i: {}): boolean;
+    as(i: {}): boolean
   }
   interface Reader {
     /**
@@ -9949,7 +9949,7 @@ namespace blob {
      *
      * It implements the io.WriterTo interface.
      */
-    writeTo(w: io.Writer): number;
+    writeTo(w: io.Writer): number
   }
   /**
    * Attributes contains attributes about a blob.
@@ -9960,28 +9960,28 @@ namespace blob {
      * when serving the blob.
      * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control
      */
-    cacheControl: string;
+    cacheControl: string
     /**
      * ContentDisposition specifies whether the blob content is expected to be
      * displayed inline or as an attachment.
      * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition
      */
-    contentDisposition: string;
+    contentDisposition: string
     /**
      * ContentEncoding specifies the encoding used for the blob's content, if any.
      * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding
      */
-    contentEncoding: string;
+    contentEncoding: string
     /**
      * ContentLanguage specifies the language used in the blob's content, if any.
      * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language
      */
-    contentLanguage: string;
+    contentLanguage: string
     /**
      * ContentType is the MIME type of the blob. It will not be empty.
      * https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type
      */
-    contentType: string;
+    contentType: string
     /**
      * Metadata holds key/value pairs associated with the blob.
      * Keys are guaranteed to be in lowercase, even if the backend service
@@ -9990,28 +9990,28 @@ namespace blob {
      * case-insensitive keys (e.g., "foo" and "FOO"), only one value
      * will be kept, and it is undefined which one.
      */
-    metadata: _TygojaDict;
+    metadata: _TygojaDict
     /**
      * CreateTime is the time the blob was created, if available. If not available,
      * CreateTime will be the zero time.
      */
-    createTime: time.Time;
+    createTime: time.Time
     /**
      * ModTime is the time the blob was last modified.
      */
-    modTime: time.Time;
+    modTime: time.Time
     /**
      * Size is the size of the blob's content in bytes.
      */
-    size: number;
+    size: number
     /**
      * MD5 is an MD5 hash of the blob contents or nil if not available.
      */
-    md5: string;
+    md5: string
     /**
      * ETag for the blob; see https://en.wikipedia.org/wiki/HTTP_ETag.
      */
-    eTag: string;
+    eTag: string
   }
   interface Attributes {
     /**
@@ -10020,7 +10020,7 @@ namespace blob {
      * examples in this package for examples, and the driver package
      * documentation for the specific types supported for that driver.
      */
-    as(i: {}): boolean;
+    as(i: {}): boolean
   }
   /**
    * ListObject represents a single blob returned from List.
@@ -10029,26 +10029,26 @@ namespace blob {
     /**
      * Key is the key for this blob.
      */
-    key: string;
+    key: string
     /**
      * ModTime is the time the blob was last modified.
      */
-    modTime: time.Time;
+    modTime: time.Time
     /**
      * Size is the size of the blob's content in bytes.
      */
-    size: number;
+    size: number
     /**
      * MD5 is an MD5 hash of the blob contents or nil if not available.
      */
-    md5: string;
+    md5: string
     /**
      * IsDir indicates that this result represents a "directory" in the
      * hierarchical namespace, ending in ListOptions.Delimiter. Key can be
      * passed as ListOptions.Prefix to list items in the "directory".
      * Fields other than Key and IsDir will not be set if IsDir is true.
      */
-    isDir: boolean;
+    isDir: boolean
   }
   interface ListObject {
     /**
@@ -10057,7 +10057,7 @@ namespace blob {
      * examples in this package for examples, and the driver package
      * documentation for the specific types supported for that driver.
      */
-    as(i: {}): boolean;
+    as(i: {}): boolean
   }
 }
 
@@ -10067,7 +10067,7 @@ namespace blob {
  */
 namespace schema {
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   /**
    * Schema defines a dynamic db schema as a slice of `SchemaField`s.
    */
@@ -10076,38 +10076,38 @@ namespace schema {
     /**
      * Fields returns the registered schema fields.
      */
-    fields(): Array<SchemaField | undefined>;
+    fields(): Array<SchemaField | undefined>
   }
   interface Schema {
     /**
      * InitFieldsOptions calls `InitOptions()` for all schema fields.
      */
-    initFieldsOptions(): void;
+    initFieldsOptions(): void
   }
   interface Schema {
     /**
      * Clone creates a deep clone of the current schema.
      */
-    clone(): Schema | undefined;
+    clone(): Schema | undefined
   }
   interface Schema {
     /**
      * AsMap returns a map with all registered schema field.
      * The returned map is indexed with each field name.
      */
-    asMap(): _TygojaDict;
+    asMap(): _TygojaDict
   }
   interface Schema {
     /**
      * GetFieldById returns a single field by its id.
      */
-    getFieldById(id: string): SchemaField | undefined;
+    getFieldById(id: string): SchemaField | undefined
   }
   interface Schema {
     /**
      * GetFieldByName returns a single field by its name.
      */
-    getFieldByName(name: string): SchemaField | undefined;
+    getFieldByName(name: string): SchemaField | undefined
   }
   interface Schema {
     /**
@@ -10115,7 +10115,7 @@ namespace schema {
      *
      * This method does nothing if field with `id` doesn't exist.
      */
-    removeField(id: string): void;
+    removeField(id: string): void
   }
   interface Schema {
     /**
@@ -10126,7 +10126,7 @@ namespace schema {
      *
      * Otherwise the new field is appended to the other schema fields.
      */
-    addField(newField: SchemaField): void;
+    addField(newField: SchemaField): void
   }
   interface Schema {
     /**
@@ -10135,13 +10135,13 @@ namespace schema {
      * Internally calls each individual field's validator and additionally
      * checks for invalid renamed fields and field name duplications.
      */
-    validate(): void;
+    validate(): void
   }
   interface Schema {
     /**
      * MarshalJSON implements the [json.Marshaler] interface.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface Schema {
     /**
@@ -10149,20 +10149,20 @@ namespace schema {
      *
      * On success, all schema field options are auto initialized.
      */
-    unmarshalJSON(data: string): void;
+    unmarshalJSON(data: string): void
   }
   interface Schema {
     /**
      * Value implements the [driver.Valuer] interface.
      */
-    value(): any;
+    value(): any
   }
   interface Schema {
     /**
      * Scan implements [sql.Scanner] interface to scan the provided value
      * into the current Schema instance.
      */
-    scan(value: any): void;
+    scan(value: any): void
   }
 }
 
@@ -10170,25 +10170,25 @@ namespace schema {
  * Package models implements all PocketBase DB models and DTOs.
  */
 namespace models {
-  type _subTuLRn = BaseModel;
+  type _subTuLRn = BaseModel
   interface Admin extends _subTuLRn {
-    avatar: number;
-    email: string;
-    tokenKey: string;
-    passwordHash: string;
-    lastResetSentAt: types.DateTime;
+    avatar: number
+    email: string
+    tokenKey: string
+    passwordHash: string
+    lastResetSentAt: types.DateTime
   }
   interface Admin {
     /**
      * TableName returns the Admin model SQL table name.
      */
-    tableName(): string;
+    tableName(): string
   }
   interface Admin {
     /**
      * ValidatePassword validates a plain password against the model's password.
      */
-    validatePassword(password: string): boolean;
+    validatePassword(password: string): boolean
   }
   interface Admin {
     /**
@@ -10196,133 +10196,133 @@ namespace models {
      *
      * Additionally this method also resets the LastResetSentAt and the TokenKey fields.
      */
-    setPassword(password: string): void;
+    setPassword(password: string): void
   }
   interface Admin {
     /**
      * RefreshTokenKey generates and sets new random token key.
      */
-    refreshTokenKey(): void;
+    refreshTokenKey(): void
   }
   // @ts-ignore
-  import validation = ozzo_validation;
-  type _subSMNrV = BaseModel;
+  import validation = ozzo_validation
+  type _subSMNrV = BaseModel
   interface Collection extends _subSMNrV {
-    name: string;
-    type: string;
-    system: boolean;
-    schema: schema.Schema;
-    indexes: types.JsonArray<string>;
+    name: string
+    type: string
+    system: boolean
+    schema: schema.Schema
+    indexes: types.JsonArray<string>
     /**
      * rules
      */
-    listRule?: string;
-    viewRule?: string;
-    createRule?: string;
-    updateRule?: string;
-    deleteRule?: string;
-    options: types.JsonMap;
+    listRule?: string
+    viewRule?: string
+    createRule?: string
+    updateRule?: string
+    deleteRule?: string
+    options: types.JsonMap
   }
   interface Collection {
     /**
      * TableName returns the Collection model SQL table name.
      */
-    tableName(): string;
+    tableName(): string
   }
   interface Collection {
     /**
      * BaseFilesPath returns the storage dir path used by the collection.
      */
-    baseFilesPath(): string;
+    baseFilesPath(): string
   }
   interface Collection {
     /**
      * IsBase checks if the current collection has "base" type.
      */
-    isBase(): boolean;
+    isBase(): boolean
   }
   interface Collection {
     /**
      * IsAuth checks if the current collection has "auth" type.
      */
-    isAuth(): boolean;
+    isAuth(): boolean
   }
   interface Collection {
     /**
      * IsView checks if the current collection has "view" type.
      */
-    isView(): boolean;
+    isView(): boolean
   }
   interface Collection {
     /**
      * MarshalJSON implements the [json.Marshaler] interface.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface Collection {
     /**
      * BaseOptions decodes the current collection options and returns them
      * as new [CollectionBaseOptions] instance.
      */
-    baseOptions(): CollectionBaseOptions;
+    baseOptions(): CollectionBaseOptions
   }
   interface Collection {
     /**
      * AuthOptions decodes the current collection options and returns them
      * as new [CollectionAuthOptions] instance.
      */
-    authOptions(): CollectionAuthOptions;
+    authOptions(): CollectionAuthOptions
   }
   interface Collection {
     /**
      * ViewOptions decodes the current collection options and returns them
      * as new [CollectionViewOptions] instance.
      */
-    viewOptions(): CollectionViewOptions;
+    viewOptions(): CollectionViewOptions
   }
   interface Collection {
     /**
      * NormalizeOptions updates the current collection options with a
      * new normalized state based on the collection type.
      */
-    normalizeOptions(): void;
+    normalizeOptions(): void
   }
   interface Collection {
     /**
      * DecodeOptions decodes the current collection options into the
      * provided "result" (must be a pointer).
      */
-    decodeOptions(result: any): void;
+    decodeOptions(result: any): void
   }
   interface Collection {
     /**
      * SetOptions normalizes and unmarshals the specified options into m.Options.
      */
-    setOptions(typedOptions: any): void;
+    setOptions(typedOptions: any): void
   }
-  type _subcrntT = BaseModel;
+  type _subcrntT = BaseModel
   interface ExternalAuth extends _subcrntT {
-    collectionId: string;
-    recordId: string;
-    provider: string;
-    providerId: string;
+    collectionId: string
+    recordId: string
+    provider: string
+    providerId: string
   }
   interface ExternalAuth {
-    tableName(): string;
+    tableName(): string
   }
-  type _subrFaPA = BaseModel;
+  type _subrFaPA = BaseModel
   interface Record extends _subrFaPA {}
   interface Record {
     /**
      * TableName returns the table name associated to the current Record model.
      */
-    tableName(): string;
+    tableName(): string
   }
   interface Record {
     /**
      * Collection returns the Collection model associated to the current Record model.
      */
-    collection(): Collection | undefined;
+    collection(): Collection | undefined
   }
   interface Record {
     /**
@@ -10330,26 +10330,26 @@ namespace models {
      * with its ORIGINAL data state (aka. the initially loaded) and
      * everything else reset to the defaults.
      */
-    originalCopy(): Record | undefined;
+    originalCopy(): Record | undefined
   }
   interface Record {
     /**
      * CleanCopy returns a copy of the current record model populated only
      * with its LATEST data state and everything else reset to the defaults.
      */
-    cleanCopy(): Record | undefined;
+    cleanCopy(): Record | undefined
   }
   interface Record {
     /**
      * Expand returns a shallow copy of the current Record model expand data.
      */
-    expand(): _TygojaDict;
+    expand(): _TygojaDict
   }
   interface Record {
     /**
      * SetExpand shallow copies the provided data to the current Record model's expand.
      */
-    setExpand(expand: _TygojaDict): void;
+    setExpand(expand: _TygojaDict): void
   }
   interface Record {
     /**
@@ -10360,13 +10360,13 @@ namespace models {
      * then both old and new records will be merged into a new slice (aka. a :merge: [b,c] => [a,b,c]).
      * Otherwise the "old" expanded record will be replace with the "new" one (aka. a :merge: aNew => aNew).
      */
-    mergeExpand(expand: _TygojaDict): void;
+    mergeExpand(expand: _TygojaDict): void
   }
   interface Record {
     /**
      * SchemaData returns a shallow copy ONLY of the defined record schema fields data.
      */
-    schemaData(): _TygojaDict;
+    schemaData(): _TygojaDict
   }
   interface Record {
     /**
@@ -10374,20 +10374,20 @@ namespace models {
      * aka. fields that are neither one of the base and special system ones,
      * nor defined by the collection schema.
      */
-    unknownData(): _TygojaDict;
+    unknownData(): _TygojaDict
   }
   interface Record {
     /**
      * IgnoreEmailVisibility toggles the flag to ignore the auth record email visibility check.
      */
-    ignoreEmailVisibility(state: boolean): void;
+    ignoreEmailVisibility(state: boolean): void
   }
   interface Record {
     /**
      * WithUnknownData toggles the export/serialization of unknown data fields
      * (false by default).
      */
-    withUnknownData(state: boolean): void;
+    withUnknownData(state: boolean): void
   }
   interface Record {
     /**
@@ -10396,55 +10396,55 @@ namespace models {
      * If the record collection has field with name matching the provided "key",
      * the value will be further normalized according to the field rules.
      */
-    set(key: string, value: any): void;
+    set(key: string, value: any): void
   }
   interface Record {
     /**
      * Get returns a normalized single record model data value for "key".
      */
-    get(key: string): any;
+    get(key: string): any
   }
   interface Record {
     /**
      * GetBool returns the data value for "key" as a bool.
      */
-    getBool(key: string): boolean;
+    getBool(key: string): boolean
   }
   interface Record {
     /**
      * GetString returns the data value for "key" as a string.
      */
-    getString(key: string): string;
+    getString(key: string): string
   }
   interface Record {
     /**
      * GetInt returns the data value for "key" as an int.
      */
-    getInt(key: string): number;
+    getInt(key: string): number
   }
   interface Record {
     /**
      * GetFloat returns the data value for "key" as a float64.
      */
-    getFloat(key: string): number;
+    getFloat(key: string): number
   }
   interface Record {
     /**
      * GetTime returns the data value for "key" as a [time.Time] instance.
      */
-    getTime(key: string): time.Time;
+    getTime(key: string): time.Time
   }
   interface Record {
     /**
      * GetDateTime returns the data value for "key" as a DateTime instance.
      */
-    getDateTime(key: string): types.DateTime;
+    getDateTime(key: string): types.DateTime
   }
   interface Record {
     /**
      * GetStringSlice returns the data value for "key" as a slice of unique strings.
      */
-    getStringSlice(key: string): Array<string>;
+    getStringSlice(key: string): Array<string>
   }
   interface Record {
     /**
@@ -10456,7 +10456,7 @@ namespace models {
      *
      * Returns nil if there is no such expand relation loaded.
      */
-    expandedOne(relField: string): Record | undefined;
+    expandedOne(relField: string): Record | undefined
   }
   interface Record {
     /**
@@ -10468,7 +10468,7 @@ namespace models {
      *
      * Returns nil slice if there is no such expand relation loaded.
      */
-    expandedAll(relField: string): Array<Record | undefined>;
+    expandedAll(relField: string): Array<Record | undefined>
   }
   interface Record {
     /**
@@ -10483,32 +10483,32 @@ namespace models {
      * 	err := m.UnmarshalJSONField("my_field_name", &result)
      * ```
      */
-    unmarshalJSONField(key: string, result: any): void;
+    unmarshalJSONField(key: string, result: any): void
   }
   interface Record {
     /**
      * BaseFilesPath returns the storage dir path used by the record.
      */
-    baseFilesPath(): string;
+    baseFilesPath(): string
   }
   interface Record {
     /**
      * FindFileFieldByFile returns the first file type field for which
      * any of the record's data contains the provided filename.
      */
-    findFileFieldByFile(filename: string): schema.SchemaField | undefined;
+    findFileFieldByFile(filename: string): schema.SchemaField | undefined
   }
   interface Record {
     /**
      * Load bulk loads the provided data into the current Record model.
      */
-    load(data: _TygojaDict): void;
+    load(data: _TygojaDict): void
   }
   interface Record {
     /**
      * ColumnValueMap implements [ColumnValueMapper] interface.
      */
-    columnValueMap(): _TygojaDict;
+    columnValueMap(): _TygojaDict
   }
   interface Record {
     /**
@@ -10517,7 +10517,7 @@ namespace models {
      * For auth records, to force the export of the email field you need to set
      * `m.IgnoreEmailVisibility(true)`.
      */
-    publicExport(): _TygojaDict;
+    publicExport(): _TygojaDict
   }
   interface Record {
     /**
@@ -10525,13 +10525,13 @@ namespace models {
      *
      * Only the data exported by `PublicExport()` will be serialized.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface Record {
     /**
      * UnmarshalJSON implements the [json.Unmarshaler] interface.
      */
-    unmarshalJSON(data: string): void;
+    unmarshalJSON(data: string): void
   }
   interface Record {
     /**
@@ -10552,13 +10552,13 @@ namespace models {
      * 		// newData: {"field": 15}
      * ```
      */
-    replaceModifers(data: _TygojaDict): _TygojaDict;
+    replaceModifers(data: _TygojaDict): _TygojaDict
   }
   interface Record {
     /**
      * Username returns the "username" auth record data value.
      */
-    username(): string;
+    username(): string
   }
   interface Record {
     /**
@@ -10568,13 +10568,13 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    setUsername(username: string): void;
+    setUsername(username: string): void
   }
   interface Record {
     /**
      * Email returns the "email" auth record data value.
      */
-    email(): string;
+    email(): string
   }
   interface Record {
     /**
@@ -10584,13 +10584,13 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    setEmail(email: string): void;
+    setEmail(email: string): void
   }
   interface Record {
     /**
      * Verified returns the "emailVisibility" auth record data value.
      */
-    emailVisibility(): boolean;
+    emailVisibility(): boolean
   }
   interface Record {
     /**
@@ -10598,13 +10598,13 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    setEmailVisibility(visible: boolean): void;
+    setEmailVisibility(visible: boolean): void
   }
   interface Record {
     /**
      * Verified returns the "verified" auth record data value.
      */
-    verified(): boolean;
+    verified(): boolean
   }
   interface Record {
     /**
@@ -10612,13 +10612,13 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    setVerified(verified: boolean): void;
+    setVerified(verified: boolean): void
   }
   interface Record {
     /**
      * TokenKey returns the "tokenKey" auth record data value.
      */
-    tokenKey(): string;
+    tokenKey(): string
   }
   interface Record {
     /**
@@ -10626,7 +10626,7 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    setTokenKey(key: string): void;
+    setTokenKey(key: string): void
   }
   interface Record {
     /**
@@ -10634,13 +10634,13 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    refreshTokenKey(): void;
+    refreshTokenKey(): void
   }
   interface Record {
     /**
      * LastResetSentAt returns the "lastResentSentAt" auth record data value.
      */
-    lastResetSentAt(): types.DateTime;
+    lastResetSentAt(): types.DateTime
   }
   interface Record {
     /**
@@ -10648,13 +10648,13 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    setLastResetSentAt(dateTime: types.DateTime): void;
+    setLastResetSentAt(dateTime: types.DateTime): void
   }
   interface Record {
     /**
      * LastVerificationSentAt returns the "lastVerificationSentAt" auth record data value.
      */
-    lastVerificationSentAt(): types.DateTime;
+    lastVerificationSentAt(): types.DateTime
   }
   interface Record {
     /**
@@ -10662,13 +10662,13 @@ namespace models {
      *
      * Returns an error if the record is not from an auth collection.
      */
-    setLastVerificationSentAt(dateTime: types.DateTime): void;
+    setLastVerificationSentAt(dateTime: types.DateTime): void
   }
   interface Record {
     /**
      * PasswordHash returns the "passwordHash" auth record data value.
      */
-    passwordHash(): string;
+    passwordHash(): string
   }
   interface Record {
     /**
@@ -10676,7 +10676,7 @@ namespace models {
      *
      * Returns false if the password is incorrect or record is not from an auth collection.
      */
-    validatePassword(password: string): boolean;
+    validatePassword(password: string): boolean
   }
   interface Record {
     /**
@@ -10686,25 +10686,25 @@ namespace models {
      * Returns an error if the record is not from an auth collection or
      * an empty password is provided.
      */
-    setPassword(password: string): void;
+    setPassword(password: string): void
   }
   /**
    * RequestInfo defines a HTTP request data struct, usually used
    * as part of the `@request.*` filter resolver.
    */
   interface RequestInfo {
-    method: string;
-    query: _TygojaDict;
-    data: _TygojaDict;
-    headers: _TygojaDict;
-    authRecord?: Record;
-    admin?: Admin;
+    method: string
+    query: _TygojaDict
+    data: _TygojaDict
+    headers: _TygojaDict
+    authRecord?: Record
+    admin?: Admin
   }
   interface RequestInfo {
     /**
      * HasModifierDataKeys loosely checks if the current struct has any modifier Data keys.
      */
-    hasModifierDataKeys(): boolean;
+    hasModifierDataKeys(): boolean
   }
 }
 
@@ -10757,50 +10757,50 @@ namespace echo {
     /**
      * Request returns `*http.Request`.
      */
-    request(): http.Request | undefined;
+    request(): http.Request | undefined
     /**
      * SetRequest sets `*http.Request`.
      */
-    setRequest(r: http.Request): void;
+    setRequest(r: http.Request): void
     /**
      * SetResponse sets `*Response`.
      */
-    setResponse(r: Response): void;
+    setResponse(r: Response): void
     /**
      * Response returns `*Response`.
      */
-    response(): Response | undefined;
+    response(): Response | undefined
     /**
      * IsTLS returns true if HTTP connection is TLS otherwise false.
      */
-    isTLS(): boolean;
+    isTLS(): boolean
     /**
      * IsWebSocket returns true if HTTP connection is WebSocket otherwise false.
      */
-    isWebSocket(): boolean;
+    isWebSocket(): boolean
     /**
      * Scheme returns the HTTP protocol scheme, `http` or `https`.
      */
-    scheme(): string;
+    scheme(): string
     /**
      * RealIP returns the client's network address based on `X-Forwarded-For`
      * or `X-Real-IP` request header.
      * The behavior can be configured using `Echo#IPExtractor`.
      */
-    realIP(): string;
+    realIP(): string
     /**
      * RouteInfo returns current request route information. Method, Path, Name and params if they exist for matched route.
      * In case of 404 (route not found) and 405 (method not allowed) RouteInfo returns generic struct for these cases.
      */
-    routeInfo(): RouteInfo;
+    routeInfo(): RouteInfo
     /**
      * Path returns the registered path for the handler.
      */
-    path(): string;
+    path(): string
     /**
      * PathParam returns path parameter by name.
      */
-    pathParam(name: string): string;
+    pathParam(name: string): string
     /**
      * PathParamDefault returns the path parameter or default value for the provided name.
      *
@@ -10811,165 +10811,165 @@ namespace echo {
      * but not when path parameter is last part of route path
      * * route `/download/file.:ext` will not match request `/download/file.`
      */
-    pathParamDefault(name: string, defaultValue: string): string;
+    pathParamDefault(name: string, defaultValue: string): string
     /**
      * PathParams returns path parameter values.
      */
-    pathParams(): PathParams;
+    pathParams(): PathParams
     /**
      * SetPathParams sets path parameters for current request.
      */
-    setPathParams(params: PathParams): void;
+    setPathParams(params: PathParams): void
     /**
      * QueryParam returns the query param for the provided name.
      */
-    queryParam(name: string): string;
+    queryParam(name: string): string
     /**
      * QueryParamDefault returns the query param or default value for the provided name.
      */
-    queryParamDefault(name: string): string;
+    queryParamDefault(name: string): string
     /**
      * QueryParams returns the query parameters as `url.Values`.
      */
-    queryParams(): url.Values;
+    queryParams(): url.Values
     /**
      * QueryString returns the URL query string.
      */
-    queryString(): string;
+    queryString(): string
     /**
      * FormValue returns the form field value for the provided name.
      */
-    formValue(name: string): string;
+    formValue(name: string): string
     /**
      * FormValueDefault returns the form field value or default value for the provided name.
      */
-    formValueDefault(name: string): string;
+    formValueDefault(name: string): string
     /**
      * FormValues returns the form field values as `url.Values`.
      */
-    formValues(): url.Values;
+    formValues(): url.Values
     /**
      * FormFile returns the multipart form file for the provided name.
      */
-    formFile(name: string): multipart.FileHeader | undefined;
+    formFile(name: string): multipart.FileHeader | undefined
     /**
      * MultipartForm returns the multipart form.
      */
-    multipartForm(): multipart.Form | undefined;
+    multipartForm(): multipart.Form | undefined
     /**
      * Cookie returns the named cookie provided in the request.
      */
-    cookie(name: string): http.Cookie | undefined;
+    cookie(name: string): http.Cookie | undefined
     /**
      * SetCookie adds a `Set-Cookie` header in HTTP response.
      */
-    setCookie(cookie: http.Cookie): void;
+    setCookie(cookie: http.Cookie): void
     /**
      * Cookies returns the HTTP cookies sent with the request.
      */
-    cookies(): Array<http.Cookie | undefined>;
+    cookies(): Array<http.Cookie | undefined>
     /**
      * Get retrieves data from the context.
      */
-    get(key: string): {};
+    get(key: string): {}
     /**
      * Set saves data in the context.
      */
-    set(key: string, val: {}): void;
+    set(key: string, val: {}): void
     /**
      * Bind binds path params, query params and the request body into provided type `i`. The default binder
      * binds body based on Content-Type header.
      */
-    bind(i: {}): void;
+    bind(i: {}): void
     /**
      * Validate validates provided `i`. It is usually called after `Context#Bind()`.
      * Validator must be registered using `Echo#Validator`.
      */
-    validate(i: {}): void;
+    validate(i: {}): void
     /**
      * Render renders a template with data and sends a text/html response with status
      * code. Renderer must be registered using `Echo.Renderer`.
      */
-    render(code: number, name: string, data: {}): void;
+    render(code: number, name: string, data: {}): void
     /**
      * HTML sends an HTTP response with status code.
      */
-    html(code: number, html: string): void;
+    html(code: number, html: string): void
     /**
      * HTMLBlob sends an HTTP blob response with status code.
      */
-    htmlBlob(code: number, b: string): void;
+    htmlBlob(code: number, b: string): void
     /**
      * String sends a string response with status code.
      */
-    string(code: number, s: string): void;
+    string(code: number, s: string): void
     /**
      * JSON sends a JSON response with status code.
      */
-    json(code: number, i: {}): void;
+    json(code: number, i: {}): void
     /**
      * JSONPretty sends a pretty-print JSON with status code.
      */
-    jsonPretty(code: number, i: {}, indent: string): void;
+    jsonPretty(code: number, i: {}, indent: string): void
     /**
      * JSONBlob sends a JSON blob response with status code.
      */
-    jsonBlob(code: number, b: string): void;
+    jsonBlob(code: number, b: string): void
     /**
      * JSONP sends a JSONP response with status code. It uses `callback` to construct
      * the JSONP payload.
      */
-    jsonp(code: number, callback: string, i: {}): void;
+    jsonp(code: number, callback: string, i: {}): void
     /**
      * JSONPBlob sends a JSONP blob response with status code. It uses `callback`
      * to construct the JSONP payload.
      */
-    jsonpBlob(code: number, callback: string, b: string): void;
+    jsonpBlob(code: number, callback: string, b: string): void
     /**
      * XML sends an XML response with status code.
      */
-    xml(code: number, i: {}): void;
+    xml(code: number, i: {}): void
     /**
      * XMLPretty sends a pretty-print XML with status code.
      */
-    xmlPretty(code: number, i: {}, indent: string): void;
+    xmlPretty(code: number, i: {}, indent: string): void
     /**
      * XMLBlob sends an XML blob response with status code.
      */
-    xmlBlob(code: number, b: string): void;
+    xmlBlob(code: number, b: string): void
     /**
      * Blob sends a blob response with status code and content type.
      */
-    blob(code: number, contentType: string, b: string): void;
+    blob(code: number, contentType: string, b: string): void
     /**
      * Stream sends a streaming response with status code and content type.
      */
-    stream(code: number, contentType: string, r: io.Reader): void;
+    stream(code: number, contentType: string, r: io.Reader): void
     /**
      * File sends a response with the content of the file.
      */
-    file(file: string): void;
+    file(file: string): void
     /**
      * FileFS sends a response with the content of the file from given filesystem.
      */
-    fileFS(file: string, filesystem: fs.FS): void;
+    fileFS(file: string, filesystem: fs.FS): void
     /**
      * Attachment sends a response as attachment, prompting client to save the
      * file.
      */
-    attachment(file: string, name: string): void;
+    attachment(file: string, name: string): void
     /**
      * Inline sends a response as inline, opening the file in the browser.
      */
-    inline(file: string, name: string): void;
+    inline(file: string, name: string): void
     /**
      * NoContent sends a response with no body and a status code.
      */
-    noContent(code: number): void;
+    noContent(code: number): void
     /**
      * Redirect redirects the request to a provided URL with status code.
      */
-    redirect(code: number, url: string): void;
+    redirect(code: number, url: string): void
     /**
      * Error invokes the registered global HTTP error handler. Generally used by middleware.
      * A side-effect of calling global error handler is that now Response has been committed (sent to the client) and
@@ -10978,17 +10978,17 @@ namespace echo {
      * Avoid using this method in handlers as no middleware will be able to effectively handle errors after that.
      * Instead of calling this method in handler return your error and let it be handled by middlewares or global error handler.
      */
-    error(err: Error): void;
+    error(err: Error): void
     /**
      * Echo returns the `Echo` instance.
      *
      * WARNING: Remember that Echo public fields and methods are coroutine safe ONLY when you are NOT mutating them
      * anywhere in your code after Echo server has started.
      */
-    echo(): Echo | undefined;
+    echo(): Echo | undefined
   }
   // @ts-ignore
-  import stdContext = context;
+  import stdContext = context
   /**
    * Echo is the top-level framework instance.
    *
@@ -11000,15 +11000,15 @@ namespace echo {
     /**
      * NewContextFunc allows using custom context implementations, instead of default *echo.context
      */
-    newContextFunc: (e: Echo, pathParamAllocSize: number) => ServableContext;
-    debug: boolean;
-    httpErrorHandler: HTTPErrorHandler;
-    binder: Binder;
-    jsonSerializer: JSONSerializer;
-    validator: Validator;
-    renderer: Renderer;
-    logger: Logger;
-    ipExtractor: IPExtractor;
+    newContextFunc: (e: Echo, pathParamAllocSize: number) => ServableContext
+    debug: boolean
+    httpErrorHandler: HTTPErrorHandler
+    binder: Binder
+    jsonSerializer: JSONSerializer
+    validator: Validator
+    renderer: Renderer
+    logger: Logger
+    ipExtractor: IPExtractor
     /**
      * Filesystem is file system used by Static and File handlers to access files.
      * Defaults to os.DirFS(".")
@@ -11017,24 +11017,24 @@ namespace echo {
      * prefix for directory path. This is necessary as `//go:embed assets/images` embeds files with paths
      * including `assets/images` as their prefix.
      */
-    filesystem: fs.FS;
+    filesystem: fs.FS
     /**
      * OnAddRoute is called when Echo adds new route to specific host router. Handler is called for every router
      * and before route is added to the host router.
      */
-    onAddRoute: (host: string, route: Routable) => void;
+    onAddRoute: (host: string, route: Routable) => void
   }
   /**
    * HandlerFunc defines a function to serve HTTP requests.
    */
   interface HandlerFunc {
-    (c: Context): void;
+    (c: Context): void
   }
   /**
    * MiddlewareFunc defines a function to process middleware.
    */
   interface MiddlewareFunc {
-    (next: HandlerFunc): HandlerFunc;
+    (next: HandlerFunc): HandlerFunc
   }
   interface Echo {
     /**
@@ -11043,108 +11043,108 @@ namespace echo {
      * Note: both request and response can be left to nil as Echo.ServeHTTP will call c.Reset(req,resp) anyway
      * these arguments are useful when creating context for tests and cases like that.
      */
-    newContext(r: http.Request, w: http.ResponseWriter): Context;
+    newContext(r: http.Request, w: http.ResponseWriter): Context
   }
   interface Echo {
     /**
      * Router returns the default router.
      */
-    router(): Router;
+    router(): Router
   }
   interface Echo {
     /**
      * Routers returns the new map of host => router.
      */
-    routers(): _TygojaDict;
+    routers(): _TygojaDict
   }
   interface Echo {
     /**
      * RouterFor returns Router for given host. When host is left empty the default router is returned.
      */
-    routerFor(host: string): [Router, boolean];
+    routerFor(host: string): [Router, boolean]
   }
   interface Echo {
     /**
      * ResetRouterCreator resets callback for creating new router instances.
      * Note: current (default) router is immediately replaced with router created with creator func and vhost routers are cleared.
      */
-    resetRouterCreator(creator: (e: Echo) => Router): void;
+    resetRouterCreator(creator: (e: Echo) => Router): void
   }
   interface Echo {
     /**
      * Pre adds middleware to the chain which is run before router tries to find matching route.
      * Meaning middleware is executed even for 404 (not found) cases.
      */
-    pre(...middleware: MiddlewareFunc[]): void;
+    pre(...middleware: MiddlewareFunc[]): void
   }
   interface Echo {
     /**
      * Use adds middleware to the chain which is run after router has found matching route and before route/request handler method is executed.
      */
-    use(...middleware: MiddlewareFunc[]): void;
+    use(...middleware: MiddlewareFunc[]): void
   }
   interface Echo {
     /**
      * CONNECT registers a new CONNECT route for a path with matching handler in the
      * router with optional route-level middleware. Panics on error.
      */
-    connect(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    connect(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * DELETE registers a new DELETE route for a path with matching handler in the router
      * with optional route-level middleware. Panics on error.
      */
-    delete(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    delete(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * GET registers a new GET route for a path with matching handler in the router
      * with optional route-level middleware. Panics on error.
      */
-    get(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    get(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * HEAD registers a new HEAD route for a path with matching handler in the
      * router with optional route-level middleware. Panics on error.
      */
-    head(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    head(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * OPTIONS registers a new OPTIONS route for a path with matching handler in the
      * router with optional route-level middleware. Panics on error.
      */
-    options(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    options(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * PATCH registers a new PATCH route for a path with matching handler in the
      * router with optional route-level middleware. Panics on error.
      */
-    patch(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    patch(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * POST registers a new POST route for a path with matching handler in the
      * router with optional route-level middleware. Panics on error.
      */
-    post(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    post(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * PUT registers a new PUT route for a path with matching handler in the
      * router with optional route-level middleware. Panics on error.
      */
-    put(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    put(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * TRACE registers a new TRACE route for a path with matching handler in the
      * router with optional route-level middleware. Panics on error.
      */
-    trace(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    trace(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
@@ -11155,7 +11155,7 @@ namespace echo {
      *
      * Example: `e.RouteNotFound("/*", func(c echo.Context) error { return c.NoContent(http.StatusNotFound) })`
      */
-    routeNotFound(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    routeNotFound(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
@@ -11165,25 +11165,20 @@ namespace echo {
      * Note: this method only adds specific set of supported HTTP methods as handler and is not true
      * "catch-any-arbitrary-method" way of matching requests.
      */
-    any(path: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): Routes;
+    any(path: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): Routes
   }
   interface Echo {
     /**
      * Match registers a new route for multiple HTTP methods and path with matching
      * handler in the router with optional route-level middleware. Panics on error.
      */
-    match(
-      methods: Array<string>,
-      path: string,
-      handler: HandlerFunc,
-      ...middleware: MiddlewareFunc[]
-    ): Routes;
+    match(methods: Array<string>, path: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): Routes
   }
   interface Echo {
     /**
      * Static registers a new route with path prefix to serve static files from the provided root directory.
      */
-    static(pathPrefix: string): RouteInfo;
+    static(pathPrefix: string): RouteInfo
   }
   interface Echo {
     /**
@@ -11193,64 +11188,64 @@ namespace echo {
      * prefix for directory path. This is necessary as `//go:embed assets/images` embeds files with paths
      * including `assets/images` as their prefix.
      */
-    staticFS(pathPrefix: string, filesystem: fs.FS): RouteInfo;
+    staticFS(pathPrefix: string, filesystem: fs.FS): RouteInfo
   }
   interface Echo {
     /**
      * FileFS registers a new route with path to serve file from the provided file system.
      */
-    fileFS(path: string, filesystem: fs.FS, ...m: MiddlewareFunc[]): RouteInfo;
+    fileFS(path: string, filesystem: fs.FS, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * File registers a new route with path to serve a static file with optional route-level middleware. Panics on error.
      */
-    file(path: string, ...middleware: MiddlewareFunc[]): RouteInfo;
+    file(path: string, ...middleware: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * AddRoute registers a new Route with default host Router
      */
-    addRoute(route: Routable): RouteInfo;
+    addRoute(route: Routable): RouteInfo
   }
   interface Echo {
     /**
      * Add registers a new route for an HTTP method and path with matching handler
      * in the router with optional route-level middleware.
      */
-    add(method: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): RouteInfo;
+    add(method: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): RouteInfo
   }
   interface Echo {
     /**
      * Host creates a new router group for the provided host and optional host-level middleware.
      */
-    host(name: string, ...m: MiddlewareFunc[]): Group | undefined;
+    host(name: string, ...m: MiddlewareFunc[]): Group | undefined
   }
   interface Echo {
     /**
      * Group creates a new router group with prefix and optional group-level middleware.
      */
-    group(prefix: string, ...m: MiddlewareFunc[]): Group | undefined;
+    group(prefix: string, ...m: MiddlewareFunc[]): Group | undefined
   }
   interface Echo {
     /**
      * AcquireContext returns an empty `Context` instance from the pool.
      * You must return the context by calling `ReleaseContext()`.
      */
-    acquireContext(): Context;
+    acquireContext(): Context
   }
   interface Echo {
     /**
      * ReleaseContext returns the `Context` instance back to the pool.
      * You must call it after `AcquireContext()`.
      */
-    releaseContext(c: Context): void;
+    releaseContext(c: Context): void
   }
   interface Echo {
     /**
      * ServeHTTP implements `http.Handler` interface, which serves HTTP requests.
      */
-    serveHTTP(w: http.ResponseWriter, r: http.Request): void;
+    serveHTTP(w: http.ResponseWriter, r: http.Request): void
   }
   interface Echo {
     /**
@@ -11278,87 +11273,87 @@ namespace echo {
      * 	}
      * ```
      */
-    start(address: string): void;
+    start(address: string): void
   }
 }
 
 namespace settings {
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   /**
    * Settings defines common app configuration options.
    */
   interface Settings {
-    meta: MetaConfig;
-    logs: LogsConfig;
-    smtp: SmtpConfig;
-    s3: S3Config;
-    backups: BackupsConfig;
-    adminAuthToken: TokenConfig;
-    adminPasswordResetToken: TokenConfig;
-    adminFileToken: TokenConfig;
-    recordAuthToken: TokenConfig;
-    recordPasswordResetToken: TokenConfig;
-    recordEmailChangeToken: TokenConfig;
-    recordVerificationToken: TokenConfig;
-    recordFileToken: TokenConfig;
+    meta: MetaConfig
+    logs: LogsConfig
+    smtp: SmtpConfig
+    s3: S3Config
+    backups: BackupsConfig
+    adminAuthToken: TokenConfig
+    adminPasswordResetToken: TokenConfig
+    adminFileToken: TokenConfig
+    recordAuthToken: TokenConfig
+    recordPasswordResetToken: TokenConfig
+    recordEmailChangeToken: TokenConfig
+    recordVerificationToken: TokenConfig
+    recordFileToken: TokenConfig
     /**
      * Deprecated: Will be removed in v0.9+
      */
-    emailAuth: EmailAuthConfig;
-    googleAuth: AuthProviderConfig;
-    facebookAuth: AuthProviderConfig;
-    githubAuth: AuthProviderConfig;
-    gitlabAuth: AuthProviderConfig;
-    discordAuth: AuthProviderConfig;
-    twitterAuth: AuthProviderConfig;
-    microsoftAuth: AuthProviderConfig;
-    spotifyAuth: AuthProviderConfig;
-    kakaoAuth: AuthProviderConfig;
-    twitchAuth: AuthProviderConfig;
-    stravaAuth: AuthProviderConfig;
-    giteeAuth: AuthProviderConfig;
-    livechatAuth: AuthProviderConfig;
-    giteaAuth: AuthProviderConfig;
-    oidcAuth: AuthProviderConfig;
-    oidc2Auth: AuthProviderConfig;
-    oidc3Auth: AuthProviderConfig;
-    appleAuth: AuthProviderConfig;
-    instagramAuth: AuthProviderConfig;
-    vkAuth: AuthProviderConfig;
-    yandexAuth: AuthProviderConfig;
+    emailAuth: EmailAuthConfig
+    googleAuth: AuthProviderConfig
+    facebookAuth: AuthProviderConfig
+    githubAuth: AuthProviderConfig
+    gitlabAuth: AuthProviderConfig
+    discordAuth: AuthProviderConfig
+    twitterAuth: AuthProviderConfig
+    microsoftAuth: AuthProviderConfig
+    spotifyAuth: AuthProviderConfig
+    kakaoAuth: AuthProviderConfig
+    twitchAuth: AuthProviderConfig
+    stravaAuth: AuthProviderConfig
+    giteeAuth: AuthProviderConfig
+    livechatAuth: AuthProviderConfig
+    giteaAuth: AuthProviderConfig
+    oidcAuth: AuthProviderConfig
+    oidc2Auth: AuthProviderConfig
+    oidc3Auth: AuthProviderConfig
+    appleAuth: AuthProviderConfig
+    instagramAuth: AuthProviderConfig
+    vkAuth: AuthProviderConfig
+    yandexAuth: AuthProviderConfig
   }
   interface Settings {
     /**
      * Validate makes Settings validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface Settings {
     /**
      * Merge merges `other` settings into the current one.
      */
-    merge(other: Settings): void;
+    merge(other: Settings): void
   }
   interface Settings {
     /**
      * Clone creates a new deep copy of the current settings.
      */
-    clone(): Settings | undefined;
+    clone(): Settings | undefined
   }
   interface Settings {
     /**
      * RedactClone creates a new deep copy of the current settings,
      * while replacing the secret values with `******`.
      */
-    redactClone(): Settings | undefined;
+    redactClone(): Settings | undefined
   }
   interface Settings {
     /**
      * NamedAuthProviderConfigs returns a map with all registered OAuth2
      * provider configurations (indexed by their name identifier).
      */
-    namedAuthProviderConfigs(): _TygojaDict;
+    namedAuthProviderConfigs(): _TygojaDict
   }
 }
 
@@ -11372,19 +11367,19 @@ namespace daos {
     /**
      * AdminQuery returns a new Admin select query.
      */
-    adminQuery(): dbx.SelectQuery | undefined;
+    adminQuery(): dbx.SelectQuery | undefined
   }
   interface Dao {
     /**
      * FindAdminById finds the admin with the provided id.
      */
-    findAdminById(id: string): models.Admin | undefined;
+    findAdminById(id: string): models.Admin | undefined
   }
   interface Dao {
     /**
      * FindAdminByEmail finds the admin with the provided email address.
      */
-    findAdminByEmail(email: string): models.Admin | undefined;
+    findAdminByEmail(email: string): models.Admin | undefined
   }
   interface Dao {
     /**
@@ -11392,20 +11387,20 @@ namespace daos {
      *
      * Returns an error if the JWT token is invalid or expired.
      */
-    findAdminByToken(token: string, baseTokenKey: string): models.Admin | undefined;
+    findAdminByToken(token: string, baseTokenKey: string): models.Admin | undefined
   }
   interface Dao {
     /**
      * TotalAdmins returns the number of existing admin records.
      */
-    totalAdmins(): number;
+    totalAdmins(): number
   }
   interface Dao {
     /**
      * IsAdminEmailUnique checks if the provided email address is not
      * already in use by other admins.
      */
-    isAdminEmailUnique(email: string, ...excludeIds: string[]): boolean;
+    isAdminEmailUnique(email: string, ...excludeIds: string[]): boolean
   }
   interface Dao {
     /**
@@ -11413,13 +11408,13 @@ namespace daos {
      *
      * Returns an error if there is only 1 admin.
      */
-    deleteAdmin(admin: models.Admin): void;
+    deleteAdmin(admin: models.Admin): void
   }
   interface Dao {
     /**
      * SaveAdmin upserts the provided Admin model.
      */
-    saveAdmin(admin: models.Admin): void;
+    saveAdmin(admin: models.Admin): void
   }
   /**
    * Dao handles various db operations.
@@ -11430,22 +11425,22 @@ namespace daos {
     /**
      * MaxLockRetries specifies the default max "database is locked" auto retry attempts.
      */
-    maxLockRetries: number;
+    maxLockRetries: number
     /**
      * ModelQueryTimeout is the default max duration of a running ModelQuery().
      *
      * This field has no effect if an explicit query context is already specified.
      */
-    modelQueryTimeout: time.Duration;
+    modelQueryTimeout: time.Duration
     /**
      * write hooks
      */
-    beforeCreateFunc: (eventDao: Dao, m: models.Model, action: () => void) => void;
-    afterCreateFunc: (eventDao: Dao, m: models.Model) => void;
-    beforeUpdateFunc: (eventDao: Dao, m: models.Model, action: () => void) => void;
-    afterUpdateFunc: (eventDao: Dao, m: models.Model) => void;
-    beforeDeleteFunc: (eventDao: Dao, m: models.Model, action: () => void) => void;
-    afterDeleteFunc: (eventDao: Dao, m: models.Model) => void;
+    beforeCreateFunc: (eventDao: Dao, m: models.Model, action: () => void) => void
+    afterCreateFunc: (eventDao: Dao, m: models.Model) => void
+    beforeUpdateFunc: (eventDao: Dao, m: models.Model, action: () => void) => void
+    afterUpdateFunc: (eventDao: Dao, m: models.Model) => void
+    beforeDeleteFunc: (eventDao: Dao, m: models.Model, action: () => void) => void
+    afterDeleteFunc: (eventDao: Dao, m: models.Model) => void
   }
   interface Dao {
     /**
@@ -11453,7 +11448,7 @@ namespace daos {
      *
      * Currently the default db builder is dao.concurrentDB but that may change in the future.
      */
-    db(): dbx.Builder;
+    db(): dbx.Builder
   }
   interface Dao {
     /**
@@ -11462,7 +11457,7 @@ namespace daos {
      *
      * In a transaction the concurrentDB and nonconcurrentDB refer to the same *dbx.TX instance.
      */
-    concurrentDB(): dbx.Builder;
+    concurrentDB(): dbx.Builder
   }
   interface Dao {
     /**
@@ -11471,34 +11466,34 @@ namespace daos {
      *
      * In a transaction the concurrentDB and nonconcurrentDB refer to the same *dbx.TX instance.
      */
-    nonconcurrentDB(): dbx.Builder;
+    nonconcurrentDB(): dbx.Builder
   }
   interface Dao {
     /**
      * Clone returns a new Dao with the same configuration options as the current one.
      */
-    clone(): Dao | undefined;
+    clone(): Dao | undefined
   }
   interface Dao {
     /**
      * WithoutHooks returns a new Dao with the same configuration options
      * as the current one, but without create/update/delete hooks.
      */
-    withoutHooks(): Dao | undefined;
+    withoutHooks(): Dao | undefined
   }
   interface Dao {
     /**
      * ModelQuery creates a new preconfigured select query with preset
      * SELECT, FROM and other common fields based on the provided model.
      */
-    modelQuery(m: models.Model): dbx.SelectQuery | undefined;
+    modelQuery(m: models.Model): dbx.SelectQuery | undefined
   }
   interface Dao {
     /**
      * FindById finds a single db record with the specified id and
      * scans the result into m.
      */
-    findById(m: models.Model, id: string): void;
+    findById(m: models.Model, id: string): void
   }
   interface Dao {
     /**
@@ -11506,13 +11501,13 @@ namespace daos {
      *
      * It is safe to nest RunInTransaction calls as long as you use the txDao.
      */
-    runInTransaction(fn: (txDao: Dao) => void): void;
+    runInTransaction(fn: (txDao: Dao) => void): void
   }
   interface Dao {
     /**
      * Delete deletes the provided model.
      */
-    delete(m: models.Model): void;
+    delete(m: models.Model): void
   }
   interface Dao {
     /**
@@ -11521,25 +11516,25 @@ namespace daos {
      * If m.IsNew() is true, the method will perform a create, otherwise an update.
      * To explicitly mark a model for update you can use m.MarkAsNotNew().
      */
-    save(m: models.Model): void;
+    save(m: models.Model): void
   }
   interface Dao {
     /**
      * CollectionQuery returns a new Collection select query.
      */
-    collectionQuery(): dbx.SelectQuery | undefined;
+    collectionQuery(): dbx.SelectQuery | undefined
   }
   interface Dao {
     /**
      * FindCollectionsByType finds all collections by the given type.
      */
-    findCollectionsByType(collectionType: string): Array<models.Collection | undefined>;
+    findCollectionsByType(collectionType: string): Array<models.Collection | undefined>
   }
   interface Dao {
     /**
      * FindCollectionByNameOrId finds a single collection by its name (case insensitive) or id.
      */
-    findCollectionByNameOrId(nameOrId: string): models.Collection | undefined;
+    findCollectionByNameOrId(nameOrId: string): models.Collection | undefined
   }
   interface Dao {
     /**
@@ -11548,7 +11543,7 @@ namespace daos {
      *
      * Note: case insensitive check because the name is used also as a table name for the records.
      */
-    isCollectionNameUnique(name: string, ...excludeIds: string[]): boolean;
+    isCollectionNameUnique(name: string, ...excludeIds: string[]): boolean
   }
   interface Dao {
     /**
@@ -11559,7 +11554,7 @@ namespace daos {
      * also included in the result. To exclude it, pass the collection id
      * as the excludeId argument.
      */
-    findCollectionReferences(collection: models.Collection, ...excludeIds: string[]): _TygojaDict;
+    findCollectionReferences(collection: models.Collection, ...excludeIds: string[]): _TygojaDict
   }
   interface Dao {
     /**
@@ -11570,7 +11565,7 @@ namespace daos {
      * - is system collection (aka. collection.System is true)
      * - is referenced as part of a relation field in another collection
      */
-    deleteCollection(collection: models.Collection): void;
+    deleteCollection(collection: models.Collection): void
   }
   interface Dao {
     /**
@@ -11580,7 +11575,7 @@ namespace daos {
      * If collecction.IsNew() is true, the method will perform a create, otherwise an update.
      * To explicitly mark a collection for update you can use collecction.MarkAsNotNew().
      */
-    saveCollection(collection: models.Collection): void;
+    saveCollection(collection: models.Collection): void
   }
   interface Dao {
     /**
@@ -11596,27 +11591,27 @@ namespace daos {
       importedCollections: Array<models.Collection | undefined>,
       deleteMissing: boolean,
       afterSync: (txDao: Dao, mappedImported: _TygojaDict) => void
-    ): void;
+    ): void
   }
   interface Dao {
     /**
      * ExternalAuthQuery returns a new ExternalAuth select query.
      */
-    externalAuthQuery(): dbx.SelectQuery | undefined;
+    externalAuthQuery(): dbx.SelectQuery | undefined
   }
   interface Dao {
     /**
      * FindAllExternalAuthsByRecord returns all ExternalAuth models
      * linked to the provided auth record.
      */
-    findAllExternalAuthsByRecord(authRecord: models.Record): Array<models.ExternalAuth | undefined>;
+    findAllExternalAuthsByRecord(authRecord: models.Record): Array<models.ExternalAuth | undefined>
   }
   interface Dao {
     /**
      * FindExternalAuthByProvider returns the first available
      * ExternalAuth model for the specified provider and providerId.
      */
-    findExternalAuthByProvider(provider: string): models.ExternalAuth | undefined;
+    findExternalAuthByProvider(provider: string): models.ExternalAuth | undefined
   }
   interface Dao {
     /**
@@ -11626,31 +11621,31 @@ namespace daos {
     findExternalAuthByRecordAndProvider(
       authRecord: models.Record,
       provider: string
-    ): models.ExternalAuth | undefined;
+    ): models.ExternalAuth | undefined
   }
   interface Dao {
     /**
      * SaveExternalAuth upserts the provided ExternalAuth model.
      */
-    saveExternalAuth(model: models.ExternalAuth): void;
+    saveExternalAuth(model: models.ExternalAuth): void
   }
   interface Dao {
     /**
      * DeleteExternalAuth deletes the provided ExternalAuth model.
      */
-    deleteExternalAuth(model: models.ExternalAuth): void;
+    deleteExternalAuth(model: models.ExternalAuth): void
   }
   interface Dao {
     /**
      * ParamQuery returns a new Param select query.
      */
-    paramQuery(): dbx.SelectQuery | undefined;
+    paramQuery(): dbx.SelectQuery | undefined
   }
   interface Dao {
     /**
      * FindParamByKey finds the first Param model with the provided key.
      */
-    findParamByKey(key: string): models.Param | undefined;
+    findParamByKey(key: string): models.Param | undefined
   }
   interface Dao {
     /**
@@ -11659,13 +11654,13 @@ namespace daos {
      *
      * If `optEncryptionKey` is provided it will encrypt the value before storing it.
      */
-    saveParam(key: string, value: any, ...optEncryptionKey: string[]): void;
+    saveParam(key: string, value: any, ...optEncryptionKey: string[]): void
   }
   interface Dao {
     /**
      * DeleteParam deletes the provided Param model.
      */
-    deleteParam(param: models.Param): void;
+    deleteParam(param: models.Param): void
   }
   interface Dao {
     /**
@@ -11675,7 +11670,7 @@ namespace daos {
      * actually exists, the generated query will be created with a cancelled context
      * and will fail once an executor (Row(), One(), All(), etc.) is called.
      */
-    recordQuery(collectionModelOrIdentifier: any): dbx.SelectQuery | undefined;
+    recordQuery(collectionModelOrIdentifier: any): dbx.SelectQuery | undefined
   }
   interface Dao {
     /**
@@ -11685,7 +11680,7 @@ namespace daos {
       collectionNameOrId: string,
       recordId: string,
       ...optFilters: ((q: dbx.SelectQuery) => void)[]
-    ): models.Record | undefined;
+    ): models.Record | undefined
   }
   interface Dao {
     /**
@@ -11696,7 +11691,7 @@ namespace daos {
       collectionNameOrId: string,
       recordIds: Array<string>,
       ...optFilters: ((q: dbx.SelectQuery) => void)[]
-    ): Array<models.Record | undefined>;
+    ): Array<models.Record | undefined>
   }
   interface Dao {
     /**
@@ -11719,14 +11714,14 @@ namespace daos {
     findRecordsByExpr(
       collectionNameOrId: string,
       ...exprs: dbx.Expression[]
-    ): Array<models.Record | undefined>;
+    ): Array<models.Record | undefined>
   }
   interface Dao {
     /**
      * FindFirstRecordByData returns the first found record matching
      * the provided key-value pair.
      */
-    findFirstRecordByData(collectionNameOrId: string, key: string, value: any): models.Record | undefined;
+    findFirstRecordByData(collectionNameOrId: string, key: string, value: any): models.Record | undefined
   }
   interface Dao {
     /**
@@ -11761,7 +11756,7 @@ namespace daos {
       limit: number,
       offset: number,
       ...params: dbx.Params[]
-    ): Array<models.Record | undefined>;
+    ): Array<models.Record | undefined>
   }
   interface Dao {
     /**
@@ -11779,7 +11774,7 @@ namespace daos {
       collectionNameOrId: string,
       filter: string,
       ...params: dbx.Params[]
-    ): models.Record | undefined;
+    ): models.Record | undefined
   }
   interface Dao {
     /**
@@ -11793,12 +11788,7 @@ namespace daos {
      * depends on the elements order. Or in other words the following values
      * are considered different: `[]string{"a","b"}` and `[]string{"b","a"}`
      */
-    isRecordValueUnique(
-      collectionNameOrId: string,
-      key: string,
-      value: any,
-      ...excludeIds: string[]
-    ): boolean;
+    isRecordValueUnique(collectionNameOrId: string, key: string, value: any, ...excludeIds: string[]): boolean
   }
   interface Dao {
     /**
@@ -11806,7 +11796,7 @@ namespace daos {
      *
      * Returns an error if the JWT token is invalid, expired or not associated to an auth collection record.
      */
-    findAuthRecordByToken(token: string, baseTokenKey: string): models.Record | undefined;
+    findAuthRecordByToken(token: string, baseTokenKey: string): models.Record | undefined
   }
   interface Dao {
     /**
@@ -11814,7 +11804,7 @@ namespace daos {
      *
      * Returns an error if it is not an auth collection or the record is not found.
      */
-    findAuthRecordByEmail(collectionNameOrId: string, email: string): models.Record | undefined;
+    findAuthRecordByEmail(collectionNameOrId: string, email: string): models.Record | undefined
   }
   interface Dao {
     /**
@@ -11822,7 +11812,7 @@ namespace daos {
      *
      * Returns an error if it is not an auth collection or the record is not found.
      */
-    findAuthRecordByUsername(collectionNameOrId: string, username: string): models.Record | undefined;
+    findAuthRecordByUsername(collectionNameOrId: string, username: string): models.Record | undefined
   }
   interface Dao {
     /**
@@ -11836,7 +11826,7 @@ namespace daos {
       collectionNameOrId: string,
       baseUsername: string,
       ...excludeIds: string[]
-    ): string;
+    ): string
   }
   interface Dao {
     /**
@@ -11861,7 +11851,7 @@ namespace daos {
      * 	if ok, _ := dao.CanAccessRecord(record, requestInfo, rule); ok { ... }
      * ```
      */
-    canAccessRecord(record: models.Record, requestInfo: models.RequestInfo, accessRule: string): boolean;
+    canAccessRecord(record: models.Record, requestInfo: models.RequestInfo, accessRule: string): boolean
   }
   interface Dao {
     /**
@@ -11870,7 +11860,7 @@ namespace daos {
      * If record.IsNew() is true, the method will perform a create, otherwise an update.
      * To explicitly mark a record for update you can use record.MarkAsNotNew().
      */
-    saveRecord(record: models.Record): void;
+    saveRecord(record: models.Record): void
   }
   interface Dao {
     /**
@@ -11882,7 +11872,7 @@ namespace daos {
      * The delete operation may fail if the record is part of a required
      * reference in another record (aka. cannot be deleted or unset).
      */
-    deleteRecord(record: models.Record): void;
+    deleteRecord(record: models.Record): void
   }
   interface Dao {
     /**
@@ -11893,7 +11883,7 @@ namespace daos {
      *
      * Returns a map with the failed expand parameters and their errors.
      */
-    expandRecord(record: models.Record, expands: Array<string>, optFetchFunc: ExpandFetchFunc): _TygojaDict;
+    expandRecord(record: models.Record, expands: Array<string>, optFetchFunc: ExpandFetchFunc): _TygojaDict
   }
   interface Dao {
     /**
@@ -11908,10 +11898,10 @@ namespace daos {
       records: Array<models.Record | undefined>,
       expands: Array<string>,
       optFetchFunc: ExpandFetchFunc
-    ): _TygojaDict;
+    ): _TygojaDict
   }
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   interface Dao {
     /**
      * SyncRecordTableSchema compares the two provided collections
@@ -11919,37 +11909,37 @@ namespace daos {
      *
      * If `oldCollection` is null, then only `newCollection` is used to create the record table.
      */
-    syncRecordTableSchema(newCollection: models.Collection, oldCollection: models.Collection): void;
+    syncRecordTableSchema(newCollection: models.Collection, oldCollection: models.Collection): void
   }
   interface Dao {
     /**
      * RequestQuery returns a new Request logs select query.
      */
-    requestQuery(): dbx.SelectQuery | undefined;
+    requestQuery(): dbx.SelectQuery | undefined
   }
   interface Dao {
     /**
      * FindRequestById finds a single Request log by its id.
      */
-    findRequestById(id: string): models.Request | undefined;
+    findRequestById(id: string): models.Request | undefined
   }
   interface Dao {
     /**
      * RequestsStats returns hourly grouped requests logs statistics.
      */
-    requestsStats(expr: dbx.Expression): Array<RequestsStatsItem | undefined>;
+    requestsStats(expr: dbx.Expression): Array<RequestsStatsItem | undefined>
   }
   interface Dao {
     /**
      * DeleteOldRequests delete all requests that are created before createdBefore.
      */
-    deleteOldRequests(createdBefore: time.Time): void;
+    deleteOldRequests(createdBefore: time.Time): void
   }
   interface Dao {
     /**
      * SaveRequest upserts the provided Request model.
      */
-    saveRequest(request: models.Request): void;
+    saveRequest(request: models.Request): void
   }
   interface Dao {
     /**
@@ -11961,7 +11951,7 @@ namespace daos {
      *
      * Returns an error if it fails to decode the stored serialized param value.
      */
-    findSettings(...optEncryptionKey: string[]): settings.Settings | undefined;
+    findSettings(...optEncryptionKey: string[]): settings.Settings | undefined
   }
   interface Dao {
     /**
@@ -11969,25 +11959,25 @@ namespace daos {
      *
      * If optEncryptionKey is set, then the stored serialized value will be encrypted with it.
      */
-    saveSettings(newSettings: settings.Settings, ...optEncryptionKey: string[]): void;
+    saveSettings(newSettings: settings.Settings, ...optEncryptionKey: string[]): void
   }
   interface Dao {
     /**
      * HasTable checks if a table (or view) with the provided name exists (case insensitive).
      */
-    hasTable(tableName: string): boolean;
+    hasTable(tableName: string): boolean
   }
   interface Dao {
     /**
      * TableColumns returns all column names of a single table by its name.
      */
-    tableColumns(tableName: string): Array<string>;
+    tableColumns(tableName: string): Array<string>
   }
   interface Dao {
     /**
      * TableInfo returns the `table_info` pragma result for the specified table.
      */
-    tableInfo(tableName: string): Array<models.TableInfoRow | undefined>;
+    tableInfo(tableName: string): Array<models.TableInfoRow | undefined>
   }
   interface Dao {
     /**
@@ -11995,7 +11985,7 @@ namespace daos {
      *
      * Note: This method doesn't return an error on nonexisting table.
      */
-    tableIndexes(tableName: string): _TygojaDict;
+    tableIndexes(tableName: string): _TygojaDict
   }
   interface Dao {
     /**
@@ -12006,14 +11996,14 @@ namespace daos {
      * Be aware that this method is vulnerable to SQL injection and the
      * "tableName" argument must come only from trusted input!
      */
-    deleteTable(tableName: string): void;
+    deleteTable(tableName: string): void
   }
   interface Dao {
     /**
      * Vacuum executes VACUUM on the current dao.DB() instance in order to
      * reclaim unused db disk space.
      */
-    vacuum(): void;
+    vacuum(): void
   }
   interface Dao {
     /**
@@ -12024,7 +12014,7 @@ namespace daos {
      * Be aware that this method is vulnerable to SQL injection and the
      * "name" argument must come only from trusted input!
      */
-    deleteView(name: string): void;
+    deleteView(name: string): void
   }
   interface Dao {
     /**
@@ -12033,7 +12023,7 @@ namespace daos {
      * Be aware that this method is vulnerable to SQL injection and the
      * "selectQuery" argument must come only from trusted input!
      */
-    saveView(name: string, selectQuery: string): void;
+    saveView(name: string, selectQuery: string): void
   }
   interface Dao {
     /**
@@ -12043,7 +12033,7 @@ namespace daos {
      * - The select query must have an "id" column.
      * - Wildcard ("*") columns are not supported to avoid accidentally leaking sensitive data.
      */
-    createViewSchema(selectQuery: string): schema.Schema;
+    createViewSchema(selectQuery: string): schema.Schema
   }
   interface Dao {
     /**
@@ -12054,7 +12044,7 @@ namespace daos {
       viewCollectionNameOrId: string,
       fileFieldName: string,
       filename: string
-    ): models.Record | undefined;
+    ): models.Record | undefined
   }
 }
 
@@ -12076,7 +12066,7 @@ namespace core {
      *
      * DB returns the default app database instance.
      */
-    db(): dbx.DB | undefined;
+    db(): dbx.DB | undefined
     /**
      * Dao returns the default app Dao instance.
      *
@@ -12084,7 +12074,7 @@ namespace core {
      * associated with the default app database. For example,
      * trying to access the request logs table will result in error.
      */
-    dao(): daos.Dao | undefined;
+    dao(): daos.Dao | undefined
     /**
      * Deprecated:
      * This method may get removed in the near future.
@@ -12093,7 +12083,7 @@ namespace core {
      *
      * LogsDB returns the app logs database instance.
      */
-    logsDB(): dbx.DB | undefined;
+    logsDB(): dbx.DB | undefined
     /**
      * LogsDao returns the app logs Dao instance.
      *
@@ -12101,37 +12091,37 @@ namespace core {
      * associated with the logs database. For example, trying to access
      * the users table from LogsDao will result in error.
      */
-    logsDao(): daos.Dao | undefined;
+    logsDao(): daos.Dao | undefined
     /**
      * DataDir returns the app data directory path.
      */
-    dataDir(): string;
+    dataDir(): string
     /**
      * EncryptionEnv returns the name of the app secret env key
      * (used for settings encryption).
      */
-    encryptionEnv(): string;
+    encryptionEnv(): string
     /**
      * IsDebug returns whether the app is in debug mode
      * (showing more detailed error logs, executed sql statements, etc.).
      */
-    isDebug(): boolean;
+    isDebug(): boolean
     /**
      * Settings returns the loaded app settings.
      */
-    settings(): settings.Settings | undefined;
+    settings(): settings.Settings | undefined
     /**
      * Cache returns the app internal cache store.
      */
-    cache(): store.Store<any> | undefined;
+    cache(): store.Store<any> | undefined
     /**
      * SubscriptionsBroker returns the app realtime subscriptions broker instance.
      */
-    subscriptionsBroker(): subscriptions.Broker | undefined;
+    subscriptionsBroker(): subscriptions.Broker | undefined
     /**
      * NewMailClient creates and returns a configured app mail client.
      */
-    newMailClient(): mailer.Mailer;
+    newMailClient(): mailer.Mailer
     /**
      * NewFilesystem creates and returns a configured filesystem.System instance
      * for managing regular app files (eg. collection uploads).
@@ -12139,7 +12129,7 @@ namespace core {
      * NB! Make sure to call Close() on the returned result
      * after you are done working with it.
      */
-    newFilesystem(): filesystem.System | undefined;
+    newFilesystem(): filesystem.System | undefined
     /**
      * NewBackupsFilesystem creates and returns a configured filesystem.System instance
      * for managing app backups.
@@ -12147,28 +12137,28 @@ namespace core {
      * NB! Make sure to call Close() on the returned result
      * after you are done working with it.
      */
-    newBackupsFilesystem(): filesystem.System | undefined;
+    newBackupsFilesystem(): filesystem.System | undefined
     /**
      * RefreshSettings reinitializes and reloads the stored application settings.
      */
-    refreshSettings(): void;
+    refreshSettings(): void
     /**
      * IsBootstrapped checks if the application was initialized
      * (aka. whether Bootstrap() was called).
      */
-    isBootstrapped(): boolean;
+    isBootstrapped(): boolean
     /**
      * Bootstrap takes care for initializing the application
      * (open db connections, load settings, etc.).
      *
      * It will call ResetBootstrapState() if the application was already bootstrapped.
      */
-    bootstrap(): void;
+    bootstrap(): void
     /**
      * ResetBootstrapState takes care for releasing initialized app resources
      * (eg. closing db connections).
      */
-    resetBootstrapState(): void;
+    resetBootstrapState(): void
     /**
      * CreateBackup creates a new backup of the current app pb_data directory.
      *
@@ -12177,7 +12167,7 @@ namespace core {
      * Please refer to the godoc of the specific core.App implementation
      * for details on the backup procedures.
      */
-    createBackup(ctx: context.Context, name: string): void;
+    createBackup(ctx: context.Context, name: string): void
     /**
      * RestoreBackup restores the backup with the specified name and restarts
      * the current running application process.
@@ -12190,45 +12180,45 @@ namespace core {
      *
      * NB! This feature is experimental and currently is expected to work only on UNIX based systems.
      */
-    restoreBackup(ctx: context.Context, name: string): void;
+    restoreBackup(ctx: context.Context, name: string): void
     /**
      * Restart restarts the current running application process.
      *
      * Currently it is relying on execve so it is supported only on UNIX based systems.
      */
-    restart(): void;
+    restart(): void
     /**
      * OnBeforeBootstrap hook is triggered before initializing the main
      * application resources (eg. before db open and initial settings load).
      */
-    onBeforeBootstrap(): hook.Hook<BootstrapEvent | undefined> | undefined;
+    onBeforeBootstrap(): hook.Hook<BootstrapEvent | undefined> | undefined
     /**
      * OnAfterBootstrap hook is triggered after initializing the main
      * application resources (eg. after db open and initial settings load).
      */
-    onAfterBootstrap(): hook.Hook<BootstrapEvent | undefined> | undefined;
+    onAfterBootstrap(): hook.Hook<BootstrapEvent | undefined> | undefined
     /**
      * OnBeforeServe hook is triggered before serving the internal router (echo),
      * allowing you to adjust its options and attach new routes or middlewares.
      */
-    onBeforeServe(): hook.Hook<ServeEvent | undefined> | undefined;
+    onBeforeServe(): hook.Hook<ServeEvent | undefined> | undefined
     /**
      * OnBeforeApiError hook is triggered right before sending an error API
      * response to the client, allowing you to further modify the error data
      * or to return a completely different API response.
      */
-    onBeforeApiError(): hook.Hook<ApiErrorEvent | undefined> | undefined;
+    onBeforeApiError(): hook.Hook<ApiErrorEvent | undefined> | undefined
     /**
      * OnAfterApiError hook is triggered right after sending an error API
      * response to the client.
      * It could be used to log the final API error in external services.
      */
-    onAfterApiError(): hook.Hook<ApiErrorEvent | undefined> | undefined;
+    onAfterApiError(): hook.Hook<ApiErrorEvent | undefined> | undefined
     /**
      * OnTerminate hook is triggered when the app is in the process
      * of being terminated (eg. on SIGTERM signal).
      */
-    onTerminate(): hook.Hook<TerminateEvent | undefined> | undefined;
+    onTerminate(): hook.Hook<TerminateEvent | undefined> | undefined
     /**
      * OnModelBeforeCreate hook is triggered before inserting a new
      * model in the DB, allowing you to modify or validate the stored data.
@@ -12237,7 +12227,7 @@ namespace core {
      * is specified, then all event handlers registered via the created hook
      * will be triggered and called only if their event data origin matches the tags.
      */
-    onModelBeforeCreate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined;
+    onModelBeforeCreate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined
     /**
      * OnModelAfterCreate hook is triggered after successfully
      * inserting a new model in the DB.
@@ -12246,7 +12236,7 @@ namespace core {
      * is specified, then all event handlers registered via the created hook
      * will be triggered and called only if their event data origin matches the tags.
      */
-    onModelAfterCreate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined;
+    onModelAfterCreate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined
     /**
      * OnModelBeforeUpdate hook is triggered before updating existing
      * model in the DB, allowing you to modify or validate the stored data.
@@ -12255,7 +12245,7 @@ namespace core {
      * is specified, then all event handlers registered via the created hook
      * will be triggered and called only if their event data origin matches the tags.
      */
-    onModelBeforeUpdate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined;
+    onModelBeforeUpdate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined
     /**
      * OnModelAfterUpdate hook is triggered after successfully updating
      * existing model in the DB.
@@ -12264,7 +12254,7 @@ namespace core {
      * is specified, then all event handlers registered via the created hook
      * will be triggered and called only if their event data origin matches the tags.
      */
-    onModelAfterUpdate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined;
+    onModelAfterUpdate(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined
     /**
      * OnModelBeforeDelete hook is triggered before deleting an
      * existing model from the DB.
@@ -12273,7 +12263,7 @@ namespace core {
      * is specified, then all event handlers registered via the created hook
      * will be triggered and called only if their event data origin matches the tags.
      */
-    onModelBeforeDelete(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined;
+    onModelBeforeDelete(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined
     /**
      * OnModelAfterDelete hook is triggered after successfully deleting an
      * existing model from the DB.
@@ -12282,18 +12272,18 @@ namespace core {
      * is specified, then all event handlers registered via the created hook
      * will be triggered and called only if their event data origin matches the tags.
      */
-    onModelAfterDelete(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined;
+    onModelAfterDelete(...tags: string[]): hook.TaggedHook<ModelEvent | undefined> | undefined
     /**
      * OnMailerBeforeAdminResetPasswordSend hook is triggered right
      * before sending a password reset email to an admin, allowing you
      * to inspect and customize the email message that is being sent.
      */
-    onMailerBeforeAdminResetPasswordSend(): hook.Hook<MailerAdminEvent | undefined> | undefined;
+    onMailerBeforeAdminResetPasswordSend(): hook.Hook<MailerAdminEvent | undefined> | undefined
     /**
      * OnMailerAfterAdminResetPasswordSend hook is triggered after
      * admin password reset email was successfully sent.
      */
-    onMailerAfterAdminResetPasswordSend(): hook.Hook<MailerAdminEvent | undefined> | undefined;
+    onMailerAfterAdminResetPasswordSend(): hook.Hook<MailerAdminEvent | undefined> | undefined
     /**
      * OnMailerBeforeRecordResetPasswordSend hook is triggered right
      * before sending a password reset email to an auth record, allowing
@@ -12305,7 +12295,7 @@ namespace core {
      */
     onMailerBeforeRecordResetPasswordSend(
       ...tags: string[]
-    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined;
+    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined
     /**
      * OnMailerAfterRecordResetPasswordSend hook is triggered after
      * an auth record password reset email was successfully sent.
@@ -12316,7 +12306,7 @@ namespace core {
      */
     onMailerAfterRecordResetPasswordSend(
       ...tags: string[]
-    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined;
+    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined
     /**
      * OnMailerBeforeRecordVerificationSend hook is triggered right
      * before sending a verification email to an auth record, allowing
@@ -12328,7 +12318,7 @@ namespace core {
      */
     onMailerBeforeRecordVerificationSend(
       ...tags: string[]
-    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined;
+    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined
     /**
      * OnMailerAfterRecordVerificationSend hook is triggered after a
      * verification email was successfully sent to an auth record.
@@ -12339,7 +12329,7 @@ namespace core {
      */
     onMailerAfterRecordVerificationSend(
       ...tags: string[]
-    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined;
+    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined
     /**
      * OnMailerBeforeRecordChangeEmailSend hook is triggered right before
      * sending a confirmation new address email to an auth record, allowing
@@ -12351,7 +12341,7 @@ namespace core {
      */
     onMailerBeforeRecordChangeEmailSend(
       ...tags: string[]
-    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined;
+    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined
     /**
      * OnMailerAfterRecordChangeEmailSend hook is triggered after a
      * verification email was successfully sent to an auth record.
@@ -12362,17 +12352,17 @@ namespace core {
      */
     onMailerAfterRecordChangeEmailSend(
       ...tags: string[]
-    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined;
+    ): hook.TaggedHook<MailerRecordEvent | undefined> | undefined
     /**
      * OnRealtimeConnectRequest hook is triggered right before establishing
      * the SSE client connection.
      */
-    onRealtimeConnectRequest(): hook.Hook<RealtimeConnectEvent | undefined> | undefined;
+    onRealtimeConnectRequest(): hook.Hook<RealtimeConnectEvent | undefined> | undefined
     /**
      * OnRealtimeDisconnectRequest hook is triggered on disconnected/interrupted
      * SSE client connection.
      */
-    onRealtimeDisconnectRequest(): hook.Hook<RealtimeDisconnectEvent | undefined> | undefined;
+    onRealtimeDisconnectRequest(): hook.Hook<RealtimeDisconnectEvent | undefined> | undefined
     /**
      * OnRealtimeBeforeMessage hook is triggered right before sending
      * an SSE message to a client.
@@ -12380,23 +12370,23 @@ namespace core {
      * Returning [hook.StopPropagation] will prevent sending the message.
      * Returning any other non-nil error will close the realtime connection.
      */
-    onRealtimeBeforeMessageSend(): hook.Hook<RealtimeMessageEvent | undefined> | undefined;
+    onRealtimeBeforeMessageSend(): hook.Hook<RealtimeMessageEvent | undefined> | undefined
     /**
      * OnRealtimeBeforeMessage hook is triggered right after sending
      * an SSE message to a client.
      */
-    onRealtimeAfterMessageSend(): hook.Hook<RealtimeMessageEvent | undefined> | undefined;
+    onRealtimeAfterMessageSend(): hook.Hook<RealtimeMessageEvent | undefined> | undefined
     /**
      * OnRealtimeBeforeSubscribeRequest hook is triggered before changing
      * the client subscriptions, allowing you to further validate and
      * modify the submitted change.
      */
-    onRealtimeBeforeSubscribeRequest(): hook.Hook<RealtimeSubscribeEvent | undefined> | undefined;
+    onRealtimeBeforeSubscribeRequest(): hook.Hook<RealtimeSubscribeEvent | undefined> | undefined
     /**
      * OnRealtimeAfterSubscribeRequest hook is triggered after the client
      * subscriptions were successfully changed.
      */
-    onRealtimeAfterSubscribeRequest(): hook.Hook<RealtimeSubscribeEvent | undefined> | undefined;
+    onRealtimeAfterSubscribeRequest(): hook.Hook<RealtimeSubscribeEvent | undefined> | undefined
     /**
      * OnSettingsListRequest hook is triggered on each successful
      * API Settings list request.
@@ -12404,7 +12394,7 @@ namespace core {
      * Could be used to validate or modify the response before
      * returning it to the client.
      */
-    onSettingsListRequest(): hook.Hook<SettingsListEvent | undefined> | undefined;
+    onSettingsListRequest(): hook.Hook<SettingsListEvent | undefined> | undefined
     /**
      * OnSettingsBeforeUpdateRequest hook is triggered before each API
      * Settings update request (after request data load and before settings persistence).
@@ -12412,19 +12402,19 @@ namespace core {
      * Could be used to additionally validate the request data or
      * implement completely different persistence behavior.
      */
-    onSettingsBeforeUpdateRequest(): hook.Hook<SettingsUpdateEvent | undefined> | undefined;
+    onSettingsBeforeUpdateRequest(): hook.Hook<SettingsUpdateEvent | undefined> | undefined
     /**
      * OnSettingsAfterUpdateRequest hook is triggered after each
      * successful API Settings update request.
      */
-    onSettingsAfterUpdateRequest(): hook.Hook<SettingsUpdateEvent | undefined> | undefined;
+    onSettingsAfterUpdateRequest(): hook.Hook<SettingsUpdateEvent | undefined> | undefined
     /**
      * OnFileDownloadRequest hook is triggered before each API File download request.
      *
      * Could be used to validate or modify the file response before
      * returning it to the client.
      */
-    onFileDownloadRequest(...tags: string[]): hook.TaggedHook<FileDownloadEvent | undefined> | undefined;
+    onFileDownloadRequest(...tags: string[]): hook.TaggedHook<FileDownloadEvent | undefined> | undefined
     /**
      * OnFileBeforeTokenRequest hook is triggered before each file
      * token API request.
@@ -12436,7 +12426,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onFileBeforeTokenRequest(...tags: string[]): hook.TaggedHook<FileTokenEvent | undefined> | undefined;
+    onFileBeforeTokenRequest(...tags: string[]): hook.TaggedHook<FileTokenEvent | undefined> | undefined
     /**
      * OnFileAfterTokenRequest hook is triggered after each
      * successful file token API request.
@@ -12445,19 +12435,19 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onFileAfterTokenRequest(...tags: string[]): hook.TaggedHook<FileTokenEvent | undefined> | undefined;
+    onFileAfterTokenRequest(...tags: string[]): hook.TaggedHook<FileTokenEvent | undefined> | undefined
     /**
      * OnAdminsListRequest hook is triggered on each API Admins list request.
      *
      * Could be used to validate or modify the response before returning it to the client.
      */
-    onAdminsListRequest(): hook.Hook<AdminsListEvent | undefined> | undefined;
+    onAdminsListRequest(): hook.Hook<AdminsListEvent | undefined> | undefined
     /**
      * OnAdminViewRequest hook is triggered on each API Admin view request.
      *
      * Could be used to validate or modify the response before returning it to the client.
      */
-    onAdminViewRequest(): hook.Hook<AdminViewEvent | undefined> | undefined;
+    onAdminViewRequest(): hook.Hook<AdminViewEvent | undefined> | undefined
     /**
      * OnAdminBeforeCreateRequest hook is triggered before each API
      * Admin create request (after request data load and before model persistence).
@@ -12465,12 +12455,12 @@ namespace core {
      * Could be used to additionally validate the request data or implement
      * completely different persistence behavior.
      */
-    onAdminBeforeCreateRequest(): hook.Hook<AdminCreateEvent | undefined> | undefined;
+    onAdminBeforeCreateRequest(): hook.Hook<AdminCreateEvent | undefined> | undefined
     /**
      * OnAdminAfterCreateRequest hook is triggered after each
      * successful API Admin create request.
      */
-    onAdminAfterCreateRequest(): hook.Hook<AdminCreateEvent | undefined> | undefined;
+    onAdminAfterCreateRequest(): hook.Hook<AdminCreateEvent | undefined> | undefined
     /**
      * OnAdminBeforeUpdateRequest hook is triggered before each API
      * Admin update request (after request data load and before model persistence).
@@ -12478,12 +12468,12 @@ namespace core {
      * Could be used to additionally validate the request data or implement
      * completely different persistence behavior.
      */
-    onAdminBeforeUpdateRequest(): hook.Hook<AdminUpdateEvent | undefined> | undefined;
+    onAdminBeforeUpdateRequest(): hook.Hook<AdminUpdateEvent | undefined> | undefined
     /**
      * OnAdminAfterUpdateRequest hook is triggered after each
      * successful API Admin update request.
      */
-    onAdminAfterUpdateRequest(): hook.Hook<AdminUpdateEvent | undefined> | undefined;
+    onAdminAfterUpdateRequest(): hook.Hook<AdminUpdateEvent | undefined> | undefined
     /**
      * OnAdminBeforeDeleteRequest hook is triggered before each API
      * Admin delete request (after model load and before actual deletion).
@@ -12491,12 +12481,12 @@ namespace core {
      * Could be used to additionally validate the request data or implement
      * completely different delete behavior.
      */
-    onAdminBeforeDeleteRequest(): hook.Hook<AdminDeleteEvent | undefined> | undefined;
+    onAdminBeforeDeleteRequest(): hook.Hook<AdminDeleteEvent | undefined> | undefined
     /**
      * OnAdminAfterDeleteRequest hook is triggered after each
      * successful API Admin delete request.
      */
-    onAdminAfterDeleteRequest(): hook.Hook<AdminDeleteEvent | undefined> | undefined;
+    onAdminAfterDeleteRequest(): hook.Hook<AdminDeleteEvent | undefined> | undefined
     /**
      * OnAdminAuthRequest hook is triggered on each successful API Admin
      * authentication request (sign-in, token refresh, etc.).
@@ -12504,7 +12494,7 @@ namespace core {
      * Could be used to additionally validate or modify the
      * authenticated admin data and token.
      */
-    onAdminAuthRequest(): hook.Hook<AdminAuthEvent | undefined> | undefined;
+    onAdminAuthRequest(): hook.Hook<AdminAuthEvent | undefined> | undefined
     /**
      * OnAdminBeforeAuthWithPasswordRequest hook is triggered before each Admin
      * auth with password API request (after request data load and before password validation).
@@ -12512,12 +12502,12 @@ namespace core {
      * Could be used to implement for example a custom password validation
      * or to locate a different Admin identity (by assigning [AdminAuthWithPasswordEvent.Admin]).
      */
-    onAdminBeforeAuthWithPasswordRequest(): hook.Hook<AdminAuthWithPasswordEvent | undefined> | undefined;
+    onAdminBeforeAuthWithPasswordRequest(): hook.Hook<AdminAuthWithPasswordEvent | undefined> | undefined
     /**
      * OnAdminAfterAuthWithPasswordRequest hook is triggered after each
      * successful Admin auth with password API request.
      */
-    onAdminAfterAuthWithPasswordRequest(): hook.Hook<AdminAuthWithPasswordEvent | undefined> | undefined;
+    onAdminAfterAuthWithPasswordRequest(): hook.Hook<AdminAuthWithPasswordEvent | undefined> | undefined
     /**
      * OnAdminBeforeAuthRefreshRequest hook is triggered before each Admin
      * auth refresh API request (right before generating a new auth token).
@@ -12525,12 +12515,12 @@ namespace core {
      * Could be used to additionally validate the request data or implement
      * completely different auth refresh behavior.
      */
-    onAdminBeforeAuthRefreshRequest(): hook.Hook<AdminAuthRefreshEvent | undefined> | undefined;
+    onAdminBeforeAuthRefreshRequest(): hook.Hook<AdminAuthRefreshEvent | undefined> | undefined
     /**
      * OnAdminAfterAuthRefreshRequest hook is triggered after each
      * successful auth refresh API request (right after generating a new auth token).
      */
-    onAdminAfterAuthRefreshRequest(): hook.Hook<AdminAuthRefreshEvent | undefined> | undefined;
+    onAdminAfterAuthRefreshRequest(): hook.Hook<AdminAuthRefreshEvent | undefined> | undefined
     /**
      * OnAdminBeforeRequestPasswordResetRequest hook is triggered before each Admin
      * request password reset API request (after request data load and before sending the reset email).
@@ -12540,14 +12530,14 @@ namespace core {
      */
     onAdminBeforeRequestPasswordResetRequest():
       | hook.Hook<AdminRequestPasswordResetEvent | undefined>
-      | undefined;
+      | undefined
     /**
      * OnAdminAfterRequestPasswordResetRequest hook is triggered after each
      * successful request password reset API request.
      */
     onAdminAfterRequestPasswordResetRequest():
       | hook.Hook<AdminRequestPasswordResetEvent | undefined>
-      | undefined;
+      | undefined
     /**
      * OnAdminBeforeConfirmPasswordResetRequest hook is triggered before each Admin
      * confirm password reset API request (after request data load and before persistence).
@@ -12557,14 +12547,14 @@ namespace core {
      */
     onAdminBeforeConfirmPasswordResetRequest():
       | hook.Hook<AdminConfirmPasswordResetEvent | undefined>
-      | undefined;
+      | undefined
     /**
      * OnAdminAfterConfirmPasswordResetRequest hook is triggered after each
      * successful confirm password reset API request.
      */
     onAdminAfterConfirmPasswordResetRequest():
       | hook.Hook<AdminConfirmPasswordResetEvent | undefined>
-      | undefined;
+      | undefined
     /**
      * OnRecordAuthRequest hook is triggered on each successful API
      * record authentication request (sign-in, token refresh, etc.).
@@ -12576,7 +12566,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordAuthRequest(...tags: string[]): hook.TaggedHook<RecordAuthEvent | undefined> | undefined;
+    onRecordAuthRequest(...tags: string[]): hook.TaggedHook<RecordAuthEvent | undefined> | undefined
     /**
      * OnRecordBeforeAuthWithPasswordRequest hook is triggered before each Record
      * auth with password API request (after request data load and before password validation).
@@ -12590,7 +12580,7 @@ namespace core {
      */
     onRecordBeforeAuthWithPasswordRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordAuthWithPasswordEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordAuthWithPasswordEvent | undefined> | undefined
     /**
      * OnRecordAfterAuthWithPasswordRequest hook is triggered after each
      * successful Record auth with password API request.
@@ -12601,7 +12591,7 @@ namespace core {
      */
     onRecordAfterAuthWithPasswordRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordAuthWithPasswordEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordAuthWithPasswordEvent | undefined> | undefined
     /**
      * OnRecordBeforeAuthWithOAuth2Request hook is triggered before each Record
      * OAuth2 sign-in/sign-up API request (after token exchange and before external provider linking).
@@ -12618,7 +12608,7 @@ namespace core {
      */
     onRecordBeforeAuthWithOAuth2Request(
       ...tags: string[]
-    ): hook.TaggedHook<RecordAuthWithOAuth2Event | undefined> | undefined;
+    ): hook.TaggedHook<RecordAuthWithOAuth2Event | undefined> | undefined
     /**
      * OnRecordAfterAuthWithOAuth2Request hook is triggered after each
      * successful Record OAuth2 API request.
@@ -12629,7 +12619,7 @@ namespace core {
      */
     onRecordAfterAuthWithOAuth2Request(
       ...tags: string[]
-    ): hook.TaggedHook<RecordAuthWithOAuth2Event | undefined> | undefined;
+    ): hook.TaggedHook<RecordAuthWithOAuth2Event | undefined> | undefined
     /**
      * OnRecordBeforeAuthRefreshRequest hook is triggered before each Record
      * auth refresh API request (right before generating a new auth token).
@@ -12643,7 +12633,7 @@ namespace core {
      */
     onRecordBeforeAuthRefreshRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordAuthRefreshEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordAuthRefreshEvent | undefined> | undefined
     /**
      * OnRecordAfterAuthRefreshRequest hook is triggered after each
      * successful auth refresh API request (right after generating a new auth token).
@@ -12654,7 +12644,7 @@ namespace core {
      */
     onRecordAfterAuthRefreshRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordAuthRefreshEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordAuthRefreshEvent | undefined> | undefined
     /**
      * OnRecordListExternalAuthsRequest hook is triggered on each API record external auths list request.
      *
@@ -12666,7 +12656,7 @@ namespace core {
      */
     onRecordListExternalAuthsRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordListExternalAuthsEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordListExternalAuthsEvent | undefined> | undefined
     /**
      * OnRecordBeforeUnlinkExternalAuthRequest hook is triggered before each API record
      * external auth unlink request (after models load and before the actual relation deletion).
@@ -12680,7 +12670,7 @@ namespace core {
      */
     onRecordBeforeUnlinkExternalAuthRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined> | undefined
     /**
      * OnRecordAfterUnlinkExternalAuthRequest hook is triggered after each
      * successful API record external auth unlink request.
@@ -12691,7 +12681,7 @@ namespace core {
      */
     onRecordAfterUnlinkExternalAuthRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordUnlinkExternalAuthEvent | undefined> | undefined
     /**
      * OnRecordBeforeRequestPasswordResetRequest hook is triggered before each Record
      * request password reset API request (after request data load and before sending the reset email).
@@ -12705,7 +12695,7 @@ namespace core {
      */
     onRecordBeforeRequestPasswordResetRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordRequestPasswordResetEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordRequestPasswordResetEvent | undefined> | undefined
     /**
      * OnRecordAfterRequestPasswordResetRequest hook is triggered after each
      * successful request password reset API request.
@@ -12716,7 +12706,7 @@ namespace core {
      */
     onRecordAfterRequestPasswordResetRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordRequestPasswordResetEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordRequestPasswordResetEvent | undefined> | undefined
     /**
      * OnRecordBeforeConfirmPasswordResetRequest hook is triggered before each Record
      * confirm password reset API request (after request data load and before persistence).
@@ -12730,7 +12720,7 @@ namespace core {
      */
     onRecordBeforeConfirmPasswordResetRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined> | undefined
     /**
      * OnRecordAfterConfirmPasswordResetRequest hook is triggered after each
      * successful confirm password reset API request.
@@ -12741,7 +12731,7 @@ namespace core {
      */
     onRecordAfterConfirmPasswordResetRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordConfirmPasswordResetEvent | undefined> | undefined
     /**
      * OnRecordBeforeRequestVerificationRequest hook is triggered before each Record
      * request verification API request (after request data load and before sending the verification email).
@@ -12755,7 +12745,7 @@ namespace core {
      */
     onRecordBeforeRequestVerificationRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordRequestVerificationEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordRequestVerificationEvent | undefined> | undefined
     /**
      * OnRecordAfterRequestVerificationRequest hook is triggered after each
      * successful request verification API request.
@@ -12766,7 +12756,7 @@ namespace core {
      */
     onRecordAfterRequestVerificationRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordRequestVerificationEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordRequestVerificationEvent | undefined> | undefined
     /**
      * OnRecordBeforeConfirmVerificationRequest hook is triggered before each Record
      * confirm verification API request (after request data load and before persistence).
@@ -12780,7 +12770,7 @@ namespace core {
      */
     onRecordBeforeConfirmVerificationRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordConfirmVerificationEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordConfirmVerificationEvent | undefined> | undefined
     /**
      * OnRecordAfterConfirmVerificationRequest hook is triggered after each
      * successful confirm verification API request.
@@ -12791,7 +12781,7 @@ namespace core {
      */
     onRecordAfterConfirmVerificationRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordConfirmVerificationEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordConfirmVerificationEvent | undefined> | undefined
     /**
      * OnRecordBeforeRequestEmailChangeRequest hook is triggered before each Record request email change API request
      * (after request data load and before sending the email link to confirm the change).
@@ -12805,7 +12795,7 @@ namespace core {
      */
     onRecordBeforeRequestEmailChangeRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordRequestEmailChangeEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordRequestEmailChangeEvent | undefined> | undefined
     /**
      * OnRecordAfterRequestEmailChangeRequest hook is triggered after each
      * successful request email change API request.
@@ -12816,7 +12806,7 @@ namespace core {
      */
     onRecordAfterRequestEmailChangeRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordRequestEmailChangeEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordRequestEmailChangeEvent | undefined> | undefined
     /**
      * OnRecordBeforeConfirmEmailChangeRequest hook is triggered before each Record
      * confirm email change API request (after request data load and before persistence).
@@ -12830,7 +12820,7 @@ namespace core {
      */
     onRecordBeforeConfirmEmailChangeRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined> | undefined
     /**
      * OnRecordAfterConfirmEmailChangeRequest hook is triggered after each
      * successful confirm email change API request.
@@ -12841,7 +12831,7 @@ namespace core {
      */
     onRecordAfterConfirmEmailChangeRequest(
       ...tags: string[]
-    ): hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined> | undefined;
+    ): hook.TaggedHook<RecordConfirmEmailChangeEvent | undefined> | undefined
     /**
      * OnRecordsListRequest hook is triggered on each API Records list request.
      *
@@ -12851,7 +12841,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordsListRequest(...tags: string[]): hook.TaggedHook<RecordsListEvent | undefined> | undefined;
+    onRecordsListRequest(...tags: string[]): hook.TaggedHook<RecordsListEvent | undefined> | undefined
     /**
      * OnRecordViewRequest hook is triggered on each API Record view request.
      *
@@ -12861,7 +12851,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordViewRequest(...tags: string[]): hook.TaggedHook<RecordViewEvent | undefined> | undefined;
+    onRecordViewRequest(...tags: string[]): hook.TaggedHook<RecordViewEvent | undefined> | undefined
     /**
      * OnRecordBeforeCreateRequest hook is triggered before each API Record
      * create request (after request data load and before model persistence).
@@ -12873,9 +12863,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordBeforeCreateRequest(
-      ...tags: string[]
-    ): hook.TaggedHook<RecordCreateEvent | undefined> | undefined;
+    onRecordBeforeCreateRequest(...tags: string[]): hook.TaggedHook<RecordCreateEvent | undefined> | undefined
     /**
      * OnRecordAfterCreateRequest hook is triggered after each
      * successful API Record create request.
@@ -12884,7 +12872,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordAfterCreateRequest(...tags: string[]): hook.TaggedHook<RecordCreateEvent | undefined> | undefined;
+    onRecordAfterCreateRequest(...tags: string[]): hook.TaggedHook<RecordCreateEvent | undefined> | undefined
     /**
      * OnRecordBeforeUpdateRequest hook is triggered before each API Record
      * update request (after request data load and before model persistence).
@@ -12896,9 +12884,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordBeforeUpdateRequest(
-      ...tags: string[]
-    ): hook.TaggedHook<RecordUpdateEvent | undefined> | undefined;
+    onRecordBeforeUpdateRequest(...tags: string[]): hook.TaggedHook<RecordUpdateEvent | undefined> | undefined
     /**
      * OnRecordAfterUpdateRequest hook is triggered after each
      * successful API Record update request.
@@ -12907,7 +12893,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordAfterUpdateRequest(...tags: string[]): hook.TaggedHook<RecordUpdateEvent | undefined> | undefined;
+    onRecordAfterUpdateRequest(...tags: string[]): hook.TaggedHook<RecordUpdateEvent | undefined> | undefined
     /**
      * OnRecordBeforeDeleteRequest hook is triggered before each API Record
      * delete request (after model load and before actual deletion).
@@ -12919,9 +12905,7 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordBeforeDeleteRequest(
-      ...tags: string[]
-    ): hook.TaggedHook<RecordDeleteEvent | undefined> | undefined;
+    onRecordBeforeDeleteRequest(...tags: string[]): hook.TaggedHook<RecordDeleteEvent | undefined> | undefined
     /**
      * OnRecordAfterDeleteRequest hook is triggered after each
      * successful API Record delete request.
@@ -12930,19 +12914,19 @@ namespace core {
      * then all event handlers registered via the created hook will be
      * triggered and called only if their event data origin matches the tags.
      */
-    onRecordAfterDeleteRequest(...tags: string[]): hook.TaggedHook<RecordDeleteEvent | undefined> | undefined;
+    onRecordAfterDeleteRequest(...tags: string[]): hook.TaggedHook<RecordDeleteEvent | undefined> | undefined
     /**
      * OnCollectionsListRequest hook is triggered on each API Collections list request.
      *
      * Could be used to validate or modify the response before returning it to the client.
      */
-    onCollectionsListRequest(): hook.Hook<CollectionsListEvent | undefined> | undefined;
+    onCollectionsListRequest(): hook.Hook<CollectionsListEvent | undefined> | undefined
     /**
      * OnCollectionViewRequest hook is triggered on each API Collection view request.
      *
      * Could be used to validate or modify the response before returning it to the client.
      */
-    onCollectionViewRequest(): hook.Hook<CollectionViewEvent | undefined> | undefined;
+    onCollectionViewRequest(): hook.Hook<CollectionViewEvent | undefined> | undefined
     /**
      * OnCollectionBeforeCreateRequest hook is triggered before each API Collection
      * create request (after request data load and before model persistence).
@@ -12950,12 +12934,12 @@ namespace core {
      * Could be used to additionally validate the request data or implement
      * completely different persistence behavior.
      */
-    onCollectionBeforeCreateRequest(): hook.Hook<CollectionCreateEvent | undefined> | undefined;
+    onCollectionBeforeCreateRequest(): hook.Hook<CollectionCreateEvent | undefined> | undefined
     /**
      * OnCollectionAfterCreateRequest hook is triggered after each
      * successful API Collection create request.
      */
-    onCollectionAfterCreateRequest(): hook.Hook<CollectionCreateEvent | undefined> | undefined;
+    onCollectionAfterCreateRequest(): hook.Hook<CollectionCreateEvent | undefined> | undefined
     /**
      * OnCollectionBeforeUpdateRequest hook is triggered before each API Collection
      * update request (after request data load and before model persistence).
@@ -12963,12 +12947,12 @@ namespace core {
      * Could be used to additionally validate the request data or implement
      * completely different persistence behavior.
      */
-    onCollectionBeforeUpdateRequest(): hook.Hook<CollectionUpdateEvent | undefined> | undefined;
+    onCollectionBeforeUpdateRequest(): hook.Hook<CollectionUpdateEvent | undefined> | undefined
     /**
      * OnCollectionAfterUpdateRequest hook is triggered after each
      * successful API Collection update request.
      */
-    onCollectionAfterUpdateRequest(): hook.Hook<CollectionUpdateEvent | undefined> | undefined;
+    onCollectionAfterUpdateRequest(): hook.Hook<CollectionUpdateEvent | undefined> | undefined
     /**
      * OnCollectionBeforeDeleteRequest hook is triggered before each API
      * Collection delete request (after model load and before actual deletion).
@@ -12976,12 +12960,12 @@ namespace core {
      * Could be used to additionally validate the request data or implement
      * completely different delete behavior.
      */
-    onCollectionBeforeDeleteRequest(): hook.Hook<CollectionDeleteEvent | undefined> | undefined;
+    onCollectionBeforeDeleteRequest(): hook.Hook<CollectionDeleteEvent | undefined> | undefined
     /**
      * OnCollectionAfterDeleteRequest hook is triggered after each
      * successful API Collection delete request.
      */
-    onCollectionAfterDeleteRequest(): hook.Hook<CollectionDeleteEvent | undefined> | undefined;
+    onCollectionAfterDeleteRequest(): hook.Hook<CollectionDeleteEvent | undefined> | undefined
     /**
      * OnCollectionsBeforeImportRequest hook is triggered before each API
      * collections import request (after request data load and before the actual import).
@@ -12989,12 +12973,12 @@ namespace core {
      * Could be used to additionally validate the imported collections or
      * to implement completely different import behavior.
      */
-    onCollectionsBeforeImportRequest(): hook.Hook<CollectionsImportEvent | undefined> | undefined;
+    onCollectionsBeforeImportRequest(): hook.Hook<CollectionsImportEvent | undefined> | undefined
     /**
      * OnCollectionsAfterImportRequest hook is triggered after each
      * successful API collections import request.
      */
-    onCollectionsAfterImportRequest(): hook.Hook<CollectionsImportEvent | undefined> | undefined;
+    onCollectionsAfterImportRequest(): hook.Hook<CollectionsImportEvent | undefined> | undefined
   }
 }
 
@@ -13007,29 +12991,29 @@ namespace cobra {
     /**
      * GenBashCompletion generates bash completion file and writes to the passed writer.
      */
-    genBashCompletion(w: io.Writer): void;
+    genBashCompletion(w: io.Writer): void
   }
   interface Command {
     /**
      * GenBashCompletionFile generates bash completion file.
      */
-    genBashCompletionFile(filename: string): void;
+    genBashCompletionFile(filename: string): void
   }
   interface Command {
     /**
      * GenBashCompletionFileV2 generates Bash completion version 2.
      */
-    genBashCompletionFileV2(filename: string, includeDesc: boolean): void;
+    genBashCompletionFileV2(filename: string, includeDesc: boolean): void
   }
   interface Command {
     /**
      * GenBashCompletionV2 generates Bash completion file version 2
      * and writes it to the passed writer.
      */
-    genBashCompletionV2(w: io.Writer, includeDesc: boolean): void;
+    genBashCompletionV2(w: io.Writer, includeDesc: boolean): void
   }
   // @ts-ignore
-  import flag = pflag;
+  import flag = pflag
   /**
    * Command is just that, a command for your application.
    * E.g.  'go run ...' - 'run' is the command. Cobra requires
@@ -13050,36 +13034,36 @@ namespace cobra {
      * ```
      * Example: add [-F file | -D dir]... [-f format] profile
      */
-    use: string;
+    use: string
     /**
      * Aliases is an array of aliases that can be used instead of the first word in Use.
      */
-    aliases: Array<string>;
+    aliases: Array<string>
     /**
      * SuggestFor is an array of command names for which this command will be suggested -
      * similar to aliases but only suggests.
      */
-    suggestFor: Array<string>;
+    suggestFor: Array<string>
     /**
      * Short is the short description shown in the 'help' output.
      */
-    short: string;
+    short: string
     /**
      * The group id under which this subcommand is grouped in the 'help' output of its parent.
      */
-    groupID: string;
+    groupID: string
     /**
      * Long is the long message shown in the 'help <this-command>' output.
      */
-    long: string;
+    long: string
     /**
      * Example is examples of how to use the command.
      */
-    example: string;
+    example: string
     /**
      * ValidArgs is list of all valid non-flag arguments that are accepted in shell completions
      */
-    validArgs: Array<string>;
+    validArgs: Array<string>
     /**
      * ValidArgsFunction is an optional function that provides valid non-flag arguments for shell completion.
      * It is a dynamic version of using ValidArgs.
@@ -13089,38 +13073,38 @@ namespace cobra {
       cmd: Command,
       args: Array<string>,
       toComplete: string
-    ) => [Array<string>, ShellCompDirective];
+    ) => [Array<string>, ShellCompDirective]
     /**
      * Expected arguments
      */
-    args: PositionalArgs;
+    args: PositionalArgs
     /**
      * ArgAliases is List of aliases for ValidArgs.
      * These are not suggested to the user in the shell completion,
      * but accepted if entered manually.
      */
-    argAliases: Array<string>;
+    argAliases: Array<string>
     /**
      * BashCompletionFunction is custom bash functions used by the legacy bash autocompletion generator.
      * For portability with other shells, it is recommended to instead use ValidArgsFunction
      */
-    bashCompletionFunction: string;
+    bashCompletionFunction: string
     /**
      * Deprecated defines, if this command is deprecated and should print this string when used.
      */
-    deprecated: string;
+    deprecated: string
     /**
      * Annotations are key/value pairs that can be used by applications to identify or
      * group commands.
      */
-    annotations: _TygojaDict;
+    annotations: _TygojaDict
     /**
      * Version defines the version for this command. If this value is non-empty and the command does not
      * define a "version" flag, a "version" boolean flag will be added to the command and, if specified,
      * will print content of the "Version" variable. A shorthand "v" flag will also be added if the
      * command does not define one.
      */
-    version: string;
+    version: string
     /**
      * The *Run functions are executed in the following order:
      * ```
@@ -13134,92 +13118,92 @@ namespace cobra {
      *
      * PersistentPreRun: children of this command will inherit and execute.
      */
-    persistentPreRun: (cmd: Command, args: Array<string>) => void;
+    persistentPreRun: (cmd: Command, args: Array<string>) => void
     /**
      * PersistentPreRunE: PersistentPreRun but returns an error.
      */
-    persistentPreRunE: (cmd: Command, args: Array<string>) => void;
+    persistentPreRunE: (cmd: Command, args: Array<string>) => void
     /**
      * PreRun: children of this command will not inherit.
      */
-    preRun: (cmd: Command, args: Array<string>) => void;
+    preRun: (cmd: Command, args: Array<string>) => void
     /**
      * PreRunE: PreRun but returns an error.
      */
-    preRunE: (cmd: Command, args: Array<string>) => void;
+    preRunE: (cmd: Command, args: Array<string>) => void
     /**
      * Run: Typically the actual work function. Most commands will only implement this.
      */
-    run: (cmd: Command, args: Array<string>) => void;
+    run: (cmd: Command, args: Array<string>) => void
     /**
      * RunE: Run but returns an error.
      */
-    runE: (cmd: Command, args: Array<string>) => void;
+    runE: (cmd: Command, args: Array<string>) => void
     /**
      * PostRun: run after the Run command.
      */
-    postRun: (cmd: Command, args: Array<string>) => void;
+    postRun: (cmd: Command, args: Array<string>) => void
     /**
      * PostRunE: PostRun but returns an error.
      */
-    postRunE: (cmd: Command, args: Array<string>) => void;
+    postRunE: (cmd: Command, args: Array<string>) => void
     /**
      * PersistentPostRun: children of this command will inherit and execute after PostRun.
      */
-    persistentPostRun: (cmd: Command, args: Array<string>) => void;
+    persistentPostRun: (cmd: Command, args: Array<string>) => void
     /**
      * PersistentPostRunE: PersistentPostRun but returns an error.
      */
-    persistentPostRunE: (cmd: Command, args: Array<string>) => void;
+    persistentPostRunE: (cmd: Command, args: Array<string>) => void
     /**
      * FParseErrWhitelist flag parse errors to be ignored
      */
-    fParseErrWhitelist: FParseErrWhitelist;
+    fParseErrWhitelist: FParseErrWhitelist
     /**
      * CompletionOptions is a set of options to control the handling of shell completion
      */
-    completionOptions: CompletionOptions;
+    completionOptions: CompletionOptions
     /**
      * TraverseChildren parses flags on all parents before executing child command.
      */
-    traverseChildren: boolean;
+    traverseChildren: boolean
     /**
      * Hidden defines, if this command is hidden and should NOT show up in the list of available commands.
      */
-    hidden: boolean;
+    hidden: boolean
     /**
      * SilenceErrors is an option to quiet errors down stream.
      */
-    silenceErrors: boolean;
+    silenceErrors: boolean
     /**
      * SilenceUsage is an option to silence usage when an error occurs.
      */
-    silenceUsage: boolean;
+    silenceUsage: boolean
     /**
      * DisableFlagParsing disables the flag parsing.
      * If this is true all flags will be passed to the command as arguments.
      */
-    disableFlagParsing: boolean;
+    disableFlagParsing: boolean
     /**
      * DisableAutoGenTag defines, if gen tag ("Auto generated by spf13/cobra...")
      * will be printed by generating docs for this command.
      */
-    disableAutoGenTag: boolean;
+    disableAutoGenTag: boolean
     /**
      * DisableFlagsInUseLine will disable the addition of [flags] to the usage
      * line of a command when printing help or generating docs
      */
-    disableFlagsInUseLine: boolean;
+    disableFlagsInUseLine: boolean
     /**
      * DisableSuggestions disables the suggestions based on Levenshtein distance
      * that go along with 'unknown command' messages.
      */
-    disableSuggestions: boolean;
+    disableSuggestions: boolean
     /**
      * SuggestionsMinimumDistance defines minimum levenshtein distance to display suggestions.
      * Must be > 0.
      */
-    suggestionsMinimumDistance: number;
+    suggestionsMinimumDistance: number
   }
   interface Command {
     /**
@@ -13231,21 +13215,21 @@ namespace cobra {
      * a command with a context.Background, so a background context will be
      * returned by Context after one of these functions has been called.
      */
-    context(): context.Context;
+    context(): context.Context
   }
   interface Command {
     /**
      * SetContext sets context for the command. This context will be overwritten by
      * Command.ExecuteContext or Command.ExecuteContextC.
      */
-    setContext(ctx: context.Context): void;
+    setContext(ctx: context.Context): void
   }
   interface Command {
     /**
      * SetArgs sets arguments for the command. It is set to os.Args[1:] by default, if desired, can be overridden
      * particularly useful when testing.
      */
-    setArgs(a: Array<string>): void;
+    setArgs(a: Array<string>): void
   }
   interface Command {
     /**
@@ -13253,121 +13237,121 @@ namespace cobra {
      * If output is nil, os.Stderr is used.
      * Deprecated: Use SetOut and/or SetErr instead
      */
-    setOutput(output: io.Writer): void;
+    setOutput(output: io.Writer): void
   }
   interface Command {
     /**
      * SetOut sets the destination for usage messages.
      * If newOut is nil, os.Stdout is used.
      */
-    setOut(newOut: io.Writer): void;
+    setOut(newOut: io.Writer): void
   }
   interface Command {
     /**
      * SetErr sets the destination for error messages.
      * If newErr is nil, os.Stderr is used.
      */
-    setErr(newErr: io.Writer): void;
+    setErr(newErr: io.Writer): void
   }
   interface Command {
     /**
      * SetIn sets the source for input data
      * If newIn is nil, os.Stdin is used.
      */
-    setIn(newIn: io.Reader): void;
+    setIn(newIn: io.Reader): void
   }
   interface Command {
     /**
      * SetUsageFunc sets usage function. Usage can be defined by application.
      */
-    setUsageFunc(f: (_arg0: Command) => void): void;
+    setUsageFunc(f: (_arg0: Command) => void): void
   }
   interface Command {
     /**
      * SetUsageTemplate sets usage template. Can be defined by Application.
      */
-    setUsageTemplate(s: string): void;
+    setUsageTemplate(s: string): void
   }
   interface Command {
     /**
      * SetFlagErrorFunc sets a function to generate an error when flag parsing
      * fails.
      */
-    setFlagErrorFunc(f: (_arg0: Command, _arg1: Error) => void): void;
+    setFlagErrorFunc(f: (_arg0: Command, _arg1: Error) => void): void
   }
   interface Command {
     /**
      * SetHelpFunc sets help function. Can be defined by Application.
      */
-    setHelpFunc(f: (_arg0: Command, _arg1: Array<string>) => void): void;
+    setHelpFunc(f: (_arg0: Command, _arg1: Array<string>) => void): void
   }
   interface Command {
     /**
      * SetHelpCommand sets help command.
      */
-    setHelpCommand(cmd: Command): void;
+    setHelpCommand(cmd: Command): void
   }
   interface Command {
     /**
      * SetHelpCommandGroupID sets the group id of the help command.
      */
-    setHelpCommandGroupID(groupID: string): void;
+    setHelpCommandGroupID(groupID: string): void
   }
   interface Command {
     /**
      * SetCompletionCommandGroupID sets the group id of the completion command.
      */
-    setCompletionCommandGroupID(groupID: string): void;
+    setCompletionCommandGroupID(groupID: string): void
   }
   interface Command {
     /**
      * SetHelpTemplate sets help template to be used. Application can use it to set custom template.
      */
-    setHelpTemplate(s: string): void;
+    setHelpTemplate(s: string): void
   }
   interface Command {
     /**
      * SetVersionTemplate sets version template to be used. Application can use it to set custom template.
      */
-    setVersionTemplate(s: string): void;
+    setVersionTemplate(s: string): void
   }
   interface Command {
     /**
      * SetGlobalNormalizationFunc sets a normalization function to all flag sets and also to child commands.
      * The user should not have a cyclic dependency on commands.
      */
-    setGlobalNormalizationFunc(n: (f: any, name: string) => any): void;
+    setGlobalNormalizationFunc(n: (f: any, name: string) => any): void
   }
   interface Command {
     /**
      * OutOrStdout returns output to stdout.
      */
-    outOrStdout(): io.Writer;
+    outOrStdout(): io.Writer
   }
   interface Command {
     /**
      * OutOrStderr returns output to stderr
      */
-    outOrStderr(): io.Writer;
+    outOrStderr(): io.Writer
   }
   interface Command {
     /**
      * ErrOrStderr returns output to stderr
      */
-    errOrStderr(): io.Writer;
+    errOrStderr(): io.Writer
   }
   interface Command {
     /**
      * InOrStdin returns input to stdin
      */
-    inOrStdin(): io.Reader;
+    inOrStdin(): io.Reader
   }
   interface Command {
     /**
      * UsageFunc returns either the function set by SetUsageFunc for this command
      * or a parent, or it returns a default usage function.
      */
-    usageFunc(): (_arg0: Command) => void;
+    usageFunc(): (_arg0: Command) => void
   }
   interface Command {
     /**
@@ -13375,14 +13359,14 @@ namespace cobra {
      * Used when a user provides invalid input.
      * Can be defined by user by overriding UsageFunc.
      */
-    usage(): void;
+    usage(): void
   }
   interface Command {
     /**
      * HelpFunc returns either the function set by SetHelpFunc for this command
      * or a parent, or it returns a function with default help behavior.
      */
-    helpFunc(): (_arg0: Command, _arg1: Array<string>) => void;
+    helpFunc(): (_arg0: Command, _arg1: Array<string>) => void
   }
   interface Command {
     /**
@@ -13390,13 +13374,13 @@ namespace cobra {
      * Used when a user calls help [command].
      * Can be defined by user by overriding HelpFunc.
      */
-    help(): void;
+    help(): void
   }
   interface Command {
     /**
      * UsageString returns usage string.
      */
-    usageString(): string;
+    usageString(): string
   }
   interface Command {
     /**
@@ -13404,82 +13388,82 @@ namespace cobra {
      * command or a parent, or it returns a function which returns the original
      * error.
      */
-    flagErrorFunc(): (_arg0: Command, _arg1: Error) => void;
+    flagErrorFunc(): (_arg0: Command, _arg1: Error) => void
   }
   interface Command {
     /**
      * UsagePadding return padding for the usage.
      */
-    usagePadding(): number;
+    usagePadding(): number
   }
   interface Command {
     /**
      * CommandPathPadding return padding for the command path.
      */
-    commandPathPadding(): number;
+    commandPathPadding(): number
   }
   interface Command {
     /**
      * NamePadding returns padding for the name.
      */
-    namePadding(): number;
+    namePadding(): number
   }
   interface Command {
     /**
      * UsageTemplate returns usage template for the command.
      */
-    usageTemplate(): string;
+    usageTemplate(): string
   }
   interface Command {
     /**
      * HelpTemplate return help template for the command.
      */
-    helpTemplate(): string;
+    helpTemplate(): string
   }
   interface Command {
     /**
      * VersionTemplate return version template for the command.
      */
-    versionTemplate(): string;
+    versionTemplate(): string
   }
   interface Command {
     /**
      * Find the target command given the args and command tree
      * Meant to be run on the highest node. Only searches down.
      */
-    find(args: Array<string>): [Command | undefined, Array<string>];
+    find(args: Array<string>): [Command | undefined, Array<string>]
   }
   interface Command {
     /**
      * Traverse the command tree to find the command, and parse args for
      * each parent.
      */
-    traverse(args: Array<string>): [Command | undefined, Array<string>];
+    traverse(args: Array<string>): [Command | undefined, Array<string>]
   }
   interface Command {
     /**
      * SuggestionsFor provides suggestions for the typedName.
      */
-    suggestionsFor(typedName: string): Array<string>;
+    suggestionsFor(typedName: string): Array<string>
   }
   interface Command {
     /**
      * VisitParents visits all parents of the command and invokes fn on each parent.
      */
-    visitParents(fn: (_arg0: Command) => void): void;
+    visitParents(fn: (_arg0: Command) => void): void
   }
   interface Command {
     /**
      * Root finds root command.
      */
-    root(): Command | undefined;
+    root(): Command | undefined
   }
   interface Command {
     /**
      * ArgsLenAtDash will return the length of c.Flags().Args at the moment
      * when a -- was found during args parsing.
      */
-    argsLenAtDash(): number;
+    argsLenAtDash(): number
   }
   interface Command {
     /**
@@ -13487,7 +13471,7 @@ namespace cobra {
      * Retrieve ctx by calling cmd.Context() inside your *Run lifecycle or ValidArgs
      * functions.
      */
-    executeContext(ctx: context.Context): void;
+    executeContext(ctx: context.Context): void
   }
   interface Command {
     /**
@@ -13495,7 +13479,7 @@ namespace cobra {
      * and run through the command tree finding appropriate matches
      * for commands and then corresponding flags.
      */
-    execute(): void;
+    execute(): void
   }
   interface Command {
     /**
@@ -13503,22 +13487,22 @@ namespace cobra {
      * Retrieve ctx by calling cmd.Context() inside your *Run lifecycle or ValidArgs
      * functions.
      */
-    executeContextC(ctx: context.Context): Command | undefined;
+    executeContextC(ctx: context.Context): Command | undefined
   }
   interface Command {
     /**
      * ExecuteC executes the command.
      */
-    executeC(): Command | undefined;
+    executeC(): Command | undefined
   }
   interface Command {
-    validateArgs(args: Array<string>): void;
+    validateArgs(args: Array<string>): void
   }
   interface Command {
     /**
      * ValidateRequiredFlags validates all required flags are present and returns an error otherwise
      */
-    validateRequiredFlags(): void;
+    validateRequiredFlags(): void
   }
   interface Command {
     /**
@@ -13526,7 +13510,7 @@ namespace cobra {
      * It is called automatically by executing the c or by calling help and usage.
      * If c already has help flag, it will do nothing.
      */
-    initDefaultHelpFlag(): void;
+    initDefaultHelpFlag(): void
   }
   interface Command {
     /**
@@ -13535,7 +13519,7 @@ namespace cobra {
      * If c already has a version flag, it will do nothing.
      * If c.Version is empty, it will do nothing.
      */
-    initDefaultVersionFlag(): void;
+    initDefaultVersionFlag(): void
   }
   interface Command {
     /**
@@ -13543,160 +13527,160 @@ namespace cobra {
      * It is called automatically by executing the c or by calling help and usage.
      * If c already has help command or c has no subcommands, it will do nothing.
      */
-    initDefaultHelpCmd(): void;
+    initDefaultHelpCmd(): void
   }
   interface Command {
     /**
      * ResetCommands delete parent, subcommand and help command from c.
      */
-    resetCommands(): void;
+    resetCommands(): void
   }
   interface Command {
     /**
      * Commands returns a sorted slice of child commands.
      */
-    commands(): Array<Command | undefined>;
+    commands(): Array<Command | undefined>
   }
   interface Command {
     /**
      * AddCommand adds one or more commands to this parent command.
      */
-    addCommand(...cmds: (Command | undefined)[]): void;
+    addCommand(...cmds: (Command | undefined)[]): void
   }
   interface Command {
     /**
      * Groups returns a slice of child command groups.
      */
-    groups(): Array<Group | undefined>;
+    groups(): Array<Group | undefined>
   }
   interface Command {
     /**
      * AllChildCommandsHaveGroup returns if all subcommands are assigned to a group
      */
-    allChildCommandsHaveGroup(): boolean;
+    allChildCommandsHaveGroup(): boolean
   }
   interface Command {
     /**
      * ContainsGroup return if groupID exists in the list of command groups.
      */
-    containsGroup(groupID: string): boolean;
+    containsGroup(groupID: string): boolean
   }
   interface Command {
     /**
      * AddGroup adds one or more command groups to this parent command.
      */
-    addGroup(...groups: (Group | undefined)[]): void;
+    addGroup(...groups: (Group | undefined)[]): void
   }
   interface Command {
     /**
      * RemoveCommand removes one or more commands from a parent command.
      */
-    removeCommand(...cmds: (Command | undefined)[]): void;
+    removeCommand(...cmds: (Command | undefined)[]): void
   }
   interface Command {
     /**
      * Print is a convenience method to Print to the defined output, fallback to Stderr if not set.
      */
-    print(...i: {}[]): void;
+    print(...i: {}[]): void
   }
   interface Command {
     /**
      * Println is a convenience method to Println to the defined output, fallback to Stderr if not set.
      */
-    println(...i: {}[]): void;
+    println(...i: {}[]): void
   }
   interface Command {
     /**
      * Printf is a convenience method to Printf to the defined output, fallback to Stderr if not set.
      */
-    printf(format: string, ...i: {}[]): void;
+    printf(format: string, ...i: {}[]): void
   }
   interface Command {
     /**
      * PrintErr is a convenience method to Print to the defined Err output, fallback to Stderr if not set.
      */
-    printErr(...i: {}[]): void;
+    printErr(...i: {}[]): void
   }
   interface Command {
     /**
      * PrintErrln is a convenience method to Println to the defined Err output, fallback to Stderr if not set.
      */
-    printErrln(...i: {}[]): void;
+    printErrln(...i: {}[]): void
   }
   interface Command {
     /**
      * PrintErrf is a convenience method to Printf to the defined Err output, fallback to Stderr if not set.
      */
-    printErrf(format: string, ...i: {}[]): void;
+    printErrf(format: string, ...i: {}[]): void
   }
   interface Command {
     /**
      * CommandPath returns the full path to this command.
      */
-    commandPath(): string;
+    commandPath(): string
   }
   interface Command {
     /**
      * UseLine puts out the full usage for a given command (including parents).
      */
-    useLine(): string;
+    useLine(): string
   }
   interface Command {
     /**
      * DebugFlags used to determine which flags have been assigned to which commands
      * and which persist.
      */
-    debugFlags(): void;
+    debugFlags(): void
   }
   interface Command {
     /**
      * Name returns the command's name: the first word in the use line.
      */
-    name(): string;
+    name(): string
   }
   interface Command {
     /**
      * HasAlias determines if a given string is an alias of the command.
      */
-    hasAlias(s: string): boolean;
+    hasAlias(s: string): boolean
   }
   interface Command {
     /**
      * CalledAs returns the command name or alias that was used to invoke
      * this command or an empty string if the command has not been called.
      */
-    calledAs(): string;
+    calledAs(): string
   }
   interface Command {
     /**
      * NameAndAliases returns a list of the command name and all aliases
      */
-    nameAndAliases(): string;
+    nameAndAliases(): string
   }
   interface Command {
     /**
      * HasExample determines if the command has example.
      */
-    hasExample(): boolean;
+    hasExample(): boolean
   }
   interface Command {
     /**
      * Runnable determines if the command is itself runnable.
      */
-    runnable(): boolean;
+    runnable(): boolean
   }
   interface Command {
     /**
      * HasSubCommands determines if the command has children commands.
      */
-    hasSubCommands(): boolean;
+    hasSubCommands(): boolean
   }
   interface Command {
     /**
      * IsAvailableCommand determines if a command is available as a non-help command
      * (this includes all non deprecated/hidden commands).
      */
-    isAvailableCommand(): boolean;
+    isAvailableCommand(): boolean
   }
   interface Command {
     /**
@@ -13706,7 +13690,7 @@ namespace cobra {
      * are runnable/hidden/deprecated.
      * Concrete example: https://github.com/spf13/cobra/issues/393#issuecomment-282741924.
      */
-    isAdditionalHelpTopicCommand(): boolean;
+    isAdditionalHelpTopicCommand(): boolean
   }
   interface Command {
     /**
@@ -13714,138 +13698,138 @@ namespace cobra {
      * that need to be shown in the usage/help default template under 'additional help
      * topics'.
      */
-    hasHelpSubCommands(): boolean;
+    hasHelpSubCommands(): boolean
   }
   interface Command {
     /**
      * HasAvailableSubCommands determines if a command has available sub commands that
      * need to be shown in the usage/help default template under 'available commands'.
      */
-    hasAvailableSubCommands(): boolean;
+    hasAvailableSubCommands(): boolean
   }
   interface Command {
     /**
      * HasParent determines if the command is a child command.
      */
-    hasParent(): boolean;
+    hasParent(): boolean
   }
   interface Command {
     /**
      * GlobalNormalizationFunc returns the global normalization function or nil if it doesn't exist.
      */
-    globalNormalizationFunc(): (f: any, name: string) => any;
+    globalNormalizationFunc(): (f: any, name: string) => any
   }
   interface Command {
     /**
      * Flags returns the complete FlagSet that applies
      * to this command (local and persistent declared here and by all parents).
      */
-    flags(): any | undefined;
+    flags(): any | undefined
   }
   interface Command {
     /**
      * LocalNonPersistentFlags are flags specific to this command which will NOT persist to subcommands.
      */
-    localNonPersistentFlags(): any | undefined;
+    localNonPersistentFlags(): any | undefined
   }
   interface Command {
     /**
      * LocalFlags returns the local FlagSet specifically set in the current command.
      */
-    localFlags(): any | undefined;
+    localFlags(): any | undefined
   }
   interface Command {
     /**
      * InheritedFlags returns all flags which were inherited from parent commands.
      */
-    inheritedFlags(): any | undefined;
+    inheritedFlags(): any | undefined
   }
   interface Command {
     /**
      * NonInheritedFlags returns all flags which were not inherited from parent commands.
      */
-    nonInheritedFlags(): any | undefined;
+    nonInheritedFlags(): any | undefined
   }
   interface Command {
     /**
      * PersistentFlags returns the persistent FlagSet specifically set in the current command.
      */
-    persistentFlags(): any | undefined;
+    persistentFlags(): any | undefined
   }
   interface Command {
     /**
      * ResetFlags deletes all flags from command.
      */
-    resetFlags(): void;
+    resetFlags(): void
   }
   interface Command {
     /**
      * HasFlags checks if the command contains any flags (local plus persistent from the entire structure).
      */
-    hasFlags(): boolean;
+    hasFlags(): boolean
   }
   interface Command {
     /**
      * HasPersistentFlags checks if the command contains persistent flags.
      */
-    hasPersistentFlags(): boolean;
+    hasPersistentFlags(): boolean
   }
   interface Command {
     /**
      * HasLocalFlags checks if the command has flags specifically declared locally.
      */
-    hasLocalFlags(): boolean;
+    hasLocalFlags(): boolean
   }
   interface Command {
     /**
      * HasInheritedFlags checks if the command has flags inherited from its parent command.
      */
-    hasInheritedFlags(): boolean;
+    hasInheritedFlags(): boolean
   }
   interface Command {
     /**
      * HasAvailableFlags checks if the command contains any flags (local plus persistent from the entire
      * structure) which are not hidden or deprecated.
      */
-    hasAvailableFlags(): boolean;
+    hasAvailableFlags(): boolean
   }
   interface Command {
     /**
      * HasAvailablePersistentFlags checks if the command contains persistent flags which are not hidden or deprecated.
      */
-    hasAvailablePersistentFlags(): boolean;
+    hasAvailablePersistentFlags(): boolean
   }
   interface Command {
     /**
      * HasAvailableLocalFlags checks if the command has flags specifically declared locally which are not hidden
      * or deprecated.
      */
-    hasAvailableLocalFlags(): boolean;
+    hasAvailableLocalFlags(): boolean
   }
   interface Command {
     /**
      * HasAvailableInheritedFlags checks if the command has flags inherited from its parent command which are
      * not hidden or deprecated.
      */
-    hasAvailableInheritedFlags(): boolean;
+    hasAvailableInheritedFlags(): boolean
   }
   interface Command {
     /**
      * Flag climbs up the command tree looking for matching flag.
      */
-    flag(name: string): any | undefined;
+    flag(name: string): any | undefined
   }
   interface Command {
     /**
      * ParseFlags parses persistent flag tree and local flags.
      */
-    parseFlags(args: Array<string>): void;
+    parseFlags(args: Array<string>): void
   }
   interface Command {
     /**
      * Parent returns a commands parent command.
      */
-    parent(): Command | undefined;
+    parent(): Command | undefined
   }
   interface Command {
     /**
@@ -13854,7 +13838,7 @@ namespace cobra {
     registerFlagCompletionFunc(
       flagName: string,
       f: (cmd: Command, args: Array<string>, toComplete: string) => [Array<string>, ShellCompDirective]
-    ): void;
+    ): void
   }
   interface Command {
     /**
@@ -13864,66 +13848,66 @@ namespace cobra {
      * 2- c has no subcommands (to avoid creating one),
      * 3- c already has a 'completion' command provided by the program.
      */
-    initDefaultCompletionCmd(): void;
+    initDefaultCompletionCmd(): void
   }
   interface Command {
     /**
      * GenFishCompletion generates fish completion file and writes to the passed writer.
      */
-    genFishCompletion(w: io.Writer, includeDesc: boolean): void;
+    genFishCompletion(w: io.Writer, includeDesc: boolean): void
   }
   interface Command {
     /**
      * GenFishCompletionFile generates fish completion file.
      */
-    genFishCompletionFile(filename: string, includeDesc: boolean): void;
+    genFishCompletionFile(filename: string, includeDesc: boolean): void
   }
   interface Command {
     /**
      * MarkFlagsRequiredTogether marks the given flags with annotations so that Cobra errors
      * if the command is invoked with a subset (but not all) of the given flags.
      */
-    markFlagsRequiredTogether(...flagNames: string[]): void;
+    markFlagsRequiredTogether(...flagNames: string[]): void
   }
   interface Command {
     /**
      * MarkFlagsMutuallyExclusive marks the given flags with annotations so that Cobra errors
      * if the command is invoked with more than one flag from the given set of flags.
      */
-    markFlagsMutuallyExclusive(...flagNames: string[]): void;
+    markFlagsMutuallyExclusive(...flagNames: string[]): void
   }
   interface Command {
     /**
      * ValidateFlagGroups validates the mutuallyExclusive/requiredAsGroup logic and returns the
      * first error encountered.
      */
-    validateFlagGroups(): void;
+    validateFlagGroups(): void
   }
   interface Command {
     /**
      * GenPowerShellCompletionFile generates powershell completion file without descriptions.
      */
-    genPowerShellCompletionFile(filename: string): void;
+    genPowerShellCompletionFile(filename: string): void
   }
   interface Command {
     /**
      * GenPowerShellCompletion generates powershell completion file without descriptions
      * and writes it to the passed writer.
      */
-    genPowerShellCompletion(w: io.Writer): void;
+    genPowerShellCompletion(w: io.Writer): void
   }
   interface Command {
     /**
      * GenPowerShellCompletionFileWithDesc generates powershell completion file with descriptions.
      */
-    genPowerShellCompletionFileWithDesc(filename: string): void;
+    genPowerShellCompletionFileWithDesc(filename: string): void
   }
   interface Command {
     /**
      * GenPowerShellCompletionWithDesc generates powershell completion file with descriptions
      * and writes it to the passed writer.
      */
-    genPowerShellCompletionWithDesc(w: io.Writer): void;
+    genPowerShellCompletionWithDesc(w: io.Writer): void
   }
   interface Command {
     /**
@@ -13931,7 +13915,7 @@ namespace cobra {
      * prioritize the named flag when performing completion,
      * and causes your command to report an error if invoked without the flag.
      */
-    markFlagRequired(name: string): void;
+    markFlagRequired(name: string): void
   }
   interface Command {
     /**
@@ -13939,14 +13923,14 @@ namespace cobra {
      * prioritize the named persistent flag when performing completion,
      * and causes your command to report an error if invoked without the flag.
      */
-    markPersistentFlagRequired(name: string): void;
+    markPersistentFlagRequired(name: string): void
   }
   interface Command {
     /**
      * MarkFlagFilename instructs the various shell completion implementations to
      * limit completions for the named flag to the specified file extensions.
      */
-    markFlagFilename(name: string, ...extensions: string[]): void;
+    markFlagFilename(name: string, ...extensions: string[]): void
   }
   interface Command {
     /**
@@ -13957,7 +13941,7 @@ namespace cobra {
      * It is recommended to instead use c.RegisterFlagCompletionFunc(...) which allows
      * to register a Go function which will work across all shells.
      */
-    markFlagCustom(name: string, f: string): void;
+    markFlagCustom(name: string, f: string): void
   }
   interface Command {
     /**
@@ -13965,14 +13949,14 @@ namespace cobra {
      * implementations to limit completions for the named persistent flag to the
      * specified file extensions.
      */
-    markPersistentFlagFilename(name: string, ...extensions: string[]): void;
+    markPersistentFlagFilename(name: string, ...extensions: string[]): void
   }
   interface Command {
     /**
      * MarkFlagDirname instructs the various shell completion implementations to
      * limit completions for the named flag to directory names.
      */
-    markFlagDirname(name: string): void;
+    markFlagDirname(name: string): void
   }
   interface Command {
     /**
@@ -13980,33 +13964,33 @@ namespace cobra {
      * implementations to limit completions for the named persistent flag to
      * directory names.
      */
-    markPersistentFlagDirname(name: string): void;
+    markPersistentFlagDirname(name: string): void
   }
   interface Command {
     /**
      * GenZshCompletionFile generates zsh completion file including descriptions.
      */
-    genZshCompletionFile(filename: string): void;
+    genZshCompletionFile(filename: string): void
   }
   interface Command {
     /**
      * GenZshCompletion generates zsh completion file including descriptions
      * and writes it to the passed writer.
      */
-    genZshCompletion(w: io.Writer): void;
+    genZshCompletion(w: io.Writer): void
   }
   interface Command {
     /**
      * GenZshCompletionFileNoDesc generates zsh completion file without descriptions.
      */
-    genZshCompletionFileNoDesc(filename: string): void;
+    genZshCompletionFileNoDesc(filename: string): void
   }
   interface Command {
     /**
      * GenZshCompletionNoDesc generates zsh completion file without descriptions
      * and writes it to the passed writer.
      */
-    genZshCompletionNoDesc(w: io.Writer): void;
+    genZshCompletionNoDesc(w: io.Writer): void
   }
   interface Command {
     /**
@@ -14020,7 +14004,7 @@ namespace cobra {
      *
      * Deprecated
      */
-    markZshCompPositionalArgumentFile(argPosition: number, ...patterns: string[]): void;
+    markZshCompPositionalArgumentFile(argPosition: number, ...patterns: string[]): void
   }
   interface Command {
     /**
@@ -14032,7 +14016,7 @@ namespace cobra {
      *
      * Deprecated
      */
-    markZshCompPositionalArgumentWords(argPosition: number, ...words: string[]): void;
+    markZshCompPositionalArgumentWords(argPosition: number, ...words: string[]): void
   }
 }
 
@@ -14065,21 +14049,21 @@ namespace syscall {
    * See user_namespaces(7).
    */
   interface SysProcIDMap {
-    containerID: number; // Container ID.
-    hostID: number; // Host ID.
-    size: number; // Size.
+    containerID: number // Container ID.
+    hostID: number // Host ID.
+    size: number // Size.
   }
   // @ts-ignore
-  import errorspkg = errors;
+  import errorspkg = errors
   /**
    * Credential holds user and group identities to be assumed
    * by a child process started by StartProcess.
    */
   interface Credential {
-    uid: number; // User ID.
-    gid: number; // Group ID.
-    groups: Array<number>; // Supplementary group IDs.
-    noSetGroups: boolean; // If true, don't set supplementary groups
+    uid: number // User ID.
+    gid: number // Group ID.
+    groups: Array<number> // Supplementary group IDs.
+    noSetGroups: boolean // If true, don't set supplementary groups
   }
   /**
    * A Signal is a number describing a process signal.
@@ -14087,10 +14071,10 @@ namespace syscall {
    */
   interface Signal extends Number {}
   interface Signal {
-    signal(): void;
+    signal(): void
   }
   interface Signal {
-    string(): string;
+    string(): string
   }
 }
 
@@ -14177,7 +14161,7 @@ namespace time {
     /**
      * String returns the English name of the month ("January", "February", ...).
      */
-    string(): string;
+    string(): string
   }
   /**
    * A Weekday specifies a day of the week (Sunday = 0, ...).
@@ -14187,7 +14171,7 @@ namespace time {
     /**
      * String returns the English name of the day ("Sunday", "Monday", ...).
      */
-    string(): string;
+    string(): string
   }
   /**
    * A Location maps time instants to the zone in use at that time.
@@ -14201,7 +14185,7 @@ namespace time {
      * String returns a descriptive name for the time zone information,
      * corresponding to the name argument to LoadLocation or FixedZone.
      */
-    string(): string;
+    string(): string
   }
 }
 
@@ -14311,16 +14295,16 @@ namespace url {
    * EscapedPath method for more details.
    */
   interface URL {
-    scheme: string;
-    opaque: string; // encoded opaque data
-    user?: Userinfo; // username and password information
-    host: string; // host or host:port
-    path: string; // path (relative paths may omit leading slash)
-    rawPath: string; // encoded path hint (see EscapedPath method)
-    forceQuery: boolean; // append a query ('?') even if RawQuery is empty
-    rawQuery: string; // encoded query values, without '?'
-    fragment: string; // fragment for references, without '#'
-    rawFragment: string; // encoded fragment hint (see EscapedFragment method)
+    scheme: string
+    opaque: string // encoded opaque data
+    user?: Userinfo // username and password information
+    host: string // host or host:port
+    path: string // path (relative paths may omit leading slash)
+    rawPath: string // encoded path hint (see EscapedPath method)
+    forceQuery: boolean // append a query ('?') even if RawQuery is empty
+    rawQuery: string // encoded query values, without '?'
+    fragment: string // fragment for references, without '#'
+    rawFragment: string // encoded fragment hint (see EscapedFragment method)
   }
   interface URL {
     /**
@@ -14334,7 +14318,7 @@ namespace url {
      * In general, code should call EscapedPath instead of
      * reading u.RawPath directly.
      */
-    escapedPath(): string;
+    escapedPath(): string
   }
   interface URL {
     /**
@@ -14347,7 +14331,7 @@ namespace url {
      * In general, code should call EscapedFragment instead of
      * reading u.RawFragment directly.
      */
-    escapedFragment(): string;
+    escapedFragment(): string
   }
   interface URL {
     /**
@@ -14377,14 +14361,14 @@ namespace url {
      * 	- if u.Fragment is empty, #fragment is omitted.
      * ```
      */
-    string(): string;
+    string(): string
   }
   interface URL {
     /**
      * Redacted is like String but replaces any password with "xxxxx".
      * Only the password in u.URL is redacted.
      */
-    redacted(): string;
+    redacted(): string
   }
   /**
    * Values maps a string key to a list of values.
@@ -14400,47 +14384,47 @@ namespace url {
      * the empty string. To access multiple values, use the map
      * directly.
      */
-    get(key: string): string;
+    get(key: string): string
   }
   interface Values {
     /**
      * Set sets the key to value. It replaces any existing
      * values.
      */
-    set(key: string): void;
+    set(key: string): void
   }
   interface Values {
     /**
      * Add adds the value to key. It appends to any existing
      * values associated with key.
      */
-    add(key: string): void;
+    add(key: string): void
   }
   interface Values {
     /**
      * Del deletes the values associated with key.
      */
-    del(key: string): void;
+    del(key: string): void
   }
   interface Values {
     /**
      * Has checks whether a given key is set.
      */
-    has(key: string): boolean;
+    has(key: string): boolean
   }
   interface Values {
     /**
      * Encode encodes the values into ``URL encoded'' form
      * ("bar=baz&foo=quux") sorted by key.
      */
-    encode(): string;
+    encode(): string
   }
   interface URL {
     /**
      * IsAbs reports whether the URL is absolute.
      * Absolute means that it has a non-empty scheme.
      */
-    isAbs(): boolean;
+    isAbs(): boolean
   }
   interface URL {
     /**
@@ -14448,7 +14432,7 @@ namespace url {
      * may be relative or absolute. Parse returns nil, err on parse
      * failure, otherwise its return value is the same as ResolveReference.
      */
-    parse(ref: string): URL | undefined;
+    parse(ref: string): URL | undefined
   }
   interface URL {
     /**
@@ -14459,7 +14443,7 @@ namespace url {
      * base or reference. If ref is an absolute URL, then ResolveReference
      * ignores base and returns a copy of ref.
      */
-    resolveReference(ref: URL): URL | undefined;
+    resolveReference(ref: URL): URL | undefined
   }
   interface URL {
     /**
@@ -14467,14 +14451,14 @@ namespace url {
      * It silently discards malformed value pairs.
      * To check errors use ParseQuery.
      */
-    query(): Values;
+    query(): Values
   }
   interface URL {
     /**
      * RequestURI returns the encoded path?query or opaque?query
      * string that would be used in an HTTP request for u.
      */
-    requestURI(): string;
+    requestURI(): string
   }
   interface URL {
     /**
@@ -14483,7 +14467,7 @@ namespace url {
      * If the result is enclosed in square brackets, as literal IPv6 addresses are,
      * the square brackets are removed from the result.
      */
-    hostname(): string;
+    hostname(): string
   }
   interface URL {
     /**
@@ -14491,13 +14475,13 @@ namespace url {
      *
      * If u.Host doesn't contain a valid numeric port, Port returns an empty string.
      */
-    port(): string;
+    port(): string
   }
   interface URL {
-    marshalBinary(): string;
+    marshalBinary(): string
   }
   interface URL {
-    unmarshalBinary(text: string): void;
+    unmarshalBinary(text: string): void
   }
 }
 
@@ -14592,26 +14576,26 @@ namespace net {
      * Read can be made to time out and return an error after a fixed
      * time limit; see SetDeadline and SetReadDeadline.
      */
-    read(b: string): number;
+    read(b: string): number
     /**
      * Write writes data to the connection.
      * Write can be made to time out and return an error after a fixed
      * time limit; see SetDeadline and SetWriteDeadline.
      */
-    write(b: string): number;
+    write(b: string): number
     /**
      * Close closes the connection.
      * Any blocked Read or Write operations will be unblocked and return errors.
      */
-    close(): void;
+    close(): void
     /**
      * LocalAddr returns the local network address, if known.
      */
-    localAddr(): Addr;
+    localAddr(): Addr
     /**
      * RemoteAddr returns the remote network address, if known.
      */
-    remoteAddr(): Addr;
+    remoteAddr(): Addr
     /**
      * SetDeadline sets the read and write deadlines associated
      * with the connection. It is equivalent to calling both
@@ -14635,13 +14619,13 @@ namespace net {
      *
      * A zero value for t means I/O operations will not time out.
      */
-    setDeadline(t: time.Time): void;
+    setDeadline(t: time.Time): void
     /**
      * SetReadDeadline sets the deadline for future Read calls
      * and any currently-blocked Read call.
      * A zero value for t means Read will not time out.
      */
-    setReadDeadline(t: time.Time): void;
+    setReadDeadline(t: time.Time): void
     /**
      * SetWriteDeadline sets the deadline for future Write calls
      * and any currently-blocked Write call.
@@ -14649,7 +14633,7 @@ namespace net {
      * some of the data was successfully written.
      * A zero value for t means Write will not time out.
      */
-    setWriteDeadline(t: time.Time): void;
+    setWriteDeadline(t: time.Time): void
   }
   /**
    * A Listener is a generic network listener for stream-oriented protocols.
@@ -14660,16 +14644,16 @@ namespace net {
     /**
      * Accept waits for and returns the next connection to the listener.
      */
-    accept(): Conn;
+    accept(): Conn
     /**
      * Close closes the listener.
      * Any blocked Accept operations will be unblocked and return errors.
      */
-    close(): void;
+    close(): void
     /**
      * Addr returns the listener's network address.
      */
-    addr(): Addr;
+    addr(): Addr
   }
 }
 
@@ -14706,7 +14690,7 @@ namespace textproto {
      * Add adds the key, value pair to the header.
      * It appends to any existing values associated with key.
      */
-    add(key: string): void;
+    add(key: string): void
   }
   interface MIMEHeader {
     /**
@@ -14714,7 +14698,7 @@ namespace textproto {
      * the single element value. It replaces any existing
      * values associated with key.
      */
-    set(key: string): void;
+    set(key: string): void
   }
   interface MIMEHeader {
     /**
@@ -14724,7 +14708,7 @@ namespace textproto {
      * If there are no values associated with the key, Get returns "".
      * To use non-canonical keys, access the map directly.
      */
-    get(key: string): string;
+    get(key: string): string
   }
   interface MIMEHeader {
     /**
@@ -14734,13 +14718,13 @@ namespace textproto {
      * keys, access the map directly.
      * The returned slice is not a copy.
      */
-    values(key: string): Array<string>;
+    values(key: string): Array<string>
   }
   interface MIMEHeader {
     /**
      * Del deletes the values associated with key.
      */
-    del(key: string): void;
+    del(key: string): void
   }
 }
 
@@ -14762,7 +14746,7 @@ namespace multipart {
      * It returns ErrMessageTooLarge if all non-file parts can't be stored in
      * memory.
      */
-    readForm(maxMemory: number): Form | undefined;
+    readForm(maxMemory: number): Form | undefined
   }
   /**
    * Form is a parsed multipart form.
@@ -14772,14 +14756,14 @@ namespace multipart {
    * Both are keyed by field name.
    */
   interface Form {
-    value: _TygojaDict;
-    file: _TygojaDict;
+    value: _TygojaDict
+    file: _TygojaDict
   }
   interface Form {
     /**
      * RemoveAll removes any temporary files associated with a Form.
      */
-    removeAll(): void;
+    removeAll(): void
   }
   /**
    * File is an interface to access the file part of a multipart message.
@@ -14802,7 +14786,7 @@ namespace multipart {
      * has a value of "quoted-printable", that header is instead
      * hidden and the body is transparently decoded during Read calls.
      */
-    nextPart(): Part | undefined;
+    nextPart(): Part | undefined
   }
   interface Reader {
     /**
@@ -14812,7 +14796,7 @@ namespace multipart {
      * Unlike NextPart, it does not have special handling for
      * "Content-Transfer-Encoding: quoted-printable".
      */
-    nextRawPart(): Part | undefined;
+    nextRawPart(): Part | undefined
   }
 }
 
@@ -14939,23 +14923,23 @@ namespace http {
    * See https://tools.ietf.org/html/rfc6265 for details.
    */
   interface Cookie {
-    name: string;
-    value: string;
-    path: string; // optional
-    domain: string; // optional
-    expires: time.Time; // optional
-    rawExpires: string; // for reading cookies only
+    name: string
+    value: string
+    path: string // optional
+    domain: string // optional
+    expires: time.Time // optional
+    rawExpires: string // for reading cookies only
     /**
      * MaxAge=0 means no 'Max-Age' attribute specified.
      * MaxAge<0 means delete cookie now, equivalently 'Max-Age: 0'
      * MaxAge>0 means Max-Age attribute present and given in seconds
      */
-    maxAge: number;
-    secure: boolean;
-    httpOnly: boolean;
-    sameSite: SameSite;
-    raw: string;
-    unparsed: Array<string>; // Raw text of unparsed attribute-value pairs
+    maxAge: number
+    secure: boolean
+    httpOnly: boolean
+    sameSite: SameSite
+    raw: string
+    unparsed: Array<string> // Raw text of unparsed attribute-value pairs
   }
   interface Cookie {
     /**
@@ -14964,16 +14948,16 @@ namespace http {
      * header (if other fields are set).
      * If c is nil or c.Name is invalid, the empty string is returned.
      */
-    string(): string;
+    string(): string
   }
   interface Cookie {
     /**
      * Valid reports whether the cookie is valid.
      */
-    valid(): void;
+    valid(): void
   }
   // @ts-ignore
-  import mathrand = rand;
+  import mathrand = rand
   /**
    * A Header represents the key-value pairs in an HTTP header.
    *
@@ -14988,7 +14972,7 @@ namespace http {
      * The key is case insensitive; it is canonicalized by
      * CanonicalHeaderKey.
      */
-    add(key: string): void;
+    add(key: string): void
   }
   interface Header {
     /**
@@ -14998,7 +14982,7 @@ namespace http {
      * canonicalized by textproto.CanonicalMIMEHeaderKey.
      * To use non-canonical keys, assign to the map directly.
      */
-    set(key: string): void;
+    set(key: string): void
   }
   interface Header {
     /**
@@ -15008,7 +14992,7 @@ namespace http {
      * used to canonicalize the provided key. To use non-canonical keys,
      * access the map directly.
      */
-    get(key: string): string;
+    get(key: string): string
   }
   interface Header {
     /**
@@ -15018,7 +15002,7 @@ namespace http {
      * keys, access the map directly.
      * The returned slice is not a copy.
      */
-    values(key: string): Array<string>;
+    values(key: string): Array<string>
   }
   interface Header {
     /**
@@ -15026,19 +15010,19 @@ namespace http {
      * The key is case insensitive; it is canonicalized by
      * CanonicalHeaderKey.
      */
-    del(key: string): void;
+    del(key: string): void
   }
   interface Header {
     /**
      * Write writes a header in wire format.
      */
-    write(w: io.Writer): void;
+    write(w: io.Writer): void
   }
   interface Header {
     /**
      * Clone returns a copy of h or nil if h is nil.
      */
-    clone(): Header;
+    clone(): Header
   }
   interface Header {
     /**
@@ -15046,10 +15030,10 @@ namespace http {
      * If exclude is not nil, keys where exclude[key] == true are not written.
      * Keys are not canonicalized before checking the exclude map.
      */
-    writeSubset(w: io.Writer, exclude: _TygojaDict): void;
+    writeSubset(w: io.Writer, exclude: _TygojaDict): void
   }
   // @ts-ignore
-  import urlpkg = url;
+  import urlpkg = url
   /**
    * Response represents the response from an HTTP request.
    *
@@ -15058,11 +15042,11 @@ namespace http {
    * is streamed on demand as the Body field is read.
    */
   interface Response {
-    status: string; // e.g. "200 OK"
-    statusCode: number; // e.g. 200
-    proto: string; // e.g. "HTTP/1.0"
-    protoMajor: number; // e.g. 1
-    protoMinor: number; // e.g. 0
+    status: string // e.g. "200 OK"
+    statusCode: number // e.g. 200
+    proto: string // e.g. "HTTP/1.0"
+    protoMajor: number // e.g. 1
+    protoMinor: number // e.g. 0
     /**
      * Header maps header keys to values. If the response had multiple
      * headers with the same key, they may be concatenated, with comma
@@ -15074,7 +15058,7 @@ namespace http {
      *
      * Keys in the map are canonicalized (see CanonicalHeaderKey).
      */
-    header: Header;
+    header: Header
     /**
      * Body represents the response body.
      *
@@ -15096,25 +15080,25 @@ namespace http {
      * on a successful "101 Switching Protocols" response,
      * as used by WebSockets and HTTP/2's "h2c" mode.
      */
-    body: io.ReadCloser;
+    body: io.ReadCloser
     /**
      * ContentLength records the length of the associated content. The
      * value -1 indicates that the length is unknown. Unless Request.Method
      * is "HEAD", values >= 0 indicate that the given number of bytes may
      * be read from Body.
      */
-    contentLength: number;
+    contentLength: number
     /**
      * Contains transfer encodings from outer-most to inner-most. Value is
      * nil, means that "identity" encoding is used.
      */
-    transferEncoding: Array<string>;
+    transferEncoding: Array<string>
     /**
      * Close records whether the header directed that the connection be
      * closed after reading Body. The value is advice for clients: neither
      * ReadResponse nor Response.Write ever closes a connection.
      */
-    close: boolean;
+    close: boolean
     /**
      * Uncompressed reports whether the response was sent compressed but
      * was decompressed by the http package. When true, reading from
@@ -15124,7 +15108,7 @@ namespace http {
      * from the responseHeader. To get the original response from
      * the server, set Transport.DisableCompression to true.
      */
-    uncompressed: boolean;
+    uncompressed: boolean
     /**
      * Trailer maps trailer keys to values in the same
      * format as Header.
@@ -15139,26 +15123,26 @@ namespace http {
      * After Body.Read has returned io.EOF, Trailer will contain
      * any trailer values sent by the server.
      */
-    trailer: Header;
+    trailer: Header
     /**
      * Request is the request that was sent to obtain this Response.
      * Request's Body is nil (having already been consumed).
      * This is only populated for Client requests.
      */
-    request?: Request;
+    request?: Request
     /**
      * TLS contains information about the TLS connection on which the
      * response was received. It is nil for unencrypted responses.
      * The pointer is shared between responses and should not be
      * modified.
      */
-    tls?: any;
+    tls?: any
   }
   interface Response {
     /**
      * Cookies parses and returns the cookies set in the Set-Cookie headers.
      */
-    cookies(): Array<Cookie | undefined>;
+    cookies(): Array<Cookie | undefined>
   }
   interface Response {
     /**
@@ -15167,14 +15151,14 @@ namespace http {
      * the Response's Request. ErrNoLocation is returned if no
      * Location header is present.
      */
-    location(): url.URL | undefined;
+    location(): url.URL | undefined
   }
   interface Response {
     /**
      * ProtoAtLeast reports whether the HTTP protocol used
      * in the response is at least major.minor.
      */
-    protoAtLeast(major: number): boolean;
+    protoAtLeast(major: number): boolean
   }
   interface Response {
     /**
@@ -15195,7 +15179,7 @@ namespace http {
      *
      * The Response Body is closed after it is sent.
      */
-    write(w: io.Writer): void;
+    write(w: io.Writer): void
   }
   /**
    * A Handler responds to an HTTP request.
@@ -15224,7 +15208,7 @@ namespace http {
    * an error, panic with the value ErrAbortHandler.
    */
   interface Handler {
-    serveHTTP(_arg0: ResponseWriter, _arg1: Request): void;
+    serveHTTP(_arg0: ResponseWriter, _arg1: Request): void
   }
   /**
    * A ConnState represents the state of a client connection to a server.
@@ -15232,7 +15216,7 @@ namespace http {
    */
   interface ConnState extends Number {}
   interface ConnState {
-    string(): string;
+    string(): string
   }
 }
 
@@ -15261,18 +15245,18 @@ namespace oauth2 {
      * AccessToken is the token that authorizes and authenticates
      * the requests.
      */
-    accessToken: string;
+    accessToken: string
     /**
      * TokenType is the type of token.
      * The Type method returns either this or "Bearer", the default.
      */
-    tokenType: string;
+    tokenType: string
     /**
      * RefreshToken is a token that's used by the application
      * (as opposed to the user) to refresh the access token
      * if it expires.
      */
-    refreshToken: string;
+    refreshToken: string
     /**
      * Expiry is the optional expiration time of the access token.
      *
@@ -15280,13 +15264,13 @@ namespace oauth2 {
      * token forever and RefreshToken or equivalent
      * mechanisms for that TokenSource will not be used.
      */
-    expiry: time.Time;
+    expiry: time.Time
   }
   interface Token {
     /**
      * Type returns t.TokenType if non-empty, else "Bearer".
      */
-    type(): string;
+    type(): string
   }
   interface Token {
     /**
@@ -15296,7 +15280,7 @@ namespace oauth2 {
      * This method is unnecessary when using Transport or an HTTP Client
      * returned by this package.
      */
-    setAuthHeader(r: http.Request): void;
+    setAuthHeader(r: http.Request): void
   }
   interface Token {
     /**
@@ -15304,7 +15288,7 @@ namespace oauth2 {
      * provided raw extra map. This is only intended for use by packages
      * implementing derivative OAuth2 flows.
      */
-    withExtra(extra: {}): Token | undefined;
+    withExtra(extra: {}): Token | undefined
   }
   interface Token {
     /**
@@ -15312,13 +15296,13 @@ namespace oauth2 {
      * Extra fields are key-value pairs returned by the server as a
      * part of the token retrieval response.
      */
-    extra(key: string): {};
+    extra(key: string): {}
   }
   interface Token {
     /**
      * Valid reports whether t is non-nil, has an AccessToken, and is not expired.
      */
-    valid(): boolean;
+    valid(): boolean
   }
 }
 
@@ -15332,19 +15316,19 @@ namespace store {
      * Reset clears the store and replaces the store data with a
      * shallow copy of the provided newData.
      */
-    reset(newData: _TygojaDict): void;
+    reset(newData: _TygojaDict): void
   }
   interface Store<T> {
     /**
      * Length returns the current number of elements in the store.
      */
-    length(): number;
+    length(): number
   }
   interface Store<T> {
     /**
      * RemoveAll removes all the existing store entries.
      */
-    removeAll(): void;
+    removeAll(): void
   }
   interface Store<T> {
     /**
@@ -15352,13 +15336,13 @@ namespace store {
      *
      * Remove does nothing if key doesn't exist in the store.
      */
-    remove(key: string): void;
+    remove(key: string): void
   }
   interface Store<T> {
     /**
      * Has checks if element with the specified key exist or not.
      */
-    has(key: string): boolean;
+    has(key: string): boolean
   }
   interface Store<T> {
     /**
@@ -15366,19 +15350,19 @@ namespace store {
      *
      * If key is not set, the zero T value is returned.
      */
-    get(key: string): T;
+    get(key: string): T
   }
   interface Store<T> {
     /**
      * GetAll returns a shallow copy of the current store data.
      */
-    getAll(): _TygojaDict;
+    getAll(): _TygojaDict
   }
   interface Store<T> {
     /**
      * Set sets (or overwrite if already exist) a new value for key.
      */
-    set(key: string, value: T): void;
+    set(key: string, value: T): void
   }
   interface Store<T> {
     /**
@@ -15388,7 +15372,7 @@ namespace store {
      * to the store if the store length has reached the specified limit.
      * false is returned if maxAllowedElements limit is reached.
      */
-    setIfLessThanLimit(key: string, value: T, maxAllowedElements: number): boolean;
+    setIfLessThanLimit(key: string, value: T, maxAllowedElements: number): boolean
   }
 }
 
@@ -15400,7 +15384,7 @@ namespace mailer {
     /**
      * Send sends an email with the provided Message.
      */
-    send(message: Message): void;
+    send(message: Message): void
   }
 }
 
@@ -15449,7 +15433,7 @@ namespace echo {
    * Binder is the interface that wraps the Bind method.
    */
   interface Binder {
-    bind(c: Context, i: {}): void;
+    bind(c: Context, i: {}): void
   }
   /**
    * ServableContext is interface that Echo context implementation must implement to be usable in middleware/handlers and
@@ -15461,34 +15445,34 @@ namespace echo {
      * with `Echo#AcquireContext()` and `Echo#ReleaseContext()`.
      * See `Echo#ServeHTTP()`
      */
-    reset(r: http.Request, w: http.ResponseWriter): void;
+    reset(r: http.Request, w: http.ResponseWriter): void
   }
   // @ts-ignore
-  import stdContext = context;
+  import stdContext = context
   /**
    * JSONSerializer is the interface that encodes and decodes JSON to and from interfaces.
    */
   interface JSONSerializer {
-    serialize(c: Context, i: {}, indent: string): void;
-    deserialize(c: Context, i: {}): void;
+    serialize(c: Context, i: {}, indent: string): void
+    deserialize(c: Context, i: {}): void
   }
   /**
    * HTTPErrorHandler is a centralized HTTP error handler.
    */
   interface HTTPErrorHandler {
-    (c: Context, err: Error): void;
+    (c: Context, err: Error): void
   }
   /**
    * Validator is the interface that wraps the Validate function.
    */
   interface Validator {
-    validate(i: {}): void;
+    validate(i: {}): void
   }
   /**
    * Renderer is the interface that wraps the Render function.
    */
   interface Renderer {
-    render(_arg0: io.Writer, _arg1: string, _arg2: {}, _arg3: Context): void;
+    render(_arg0: io.Writer, _arg1: string, _arg2: {}, _arg3: Context): void
   }
   /**
    * Group is a set of sub-routes for a specified route. It can be used for inner
@@ -15501,78 +15485,73 @@ namespace echo {
      * Use implements `Echo#Use()` for sub-routes within the Group.
      * Group middlewares are not executed on request when there is no matching route found.
      */
-    use(...middleware: MiddlewareFunc[]): void;
+    use(...middleware: MiddlewareFunc[]): void
   }
   interface Group {
     /**
      * CONNECT implements `Echo#CONNECT()` for sub-routes within the Group. Panics on error.
      */
-    connect(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    connect(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * DELETE implements `Echo#DELETE()` for sub-routes within the Group. Panics on error.
      */
-    delete(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    delete(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * GET implements `Echo#GET()` for sub-routes within the Group. Panics on error.
      */
-    get(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    get(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * HEAD implements `Echo#HEAD()` for sub-routes within the Group. Panics on error.
      */
-    head(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    head(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * OPTIONS implements `Echo#OPTIONS()` for sub-routes within the Group. Panics on error.
      */
-    options(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    options(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * PATCH implements `Echo#PATCH()` for sub-routes within the Group. Panics on error.
      */
-    patch(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    patch(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * POST implements `Echo#POST()` for sub-routes within the Group. Panics on error.
      */
-    post(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    post(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * PUT implements `Echo#PUT()` for sub-routes within the Group. Panics on error.
      */
-    put(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    put(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * TRACE implements `Echo#TRACE()` for sub-routes within the Group. Panics on error.
      */
-    trace(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    trace(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * Any implements `Echo#Any()` for sub-routes within the Group. Panics on error.
      */
-    any(path: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): Routes;
+    any(path: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): Routes
   }
   interface Group {
     /**
      * Match implements `Echo#Match()` for sub-routes within the Group. Panics on error.
      */
-    match(
-      methods: Array<string>,
-      path: string,
-      handler: HandlerFunc,
-      ...middleware: MiddlewareFunc[]
-    ): Routes;
+    match(methods: Array<string>, path: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): Routes
   }
   interface Group {
     /**
@@ -15581,13 +15560,13 @@ namespace echo {
      * for 404 (not found) or 405 (method not allowed) cases. If this kind of behaviour is needed then add
      * a catch-all route `/*` for the group which handler returns always 404
      */
-    group(prefix: string, ...middleware: MiddlewareFunc[]): Group | undefined;
+    group(prefix: string, ...middleware: MiddlewareFunc[]): Group | undefined
   }
   interface Group {
     /**
      * Static implements `Echo#Static()` for sub-routes within the Group.
      */
-    static(pathPrefix: string): RouteInfo;
+    static(pathPrefix: string): RouteInfo
   }
   interface Group {
     /**
@@ -15597,19 +15576,19 @@ namespace echo {
      * prefix for directory path. This is necessary as `//go:embed assets/images` embeds files with paths
      * including `assets/images` as their prefix.
      */
-    staticFS(pathPrefix: string, filesystem: fs.FS): RouteInfo;
+    staticFS(pathPrefix: string, filesystem: fs.FS): RouteInfo
   }
   interface Group {
     /**
      * FileFS implements `Echo#FileFS()` for sub-routes within the Group.
      */
-    fileFS(path: string, filesystem: fs.FS, ...m: MiddlewareFunc[]): RouteInfo;
+    fileFS(path: string, filesystem: fs.FS, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * File implements `Echo#File()` for sub-routes within the Group. Panics on error.
      */
-    file(path: string, ...middleware: MiddlewareFunc[]): RouteInfo;
+    file(path: string, ...middleware: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
@@ -15617,19 +15596,19 @@ namespace echo {
      *
      * Example: `g.RouteNotFound("/*", func(c echo.Context) error { return c.NoContent(http.StatusNotFound) })`
      */
-    routeNotFound(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo;
+    routeNotFound(path: string, h: HandlerFunc, ...m: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * Add implements `Echo#Add()` for sub-routes within the Group. Panics on error.
      */
-    add(method: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): RouteInfo;
+    add(method: string, handler: HandlerFunc, ...middleware: MiddlewareFunc[]): RouteInfo
   }
   interface Group {
     /**
      * AddRoute registers a new Routable with Router
      */
-    addRoute(route: Routable): RouteInfo;
+    addRoute(route: Routable): RouteInfo
   }
   /**
    * IPExtractor is a function to extract IP addr from http.Request.
@@ -15637,7 +15616,7 @@ namespace echo {
    * See https://echo.labstack.com/guide/ip-address for more details.
    */
   interface IPExtractor {
-    (_arg0: http.Request): string;
+    (_arg0: http.Request): string
   }
   /**
    * Logger defines the logging interface that Echo uses internally in few places.
@@ -15650,11 +15629,11 @@ namespace echo {
      * and underlying FileSystem errors.
      * `logger` middleware will use this method to write its JSON payload.
      */
-    write(p: string): number;
+    write(p: string): number
     /**
      * Error logs the error
      */
-    error(err: Error): void;
+    error(err: Error): void
   }
   /**
    * Response wraps an http.ResponseWriter and implements its interface to be used
@@ -15662,10 +15641,10 @@ namespace echo {
    * See: https://golang.org/pkg/net/http/#ResponseWriter
    */
   interface Response {
-    writer: http.ResponseWriter;
-    status: number;
-    size: number;
-    committed: boolean;
+    writer: http.ResponseWriter
+    status: number
+    size: number
+    committed: boolean
   }
   interface Response {
     /**
@@ -15676,20 +15655,20 @@ namespace echo {
      * To suppress implicit response headers, set their value to nil.
      * Example: https://golang.org/pkg/net/http/#example_ResponseWriter_trailers
      */
-    header(): http.Header;
+    header(): http.Header
   }
   interface Response {
     /**
      * Before registers a function which is called just before the response is written.
      */
-    before(fn: () => void): void;
+    before(fn: () => void): void
   }
   interface Response {
     /**
      * After registers a function which is called just after the response is written.
      * If the `Content-Length` is unknown, none of the after function is executed.
      */
-    after(fn: () => void): void;
+    after(fn: () => void): void
   }
   interface Response {
     /**
@@ -15698,13 +15677,13 @@ namespace echo {
      * WriteHeader(http.StatusOK). Thus explicit calls to WriteHeader are mainly
      * used to send error codes.
      */
-    writeHeader(code: number): void;
+    writeHeader(code: number): void
   }
   interface Response {
     /**
      * Write writes the data to the connection as part of an HTTP reply.
      */
-    write(b: string): number;
+    write(b: string): number
   }
   interface Response {
     /**
@@ -15712,7 +15691,7 @@ namespace echo {
      * buffered data to the client.
      * See [http.Flusher](https://golang.org/pkg/net/http/#Flusher)
      */
-    flush(): void;
+    flush(): void
   }
   interface Response {
     /**
@@ -15720,7 +15699,7 @@ namespace echo {
      * take over the connection.
      * See [http.Hijacker](https://golang.org/pkg/net/http/#Hijacker)
      */
-    hijack(): [net.Conn, bufio.ReadWriter | undefined];
+    hijack(): [net.Conn, bufio.ReadWriter | undefined]
   }
   interface Response {
     /**
@@ -15728,37 +15707,37 @@ namespace echo {
      * ResponseController can be used to access the original http.ResponseWriter.
      * See [https://go.dev/blog/go1.20]
      */
-    unwrap(): http.ResponseWriter;
+    unwrap(): http.ResponseWriter
   }
   interface Routes {
     /**
      * Reverse reverses route to URL string by replacing path parameters with given params values.
      */
-    reverse(name: string, ...params: {}[]): string;
+    reverse(name: string, ...params: {}[]): string
   }
   interface Routes {
     /**
      * FindByMethodPath searched for matching route info by method and path
      */
-    findByMethodPath(method: string, path: string): RouteInfo;
+    findByMethodPath(method: string, path: string): RouteInfo
   }
   interface Routes {
     /**
      * FilterByMethod searched for matching route info by method
      */
-    filterByMethod(method: string): Routes;
+    filterByMethod(method: string): Routes
   }
   interface Routes {
     /**
      * FilterByPath searched for matching route info by path
      */
-    filterByPath(path: string): Routes;
+    filterByPath(path: string): Routes
   }
   interface Routes {
     /**
      * FilterByName searched for matching route info by name
      */
-    filterByName(name: string): Routes;
+    filterByName(name: string): Routes
   }
   /**
    * Router is interface for routing request contexts to registered routes.
@@ -15778,21 +15757,21 @@ namespace echo {
     /**
      * Add registers Routable with the Router and returns registered RouteInfo
      */
-    add(routable: Routable): RouteInfo;
+    add(routable: Routable): RouteInfo
     /**
      * Remove removes route from the Router
      */
-    remove(method: string, path: string): void;
+    remove(method: string, path: string): void
     /**
      * Routes returns information about all registered routes
      */
-    routes(): Routes;
+    routes(): Routes
     /**
      * Route searches Router for matching route and applies it to the given context. In case when no matching method
      * was not found (405) or no matching route exists for path (404), router will return its implementation of 405/404
      * handler function.
      */
-    route(c: RoutableContext): HandlerFunc;
+    route(c: RoutableContext): HandlerFunc
   }
   /**
    * Routable is interface for registering Route with Router. During route registration process the Router will
@@ -15806,21 +15785,21 @@ namespace echo {
      * This method is meant to be used by Router after it parses url for path parameters, to store information about
      * route just added.
      */
-    toRouteInfo(params: Array<string>): RouteInfo;
+    toRouteInfo(params: Array<string>): RouteInfo
     /**
      * ToRoute converts Routable to Route which Router uses to register the method handler for path.
      *
      * This method is meant to be used by Router to get fields (including handler and middleware functions) needed to
      * add Route to Router.
      */
-    toRoute(): Route;
+    toRoute(): Route
     /**
      * ForGroup recreates routable with added group prefix and group middlewares it is grouped to.
      *
      * Is necessary for Echo.Group to be able to add/register Routable with Router and having group prefix and group
      * middlewares included in actually registered Route.
      */
-    forGroup(pathPrefix: string, middlewares: Array<MiddlewareFunc>): Routable;
+    forGroup(pathPrefix: string, middlewares: Array<MiddlewareFunc>): Routable
   }
   /**
    * Routes is collection of RouteInfo instances with various helper methods.
@@ -15831,14 +15810,14 @@ namespace echo {
    * Method+Path pair uniquely identifies the Route. Name can have duplicates.
    */
   interface RouteInfo {
-    method(): string;
-    path(): string;
-    name(): string;
-    params(): Array<string>;
+    method(): string
+    path(): string
+    name(): string
+    params(): Array<string>
     /**
      * Reverse reverses route to URL string by replacing path parameters with given params values.
      */
-    reverse(...params: {}[]): string;
+    reverse(...params: {}[]): string
   }
   /**
    * PathParams is collections of PathParam instances with various helper methods
@@ -15848,7 +15827,7 @@ namespace echo {
     /**
      * Get returns path parameter value for given name or default value.
      */
-    get(name: string, defaultValue: string): string;
+    get(name: string, defaultValue: string): string
   }
 }
 
@@ -15874,27 +15853,27 @@ namespace sql {
     /**
      * String returns the name of the transaction isolation level.
      */
-    string(): string;
+    string(): string
   }
   /**
    * DBStats contains database statistics.
    */
   interface DBStats {
-    maxOpenConnections: number; // Maximum number of open connections to the database.
+    maxOpenConnections: number // Maximum number of open connections to the database.
     /**
      * Pool Status
      */
-    openConnections: number; // The number of established connections both in use and idle.
-    inUse: number; // The number of connections currently in use.
-    idle: number; // The number of idle connections.
+    openConnections: number // The number of established connections both in use and idle.
+    inUse: number // The number of connections currently in use.
+    idle: number // The number of idle connections.
     /**
      * Counters
      */
-    waitCount: number; // The total number of connections waited for.
-    waitDuration: time.Duration; // The total time blocked waiting for a new connection.
-    maxIdleClosed: number; // The total number of connections closed due to SetMaxIdleConns.
-    maxIdleTimeClosed: number; // The total number of connections closed due to SetConnMaxIdleTime.
-    maxLifetimeClosed: number; // The total number of connections closed due to SetConnMaxLifetime.
+    waitCount: number // The total number of connections waited for.
+    waitDuration: time.Duration // The total time blocked waiting for a new connection.
+    maxIdleClosed: number // The total number of connections closed due to SetMaxIdleConns.
+    maxIdleTimeClosed: number // The total number of connections closed due to SetConnMaxIdleTime.
+    maxLifetimeClosed: number // The total number of connections closed due to SetConnMaxLifetime.
   }
   /**
    * Conn represents a single database connection rather than a pool of database
@@ -15912,21 +15891,21 @@ namespace sql {
     /**
      * PingContext verifies the connection to the database is still alive.
      */
-    pingContext(ctx: context.Context): void;
+    pingContext(ctx: context.Context): void
   }
   interface Conn {
     /**
      * ExecContext executes a query without returning any rows.
      * The args are for any placeholder parameters in the query.
      */
-    execContext(ctx: context.Context, query: string, ...args: any[]): Result;
+    execContext(ctx: context.Context, query: string, ...args: any[]): Result
   }
   interface Conn {
     /**
      * QueryContext executes a query that returns rows, typically a SELECT.
      * The args are for any placeholder parameters in the query.
      */
-    queryContext(ctx: context.Context, query: string, ...args: any[]): Rows | undefined;
+    queryContext(ctx: context.Context, query: string, ...args: any[]): Rows | undefined
   }
   interface Conn {
     /**
@@ -15937,7 +15916,7 @@ namespace sql {
      * Otherwise, the *Row's Scan scans the first selected row and discards
      * the rest.
      */
-    queryRowContext(ctx: context.Context, query: string, ...args: any[]): Row | undefined;
+    queryRowContext(ctx: context.Context, query: string, ...args: any[]): Row | undefined
   }
   interface Conn {
     /**
@@ -15950,7 +15929,7 @@ namespace sql {
      * The provided context is used for the preparation of the statement, not for the
      * execution of the statement.
      */
-    prepareContext(ctx: context.Context, query: string): Stmt | undefined;
+    prepareContext(ctx: context.Context, query: string): Stmt | undefined
   }
   interface Conn {
     /**
@@ -15960,7 +15939,7 @@ namespace sql {
      * Once f returns and err is not driver.ErrBadConn, the Conn will continue to be usable
      * until Conn.Close is called.
      */
-    raw(f: (driverConn: any) => void): void;
+    raw(f: (driverConn: any) => void): void
   }
   interface Conn {
     /**
@@ -15975,7 +15954,7 @@ namespace sql {
      * If a non-default isolation level is used that the driver doesn't support,
      * an error will be returned.
      */
-    beginTx(ctx: context.Context, opts: TxOptions): Tx | undefined;
+    beginTx(ctx: context.Context, opts: TxOptions): Tx | undefined
   }
   interface Conn {
     /**
@@ -15985,7 +15964,7 @@ namespace sql {
      * block until all other operations finish. It may be useful to first
      * cancel any used context and then call close directly after.
      */
-    close(): void;
+    close(): void
   }
   /**
    * ColumnType contains the name and type of a column.
@@ -15995,7 +15974,7 @@ namespace sql {
     /**
      * Name returns the name or alias of the column.
      */
-    name(): string;
+    name(): string
   }
   interface ColumnType {
     /**
@@ -16005,14 +15984,14 @@ namespace sql {
      * If the column type is not variable length, such as an int, or if not supported
      * by the driver ok is false.
      */
-    length(): [number, boolean];
+    length(): [number, boolean]
   }
   interface ColumnType {
     /**
      * DecimalSize returns the scale and precision of a decimal type.
      * If not applicable or if not supported ok is false.
      */
-    decimalSize(): [number, boolean];
+    decimalSize(): [number, boolean]
   }
   interface ColumnType {
     /**
@@ -16020,14 +15999,14 @@ namespace sql {
      * If a driver does not support this property ScanType will return
      * the type of an empty interface.
      */
-    scanType(): any;
+    scanType(): any
   }
   interface ColumnType {
     /**
      * Nullable reports whether the column may be null.
      * If a driver does not support this property ok will be false.
      */
-    nullable(): boolean;
+    nullable(): boolean
   }
   interface ColumnType {
     /**
@@ -16038,7 +16017,7 @@ namespace sql {
      * Common type names include "VARCHAR", "TEXT", "NVARCHAR", "DECIMAL", "BOOL",
      * "INT", and "BIGINT".
      */
-    databaseTypeName(): string;
+    databaseTypeName(): string
   }
   /**
    * Row is the result of calling QueryRow to select a single row.
@@ -16052,7 +16031,7 @@ namespace sql {
      * Scan uses the first row and discards the rest. If no row matches
      * the query, Scan returns ErrNoRows.
      */
-    scan(...dest: any[]): void;
+    scan(...dest: any[]): void
   }
   interface Row {
     /**
@@ -16061,7 +16040,7 @@ namespace sql {
      * Err returns the error, if any, that was encountered while running the query.
      * If this error is not nil, this error will also be returned from Scan.
      */
-    err(): void;
+    err(): void
   }
 }
 
@@ -16079,13 +16058,13 @@ namespace types {
     /**
      * Time returns the internal [time.Time] instance.
      */
-    time(): time.Time;
+    time(): time.Time
   }
   interface DateTime {
     /**
      * IsZero checks whether the current DateTime instance has zero time value.
      */
-    isZero(): boolean;
+    isZero(): boolean
   }
   interface DateTime {
     /**
@@ -16094,93 +16073,93 @@ namespace types {
      *
      * The zero value is serialized to an empty string.
      */
-    string(): string;
+    string(): string
   }
   interface DateTime {
     /**
      * MarshalJSON implements the [json.Marshaler] interface.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface DateTime {
     /**
      * UnmarshalJSON implements the [json.Unmarshaler] interface.
      */
-    unmarshalJSON(b: string): void;
+    unmarshalJSON(b: string): void
   }
   interface DateTime {
     /**
      * Value implements the [driver.Valuer] interface.
      */
-    value(): any;
+    value(): any
   }
   interface DateTime {
     /**
      * Scan implements [sql.Scanner] interface to scan the provided value
      * into the current DateTime instance.
      */
-    scan(value: any): void;
+    scan(value: any): void
   }
 }
 
 namespace settings {
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   interface TokenConfig {
-    secret: string;
-    duration: number;
+    secret: string
+    duration: number
   }
   interface TokenConfig {
     /**
      * Validate makes TokenConfig validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface SmtpConfig {
-    enabled: boolean;
-    host: string;
-    port: number;
-    username: string;
-    password: string;
+    enabled: boolean
+    host: string
+    port: number
+    username: string
+    password: string
     /**
      * SMTP AUTH - PLAIN (default) or LOGIN
      */
-    authMethod: string;
+    authMethod: string
     /**
      * Whether to enforce TLS encryption for the mail server connection.
      *
      * When set to false StartTLS command is send, leaving the server
      * to decide whether to upgrade the connection or not.
      */
-    tls: boolean;
+    tls: boolean
     /**
      * LocalName is optional domain name or IP address used for the
      * EHLO/HELO exchange (if not explicitly set, defaults to "localhost").
      *
      * This is required only by some SMTP servers, such as Gmail SMTP-relay.
      */
-    localName: string;
+    localName: string
   }
   interface SmtpConfig {
     /**
      * Validate makes SmtpConfig validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface S3Config {
-    enabled: boolean;
-    bucket: string;
-    region: string;
-    endpoint: string;
-    accessKey: string;
-    secret: string;
-    forcePathStyle: boolean;
+    enabled: boolean
+    bucket: string
+    region: string
+    endpoint: string
+    accessKey: string
+    secret: string
+    forcePathStyle: boolean
   }
   interface S3Config {
     /**
      * Validate makes S3Config validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface BackupsConfig {
     /**
@@ -16188,84 +16167,84 @@ namespace settings {
      *
      * Leave it empty to disable the auto backups functionality.
      */
-    cron: string;
+    cron: string
     /**
      * CronMaxKeep is the the max number of cron generated backups to
      * keep before removing older entries.
      *
      * This field works only when the cron config has valid cron expression.
      */
-    cronMaxKeep: number;
+    cronMaxKeep: number
     /**
      * S3 is an optional S3 storage config specifying where to store the app backups.
      */
-    s3: S3Config;
+    s3: S3Config
   }
   interface BackupsConfig {
     /**
      * Validate makes BackupsConfig validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface MetaConfig {
-    appName: string;
-    appUrl: string;
-    hideControls: boolean;
-    senderName: string;
-    senderAddress: string;
-    verificationTemplate: EmailTemplate;
-    resetPasswordTemplate: EmailTemplate;
-    confirmEmailChangeTemplate: EmailTemplate;
+    appName: string
+    appUrl: string
+    hideControls: boolean
+    senderName: string
+    senderAddress: string
+    verificationTemplate: EmailTemplate
+    resetPasswordTemplate: EmailTemplate
+    confirmEmailChangeTemplate: EmailTemplate
   }
   interface MetaConfig {
     /**
      * Validate makes MetaConfig validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface LogsConfig {
-    maxDays: number;
+    maxDays: number
   }
   interface LogsConfig {
     /**
      * Validate makes LogsConfig validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface AuthProviderConfig {
-    enabled: boolean;
-    clientId: string;
-    clientSecret: string;
-    authUrl: string;
-    tokenUrl: string;
-    userApiUrl: string;
+    enabled: boolean
+    clientId: string
+    clientSecret: string
+    authUrl: string
+    tokenUrl: string
+    userApiUrl: string
   }
   interface AuthProviderConfig {
     /**
      * Validate makes `ProviderConfig` validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface AuthProviderConfig {
     /**
      * SetupProvider loads the current AuthProviderConfig into the specified provider.
      */
-    setupProvider(provider: auth.Provider): void;
+    setupProvider(provider: auth.Provider): void
   }
   /**
    * Deprecated: Will be removed in v0.9+
    */
   interface EmailAuthConfig {
-    enabled: boolean;
-    exceptDomains: Array<string>;
-    onlyDomains: Array<string>;
-    minPasswordLength: number;
+    enabled: boolean
+    exceptDomains: Array<string>
+    onlyDomains: Array<string>
+    minPasswordLength: number
   }
   interface EmailAuthConfig {
     /**
      * Deprecated: Will be removed in v0.9+
      */
-    validate(): void;
+    validate(): void
   }
 }
 
@@ -16281,7 +16260,7 @@ namespace hook {
      *
      * Returns an autogenerated hook id that could be used later to remove the hook with Hook.Remove(id).
      */
-    preAdd(fn: Handler<T>): string;
+    preAdd(fn: Handler<T>): string
   }
   interface Hook<T> {
     /**
@@ -16289,19 +16268,19 @@ namespace hook {
      *
      * Returns an autogenerated hook id that could be used later to remove the hook with Hook.Remove(id).
      */
-    add(fn: Handler<T>): string;
+    add(fn: Handler<T>): string
   }
   interface Hook<T> {
     /**
      * Remove removes a single hook handler by its id.
      */
-    remove(id: string): void;
+    remove(id: string): void
   }
   interface Hook<T> {
     /**
      * RemoveAll removes all registered handlers.
      */
-    removeAll(): void;
+    removeAll(): void
   }
   interface Hook<T> {
     /**
@@ -16315,20 +16294,20 @@ namespace hook {
      * - hook.StopPropagation is returned in one of the handlers
      * - any non-nil error is returned in one of the handlers
      */
-    trigger(data: T, ...oneOffHandlers: Handler<T>[]): void;
+    trigger(data: T, ...oneOffHandlers: Handler<T>[]): void
   }
   /**
    * TaggedHook defines a proxy hook which register handlers that are triggered only
    * if the TaggedHook.tags are empty or includes at least one of the event data tag(s).
    */
-  type _subJagJo<T> = mainHook<T>;
+  type _subJagJo<T> = mainHook<T>
   interface TaggedHook<T> extends _subJagJo<T> {}
   interface TaggedHook<T> {
     /**
      * CanTriggerOn checks if the current TaggedHook can be triggered with
      * the provided event data tags.
      */
-    canTriggerOn(tags: Array<string>): boolean;
+    canTriggerOn(tags: Array<string>): boolean
   }
   interface TaggedHook<T> {
     /**
@@ -16336,7 +16315,7 @@ namespace hook {
      *
      * The fn handler will be called only if the event data tags satisfy h.CanTriggerOn.
      */
-    preAdd(fn: Handler<T>): string;
+    preAdd(fn: Handler<T>): string
   }
   interface TaggedHook<T> {
     /**
@@ -16344,7 +16323,7 @@ namespace hook {
      *
      * The fn handler will be called only if the event data tags satisfy h.CanTriggerOn.
      */
-    add(fn: Handler<T>): string;
+    add(fn: Handler<T>): string
   }
 }
 
@@ -16358,7 +16337,7 @@ namespace subscriptions {
      * Clients returns a shallow copy of all registered clients indexed
      * with their connection id.
      */
-    clients(): _TygojaDict;
+    clients(): _TygojaDict
   }
   interface Broker {
     /**
@@ -16366,13 +16345,13 @@ namespace subscriptions {
      *
      * Returns non-nil error when client with clientId is not registered.
      */
-    clientById(clientId: string): Client;
+    clientById(clientId: string): Client
   }
   interface Broker {
     /**
      * Register adds a new client to the broker instance.
      */
-    register(client: Client): void;
+    register(client: Client): void
   }
   interface Broker {
     /**
@@ -16380,7 +16359,7 @@ namespace subscriptions {
      *
      * If client with clientId doesn't exist, this method does nothing.
      */
-    unregister(clientId: string): void;
+    unregister(clientId: string): void
   }
 }
 
@@ -16390,10 +16369,10 @@ namespace subscriptions {
  */
 namespace cobra {
   interface PositionalArgs {
-    (cmd: Command, args: Array<string>): void;
+    (cmd: Command, args: Array<string>): void
   }
   // @ts-ignore
-  import flag = pflag;
+  import flag = pflag
   /**
    * FParseErrWhitelist configures Flag parse errors to be ignored
    */
@@ -16402,8 +16381,8 @@ namespace cobra {
    * Group Structure to manage groups for commands
    */
   interface Group {
-    id: string;
-    title: string;
+    id: string
+    title: string
   }
   /**
    * ShellCompDirective is a bit map representing the different behaviors the shell
@@ -16417,21 +16396,21 @@ namespace cobra {
     /**
      * DisableDefaultCmd prevents Cobra from creating a default 'completion' command
      */
-    disableDefaultCmd: boolean;
+    disableDefaultCmd: boolean
     /**
      * DisableNoDescFlag prevents Cobra from creating the '--no-descriptions' flag
      * for shells that support completion descriptions
      */
-    disableNoDescFlag: boolean;
+    disableNoDescFlag: boolean
     /**
      * DisableDescriptions turns off all completion descriptions for shells
      * that support them
      */
-    disableDescriptions: boolean;
+    disableDescriptions: boolean
     /**
      * HiddenDefaultCmd makes the default 'completion' command hidden
      */
-    hiddenDefaultCmd: boolean;
+    hiddenDefaultCmd: boolean
   }
 }
 
@@ -16441,45 +16420,45 @@ namespace cobra {
  */
 namespace schema {
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   /**
    * SchemaField defines a single schema field structure.
    */
   interface SchemaField {
-    system: boolean;
-    id: string;
-    name: string;
-    type: string;
-    required: boolean;
+    system: boolean
+    id: string
+    name: string
+    type: string
+    required: boolean
     /**
      * Presentable indicates whether the field is suitable for
      * visualization purposes (eg. in the Admin UI relation views).
      */
-    presentable: boolean;
+    presentable: boolean
     /**
      * Deprecated: This field is no-op and will be removed in future versions.
      * Please use the collection.Indexes field to define a unique constraint.
      */
-    unique: boolean;
-    options: any;
+    unique: boolean
+    options: any
   }
   interface SchemaField {
     /**
      * ColDefinition returns the field db column type definition as string.
      */
-    colDefinition(): string;
+    colDefinition(): string
   }
   interface SchemaField {
     /**
      * String serializes and returns the current field as string.
      */
-    string(): string;
+    string(): string
   }
   interface SchemaField {
     /**
      * MarshalJSON implements the [json.Marshaler] interface.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface SchemaField {
     /**
@@ -16487,13 +16466,13 @@ namespace schema {
      *
      * The schema field options are auto initialized on success.
      */
-    unmarshalJSON(data: string): void;
+    unmarshalJSON(data: string): void
   }
   interface SchemaField {
     /**
      * Validate makes `SchemaField` validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface SchemaField {
     /**
@@ -16501,28 +16480,28 @@ namespace schema {
      *
      * Returns error on unknown field type.
      */
-    initOptions(): void;
+    initOptions(): void
   }
   interface SchemaField {
     /**
      * PrepareValue returns normalized and properly formatted field value.
      */
-    prepareValue(value: any): any;
+    prepareValue(value: any): any
   }
   interface SchemaField {
     /**
      * PrepareValueWithModifier returns normalized and properly formatted field value
      * by "merging" baseValue with the modifierValue based on the specified modifier (+ or -).
      */
-    prepareValueWithModifier(baseValue: any, modifier: string, modifierValue: any): any;
+    prepareValueWithModifier(baseValue: any, modifier: string, modifierValue: any): any
   }
 }
 
 namespace migrate {
   interface Migration {
-    file: string;
-    up: (db: dbx.Builder) => void;
-    down: (db: dbx.Builder) => void;
+    file: string
+    up: (db: dbx.Builder) => void
+    down: (db: dbx.Builder) => void
   }
 }
 
@@ -16534,75 +16513,75 @@ namespace models {
    * Model defines an interface with common methods that all db models should have.
    */
   interface Model {
-    tableName(): string;
-    isNew(): boolean;
-    markAsNew(): void;
-    markAsNotNew(): void;
-    hasId(): boolean;
-    getId(): string;
-    setId(id: string): void;
-    getCreated(): types.DateTime;
-    getUpdated(): types.DateTime;
-    refreshId(): void;
-    refreshCreated(): void;
-    refreshUpdated(): void;
+    tableName(): string
+    isNew(): boolean
+    markAsNew(): void
+    markAsNotNew(): void
+    hasId(): boolean
+    getId(): string
+    setId(id: string): void
+    getCreated(): types.DateTime
+    getUpdated(): types.DateTime
+    refreshId(): void
+    refreshCreated(): void
+    refreshUpdated(): void
   }
   /**
    * BaseModel defines common fields and methods used by all other models.
    */
   interface BaseModel {
-    id: string;
-    created: types.DateTime;
-    updated: types.DateTime;
+    id: string
+    created: types.DateTime
+    updated: types.DateTime
   }
   interface BaseModel {
     /**
      * HasId returns whether the model has a nonzero id.
      */
-    hasId(): boolean;
+    hasId(): boolean
   }
   interface BaseModel {
     /**
      * GetId returns the model id.
      */
-    getId(): string;
+    getId(): string
   }
   interface BaseModel {
     /**
      * SetId sets the model id to the provided string value.
      */
-    setId(id: string): void;
+    setId(id: string): void
   }
   interface BaseModel {
     /**
      * MarkAsNew marks the model as "new" (aka. enforces m.IsNew() to be true).
      */
-    markAsNew(): void;
+    markAsNew(): void
   }
   interface BaseModel {
     /**
      * MarkAsNotNew marks the model as "not new" (aka. enforces m.IsNew() to be false)
      */
-    markAsNotNew(): void;
+    markAsNotNew(): void
   }
   interface BaseModel {
     /**
      * IsNew indicates what type of db query (insert or update)
      * should be used with the model instance.
      */
-    isNew(): boolean;
+    isNew(): boolean
   }
   interface BaseModel {
     /**
      * GetCreated returns the model Created datetime.
      */
-    getCreated(): types.DateTime;
+    getCreated(): types.DateTime
   }
   interface BaseModel {
     /**
      * GetUpdated returns the model Updated datetime.
      */
-    getUpdated(): types.DateTime;
+    getUpdated(): types.DateTime
   }
   interface BaseModel {
     /**
@@ -16610,19 +16589,19 @@ namespace models {
      *
      * The generated id is a cryptographically random 15 characters length string.
      */
-    refreshId(): void;
+    refreshId(): void
   }
   interface BaseModel {
     /**
      * RefreshCreated updates the model Created field with the current datetime.
      */
-    refreshCreated(): void;
+    refreshCreated(): void
   }
   interface BaseModel {
     /**
      * RefreshUpdated updates the model Updated field with the current datetime.
      */
-    refreshUpdated(): void;
+    refreshUpdated(): void
   }
   interface BaseModel {
     /**
@@ -16630,10 +16609,10 @@ namespace models {
      *
      * It is executed right after the model was populated with the db row values.
      */
-    postScan(): void;
+    postScan(): void
   }
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   /**
    * CollectionBaseOptions defines the "base" Collection.Options fields.
    */
@@ -16642,73 +16621,73 @@ namespace models {
     /**
      * Validate implements [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   /**
    * CollectionAuthOptions defines the "auth" Collection.Options fields.
    */
   interface CollectionAuthOptions {
-    manageRule?: string;
-    allowOAuth2Auth: boolean;
-    allowUsernameAuth: boolean;
-    allowEmailAuth: boolean;
-    requireEmail: boolean;
-    exceptEmailDomains: Array<string>;
-    onlyEmailDomains: Array<string>;
-    minPasswordLength: number;
+    manageRule?: string
+    allowOAuth2Auth: boolean
+    allowUsernameAuth: boolean
+    allowEmailAuth: boolean
+    requireEmail: boolean
+    exceptEmailDomains: Array<string>
+    onlyEmailDomains: Array<string>
+    minPasswordLength: number
   }
   interface CollectionAuthOptions {
     /**
      * Validate implements [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   /**
    * CollectionViewOptions defines the "view" Collection.Options fields.
    */
   interface CollectionViewOptions {
-    query: string;
+    query: string
   }
   interface CollectionViewOptions {
     /**
      * Validate implements [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
-  type _subIOcbA = BaseModel;
+  type _subIOcbA = BaseModel
   interface Param extends _subIOcbA {
-    key: string;
-    value: types.JsonRaw;
+    key: string
+    value: types.JsonRaw
   }
   interface Param {
-    tableName(): string;
+    tableName(): string
   }
-  type _subQlzoF = BaseModel;
+  type _subQlzoF = BaseModel
   interface Request extends _subQlzoF {
-    url: string;
-    method: string;
-    status: number;
-    auth: string;
-    userIp: string;
-    remoteIp: string;
-    referer: string;
-    userAgent: string;
-    meta: types.JsonMap;
+    url: string
+    method: string
+    status: number
+    auth: string
+    userIp: string
+    remoteIp: string
+    referer: string
+    userAgent: string
+    meta: types.JsonMap
   }
   interface Request {
-    tableName(): string;
+    tableName(): string
   }
   interface TableInfoRow {
     /**
      * the `db:"pk"` tag has special semantic so we cannot rename
      * the original field without specifying a custom mapper
      */
-    pk: number;
-    index: number;
-    name: string;
-    type: string;
-    notNull: boolean;
-    defaultValue: types.JsonRaw;
+    pk: number
+    index: number
+    name: string
+    type: string
+    notNull: boolean
+    defaultValue: types.JsonRaw
   }
 }
 
@@ -16722,13 +16701,13 @@ namespace daos {
    * ExpandFetchFunc defines the function that is used to fetch the expanded relation records.
    */
   interface ExpandFetchFunc {
-    (relCollection: models.Collection, relIds: Array<string>): Array<models.Record | undefined>;
+    (relCollection: models.Collection, relIds: Array<string>): Array<models.Record | undefined>
   }
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   interface RequestsStatsItem {
-    total: number;
-    date: types.DateTime;
+    total: number
+    date: types.DateTime
   }
 }
 
@@ -16739,245 +16718,245 @@ namespace daos {
  */
 namespace core {
   interface BootstrapEvent {
-    app: App;
+    app: App
   }
   interface TerminateEvent {
-    app: App;
+    app: App
   }
   interface ServeEvent {
-    app: App;
-    router?: echo.Echo;
-    server?: http.Server;
-    certManager?: any;
+    app: App
+    router?: echo.Echo
+    server?: http.Server
+    certManager?: any
   }
   interface ApiErrorEvent {
-    httpContext: echo.Context;
-    error: Error;
+    httpContext: echo.Context
+    error: Error
   }
-  type _subsrtcV = BaseModelEvent;
+  type _subsrtcV = BaseModelEvent
   interface ModelEvent extends _subsrtcV {
-    dao?: daos.Dao;
+    dao?: daos.Dao
   }
-  type _subEUrcd = BaseCollectionEvent;
+  type _subEUrcd = BaseCollectionEvent
   interface MailerRecordEvent extends _subEUrcd {
-    mailClient: mailer.Mailer;
-    message?: mailer.Message;
-    record?: models.Record;
-    meta: _TygojaDict;
+    mailClient: mailer.Mailer
+    message?: mailer.Message
+    record?: models.Record
+    meta: _TygojaDict
   }
   interface MailerAdminEvent {
-    mailClient: mailer.Mailer;
-    message?: mailer.Message;
-    admin?: models.Admin;
-    meta: _TygojaDict;
+    mailClient: mailer.Mailer
+    message?: mailer.Message
+    admin?: models.Admin
+    meta: _TygojaDict
   }
   interface RealtimeConnectEvent {
-    httpContext: echo.Context;
-    client: subscriptions.Client;
-    idleTimeout: time.Duration;
+    httpContext: echo.Context
+    client: subscriptions.Client
+    idleTimeout: time.Duration
   }
   interface RealtimeDisconnectEvent {
-    httpContext: echo.Context;
-    client: subscriptions.Client;
+    httpContext: echo.Context
+    client: subscriptions.Client
   }
   interface RealtimeMessageEvent {
-    httpContext: echo.Context;
-    client: subscriptions.Client;
-    message?: subscriptions.Message;
+    httpContext: echo.Context
+    client: subscriptions.Client
+    message?: subscriptions.Message
   }
   interface RealtimeSubscribeEvent {
-    httpContext: echo.Context;
-    client: subscriptions.Client;
-    subscriptions: Array<string>;
+    httpContext: echo.Context
+    client: subscriptions.Client
+    subscriptions: Array<string>
   }
   interface SettingsListEvent {
-    httpContext: echo.Context;
-    redactedSettings?: settings.Settings;
+    httpContext: echo.Context
+    redactedSettings?: settings.Settings
   }
   interface SettingsUpdateEvent {
-    httpContext: echo.Context;
-    oldSettings?: settings.Settings;
-    newSettings?: settings.Settings;
+    httpContext: echo.Context
+    oldSettings?: settings.Settings
+    newSettings?: settings.Settings
   }
-  type _subkFzUJ = BaseCollectionEvent;
+  type _subkFzUJ = BaseCollectionEvent
   interface RecordsListEvent extends _subkFzUJ {
-    httpContext: echo.Context;
-    records: Array<models.Record | undefined>;
-    result?: search.Result;
+    httpContext: echo.Context
+    records: Array<models.Record | undefined>
+    result?: search.Result
   }
-  type _subUlvkR = BaseCollectionEvent;
+  type _subUlvkR = BaseCollectionEvent
   interface RecordViewEvent extends _subUlvkR {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subtvilr = BaseCollectionEvent;
+  type _subtvilr = BaseCollectionEvent
   interface RecordCreateEvent extends _subtvilr {
-    httpContext: echo.Context;
-    record?: models.Record;
-    uploadedFiles: _TygojaDict;
+    httpContext: echo.Context
+    record?: models.Record
+    uploadedFiles: _TygojaDict
   }
-  type _subeBtxU = BaseCollectionEvent;
+  type _subeBtxU = BaseCollectionEvent
   interface RecordUpdateEvent extends _subeBtxU {
-    httpContext: echo.Context;
-    record?: models.Record;
-    uploadedFiles: _TygojaDict;
+    httpContext: echo.Context
+    record?: models.Record
+    uploadedFiles: _TygojaDict
   }
-  type _subiCCui = BaseCollectionEvent;
+  type _subiCCui = BaseCollectionEvent
   interface RecordDeleteEvent extends _subiCCui {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subGCcup = BaseCollectionEvent;
+  type _subGCcup = BaseCollectionEvent
   interface RecordAuthEvent extends _subGCcup {
-    httpContext: echo.Context;
-    record?: models.Record;
-    token: string;
-    meta: any;
+    httpContext: echo.Context
+    record?: models.Record
+    token: string
+    meta: any
   }
-  type _subCIVPf = BaseCollectionEvent;
+  type _subCIVPf = BaseCollectionEvent
   interface RecordAuthWithPasswordEvent extends _subCIVPf {
-    httpContext: echo.Context;
-    record?: models.Record;
-    identity: string;
-    password: string;
+    httpContext: echo.Context
+    record?: models.Record
+    identity: string
+    password: string
   }
-  type _subevZyU = BaseCollectionEvent;
+  type _subevZyU = BaseCollectionEvent
   interface RecordAuthWithOAuth2Event extends _subevZyU {
-    httpContext: echo.Context;
-    providerName: string;
-    providerClient: auth.Provider;
-    record?: models.Record;
-    oAuth2User?: auth.AuthUser;
-    isNewRecord: boolean;
+    httpContext: echo.Context
+    providerName: string
+    providerClient: auth.Provider
+    record?: models.Record
+    oAuth2User?: auth.AuthUser
+    isNewRecord: boolean
   }
-  type _subEIHlm = BaseCollectionEvent;
+  type _subEIHlm = BaseCollectionEvent
   interface RecordAuthRefreshEvent extends _subEIHlm {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subocsaO = BaseCollectionEvent;
+  type _subocsaO = BaseCollectionEvent
   interface RecordRequestPasswordResetEvent extends _subocsaO {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subRQfkB = BaseCollectionEvent;
+  type _subRQfkB = BaseCollectionEvent
   interface RecordConfirmPasswordResetEvent extends _subRQfkB {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subfPtyU = BaseCollectionEvent;
+  type _subfPtyU = BaseCollectionEvent
   interface RecordRequestVerificationEvent extends _subfPtyU {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subFFwpD = BaseCollectionEvent;
+  type _subFFwpD = BaseCollectionEvent
   interface RecordConfirmVerificationEvent extends _subFFwpD {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subiJqev = BaseCollectionEvent;
+  type _subiJqev = BaseCollectionEvent
   interface RecordRequestEmailChangeEvent extends _subiJqev {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subsJzlc = BaseCollectionEvent;
+  type _subsJzlc = BaseCollectionEvent
   interface RecordConfirmEmailChangeEvent extends _subsJzlc {
-    httpContext: echo.Context;
-    record?: models.Record;
+    httpContext: echo.Context
+    record?: models.Record
   }
-  type _subzMuOP = BaseCollectionEvent;
+  type _subzMuOP = BaseCollectionEvent
   interface RecordListExternalAuthsEvent extends _subzMuOP {
-    httpContext: echo.Context;
-    record?: models.Record;
-    externalAuths: Array<models.ExternalAuth | undefined>;
+    httpContext: echo.Context
+    record?: models.Record
+    externalAuths: Array<models.ExternalAuth | undefined>
   }
-  type _subROEhY = BaseCollectionEvent;
+  type _subROEhY = BaseCollectionEvent
   interface RecordUnlinkExternalAuthEvent extends _subROEhY {
-    httpContext: echo.Context;
-    record?: models.Record;
-    externalAuth?: models.ExternalAuth;
+    httpContext: echo.Context
+    record?: models.Record
+    externalAuth?: models.ExternalAuth
   }
   interface AdminsListEvent {
-    httpContext: echo.Context;
-    admins: Array<models.Admin | undefined>;
-    result?: search.Result;
+    httpContext: echo.Context
+    admins: Array<models.Admin | undefined>
+    result?: search.Result
   }
   interface AdminViewEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
+    httpContext: echo.Context
+    admin?: models.Admin
   }
   interface AdminCreateEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
+    httpContext: echo.Context
+    admin?: models.Admin
   }
   interface AdminUpdateEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
+    httpContext: echo.Context
+    admin?: models.Admin
   }
   interface AdminDeleteEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
+    httpContext: echo.Context
+    admin?: models.Admin
   }
   interface AdminAuthEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
-    token: string;
+    httpContext: echo.Context
+    admin?: models.Admin
+    token: string
   }
   interface AdminAuthWithPasswordEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
-    identity: string;
-    password: string;
+    httpContext: echo.Context
+    admin?: models.Admin
+    identity: string
+    password: string
   }
   interface AdminAuthRefreshEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
+    httpContext: echo.Context
+    admin?: models.Admin
   }
   interface AdminRequestPasswordResetEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
+    httpContext: echo.Context
+    admin?: models.Admin
   }
   interface AdminConfirmPasswordResetEvent {
-    httpContext: echo.Context;
-    admin?: models.Admin;
+    httpContext: echo.Context
+    admin?: models.Admin
   }
   interface CollectionsListEvent {
-    httpContext: echo.Context;
-    collections: Array<models.Collection | undefined>;
-    result?: search.Result;
+    httpContext: echo.Context
+    collections: Array<models.Collection | undefined>
+    result?: search.Result
   }
-  type _subfeVBA = BaseCollectionEvent;
+  type _subfeVBA = BaseCollectionEvent
   interface CollectionViewEvent extends _subfeVBA {
-    httpContext: echo.Context;
+    httpContext: echo.Context
   }
-  type _subQNEwU = BaseCollectionEvent;
+  type _subQNEwU = BaseCollectionEvent
   interface CollectionCreateEvent extends _subQNEwU {
-    httpContext: echo.Context;
+    httpContext: echo.Context
   }
-  type _subXGZiT = BaseCollectionEvent;
+  type _subXGZiT = BaseCollectionEvent
   interface CollectionUpdateEvent extends _subXGZiT {
-    httpContext: echo.Context;
+    httpContext: echo.Context
   }
-  type _subuGikm = BaseCollectionEvent;
+  type _subuGikm = BaseCollectionEvent
   interface CollectionDeleteEvent extends _subuGikm {
-    httpContext: echo.Context;
+    httpContext: echo.Context
   }
   interface CollectionsImportEvent {
-    httpContext: echo.Context;
-    collections: Array<models.Collection | undefined>;
+    httpContext: echo.Context
+    collections: Array<models.Collection | undefined>
   }
-  type _subxBPbB = BaseModelEvent;
+  type _subxBPbB = BaseModelEvent
   interface FileTokenEvent extends _subxBPbB {
-    httpContext: echo.Context;
-    token: string;
+    httpContext: echo.Context
+    token: string
   }
-  type _subYcWwE = BaseCollectionEvent;
+  type _subYcWwE = BaseCollectionEvent
   interface FileDownloadEvent extends _subYcWwE {
-    httpContext: echo.Context;
-    record?: models.Record;
-    fileField?: schema.SchemaField;
-    servedPath: string;
-    servedName: string;
+    httpContext: echo.Context
+    record?: models.Record
+    fileField?: schema.SchemaField
+    servedPath: string
+    servedName: string
   }
 }
 
@@ -16991,7 +16970,7 @@ namespace bufio {
    * ReadWriter stores pointers to a Reader and a Writer.
    * It implements io.ReadWriter.
    */
-  type _subaTKZU = Reader & Writer;
+  type _subaTKZU = Reader & Writer
   interface ReadWriter extends _subaTKZU {}
 }
 
@@ -17010,20 +16989,20 @@ namespace url {
     /**
      * Username returns the username.
      */
-    username(): string;
+    username(): string
   }
   interface Userinfo {
     /**
      * Password returns the password in case it is set, and whether it is set.
      */
-    password(): [string, boolean];
+    password(): [string, boolean]
   }
   interface Userinfo {
     /**
      * String returns the encoded userinfo information in the standard form
      * of "username[:password]".
      */
-    string(): string;
+    string(): string
   }
 }
 
@@ -17115,8 +17094,8 @@ namespace net {
    * and meaning of the strings is up to the implementation.
    */
   interface Addr {
-    network(): string; // name of the network (for example, "tcp", "udp")
-    string(): string; // string form of address (for example, "192.0.2.1:25", "[2001:db8::1]:80")
+    network(): string // name of the network (for example, "tcp", "udp")
+    string(): string // string form of address (for example, "192.0.2.1:25", "[2001:db8::1]:80")
   }
 }
 
@@ -17137,14 +17116,14 @@ namespace multipart {
      * in the same fashion that the Go http.Request headers are.
      * For example, "foo-bar" changes case to "Foo-Bar"
      */
-    header: textproto.MIMEHeader;
+    header: textproto.MIMEHeader
   }
   interface Part {
     /**
      * FormName returns the name parameter if p has a Content-Disposition
      * of type "form-data".  Otherwise it returns the empty string.
      */
-    formName(): string;
+    formName(): string
   }
   interface Part {
     /**
@@ -17152,17 +17131,17 @@ namespace multipart {
      * header. If not empty, the filename is passed through filepath.Base (which is
      * platform dependent) before being returned.
      */
-    fileName(): string;
+    fileName(): string
   }
   interface Part {
     /**
      * Read reads the body of a part, after its headers and before the
      * next part (if any) begins.
      */
-    read(d: string): number;
+    read(d: string): number
   }
   interface Part {
-    close(): void;
+    close(): void
   }
 }
 
@@ -17292,9 +17271,9 @@ namespace http {
    */
   interface SameSite extends Number {}
   // @ts-ignore
-  import mathrand = rand;
+  import mathrand = rand
   // @ts-ignore
-  import urlpkg = url;
+  import urlpkg = url
 }
 
 namespace store {}
@@ -17304,15 +17283,15 @@ namespace mailer {
    * Message defines a generic email message struct.
    */
   interface Message {
-    from: mail.Address;
-    to: Array<mail.Address>;
-    bcc: Array<mail.Address>;
-    cc: Array<mail.Address>;
-    subject: string;
-    html: string;
-    text: string;
-    headers: _TygojaDict;
-    attachments: _TygojaDict;
+    from: mail.Address
+    to: Array<mail.Address>
+    bcc: Array<mail.Address>
+    cc: Array<mail.Address>
+    subject: string
+    html: string
+    text: string
+    headers: _TygojaDict
+    attachments: _TygojaDict
   }
 }
 
@@ -17358,35 +17337,35 @@ namespace mailer {
  */
 namespace echo {
   // @ts-ignore
-  import stdContext = context;
+  import stdContext = context
   /**
    * Route contains information to adding/registering new route with the router.
    * Method+Path pair uniquely identifies the Route. It is mandatory to provide Method+Path+Handler fields.
    */
   interface Route {
-    method: string;
-    path: string;
-    handler: HandlerFunc;
-    middlewares: Array<MiddlewareFunc>;
-    name: string;
+    method: string
+    path: string
+    handler: HandlerFunc
+    middlewares: Array<MiddlewareFunc>
+    name: string
   }
   interface Route {
     /**
      * ToRouteInfo converts Route to RouteInfo
      */
-    toRouteInfo(params: Array<string>): RouteInfo;
+    toRouteInfo(params: Array<string>): RouteInfo
   }
   interface Route {
     /**
      * ToRoute returns Route which Router uses to register the method handler for path.
      */
-    toRoute(): Route;
+    toRoute(): Route
   }
   interface Route {
     /**
      * ForGroup recreates Route with added group prefix and group middlewares it is grouped to.
      */
-    forGroup(pathPrefix: string, middlewares: Array<MiddlewareFunc>): Routable;
+    forGroup(pathPrefix: string, middlewares: Array<MiddlewareFunc>): Routable
   }
   /**
    * RoutableContext is additional interface that structures implementing Context must implement. Methods inside this
@@ -17396,36 +17375,36 @@ namespace echo {
     /**
      * Request returns `*http.Request`.
      */
-    request(): http.Request | undefined;
+    request(): http.Request | undefined
     /**
      * RawPathParams returns raw path pathParams value. Allocation of PathParams is handled by Context.
      */
-    rawPathParams(): PathParams | undefined;
+    rawPathParams(): PathParams | undefined
     /**
      * SetRawPathParams replaces any existing param values with new values for this context lifetime (request).
      * Do not set any other value than what you got from RawPathParams as allocation of PathParams is handled by Context.
      */
-    setRawPathParams(params: PathParams): void;
+    setRawPathParams(params: PathParams): void
     /**
      * SetPath sets the registered path for the handler.
      */
-    setPath(p: string): void;
+    setPath(p: string): void
     /**
      * SetRouteInfo sets the route info of this request to the context.
      */
-    setRouteInfo(ri: RouteInfo): void;
+    setRouteInfo(ri: RouteInfo): void
     /**
      * Set saves data in the context. Allows router to store arbitrary (that only router has access to) data in context
      * for later use in middlewares/handler.
      */
-    set(key: string, val: {}): void;
+    set(key: string, val: {}): void
   }
   /**
    * PathParam is tuple pf path parameter name and its value in request path
    */
   interface PathParam {
-    name: string;
-    value: string;
+    name: string
+    value: string
   }
 }
 
@@ -17442,32 +17421,32 @@ namespace types {
     /**
      * String returns the current JsonRaw instance as a json encoded string.
      */
-    string(): string;
+    string(): string
   }
   interface JsonRaw {
     /**
      * MarshalJSON implements the [json.Marshaler] interface.
      */
-    marshalJSON(): string;
+    marshalJSON(): string
   }
   interface JsonRaw {
     /**
      * UnmarshalJSON implements the [json.Unmarshaler] interface.
      */
-    unmarshalJSON(b: string): void;
+    unmarshalJSON(b: string): void
   }
   interface JsonRaw {
     /**
      * Value implements the [driver.Valuer] interface.
      */
-    value(): any;
+    value(): any
   }
   interface JsonRaw {
     /**
      * Scan implements [sql.Scanner] interface to scan the provided value
      * into the current JsonRaw instance.
      */
-    scan(value: {}): void;
+    scan(value: {}): void
   }
 }
 
@@ -17476,34 +17455,34 @@ namespace search {
    * Result defines the returned search result structure.
    */
   interface Result {
-    page: number;
-    perPage: number;
-    totalItems: number;
-    totalPages: number;
-    items: any;
+    page: number
+    perPage: number
+    totalItems: number
+    totalPages: number
+    items: any
   }
 }
 
 namespace settings {
   // @ts-ignore
-  import validation = ozzo_validation;
+  import validation = ozzo_validation
   interface EmailTemplate {
-    body: string;
-    subject: string;
-    actionUrl: string;
+    body: string
+    subject: string
+    actionUrl: string
   }
   interface EmailTemplate {
     /**
      * Validate makes EmailTemplate validatable by implementing [validation.Validatable] interface.
      */
-    validate(): void;
+    validate(): void
   }
   interface EmailTemplate {
     /**
      * Resolve replaces the placeholder parameters in the current email
      * template and returns its components as ready-to-use strings.
      */
-    resolve(appName: string, appUrl: string): string;
+    resolve(appName: string, appUrl: string): string
   }
 }
 
@@ -17512,8 +17491,8 @@ namespace subscriptions {
    * Message defines a client's channel data.
    */
   interface Message {
-    name: string;
-    data: string;
+    name: string
+    data: string
   }
   /**
    * Client is an interface for a generic subscription client.
@@ -17522,55 +17501,55 @@ namespace subscriptions {
     /**
      * Id Returns the unique id of the client.
      */
-    id(): string;
+    id(): string
     /**
      * Channel returns the client's communication channel.
      */
-    channel(): undefined;
+    channel(): undefined
     /**
      * Subscriptions returns all subscriptions to which the client has subscribed to.
      */
-    subscriptions(): _TygojaDict;
+    subscriptions(): _TygojaDict
     /**
      * Subscribe subscribes the client to the provided subscriptions list.
      */
-    subscribe(...subs: string[]): void;
+    subscribe(...subs: string[]): void
     /**
      * Unsubscribe unsubscribes the client from the provided subscriptions list.
      */
-    unsubscribe(...subs: string[]): void;
+    unsubscribe(...subs: string[]): void
     /**
      * HasSubscription checks if the client is subscribed to `sub`.
      */
-    hasSubscription(sub: string): boolean;
+    hasSubscription(sub: string): boolean
     /**
      * Set stores any value to the client's context.
      */
-    set(key: string, value: any): void;
+    set(key: string, value: any): void
     /**
      * Unset removes a single value from the client's context.
      */
-    unset(key: string): void;
+    unset(key: string): void
     /**
      * Get retrieves the key value from the client's context.
      */
-    get(key: string): any;
+    get(key: string): any
     /**
      * Discard marks the client as "discarded", meaning that it
      * shouldn't be used anymore for sending new messages.
      *
      * It is safe to call Discard() multiple times.
      */
-    discard(): void;
+    discard(): void
     /**
      * IsDiscarded indicates whether the client has been "discarded"
      * and should no longer be used.
      */
-    isDiscarded(): boolean;
+    isDiscarded(): boolean
     /**
      * Send sends the specified message to the client's channel (if not discarded).
      */
-    send(m: Message): void;
+    send(m: Message): void
   }
 }
 
@@ -17579,12 +17558,12 @@ namespace hook {
    * Handler defines a hook handler function.
    */
   interface Handler<T> {
-    (e: T): void;
+    (e: T): void
   }
   /**
    * wrapped local Hook embedded struct to limit the public API surface.
    */
-  type _subhWHbr<T> = Hook<T>;
+  type _subhWHbr<T> = Hook<T>
   interface mainHook<T> extends _subhWHbr<T> {}
 }
 
@@ -17595,16 +17574,16 @@ namespace hook {
  */
 namespace core {
   interface BaseModelEvent {
-    model: models.Model;
+    model: models.Model
   }
   interface BaseModelEvent {
-    tags(): Array<string>;
+    tags(): Array<string>
   }
   interface BaseCollectionEvent {
-    collection?: models.Collection;
+    collection?: models.Collection
   }
   interface BaseCollectionEvent {
-    tags(): Array<string>;
+    tags(): Array<string>
   }
 }
 
@@ -17622,7 +17601,7 @@ namespace bufio {
     /**
      * Size returns the size of the underlying buffer in bytes.
      */
-    size(): number;
+    size(): number
   }
   interface Reader {
     /**
@@ -17631,7 +17610,7 @@ namespace bufio {
      * Calling Reset on the zero value of Reader initializes the internal buffer
      * to the default size.
      */
-    reset(r: io.Reader): void;
+    reset(r: io.Reader): void
   }
   interface Reader {
     /**
@@ -17643,7 +17622,7 @@ namespace bufio {
      * Calling Peek prevents a UnreadByte or UnreadRune call from succeeding
      * until the next read operation.
      */
-    peek(n: number): string;
+    peek(n: number): string
   }
   interface Reader {
     /**
@@ -17653,7 +17632,7 @@ namespace bufio {
      * If 0 <= n <= b.Buffered(), Discard is guaranteed to succeed without
      * reading from the underlying io.Reader.
      */
-    discard(n: number): number;
+    discard(n: number): number
   }
   interface Reader {
     /**
@@ -17664,14 +17643,14 @@ namespace bufio {
      * To read exactly len(p) bytes, use io.ReadFull(b, p).
      * At EOF, the count will be zero and err will be io.EOF.
      */
-    read(p: string): number;
+    read(p: string): number
   }
   interface Reader {
     /**
      * ReadByte reads and returns a single byte.
      * If no byte is available, returns an error.
      */
-    readByte(): string;
+    readByte(): string
   }
   interface Reader {
     /**
@@ -17681,7 +17660,7 @@ namespace bufio {
      * Reader was not a read operation. Notably, Peek, Discard, and WriteTo are not
      * considered read operations.
      */
-    unreadByte(): void;
+    unreadByte(): void
   }
   interface Reader {
     /**
@@ -17689,7 +17668,7 @@ namespace bufio {
      * rune and its size in bytes. If the encoded rune is invalid, it consumes one byte
      * and returns unicode.ReplacementChar (U+FFFD) with a size of 1.
      */
-    readRune(): [string, number];
+    readRune(): [string, number]
   }
   interface Reader {
     /**
@@ -17698,13 +17677,13 @@ namespace bufio {
      * regard it is stricter than UnreadByte, which will unread the last byte
      * from any read operation.)
      */
-    unreadRune(): void;
+    unreadRune(): void
   }
   interface Reader {
     /**
      * Buffered returns the number of bytes that can be read from the current buffer.
      */
-    buffered(): number;
+    buffered(): number
   }
   interface Reader {
     /**
@@ -17719,7 +17698,7 @@ namespace bufio {
      * ReadBytes or ReadString instead.
      * ReadSlice returns err != nil if and only if line does not end in delim.
      */
-    readSlice(delim: string): string;
+    readSlice(delim: string): string
   }
   interface Reader {
     /**
@@ -17740,7 +17719,7 @@ namespace bufio {
      * (possibly a character belonging to the line end) even if that byte is not
      * part of the line returned by ReadLine.
      */
-    readLine(): [string, boolean];
+    readLine(): [string, boolean]
   }
   interface Reader {
     /**
@@ -17752,7 +17731,7 @@ namespace bufio {
      * delim.
      * For simple uses, a Scanner may be more convenient.
      */
-    readBytes(delim: string): string;
+    readBytes(delim: string): string
   }
   interface Reader {
     /**
@@ -17764,7 +17743,7 @@ namespace bufio {
      * delim.
      * For simple uses, a Scanner may be more convenient.
      */
-    readString(delim: string): string;
+    readString(delim: string): string
   }
   interface Reader {
     /**
@@ -17773,7 +17752,7 @@ namespace bufio {
      * If the underlying reader supports the WriteTo method,
      * this calls the underlying WriteTo without buffering.
      */
-    writeTo(w: io.Writer): number;
+    writeTo(w: io.Writer): number
   }
   /**
    * Writer implements buffering for an io.Writer object.
@@ -17788,7 +17767,7 @@ namespace bufio {
     /**
      * Size returns the size of the underlying buffer in bytes.
      */
-    size(): number;
+    size(): number
   }
   interface Writer {
     /**
@@ -17797,19 +17776,19 @@ namespace bufio {
      * Calling Reset on the zero value of Writer initializes the internal buffer
      * to the default size.
      */
-    reset(w: io.Writer): void;
+    reset(w: io.Writer): void
   }
   interface Writer {
     /**
      * Flush writes any buffered data to the underlying io.Writer.
      */
-    flush(): void;
+    flush(): void
   }
   interface Writer {
     /**
      * Available returns how many bytes are unused in the buffer.
      */
-    available(): number;
+    available(): number
   }
   interface Writer {
     /**
@@ -17818,13 +17797,13 @@ namespace bufio {
      * passed to an immediately succeeding Write call.
      * The buffer is only valid until the next write operation on b.
      */
-    availableBuffer(): string;
+    availableBuffer(): string
   }
   interface Writer {
     /**
      * Buffered returns the number of bytes that have been written into the current buffer.
      */
-    buffered(): number;
+    buffered(): number
   }
   interface Writer {
     /**
@@ -17833,20 +17812,20 @@ namespace bufio {
      * If nn < len(p), it also returns an error explaining
      * why the write is short.
      */
-    write(p: string): number;
+    write(p: string): number
   }
   interface Writer {
     /**
      * WriteByte writes a single byte.
      */
-    writeByte(c: string): void;
+    writeByte(c: string): void
   }
   interface Writer {
     /**
      * WriteRune writes a single Unicode code point, returning
      * the number of bytes written and any error.
      */
-    writeRune(r: string): number;
+    writeRune(r: string): number
   }
   interface Writer {
     /**
@@ -17855,7 +17834,7 @@ namespace bufio {
      * If the count is less than len(s), it also returns an error explaining
      * why the write is short.
      */
-    writeString(s: string): number;
+    writeString(s: string): number
   }
   interface Writer {
     /**
@@ -17864,7 +17843,7 @@ namespace bufio {
      * If there is buffered data and an underlying ReadFrom, this fills
      * the buffer and writes it before calling ReadFrom.
      */
-    readFrom(r: io.Reader): number;
+    readFrom(r: io.Reader): number
   }
 }
 
@@ -17890,8 +17869,8 @@ namespace mail {
    * as Address{Name: "Barry Gibbs", Address: "bg@example.com"}.
    */
   interface Address {
-    name: string; // Proper name; may be empty.
-    address: string; // user@domain
+    name: string // Proper name; may be empty.
+    address: string // user@domain
   }
   interface Address {
     /**
@@ -17899,7 +17878,7 @@ namespace mail {
      * If the address's name contains non-ASCII characters
      * the name will be rendered according to RFC 2047.
      */
-    string(): string;
+    string(): string
   }
 }
 

@@ -1,14 +1,14 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { FC } from 'react';
+import Image from 'next/image'
+import Link from 'next/link'
+import { FC } from 'react'
 
 interface Props {
   data: {
-    name: string;
-    description: string;
-    images: string[];
-    type: string;
-  }[];
+    name: string
+    description: string
+    images: string[]
+    type: string
+  }[]
 }
 
 const Carousel: FC<Props> = ({ data }) => {
@@ -60,7 +60,7 @@ const Carousel: FC<Props> = ({ data }) => {
         ))}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Carousel;
+export default Carousel

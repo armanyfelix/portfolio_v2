@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import { FC } from 'react';
+import Image from 'next/image'
+import { FC } from 'react'
 
 interface Props {}
 
@@ -71,7 +71,7 @@ const Skills: FC<Props> = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Skills;
+export default Skills

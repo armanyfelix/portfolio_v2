@@ -119,6 +119,6 @@ const themes = [
     name: 'winter',
     emoji: '❄️',
   },
-];
+]
 
-module.exports = themes;
+module.exports = themes
