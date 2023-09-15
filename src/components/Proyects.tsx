@@ -3,11 +3,12 @@
 import { ArrowTopRightOnSquareIcon, CodeBracketSquareIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
+import { RecordModel } from 'pocketbase'
 import { imageLoader } from '../helpers/images'
 import Github from './svg/Github'
 
 interface Props {
-  proyects: any
+  proyects: RecordModel[]
   apiUrl: string | undefined
 }
 
@@ -26,7 +27,7 @@ export default function Proyects({ apiUrl, proyects }: Props) {
       </div>
       <div className="mt-36 grid h-full w-full justify-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {proyects.length
-          ? proyects.map((d: any, i: number) => (
+          ? proyects.map((d: RecordModel, i: number) => (
               <div key={d.name} className="m-3">
                 <div className="card glass h-full w-full max-w-[28rem]">
                   <figure>
