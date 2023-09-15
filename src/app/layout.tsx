@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
 import { Ysabeau } from 'next/font/google'
 import { FC, ReactNode } from 'react'
-// import Background from '../components/layout/Background';
 import Footer from '../components/layout/Footer'
 import Header from '../components/layout/Header'
 import '../styles/globals.css'
@@ -12,7 +11,7 @@ const ysabeau = Ysabeau({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Armany Felix | Portfolio',
   description:
-    'I’m a software developer with a passion for creating innovative solutions that make people’s lives easier.',
+    'Showcase your skills and projects as a software developer with this web portfolio. Learn more about my experience, expertise, and achievements in web development. Contact me for collaboration or consultation.',
 }
 
 interface Props {
@@ -23,7 +22,6 @@ const RootLayout: FC<Props> = ({ children }) => {
   return (
     <html lang="en" className={ysabeau.className}>
       <body>
-        {/* <Background /> */}
         <Header />
         <main className="relative">{children}</main>
         <Footer />
