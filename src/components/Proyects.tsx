@@ -25,13 +25,13 @@ export default function Proyects({ apiUrl, proyects }: Props) {
           <Github />
         </Link>
       </div>
-      <div className="mt-36 grid h-full w-full justify-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-36 mx-auto lg:w-2/3 grid gap-5 h-full w-full justify-items-center md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         {proyects.length
           ? proyects.map((d: RecordModel, i: number) => (
-              <div key={d.name} className="m-3">
-                <div className="card glass h-full w-full max-w-[28rem]">
+              <div key={d.name}>
+                <div className="card glass h-full w-full max-w-[29rem]">
                   <figure>
-                    <div className="carousel carousel-center h-[200px] max-h-[200px] min-h-[240px] w-full md:max-h-[240px]">
+                    <div className="carousel carousel-center h-[180px] max-h-[200px] min-h-[220px] w-full md:max-h-[220px]">
                       {d.images?.map((img: string, j: number) => (
                         <div
                           key={`${i}.${j}`}
@@ -74,9 +74,9 @@ export default function Proyects({ apiUrl, proyects }: Props) {
                   <div className="card-body h-[260px] max-h-[260px] min-h-[260px]">
                     <h2 className="card-title">{d.name}</h2>
                     <p className="overflow-auto">{d.description}</p>
-                    <div className="card-actions mt-4 justify-end">
-                      {d?.source && (
-                        <Link href={d?.source} className="btn btn-primary px-3">
+                    <div className="card-actions justify-end">
+                      {d?.source_url && (
+                        <Link href={d?.source_url} className="btn btn-primary px-3">
                           <CodeBracketSquareIcon className="h-6 w-6" />
                         </Link>
                       )}
