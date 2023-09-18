@@ -76,6 +76,7 @@ export default async function Page() {
       <Proyects apiUrl={apiUrl} proyects={proyects} />
       <About />
       <Skills />
+      {/* <Tools /> */}
       <Contact sendEmail={sendEmail} />
     </div>
   )

@@ -10,13 +10,13 @@ import {
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 interface Props {
   sendEmail: (data: FormData) => Promise<void>
 }
 
-const Contact: FC<Props> = ({ sendEmail }) => {
+export default function Contact({ sendEmail }: Props) {
   const form = useRef<any>(null)
   const [sending, setSending] = useState<boolean>(false)
   const [error, setError] = useState<boolean | undefined>(undefined)
@@ -102,59 +102,6 @@ const Contact: FC<Props> = ({ sendEmail }) => {
                   rows={4}
                   required
                 />
-                {/* <div className="rating rating-half rating-lg">
-                  <input type="radio" name="rating-10" className="rating-hidden" />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-1 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-2 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-1 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-2 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-1 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-2 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-1 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-2 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-1 mask-star-2 bg-orange-400"
-                  />
-                  <input
-                    type="radio"
-                    name="rating-10"
-                    className="mask mask-half-2 mask-star-2 bg-orange-400"
-                  />
-                </div> */}
                 <div className="justify-end text-right">
                   <button
                     type="submit"
@@ -204,5 +151,3 @@ const Contact: FC<Props> = ({ sendEmail }) => {
     </section>
   )
 }
-
-export default Contact

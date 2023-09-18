@@ -1,29 +1,26 @@
 'use client'
 
 import Image from 'next/image'
-import { FC } from 'react'
 
-interface Props {}
-
-const Skills: FC<Props> = () => {
+export default function Skills() {
   return (
     <section className="mx-auto my-32 items-center justify-center md:w-2/3">
-      <div className="mx-auto mt-10 xl:w-2/3">
-        <h1 className="pb-10 text-center text-3xl font-bold text-primary md:text-4xl lg:text-5xl">
-          Technologies I like:
-        </h1>
-        <div className="flex flex-col flex-wrap items-center justify-center md:flex-row md:justify-between">
+      <div className="mx-auto mb-28 mt-10 xl:w-2/3">
+        <div className="mx-auto flex items-center justify-between px-5 md:w-2/4 md:justify-evenly">
+          <h1 className="text-5xl font-bold text-secondary lg:w-3/5 lg:text-7xl">Technologies</h1>
+        </div>
+        <div className="flex flex-col flex-wrap items-center mt-10 justify-center md:flex-row md:justify-between">
           <ul className="list-none space-y-5 p-5">
             <li className="flex items-center">
               <Image src="/icons/javascript.svg" width="38" height="38" alt="javaScript" />
               <span className="mx-2">JavaScript</span>
             </li>
             <li className="flex items-center">
-              <Image src="/icons/html5.svg" width="38" height="38" alt="html5" />
+              <Image src="/icons/html.svg" width="38" height="38" alt="html5" />
               <span className="mx-2">HTML</span>
             </li>
             <li className="flex items-center">
-              <Image src="/icons/css3.svg" width="38" height="38" alt="css3" />
+              <Image src="/icons/css.svg" width="38" height="38" alt="css3" />
               <span className="mx-2">CSS</span>
             </li>
             <li className="flex items-center">
@@ -54,14 +51,13 @@ const Skills: FC<Props> = () => {
               <Image src="/icons/mysql.svg" width="38" height="38" alt="mysql" />
               <span className="mx-2">MySQL</span>
             </li>
-            <li className="flex items-center">
+            {/* <li className="flex items-center">
               <Image src="/icons/mongodb.svg" width="38" height="38" alt="mongoDB" />
               <span className="mx-2">MongoDB</span>
-            </li>
-
+            </li> */}
             <li className="flex items-center">
-              <Image src="/icons/firebase.svg" width="38" height="38" alt="firebase" />
-              <span className="mx-2">Firebase</span>
+              <Image src="/icons/supabase.svg" width="38" height="38" alt="firebase" />
+              <span className="mx-2">Supabase</span>
             </li>
             <li className="flex items-center">
               <Image src="/icons/docker.svg" width="38" height="38" alt="docker" />
@@ -73,5 +69,3 @@ const Skills: FC<Props> = () => {
     </section>
   )
 }
-
-export default Skills

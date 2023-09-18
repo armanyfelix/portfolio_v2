@@ -1,13 +1,6 @@
 'use client'
 
-import { FC } from 'react'
-
-/**
- * @interface Props
- */
-interface Props {}
-
-const Home: FC<Props> = () => {
+export default function Home() {
   return (
     <section className="h-screen w-full">
       <div className="mx-auto flex h-screen flex-col justify-center pb-10 text-center align-middle text-primary">
@@ -17,5 +10,3 @@ const Home: FC<Props> = () => {
     </section>
   )
 }
-
-export default Home

@@ -20,7 +20,7 @@ export default function Proyects({ apiUrl, proyects }: Props) {
         <Link
           href="https://www.github.com/armanyfelix"
           target="_blank"
-          className="btn glass px-2 text-7xl lg:btn-lg"
+          className="btn glass btn-circle px-2 text-7xl lg:btn-lg"
         >
           <Github />
         </Link>
