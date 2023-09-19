@@ -6,18 +6,22 @@ interface Props {
   button:
     | {
         href: string
-        content: string | ReactNode
+        label: string | ReactNode
       }
     | undefined
 }
 
 export default function Header({ title, button }: Props) {
   return (
-    <div className="mx-auto flex w-full items-center justify-between my-28 sm:justify-evenly ">
-      <h1 className="text-5xl font-bold text-secondary lg:text-7xl">{title}</h1>
+    <div className="mx-auto flex w-full items-center pt-[4.5rem] pb-28 justify-evenly">
+      <h1 className="text-5xl md:text-6xl font-bold text-secondary lg:text-7xl">{title}</h1>
       {button ? (
-        <Link href={button.href} target="_blank" className="btn glass btn-circle px-2 text-7xl lg:btn-lg">
-          {button.content}
+        <Link
+          href={button.href}
+          target="_blank"
+          className="btn glass btn-circle font-bold text-lg md:text-xl lg:text-2xl px-2 lg:btn-lg"
+        >
+          {button.label}
         </Link>
       ) : (
         ''

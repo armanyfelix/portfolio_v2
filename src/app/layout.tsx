@@ -9,9 +9,9 @@ import '../styles/globals.css'
 const ysabeau = Ysabeau({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Armany Felix | Portfolio',
+  title: 'Armany | Portfolio',
   description:
-    'Showcase your skills and projects as a software developer with this web portfolio. Learn more about my experience, expertise, and achievements in web development. Contact me for collaboration or consultation.',
+    'Showcase me skills and projects as a software developer with this web portfolio. Learn more about my experience, expertise, and achievements in web development. Contact me for collaboration or consultation.',
 }
 
 interface Props {

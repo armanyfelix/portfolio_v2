@@ -3,8 +3,7 @@ import About from '../components/About'
 import Contact from '../components/Contact'
 import Home from '../components/Home'
 import Proyects from '../components/Proyects'
-import Skills from '../components/Skills'
-// import Tools from '../components/Tools'
+import Tech from '../components/Tech'
 import { gmailPassword, gmailUser } from '../constants/nodemailer'
 import { getProyects, getTechonolgies } from '../utils/getData'
 
@@ -78,7 +77,7 @@ export default async function Page() {
       <Home />
       <Proyects proyects={proyects} />
       <About />
-      <Skills technologies={technologies} />
+      <Tech technologies={technologies} />
       {/* <Tools /> */}
       <Contact sendEmail={sendEmail} />
     </div>

@@ -1,1 +1,1 @@
-export const apiUrl = process.env.API_URL
+export const apiUrl: string | undefined = process.env.API_URL

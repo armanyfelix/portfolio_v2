@@ -87,7 +87,7 @@ export default function Navbar() {
     <>
       <header
         id="top"
-        className={`fixed right-1/2 top-0 z-40 w-full md:w-5/6 lg:w-4/6 xl:w-3/6 translate-x-1/2 px-3 pt-3`}
+        className={`fixed right-1/2 top-0 z-40 w-full md:w-5/6 lg:w-4/6 xl:w-3/5 translate-x-1/2 px-3 pt-3`}
       >
         <div
           className={`${
@@ -95,97 +95,43 @@ export default function Navbar() {
           } duration-500 transform ease-in-out px-10 md:py-1 ${topClasses}`}
         >
           <section className="flex w-full items-center justify-between">
-            <Link href="/" legacyBehavior>
-              <h1 className="cursor-pointer text-3xl font-bold italic ">Armany Felix</h1>
+            <Link href="/">
+              <h1 className="cursor-pointer text-3xl font-bold italic " onClick={() => setThemesOpen(false)}>
+                Armany
+              </h1>
             </Link>
             <div className="z-50 flex flex-col items-center justify-between sm:flex-row">
               <nav className="hidden w-full self-end sm:w-auto md:block">
-                <ul className="flex items-center space-x-3">
-                  <li>
-                    <Link
-                      href="#proyects"
-                      onClick={() => setThemesOpen(false)}
-                      className="btn btn-ghost text-lg"
-                    >
-                      Proyects
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#about"
-                      onClick={() => setThemesOpen(false)}
-                      className="btn btn-ghost text-lg"
-                    >
-                      About
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="#contact"
-                      onClick={() => setThemesOpen(false)}
-                      className="btn btn-ghost text-lg"
-                    >
-                      Contact
-                    </Link>
-                  </li>
-                  <li className="tooltip tooltip-bottom" data-tip={theme}>
-                    <button onClick={() => setThemesOpen(!themesOpen)} className="btn btn-ghost w-full">
-                      {theme && themes.find((t) => t.name === theme)?.emoji}
-                    </button>
-                  </li>
-                </ul>
+                <NavList
+                  setMenuOpen={setMenuOpen}
+                  menuOpen={menuOpen}
+                  setThemesOpen={setThemesOpen}
+                  themesOpen={themesOpen}
+                  theme={theme}
+                />
               </nav>
               <label className="swap swap-rotate inline-grid p-0 md:hidden">
-                <input type="checkbox" checked={menuOpen} onChange={() => setMenuOpen(!menuOpen)} />
+                <input
+                  type="checkbox"
+                  checked={menuOpen}
+                  onChange={() => {
+                    setMenuOpen(!menuOpen)
+                    setThemesOpen(false)
+                  }}
+                />
                 <HamburgerSwap />
               </label>
             </div>
           </section>
-          <section className={`${menuOpen ? 'block' : 'hidden'} mx-4 mt-4 `}>
-            <ul>
-              <li>
-                <Link
-                  href="#proyects"
-                  onClick={() => {
-                    setMenuOpen(!menuOpen)
-                    setThemesOpen(false)
-                  }}
-                  className="btn btn-ghost w-full"
-                >
-                  Proyects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#about"
-                  onClick={() => {
-                    setMenuOpen(!menuOpen)
-                    setThemesOpen(false)
-                  }}
-                  className="btn btn-ghost w-full"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#contact"
-                  onClick={() => {
-                    setMenuOpen(!menuOpen)
-                    setThemesOpen(false)
-                  }}
-                  className="btn btn-ghost w-full"
-                >
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <button onClick={() => setThemesOpen(!themesOpen)} className="btn btn-ghost w-full">
-                  {theme && themes.find((t) => t.name === theme)?.emoji}
-                </button>
-              </li>
-            </ul>
-          </section>
+          <nav className={`${menuOpen ? 'block' : 'hidden'} mx-4 mt-4`}>
+            <NavList
+              setMenuOpen={setMenuOpen}
+              menuOpen={menuOpen}
+              setThemesOpen={setThemesOpen}
+              themesOpen={themesOpen}
+              theme={theme}
+            />
+          </nav>
         </div>
       </header>
       {/* THEMES MENU */}
@@ -203,7 +149,6 @@ export default function Navbar() {
                 setTheme(t.name)
                 setThemesOpen(false)
                 setMenuOpen(false)
-                // window.location.reload();
               }}
               className="btn btn-ghost w-full md:justify-start"
             >
@@ -230,5 +175,44 @@ export default function Navbar() {
         )}
       </div>
     </>
+  )
+}
+
+const NavList = ({ setMenuOpen, menuOpen, setThemesOpen, themesOpen, theme }: any) => {
+  const navItems = [
+    {
+      label: 'Proyects',
+      href: '#proyects',
+    },
+    {
+      label: 'About',
+      href: '#about',
+    },
+    {
+      label: 'Contact',
+      href: '#contact',
+    },
+  ]
+  return (
+    <ul className="block md:flex md:items-center md:space-x-3">
+      {navItems.map((item, index) => (
+        <li
+          key={index}
+          onClick={() => {
+            setMenuOpen(false)
+            setThemesOpen(false)
+          }}
+        >
+          <Link href={item.href} className="btn btn-ghost text-lg w-full md:w-auto">
+            {item.label}
+          </Link>
+        </li>
+      ))}
+      <li>
+        <button onClick={() => setThemesOpen(!themesOpen)} className="btn btn-ghost w-full">
+          {theme && themes.find((t) => t.name === theme)?.emoji}
+        </button>
+      </li>
+    </ul>
   )
 }
