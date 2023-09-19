@@ -1,18 +1,16 @@
 'use client'
 
 import Link from 'next/link'
-import { FC, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { themeChange } from 'theme-change'
 import * as THREE from 'three'
 import waves from 'vanta/dist/vanta.waves.min'
-import themes from '../../data/themes.module'
-import { backgroundColor } from '../../helpers/vanta'
+import themes from '../../data/themes.json'
+import { backgroundColor } from '../../helpers/background'
+import { Theme } from '../../types/themes'
 import HamburgerSwap from '../svg/HamburgerSwap'
 
-interface Props {}
-
-// let effect: any = null;
-const Header: FC<Props> = () => {
+export default function Navbar() {
   const [vantaEffect, setVantaEffect] = useState<any>(0)
   const [menuOpen, setMenuOpen] = useState<boolean>(false)
   const [themesOpen, setThemesOpen] = useState<boolean>(false)
@@ -196,7 +194,7 @@ const Header: FC<Props> = () => {
           themesOpen ? 'fixed' : 'hidden'
         } rounded-box right-1/2 top-[16.4rem] z-40 mt-7 max-h-[40vh] w-[93vw] translate-x-1/2 overflow-auto bg-accent-focus bg-opacity-30 p-3 shadow-lg backdrop-blur-md backdrop-brightness-75 md:right-1/4 md:top-[3.2rem] md:max-h-[70vh] md:w-auto md:translate-x-24`}
       >
-        {themes.map((t: { name: string; emoji: string }) => (
+        {themes.map((t: Theme) => (
           <li key={t.name}>
             <button
               data-set-theme={t.name}
@@ -223,6 +221,7 @@ const Header: FC<Props> = () => {
         className={`${themesOpen ? 'block' : 'hidden'} fixed inset-0 z-30`}
         onClick={() => setThemesOpen(false)}
       />
+      {/* BACKGROUND ANIMATION */}
       <div>
         {theme && (
           <div id="main" ref={vantaRef} className="fixed bottom-0 left-0 right-0 top-0">
@@ -233,5 +232,3 @@ const Header: FC<Props> = () => {
     </>
   )
 }
-
-export default Header

@@ -2,11 +2,8 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { FC } from 'react'
 
-interface Props {}
-
-const Footer: FC<Props> = () => {
+export default function Footer() {
   return (
     <footer className="footer footer-center rounded bg-accent bg-opacity-30 p-10 shadow-xl backdrop-blur-md">
       <div className="grid grid-flow-col gap-4">
@@ -36,5 +33,3 @@ const Footer: FC<Props> = () => {
     </footer>
   )
 }
-
-export default Footer

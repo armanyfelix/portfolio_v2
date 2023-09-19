@@ -4,9 +4,9 @@ import Contact from '../components/Contact'
 import Home from '../components/Home'
 import Proyects from '../components/Proyects'
 import Skills from '../components/Skills'
-import { apiUrl } from '../constants/api'
+// import Tools from '../components/Tools'
 import { gmailPassword, gmailUser } from '../constants/nodemailer'
-import { getProyects } from '../utils/getProyects'
+import { getProyects, getTechonolgies } from '../utils/getData'
 
 export default async function Page() {
   async function sendEmail(data: FormData) {
@@ -68,14 +68,17 @@ export default async function Page() {
       })
     })
   }
+
   const proyects = await getProyects()
+
+  const technologies = await getTechonolgies()
 
   return (
     <div className="w-full">
       <Home />
-      <Proyects apiUrl={apiUrl} proyects={proyects} />
+      <Proyects proyects={proyects} />
       <About />
-      <Skills />
+      <Skills technologies={technologies} />
       {/* <Tools /> */}
       <Contact sendEmail={sendEmail} />
     </div>

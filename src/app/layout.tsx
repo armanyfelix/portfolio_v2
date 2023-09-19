@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { Ysabeau } from 'next/font/google'
 import { FC, ReactNode } from 'react'
 import Footer from '../components/layout/Footer'
-import Header from '../components/layout/Header'
+import Header from '../components/layout/Navbar'
 import '../styles/globals.css'
 
 /* eslint new-cap: ["error", { "capIsNew": false }] */
