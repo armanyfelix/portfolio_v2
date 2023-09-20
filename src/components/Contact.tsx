@@ -8,9 +8,10 @@ import {
   PhoneIcon,
   XCircleIcon,
 } from '@heroicons/react/24/outline'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRef, useState } from 'react'
+import Github from './svg/Github'
+import Linkedin from './svg/Linkedin'
 
 interface Props {
   sendEmail: (data: FormData) => Promise<void>
@@ -46,7 +47,7 @@ export default function Contact({ sendEmail }: Props) {
   return (
     <section id="contact" className="antialiased lg:h-screen lg:py-1">
       <div className="flex min-h-screen w-full items-center justify-center">
-        <div className="rounded-box mx-3 mb-28 flex w-full max-w-5xl flex-col justify-between space-y-6 border-opacity-30 bg-accent bg-opacity-30 p-4 shadow-lg backdrop-blur backdrop-filter sm:p-10 md:mx-6 md:flex-row md:space-x-4 md:space-y-0 md:p-12 lg:p-16">
+        <div className="rounded-box mx-3 mb-28 flex w-full max-w-5xl flex-col justify-between space-y-6 border-opacity-30 bg-accent bg-opacity-30 p-6 shadow-lg backdrop-blur backdrop-filter sm:p-10 md:mx-6 md:flex-row md:space-x-4 md:space-y-0 md:p-12 lg:p-16">
           <div className="flex flex-col justify-between antialiased">
             <div>
               <h1 className="text-5xl font-bold tracking-wide text-secondary lg:text-7xl">Contact</h1>
@@ -71,10 +72,10 @@ export default function Contact({ sendEmail }: Props) {
             </div>
             <div className="mt-6 flex space-x-4">
               <Link href="https://www.linkedin.com/in/armany-felix">
-                <Image src="/icons/linkedin.svg" width="40" height="40" alt="logo-linkedIn" />
+                <Linkedin />
               </Link>
               <Link href="https://github.com/armanyfelix/">
-                <Image src="/icons/github.svg" width="40" height="40" alt="logo-github" />
+                <Github />
               </Link>
             </div>
           </div>

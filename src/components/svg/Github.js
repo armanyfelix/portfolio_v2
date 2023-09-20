@@ -1,7 +1,6 @@
 export default function Github() {
   return (
     <svg
-      // fill="#e0e7ff"
       xmlns="http://www.w3.org/2000/svg"
       className="fill-secondary"
       viewBox="0 0 16 16"

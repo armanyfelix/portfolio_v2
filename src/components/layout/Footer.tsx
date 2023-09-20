@@ -1,7 +1,8 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
+import Github from '../svg/Github'
+import Linkedin from '../svg/Linkedin'
 
 export default function Footer() {
   return (
@@ -20,10 +21,10 @@ export default function Footer() {
       <div>
         <div className="grid grid-flow-col gap-4">
           <Link href="https://www.linkedin.com/in/armany-felix">
-            <Image src="/icons/linkedin.svg" width="40" height="40" alt="logo-linkedIn" />
+            <Linkedin />
           </Link>
           <Link href="https://github.com/armanyfelix/">
-            <Image src="/icons/github.svg" width="40" height="40" alt="logo-github" />
+            <Github />
           </Link>
         </div>
       </div>

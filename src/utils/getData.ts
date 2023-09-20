@@ -1,4 +1,4 @@
-// import { revalidatePath } from 'next/cache'
+import { revalidatePath } from 'next/cache'
 import PocketBase from 'pocketbase'
 import { cache } from 'react'
 import { apiUrl } from '../constants/api'
@@ -15,6 +15,6 @@ export const getProyects = cache(async () => {
 
 export const getTechonolgies = cache(async () => {
   const res = await pb.collection('technologies').getFullList({ sort: 'created' })
-  // revalidatePath('/') // Add everytime I need to refresh the data
+  revalidatePath('/') // Add everytime I need to refresh the data
   return res
 })

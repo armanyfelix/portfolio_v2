@@ -11,7 +11,7 @@ interface Props {
 
 export default function Tech({ technologies }: Props) {
   return (
-    <section className="my-64 mx-3 overflow-hidden">
+    <section className="my-64 mx-3 overflow-x-hidden">
       <div className="my-16 text-center">
         <h2 className="text-2xl font-bold text-accent lg:text-5xl">Technologies that I have worked with</h2>
       </div>
@@ -22,10 +22,10 @@ export default function Tech({ technologies }: Props) {
               href={t.url}
               target="_blank"
               data-tip={t.description}
-              className="flex items-center space-x-2 tooltip"
+              className="flex items-center space-x-2 tooltip tollo tooltip-primary tooltip-bottom too"
             >
               <Image src={pbImagePath(t, t.icon)} loader={imageLoader} width={40} height={40} alt="" />
-              <p className="text-center text-lg font-semibold">{t.name}</p>
+              <p className="text-center text-lg md:text-xl font-semibold">{t.name}</p>
             </Link>
           </li>
         ))}
