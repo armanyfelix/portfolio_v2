@@ -16,30 +16,30 @@ export default function Proyects({ proyects }: Props) {
   return (
     <section id="proyects" className="mb-40">
       <Header title="Proyects" button={{ label: <Github />, href: 'https://www.github.com/armanyfelix' }} />
-      <div className=" gap-5 flex justify-center items-start flex-wrap mx-5  xl:mx-40">
+      <div className=" mx-5 flex flex-wrap items-start justify-center gap-5 xl:mx-40">
         {proyects.length
           ? proyects.map((p: RecordModel, i: number) => (
-              <div key={p.name} className="card glass max-w-[400px] max-h-[500px]">
+              <div key={p.name} className="card glass max-h-[500px] max-w-[400px]">
                 <figure>
-                  <div className="carousel carousel-center w-auto items-start">
+                  <div className="carousel-center carousel w-auto items-start">
                     {p.images?.map((img: string, j: number) => (
                       <div
                         key={`${i}.${j}`}
                         id={`proyect-${i}.${j}`}
-                        className={`group/item carousel-item relative mx-auto items-start max-h-[210px] justify-center ${
-                          p.type === 'mobile' ? 'w-1/4' : 'w-auto'
+                        className={`group/item carousel-item relative mx-auto max-h-[210px] items-start justify-center ${
+                          p.type === 'mobile' ? 'w-1/4 border border-black' : 'w-auto'
                         }`}
                       >
                         <Image
                           src={pbImagePath(p, img)}
-                          className="object-fit object-center max-h-[200px]"
+                          className="object-fit max-h-[200px] object-center"
                           width={400}
                           loader={imageLoader}
-                          height={300}
+                          height={200}
                           alt=""
                         />
                         {p.type === 'web' && (
-                          <div className="absolute left-5 right-5 max-w-5/6 mx-auto top-1/2 flex -translate-y-1/2 transform justify-between opacity-0 duration-300 ease-in group-hover/item:opacity-100">
+                          <div className="max-w-5/6 absolute left-5 right-5 top-1/2 mx-auto flex -translate-y-1/2 transform justify-between opacity-0 duration-300 ease-in group-hover/item:opacity-100">
                             <a
                               href={`#${
                                 j === 0 ? `proyect-${i}.${p.images.length - 1}` : `proyect-${i}.${j - 1}`
@@ -62,7 +62,7 @@ export default function Proyects({ proyects }: Props) {
                     ))}
                   </div>
                 </figure>
-                <div className="card-body pt-4 max-h-[260px] min-h-[260px]">
+                <div className="card-body max-h-[260px] min-h-[260px] pt-4">
                   <h2 className="card-title">{p.name}</h2>
                   <p className="overflow-auto">{p.description}</p>
                   <div className="card-actions justify-end">

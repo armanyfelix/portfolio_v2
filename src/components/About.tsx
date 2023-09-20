@@ -14,8 +14,8 @@ export default function About() {
           href: 'https://drive.google.com/file/d/1v9ak1DxxRvnM-n03WpKYsnaMixlxpZ19/view?usp=sharing',
         }}
       />
-      <div className="flex flex-col-reverse xl:flex-row md:w-3/5 antialiased rounded-box mx-3 md:mx-auto items-center justify-between bg-accent bg-opacity-30 text-center shadow-2xl backdrop-blur">
-        <div className="lg:w-5/6 pb-10 lg:ml-6 px-6 md:pt-10 text-left font-sans tracking-tighter text-neutral">
+      <div className="rounded-box mx-3 flex flex-col-reverse items-center justify-between bg-accent bg-opacity-30 text-center antialiased shadow-2xl backdrop-blur md:mx-auto md:w-3/5 xl:flex-row">
+        <div className="px-6 pb-10 text-left font-sans tracking-tighter text-neutral md:pt-10 lg:ml-6 lg:w-5/6">
           <p>
             Hi! I{'’'}m Luis, a full stack software developer with a strong background in development with
             Node.js and React. I studied Mechatronics Engineering at Universidad Nacional de Baja California
@@ -28,7 +28,7 @@ export default function About() {
             improve my skills, make my stack better and create solutions to make the web even better.
           </p>
         </div>
-        <div className="mb-6 lg:mb-0 lg:mr-6 bg-black/30 lg:bg-transparent w-full rounded-t-box shadow-2xl lg:shadow-none">
+        <div className="rounded-t-box mb-6 w-full bg-black/30 shadow-2xl lg:mb-0 lg:mr-6 lg:bg-transparent lg:shadow-none">
           <Image src={me} width="420" height="320" alt="me" className="mx-auto" />
         </div>
       </div>

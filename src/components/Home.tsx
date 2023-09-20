@@ -7,7 +7,7 @@ export default function Home() {
         <h3 className="text-xl font-semibold italic sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
           Hey there, I{"'"}m a
         </h3>
-        <h1 className="text-4xl font-bold sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl subpixel-antialiased ">
+        <h1 className="text-4xl font-bold subpixel-antialiased sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl ">
           Software Developer
         </h1>
       </div>

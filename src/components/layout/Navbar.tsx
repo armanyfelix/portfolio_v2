@@ -87,12 +87,12 @@ export default function Navbar() {
     <>
       <header
         id="top"
-        className={`fixed right-1/2 top-0 z-40 w-full md:w-5/6 lg:w-4/6 xl:w-3/5 translate-x-1/2 px-3 pt-3`}
+        className={`fixed right-1/2 top-0 z-40 w-full translate-x-1/2 px-3 pt-3 md:w-5/6 lg:w-4/6 xl:w-3/5`}
       >
         <div
           className={`${
             menuOpen ? 'rounded-2xl py-8' : 'rounded-btn py-3'
-          } duration-500 transform ease-in-out px-10 md:py-1 ${topClasses}`}
+          } transform px-10 duration-500 ease-in-out md:py-1 ${topClasses}`}
         >
           <section className="flex w-full items-center justify-between">
             <Link href="/">
@@ -203,7 +203,7 @@ const NavList = ({ setMenuOpen, menuOpen, setThemesOpen, themesOpen, theme }: an
             setThemesOpen(false)
           }}
         >
-          <Link href={item.href} className="btn btn-ghost text-lg w-full md:w-auto">
+          <Link href={item.href} className="btn btn-ghost w-full text-lg md:w-auto">
             {item.label}
           </Link>
         </li>

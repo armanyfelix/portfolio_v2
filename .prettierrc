@@ -6,7 +6,8 @@
   "trailingComma": "es5",
   "semi": false,
   "plugins": [
-    "prettier-plugin-organize-imports"
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss"
   ],
   "pluginSearchDirs": false
 }
