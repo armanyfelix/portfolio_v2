@@ -3,9 +3,10 @@ import About from '../components/About'
 import Contact from '../components/Contact'
 import Home from '../components/Home'
 import Proyects from '../components/Proyects'
+import Resources from '../components/Resources'
 import Tech from '../components/Tech'
 import { gmailPassword, gmailUser } from '../constants/nodemailer'
-import { getProyects, getTechonolgies } from '../utils/getData'
+import { getProyects, getResources, getTechonolgies } from '../utils/getData'
 
 export default async function Page() {
   async function sendEmail(data: FormData) {
@@ -69,8 +70,8 @@ export default async function Page() {
   }
 
   const proyects = await getProyects()
-
   const technologies = await getTechonolgies()
+  const resources = await getResources()
 
   return (
     <div className="w-full">
@@ -78,7 +79,7 @@ export default async function Page() {
       <Proyects proyects={proyects} />
       <About />
       <Tech technologies={technologies} />
-      {/* <Tools /> */}
+      <Resources resources={resources} />
       <Contact sendEmail={sendEmail} />
     </div>
   )

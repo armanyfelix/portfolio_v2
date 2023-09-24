@@ -13,7 +13,6 @@ interface Props {
 
 export default function Tech({ technologies }: Props) {
   const [filter, setFilter] = useState<string>('all')
-  console.log('filter :>> ', filter)
 
   return (
     <section className="mx-5 my-64">

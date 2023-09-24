@@ -1,10 +1,15 @@
 import Image from 'next/image'
+import { RecordModel } from 'pocketbase'
 
-export default function Tools() {
+interface Props {
+  resources: RecordModel[]
+}
+
+export default function Resources({ resources }: Props) {
   return (
-    <div className="px-4 py-12 md:px-8 lg:px-16">
-      <div className="mx-auto flex items-center justify-between px-5 md:w-2/4 md:justify-evenly">
-        <h1 className="text-5xl font-bold text-secondary lg:w-3/5 lg:text-7xl">Tools & Assets</h1>
+    <div className="px-4 pb-12 md:px-8 lg:px-16">
+      <div className="mb-28 text-center">
+        <h2 className="text-3xl font-bold text-accent md:text-4xl lg:text-6xl">Resouces</h2>
       </div>
       <div className="card image-full w-96 bg-base-100 shadow-xl">
         <figure>
