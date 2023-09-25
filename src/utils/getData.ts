@@ -9,13 +9,13 @@ const pb = new PocketBase(apiUrl)
 
 export const getProyects = cache(async () => {
   const res = await pb.collection('Proyects').getFullList({ sort: 'name' })
-  revalidatePath('/') // Add everytime I need to refresh the data
+  // revalidatePath('/') // Add everytime I need to refresh the data
   return res
 })
 
 export const getTechonolgies = cache(async () => {
   const res = await pb.collection('technologies').getFullList({ sort: 'name' })
-  revalidatePath('/') // Add everytime I need to refresh the data
+  // revalidatePath('/') // Add everytime I need to refresh the data
   return res
 })
 
