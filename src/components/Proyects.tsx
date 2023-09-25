@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { RecordModel } from 'pocketbase'
 import { imageLoader, pbImagePath } from '../helpers/images'
-import Header from './common/Header'
+import Title from './common/Title'
 import Github from './svg/Github'
 
 interface Props {
@@ -15,7 +15,7 @@ interface Props {
 export default function Proyects({ proyects }: Props) {
   return (
     <section id="proyects" className="mb-40">
-      <Header title="Proyects" button={{ label: <Github />, href: 'https://www.github.com/armanyfelix' }} />
+      <Title title="Proyects" button={{ label: <Github />, href: 'https://www.github.com/armanyfelix' }} />
       <div className=" mx-5 flex flex-wrap items-start justify-center gap-5 xl:mx-40">
         {proyects.length
           ? proyects.map((p: RecordModel, i: number) => (

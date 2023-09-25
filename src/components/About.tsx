@@ -2,12 +2,12 @@
 
 import Image from 'next/image'
 import me from '../../public/images/ME.png'
-import Header from './common/Header'
+import Title from './common/Title'
 
 export default function About() {
   return (
     <section id="about">
-      <Header
+      <Title
         title="About Me"
         button={{
           label: 'CV',
@@ -15,7 +15,7 @@ export default function About() {
         }}
       />
       <div className="rounded-box mx-3 flex flex-col-reverse items-center justify-between bg-accent bg-opacity-30 text-center antialiased shadow-2xl backdrop-blur md:mx-auto md:w-3/5 xl:flex-row">
-        <div className="px-6 pb-10 text-left font-sans tracking-tighter text-neutral md:pt-10 lg:ml-6 lg:w-5/6">
+        <div className="px-6 pb-10 text-left font-sans tracking-tighter md:pt-10 lg:ml-6 lg:w-5/6">
           <p>
             Hi! I{'’'}m Luis, a full stack software developer with a strong background in development with
             Node.js and React. I studied Mechatronics Engineering at Universidad Nacional de Baja California

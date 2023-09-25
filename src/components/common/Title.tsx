@@ -11,7 +11,7 @@ interface Props {
     | undefined
 }
 
-export default function Header({ title, button }: Props) {
+export default function Title({ title, button }: Props) {
   return (
     <div className="mx-auto flex w-full items-center justify-evenly pb-28 pt-[4.5rem]">
       <h1 className="text-5xl font-bold text-secondary md:text-6xl lg:text-7xl">{title}</h1>

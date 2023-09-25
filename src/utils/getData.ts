@@ -21,6 +21,6 @@ export const getTechonolgies = cache(async () => {
 
 export const getResources = cache(async () => {
   const res = await pb.collection('resources').getFullList({ sort: 'name' })
-  // revalidatePath('/') // Add everytime I need to refresh the data
+  revalidatePath('/') // Add everytime I need to refresh the data
   return res
 })
