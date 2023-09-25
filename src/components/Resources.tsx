@@ -2,6 +2,7 @@
 
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
+import Link from 'next/link'
 import { RecordModel } from 'pocketbase'
 import { imageLoader, pbImagePath } from '../helpers/images'
 
@@ -33,9 +34,9 @@ export default function Resources({ resources }: Props) {
                 <h2 className="card-title text-2xl font-bold">{r.name}</h2>
                 <p>{r.description}</p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary px-3">
+                  <Link href={r.url} target="_blank" className="btn btn-primary px-3">
                     <ArrowTopRightOnSquareIcon className="h-5 w-5" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
