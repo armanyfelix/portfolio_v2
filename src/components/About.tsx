@@ -1,7 +1,5 @@
 'use client'
 
-import Image from 'next/image'
-import me from '../../public/images/ME.png'
 import Title from './common/Title'
 
 export default function About() {
@@ -14,8 +12,8 @@ export default function About() {
           href: 'https://drive.google.com/file/d/1v9ak1DxxRvnM-n03WpKYsnaMixlxpZ19/view?usp=sharing',
         }}
       />
-      <div className="rounded-box mx-3 flex flex-col-reverse items-center justify-between bg-accent bg-opacity-30 text-center antialiased shadow-2xl backdrop-blur md:mx-auto md:w-3/5 xl:flex-row">
-        <div className="px-6 pb-10 text-left font-sans tracking-tighter md:pt-10 lg:ml-6 lg:w-5/6">
+      <div className="rounded-box mx-3 flex flex-col-reverse items-center bg-accent bg-opacity-30 text-center antialiased shadow-2xl backdrop-blur md:mx-auto md:w-3/5 xl:flex-row">
+        <div className="px-6 pb-10 text-left font-sans tracking-tighter md:pt-10 ">
           <p>
             Hi! I{'’'}m Luis, a full stack software developer with a strong background in development with
             Node.js and React. I studied Mechatronics Engineering at Universidad Nacional de Baja California
@@ -24,13 +22,13 @@ export default function About() {
           <br />
           <p>
             Since I was 15 years old I{"'"}ve been creating basic HTML websites, android apps and just playing
-            around with tech, my first lenguage was C++, I love challenges and I am always looking for ways to
-            improve my skills, make my stack better and create solutions to make the web even better.
+            around with tech, I like challenges and I am always looking for ways to improve my skills, make my
+            stack better and create solutions to make the web even better.
           </p>
         </div>
-        <div className="rounded-t-box mb-6 w-full bg-black/30 shadow-2xl lg:mb-0 lg:mr-6 lg:bg-transparent lg:shadow-none">
+        {/* <div className="rounded-t-box mb-6 w-full bg-black/30 shadow-2xl lg:mb-0 lg:mr-6 lg:bg-transparent lg:shadow-none">
           <Image src={me} width="420" height="320" alt="me" className="mx-auto" />
-        </div>
+        </div> */}
       </div>
     </section>
   )

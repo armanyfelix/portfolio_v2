@@ -28,9 +28,6 @@ export default function Footer() {
           </Link>
         </div>
       </div>
-      <div>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved by Armany Felix</p>
-      </div>
     </footer>
   )
 }
