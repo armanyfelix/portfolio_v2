@@ -1,10 +1,10 @@
 'use client'
 
+import { imageLoader, pbImagePath } from '@/helpers/images'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
 import { RecordModel } from 'pocketbase'
-import { imageLoader, pbImagePath } from '../helpers/images'
 
 interface Props {
   resources: RecordModel[]
